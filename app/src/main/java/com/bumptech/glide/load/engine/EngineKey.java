@@ -34,10 +34,7 @@ class EngineKey implements Key {
             return false;
         }
         EngineKey other = (EngineKey) o;
-        if (!this.model.equals(other.model) || !this.signature.equals(other.signature) || this.height != other.height || this.width != other.width || !this.transformations.equals(other.transformations) || !this.resourceClass.equals(other.resourceClass) || !this.transcodeClass.equals(other.transcodeClass) || !this.options.equals(other.options)) {
-            return false;
-        }
-        return true;
+        return this.model.equals(other.model) && this.signature.equals(other.signature) && this.height == other.height && this.width == other.width && this.transformations.equals(other.transformations) && this.resourceClass.equals(other.resourceClass) && this.transcodeClass.equals(other.transcodeClass) && this.options.equals(other.options);
     }
 
     public int hashCode() {
@@ -64,7 +61,7 @@ class EngineKey implements Key {
         int i3 = this.hashCode;
         String valueOf5 = String.valueOf(this.transformations);
         String valueOf6 = String.valueOf(this.options);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 151 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length() + String.valueOf(valueOf4).length() + String.valueOf(valueOf5).length() + String.valueOf(valueOf6).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 151 + valueOf2.length() + valueOf3.length() + valueOf4.length() + valueOf5.length() + valueOf6.length());
         sb.append("EngineKey{model=");
         sb.append(valueOf);
         sb.append(", width=");

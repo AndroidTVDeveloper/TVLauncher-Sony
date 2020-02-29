@@ -102,10 +102,7 @@ public final class MenuItemImpl implements SupportMenuItem {
             }
         }
         ActionProvider actionProvider = this.mActionProvider;
-        if (actionProvider == null || !actionProvider.onPerformDefaultAction()) {
-            return false;
-        }
-        return true;
+        return actionProvider != null && actionProvider.onPerformDefaultAction();
     }
 
     public boolean isEnabled() {
@@ -448,25 +445,15 @@ public final class MenuItemImpl implements SupportMenuItem {
     public boolean isVisible() {
         ActionProvider actionProvider = this.mActionProvider;
         if (actionProvider == null || !actionProvider.overridesItemVisibility()) {
-            if ((this.mFlags & 8) == 0) {
-                return true;
-            }
-            return false;
-        } else if ((this.mFlags & 8) != 0 || !this.mActionProvider.isVisible()) {
-            return false;
-        } else {
-            return true;
-        }
+            return (this.mFlags & 8) == 0;
+        } else return (this.mFlags & 8) == 0 && this.mActionProvider.isVisible();
     }
 
     /* access modifiers changed from: package-private */
     public boolean setVisibleInt(boolean shown) {
         int oldFlags = this.mFlags;
         this.mFlags = (this.mFlags & -9) | (shown ? 0 : 8);
-        if (oldFlags != this.mFlags) {
-            return true;
-        }
-        return false;
+        return oldFlags != this.mFlags;
     }
 
     public MenuItem setVisible(boolean shown) {
@@ -649,10 +636,7 @@ public final class MenuItemImpl implements SupportMenuItem {
         if (this.mActionView == null && (actionProvider = this.mActionProvider) != null) {
             this.mActionView = actionProvider.onCreateActionView(this);
         }
-        if (this.mActionView != null) {
-            return true;
-        }
-        return false;
+        return this.mActionView != null;
     }
 
     public void setActionViewExpanded(boolean isExpanded) {

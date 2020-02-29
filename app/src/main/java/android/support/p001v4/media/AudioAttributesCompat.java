@@ -299,9 +299,6 @@ public class AudioAttributesCompat implements VersionedParcelable {
         if (audioAttributesImpl != null) {
             return audioAttributesImpl.equals(that.mImpl);
         }
-        if (that.mImpl == null) {
-            return true;
-        }
-        return false;
+        return that.mImpl == null;
     }
 }

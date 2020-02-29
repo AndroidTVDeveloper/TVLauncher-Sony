@@ -10,12 +10,12 @@ import java.lang.annotation.Target;
 public @interface RequiresPermission {
 
     @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-    public @interface Read {
+    @interface Read {
         RequiresPermission value() default @RequiresPermission;
     }
 
     @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-    public @interface Write {
+    @interface Write {
         RequiresPermission value() default @RequiresPermission;
     }
 

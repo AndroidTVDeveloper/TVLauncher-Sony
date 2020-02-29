@@ -18,9 +18,6 @@ public class AdsUtil {
         double d = (double) totalArea;
         Double.isNaN(width);
         Double.isNaN(d);
-        if (width / d >= MIN_VISIBLE_FRACTION_FOR_IMPRESSION) {
-            return true;
-        }
-        return false;
+        return width / d >= MIN_VISIBLE_FRACTION_FOR_IMPRESSION;
     }
 }

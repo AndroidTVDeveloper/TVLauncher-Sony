@@ -8,7 +8,7 @@ import java.util.Collection;
 @Deprecated
 public interface GcoreCounters {
 
-    public interface GcoreBooleanHistogram {
+    interface GcoreBooleanHistogram {
         long getCount(boolean z);
 
         String getName();
@@ -16,7 +16,7 @@ public interface GcoreCounters {
         void increment(boolean z);
     }
 
-    public interface GcoreCounter {
+    interface GcoreCounter {
         long getCount();
 
         String getName();
@@ -26,7 +26,7 @@ public interface GcoreCounters {
         void incrementBy(long j);
     }
 
-    public interface GcoreIntegerHistogram {
+    interface GcoreIntegerHistogram {
         long getCount(int i);
 
         String getName();
@@ -34,7 +34,7 @@ public interface GcoreCounters {
         void increment(int i);
     }
 
-    public interface GcoreLongHistogram {
+    interface GcoreLongHistogram {
         long getCount(long j);
 
         String getName();
@@ -44,7 +44,7 @@ public interface GcoreCounters {
         void incrementBy(long j, long j2);
     }
 
-    public interface GcoreTimer {
+    interface GcoreTimer {
         long getMilliseconds();
 
         void incrementTo(GcoreTimerHistogram gcoreTimerHistogram);
@@ -52,9 +52,9 @@ public interface GcoreCounters {
         long reset();
     }
 
-    public interface GcoreTimerHistogram {
+    interface GcoreTimerHistogram {
 
-        public interface BoundTimer {
+        interface BoundTimer {
             long getMilliseconds();
 
             void incrementTo();

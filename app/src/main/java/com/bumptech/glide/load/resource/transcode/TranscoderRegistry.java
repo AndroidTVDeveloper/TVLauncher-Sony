@@ -21,7 +21,7 @@ public class TranscoderRegistry {
         }
         String valueOf = String.valueOf(resourceClass);
         String valueOf2 = String.valueOf(transcodedClass);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 47 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 47 + valueOf2.length());
         sb.append("No transcoder registered to transcode from ");
         sb.append(valueOf);
         sb.append(" to ");

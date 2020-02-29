@@ -51,7 +51,7 @@ class ThumbnailStreamOpener {
         } catch (IOException | NullPointerException e2) {
             if (Log.isLoggable(TAG, 3)) {
                 String valueOf = String.valueOf(uri);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 20);
                 sb.append("Failed to open uri: ");
                 sb.append(valueOf);
                 Log.d(TAG, sb.toString(), e2);
@@ -91,7 +91,7 @@ class ThumbnailStreamOpener {
         } catch (NullPointerException e) {
             String valueOf = String.valueOf(uri);
             String valueOf2 = String.valueOf(thumbnailUri);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 21 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 21 + valueOf2.length());
             sb.append("NPE opening uri: ");
             sb.append(valueOf);
             sb.append(" -> ");
@@ -118,7 +118,7 @@ class ThumbnailStreamOpener {
         } catch (SecurityException e) {
             if (Log.isLoggable(TAG, 3)) {
                 String valueOf = String.valueOf(uri);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 39);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 39);
                 sb.append("Failed to query for thumbnail for Uri: ");
                 sb.append(valueOf);
                 Log.d(TAG, sb.toString(), e);

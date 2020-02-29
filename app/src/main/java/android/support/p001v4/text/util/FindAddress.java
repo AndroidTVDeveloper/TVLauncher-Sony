@@ -52,10 +52,7 @@ class FindAddress {
         /* access modifiers changed from: package-private */
         public boolean matches(String zipCode) {
             int prefix = Integer.parseInt(zipCode.substring(0, 2));
-            if ((this.mLow <= prefix && prefix <= this.mHigh) || prefix == this.mException1 || prefix == this.mException2) {
-                return true;
-            }
-            return false;
+            return (this.mLow <= prefix && prefix <= this.mHigh) || prefix == this.mException1 || prefix == this.mException2;
         }
     }
 
@@ -141,10 +138,7 @@ class FindAddress {
             }
             stateIndex = stateIndex2;
         }
-        if (!sZipCodeRe.matcher(zipCode).matches() || !sStateZipCodeRanges[stateIndex].matches(zipCode)) {
-            return false;
-        }
-        return true;
+        return sZipCodeRe.matcher(zipCode).matches() && sStateZipCodeRanges[stateIndex].matches(zipCode);
     }
 
     public static boolean isValidZipCode(String zipCode, String state) {

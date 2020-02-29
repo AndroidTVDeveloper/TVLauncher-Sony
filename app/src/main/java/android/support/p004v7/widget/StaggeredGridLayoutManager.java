@@ -327,7 +327,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             return;
         }
         boolean needToCheckForGaps = true;
-        boolean recalculateAnchor = (anchorInfo.mValid && this.mPendingScrollPosition == -1 && this.mPendingSavedState == null) ? false : true;
+        boolean recalculateAnchor = !anchorInfo.mValid || this.mPendingScrollPosition != -1 || this.mPendingSavedState != null;
         if (recalculateAnchor) {
             anchorInfo.reset();
             if (this.mPendingSavedState != null) {
@@ -1437,15 +1437,9 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
 
     private boolean preferLastSpan(int layoutDir) {
         if (this.mOrientation == 0) {
-            if ((layoutDir == -1) != this.mShouldReverseLayout) {
-                return true;
-            }
-            return false;
+            return (layoutDir == -1) != this.mShouldReverseLayout;
         }
-        if (((layoutDir == -1) == this.mShouldReverseLayout) == isLayoutRTL()) {
-            return true;
-        }
-        return false;
+        return ((layoutDir == -1) == this.mShouldReverseLayout) == isLayoutRTL();
     }
 
     private Span getNextSpan(LayoutState layoutState) {
@@ -2418,7 +2412,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             FullSpanItem(Parcel in) {
                 this.mPosition = in.readInt();
                 this.mGapDir = in.readInt();
-                this.mHasUnwantedGapAfter = in.readInt() != 1 ? false : true;
+                this.mHasUnwantedGapAfter = in.readInt() == 1;
                 int spanCount = in.readInt();
                 if (spanCount > 0) {
                     this.mGapPerSpan = new int[spanCount];
@@ -2504,7 +2498,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             boolean z = false;
             this.mReverseLayout = in.readInt() == 1;
             this.mAnchorLayoutFromEnd = in.readInt() == 1;
-            this.mLastLayoutRTL = in.readInt() == 1 ? true : z;
+            this.mLastLayoutRTL = in.readInt() == 1 || z;
             this.mFullSpanItems = in.readArrayList(LazySpanLookup.FullSpanItem.class.getClassLoader());
         }
 

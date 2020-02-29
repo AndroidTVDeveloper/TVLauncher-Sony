@@ -794,7 +794,7 @@ final class MessageSchema<T> implements Schema<T> {
             }
             String name = messageClass.getName();
             String arrays = Arrays.toString(fields);
-            StringBuilder sb = new StringBuilder(String.valueOf(fieldName).length() + 40 + String.valueOf(name).length() + String.valueOf(arrays).length());
+            StringBuilder sb = new StringBuilder(fieldName.length() + 40 + name.length() + arrays.length());
             sb.append("Field ");
             sb.append(fieldName);
             sb.append(" for ");
@@ -966,95 +966,41 @@ final class MessageSchema<T> implements Schema<T> {
         long offset = offset(typeAndOffset);
         switch (type(typeAndOffset)) {
             case 0:
-                if (!arePresentForEquals(message, other, pos) || Double.doubleToLongBits(UnsafeUtil.getDouble(message, offset)) != Double.doubleToLongBits(UnsafeUtil.getDouble(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && Double.doubleToLongBits(UnsafeUtil.getDouble(message, offset)) == Double.doubleToLongBits(UnsafeUtil.getDouble(other, offset));
             case 1:
-                if (!arePresentForEquals(message, other, pos) || Float.floatToIntBits(UnsafeUtil.getFloat(message, offset)) != Float.floatToIntBits(UnsafeUtil.getFloat(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && Float.floatToIntBits(UnsafeUtil.getFloat(message, offset)) == Float.floatToIntBits(UnsafeUtil.getFloat(other, offset));
             case 2:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getLong(message, offset) != UnsafeUtil.getLong(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getLong(message, offset) == UnsafeUtil.getLong(other, offset);
             case 3:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getLong(message, offset) != UnsafeUtil.getLong(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getLong(message, offset) == UnsafeUtil.getLong(other, offset);
             case 4:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 5:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getLong(message, offset) != UnsafeUtil.getLong(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getLong(message, offset) == UnsafeUtil.getLong(other, offset);
             case 6:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 7:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getBoolean(message, offset) != UnsafeUtil.getBoolean(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getBoolean(message, offset) == UnsafeUtil.getBoolean(other, offset);
             case 8:
-                if (!arePresentForEquals(message, other, pos) || !SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset));
             case 9:
-                if (!arePresentForEquals(message, other, pos) || !SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset));
             case 10:
-                if (!arePresentForEquals(message, other, pos) || !SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset));
             case 11:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 12:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 13:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 14:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getLong(message, offset) != UnsafeUtil.getLong(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getLong(message, offset) == UnsafeUtil.getLong(other, offset);
             case 15:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getInt(message, offset) != UnsafeUtil.getInt(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getInt(message, offset) == UnsafeUtil.getInt(other, offset);
             case 16:
-                if (!arePresentForEquals(message, other, pos) || UnsafeUtil.getLong(message, offset) != UnsafeUtil.getLong(other, offset)) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && UnsafeUtil.getLong(message, offset) == UnsafeUtil.getLong(other, offset);
             case 17:
-                if (!arePresentForEquals(message, other, pos) || !SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset))) {
-                    return false;
-                }
-                return true;
+                return arePresentForEquals(message, other, pos) && SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset));
             case 18:
             case 19:
             case 20:
@@ -1108,10 +1054,7 @@ final class MessageSchema<T> implements Schema<T> {
             case 66:
             case 67:
             case 68:
-                if (!isOneofCaseEqual(message, other, pos) || !SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset))) {
-                    return false;
-                }
-                return true;
+                return isOneofCaseEqual(message, other, pos) && SchemaUtil.safeEquals(UnsafeUtil.getObject(message, offset), UnsafeUtil.getObject(other, offset));
             default:
                 return true;
         }
@@ -7536,40 +7479,19 @@ final class MessageSchema<T> implements Schema<T> {
             long offset = offset(typeAndOffset);
             switch (type(typeAndOffset)) {
                 case 0:
-                    if (UnsafeUtil.getDouble(message, offset) != 0.0d) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getDouble(message, offset) != 0.0d;
                 case 1:
-                    if (UnsafeUtil.getFloat(message, offset) != 0.0f) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getFloat(message, offset) != 0.0f;
                 case 2:
-                    if (UnsafeUtil.getLong(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getLong(message, offset) != 0;
                 case 3:
-                    if (UnsafeUtil.getLong(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getLong(message, offset) != 0;
                 case 4:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 5:
-                    if (UnsafeUtil.getLong(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getLong(message, offset) != 0;
                 case 6:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 7:
                     return UnsafeUtil.getBoolean(message, offset);
                 case 8:
@@ -7582,56 +7504,29 @@ final class MessageSchema<T> implements Schema<T> {
                     }
                     throw new IllegalArgumentException();
                 case 9:
-                    if (UnsafeUtil.getObject(message, offset) != null) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getObject(message, offset) != null;
                 case 10:
                     return !ByteString.EMPTY.equals(UnsafeUtil.getObject(message, offset));
                 case 11:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 12:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 13:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 14:
-                    if (UnsafeUtil.getLong(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getLong(message, offset) != 0;
                 case 15:
-                    if (UnsafeUtil.getInt(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getInt(message, offset) != 0;
                 case 16:
-                    if (UnsafeUtil.getLong(message, offset) != 0) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getLong(message, offset) != 0;
                 case 17:
-                    if (UnsafeUtil.getObject(message, offset) != null) {
-                        return true;
-                    }
-                    return false;
+                    return UnsafeUtil.getObject(message, offset) != null;
                 default:
                     throw new IllegalArgumentException();
             }
         } else {
             int presenceMaskAndOffset = presenceMaskAndOffsetAt(pos);
-            if ((UnsafeUtil.getInt(message, (long) (OFFSET_MASK & presenceMaskAndOffset)) & (1 << (presenceMaskAndOffset >>> 20))) != 0) {
-                return true;
-            }
-            return false;
+            return (UnsafeUtil.getInt(message, (long) (OFFSET_MASK & presenceMaskAndOffset)) & (1 << (presenceMaskAndOffset >>> 20))) != 0;
         }
     }
 

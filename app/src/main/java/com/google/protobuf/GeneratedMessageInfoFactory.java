@@ -16,14 +16,14 @@ class GeneratedMessageInfoFactory implements MessageInfoFactory {
 
     public MessageInfo messageInfoFor(Class<?> messageType) {
         if (!GeneratedMessageLite.class.isAssignableFrom(messageType)) {
-            String valueOf = String.valueOf(messageType.getName());
-            throw new IllegalArgumentException(valueOf.length() != 0 ? "Unsupported message type: ".concat(valueOf) : new String("Unsupported message type: "));
+            String valueOf = messageType.getName();
+            throw new IllegalArgumentException(valueOf.length() != 0 ? "Unsupported message type: ".concat(valueOf) : "Unsupported message type: ");
         }
         try {
             return (MessageInfo) GeneratedMessageLite.getDefaultInstance(messageType.asSubclass(GeneratedMessageLite.class)).buildMessageInfo();
         } catch (Exception e) {
-            String valueOf2 = String.valueOf(messageType.getName());
-            throw new RuntimeException(valueOf2.length() != 0 ? "Unable to get message info for ".concat(valueOf2) : new String("Unable to get message info for "), e);
+            String valueOf2 = messageType.getName();
+            throw new RuntimeException(valueOf2.length() != 0 ? "Unable to get message info for ".concat(valueOf2) : "Unable to get message info for ", e);
         }
     }
 }

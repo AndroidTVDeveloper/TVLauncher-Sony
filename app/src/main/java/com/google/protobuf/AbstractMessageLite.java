@@ -83,7 +83,7 @@ public abstract class AbstractMessageLite<MessageType extends AbstractMessageLit
 
     private String getSerializingExceptionMessage(String target) {
         String name = getClass().getName();
-        StringBuilder sb = new StringBuilder(String.valueOf(name).length() + 62 + String.valueOf(target).length());
+        StringBuilder sb = new StringBuilder(name.length() + 62 + String.valueOf(target).length());
         sb.append("Serializing ");
         sb.append(name);
         sb.append(" to a ");
@@ -353,7 +353,7 @@ public abstract class AbstractMessageLite<MessageType extends AbstractMessageLit
 
         private String getReadingExceptionMessage(String target) {
             String name = getClass().getName();
-            StringBuilder sb = new StringBuilder(String.valueOf(name).length() + 60 + String.valueOf(target).length());
+            StringBuilder sb = new StringBuilder(name.length() + 60 + String.valueOf(target).length());
             sb.append("Reading ");
             sb.append(name);
             sb.append(" from a ");

@@ -16,7 +16,7 @@ public interface INotificationSideChannel extends IInterface {
     void notify(String str, int i, String str2, Notification notification) throws RemoteException;
 
     /* renamed from: android.support.v4.app.INotificationSideChannel$Stub */
-    public static abstract class Stub extends Binder implements INotificationSideChannel {
+    abstract class Stub extends Binder implements INotificationSideChannel {
         private static final String DESCRIPTOR = "android.support.v4.app.INotificationSideChannel";
         static final int TRANSACTION_cancel = 2;
         static final int TRANSACTION_cancelAll = 3;

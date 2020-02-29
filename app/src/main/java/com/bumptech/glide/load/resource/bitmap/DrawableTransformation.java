@@ -38,7 +38,7 @@ public class DrawableTransformation implements Transformation<Drawable> {
             return resource;
         } else {
             String valueOf = String.valueOf(drawable);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 30);
             sb.append("Unable to convert ");
             sb.append(valueOf);
             sb.append(" to a Bitmap");

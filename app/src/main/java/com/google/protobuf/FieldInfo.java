@@ -86,7 +86,7 @@ final class FieldInfo implements Comparable<FieldInfo> {
             return new FieldInfo(null, fieldNumber2, fieldType, null, null, 0, false, enforceUtf82, oneof2, oneofStoredType2, null, enumVerifier2, null);
         }
         String valueOf = String.valueOf(fieldType);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 72);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 72);
         sb.append("Oneof is only supported for scalar fields. Field ");
         sb.append(fieldNumber2);
         sb.append(" is of type ");

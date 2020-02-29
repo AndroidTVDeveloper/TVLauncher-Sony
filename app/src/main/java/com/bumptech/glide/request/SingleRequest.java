@@ -521,7 +521,7 @@ public final class SingleRequest<R> implements Request, SizeReadyCallback, Resou
         this.loadStatus = null;
         if (resource2 == null) {
             String valueOf = String.valueOf(this.transcodeClass);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 82);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 82);
             sb.append("Expected to receive a Resource<R> with an object of ");
             sb.append(valueOf);
             sb.append(" inside, but instead got null.");
@@ -550,7 +550,7 @@ public final class SingleRequest<R> implements Request, SizeReadyCallback, Resou
         } else {
             str = " To indicate failure return a null Resource object, rather than a Resource object containing null data.";
         }
-        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 71 + String.valueOf(valueOf3).length() + String.valueOf(valueOf4).length() + String.valueOf(valueOf5).length() + String.valueOf(str).length());
+        StringBuilder sb2 = new StringBuilder(valueOf2.length() + 71 + valueOf3.length() + valueOf4.length() + valueOf5.length() + str.length());
         sb2.append("Expected to receive an object of ");
         sb2.append(valueOf2);
         sb2.append(" but instead got ");
@@ -702,7 +702,7 @@ public final class SingleRequest<R> implements Request, SizeReadyCallback, Resou
             String valueOf = String.valueOf(this.model);
             int i = this.width;
             int i2 = this.height;
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 52);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 52);
             sb.append("Load failed for ");
             sb.append(valueOf);
             sb.append(" with size [");

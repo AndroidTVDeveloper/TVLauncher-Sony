@@ -65,7 +65,7 @@ final class ApiProviderDefault implements ApiProviderFactory {
             ThreadUtil.postDelayedOnUiThread(initTask, MAX_INIT_DELAY_MS);
             return;
         }
-        PrimesLog.m56w(TAG, "Primes instant initialization", new Object[0]);
+        PrimesLog.m56w(TAG, "Primes instant initialization");
         initTask.run();
     }
 
@@ -73,11 +73,11 @@ final class ApiProviderDefault implements ApiProviderFactory {
         boolean initAfterResumed = initAfterResumedFlag != null && initAfterResumedFlag.isEnabled();
         PrimesLog.m56w(TAG, "initAfterResumed: %b", Boolean.valueOf(initAfterResumed));
         if (!initAfterResumed || !foregroundOracle.get().booleanValue()) {
-            PrimesLog.m56w(TAG, "executing Primes-init task", new Object[0]);
+            PrimesLog.m56w(TAG, "executing Primes-init task");
             initTask.run();
             return;
         }
-        PrimesLog.m56w(TAG, "scheduling Primes-init task", new Object[0]);
+        PrimesLog.m56w(TAG, "scheduling Primes-init task");
         PrimesExecutors.onActivityResumedTrigger(lifecycleMonitor, activityResumedCallback).execute(initTask);
     }
 }

@@ -59,7 +59,7 @@ final class FragmentState implements Parcelable {
         this.mRemoving = in.readInt() != 0;
         this.mDetached = in.readInt() != 0;
         this.mArguments = in.readBundle();
-        this.mHidden = in.readInt() == 0 ? false : z;
+        this.mHidden = in.readInt() != 0 && z;
         this.mSavedFragmentState = in.readBundle();
         this.mMaxLifecycleState = in.readInt();
     }

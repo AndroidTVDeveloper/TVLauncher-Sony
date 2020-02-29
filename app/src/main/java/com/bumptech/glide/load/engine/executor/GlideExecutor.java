@@ -29,19 +29,19 @@ public final class GlideExecutor implements ExecutorService {
     private final ExecutorService delegate;
 
     public interface UncaughtThrowableStrategy {
-        public static final UncaughtThrowableStrategy DEFAULT = LOG;
-        public static final UncaughtThrowableStrategy IGNORE = new UncaughtThrowableStrategy() {
+        UncaughtThrowableStrategy DEFAULT = LOG;
+        UncaughtThrowableStrategy IGNORE = new UncaughtThrowableStrategy() {
             public void handle(Throwable t) {
             }
         };
-        public static final UncaughtThrowableStrategy LOG = new UncaughtThrowableStrategy() {
+        UncaughtThrowableStrategy LOG = new UncaughtThrowableStrategy() {
             public void handle(Throwable t) {
                 if (t != null && Log.isLoggable(GlideExecutor.TAG, 6)) {
                     Log.e(GlideExecutor.TAG, "Request threw uncaught throwable", t);
                 }
             }
         };
-        public static final UncaughtThrowableStrategy THROW = new UncaughtThrowableStrategy() {
+        UncaughtThrowableStrategy THROW = new UncaughtThrowableStrategy() {
             public void handle(Throwable t) {
                 if (t != null) {
                     throw new RuntimeException("Request threw uncaught throwable", t);

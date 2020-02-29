@@ -31,7 +31,7 @@ public final class ContentLengthInputStream extends FilterInputStream {
                 return -1;
             }
             String valueOf = String.valueOf(contentLengthHeader);
-            Log.d(TAG, valueOf.length() != 0 ? "failed to parse content length header: ".concat(valueOf) : new String("failed to parse content length header: "), e);
+            Log.d(TAG, valueOf.length() != 0 ? "failed to parse content length header: ".concat(valueOf) : "failed to parse content length header: ", e);
             return -1;
         }
     }

@@ -22,10 +22,7 @@ final class DataCacheKey implements Key {
             return false;
         }
         DataCacheKey other = (DataCacheKey) o;
-        if (!this.sourceKey.equals(other.sourceKey) || !this.signature.equals(other.signature)) {
-            return false;
-        }
-        return true;
+        return this.sourceKey.equals(other.sourceKey) && this.signature.equals(other.signature);
     }
 
     public int hashCode() {
@@ -35,7 +32,7 @@ final class DataCacheKey implements Key {
     public String toString() {
         String valueOf = String.valueOf(this.sourceKey);
         String valueOf2 = String.valueOf(this.signature);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 36 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 36 + valueOf2.length());
         sb.append("DataCacheKey{sourceKey=");
         sb.append(valueOf);
         sb.append(", signature=");

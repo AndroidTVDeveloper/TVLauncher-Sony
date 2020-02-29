@@ -3,7 +3,7 @@ package com.google.android.libraries.social.analytics.visualelement;
 import android.view.View;
 
 public interface VisualElementLogger {
-    public static final String TAG = "VisualElementLogger";
+    String TAG = "VisualElementLogger";
 
     void record(int i, View view);
 

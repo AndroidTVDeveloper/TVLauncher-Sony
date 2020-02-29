@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public final class DefaultImageHeaderParser implements ImageHeaderParser {
     private static final int[] BYTES_PER_FORMAT = {0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8};
@@ -19,7 +20,7 @@ public final class DefaultImageHeaderParser implements ImageHeaderParser {
     private static final int GIF_HEADER = 4671814;
     private static final int INTEL_TIFF_MAGIC_NUMBER = 18761;
     private static final String JPEG_EXIF_SEGMENT_PREAMBLE = "Exif\u0000\u0000";
-    static final byte[] JPEG_EXIF_SEGMENT_PREAMBLE_BYTES = JPEG_EXIF_SEGMENT_PREAMBLE.getBytes(Charset.forName("UTF-8"));
+    static final byte[] JPEG_EXIF_SEGMENT_PREAMBLE_BYTES = JPEG_EXIF_SEGMENT_PREAMBLE.getBytes(StandardCharsets.UTF_8);
     private static final int MARKER_EOI = 217;
     private static final int MOTOROLA_TIFF_MAGIC_NUMBER = 19789;
     private static final int ORIENTATION_TAG_TYPE = 274;

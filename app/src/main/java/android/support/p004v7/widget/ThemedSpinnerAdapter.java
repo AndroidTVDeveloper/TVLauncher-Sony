@@ -13,7 +13,7 @@ public interface ThemedSpinnerAdapter extends SpinnerAdapter {
     void setDropDownViewTheme(Resources.Theme theme);
 
     /* renamed from: android.support.v7.widget.ThemedSpinnerAdapter$Helper */
-    public static final class Helper {
+    final class Helper {
         private final Context mContext;
         private LayoutInflater mDropDownInflater;
         private final LayoutInflater mInflater;

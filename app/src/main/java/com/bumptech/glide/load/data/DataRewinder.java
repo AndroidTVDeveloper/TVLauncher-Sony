@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface DataRewinder<T> {
 
-    public interface Factory<T> {
+    interface Factory<T> {
         DataRewinder<T> build(Object obj);
 
         Class<T> getDataClass();

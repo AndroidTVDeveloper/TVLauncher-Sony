@@ -18,7 +18,7 @@ public class DoubleClickAdConfigSerializer implements AdConfigSerializer {
             return (AdConfig.AdAsset) MessageNano.mergeFrom(new AdConfig.AdAsset(), serialized);
         } catch (InvalidProtocolBufferNanoException ex) {
             String arrays = Arrays.toString(serialized);
-            StringBuilder sb = new StringBuilder(String.valueOf(arrays).length() + 47);
+            StringBuilder sb = new StringBuilder(arrays.length() + 47);
             sb.append("Could not deserialize: ");
             sb.append(arrays);
             sb.append(" into AdConfig.AdAsset: ");

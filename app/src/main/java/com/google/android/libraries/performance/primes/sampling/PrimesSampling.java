@@ -18,10 +18,7 @@ public final class PrimesSampling {
             if (SystemClock.elapsedRealtime() - this.firstSampleInLastSecond > 1000) {
                 return false;
             }
-            if (this.samplesCount >= this.maxSamplesRate) {
-                return true;
-            }
-            return false;
+            return this.samplesCount >= this.maxSamplesRate;
         }
     }
 

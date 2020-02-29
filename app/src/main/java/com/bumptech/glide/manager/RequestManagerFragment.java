@@ -156,7 +156,7 @@ public class RequestManagerFragment extends Fragment {
     public String toString() {
         String fragment = super.toString();
         String valueOf = String.valueOf(getParentFragmentUsingHint());
-        StringBuilder sb = new StringBuilder(String.valueOf(fragment).length() + 9 + String.valueOf(valueOf).length());
+        StringBuilder sb = new StringBuilder(fragment.length() + 9 + valueOf.length());
         sb.append(fragment);
         sb.append("{parent=");
         sb.append(valueOf);
@@ -182,7 +182,7 @@ public class RequestManagerFragment extends Fragment {
         public String toString() {
             String obj = super.toString();
             String valueOf = String.valueOf(RequestManagerFragment.this);
-            StringBuilder sb = new StringBuilder(String.valueOf(obj).length() + 11 + String.valueOf(valueOf).length());
+            StringBuilder sb = new StringBuilder(obj.length() + 11 + valueOf.length());
             sb.append(obj);
             sb.append("{fragment=");
             sb.append(valueOf);

@@ -18,10 +18,7 @@ public final class IndexedVisualElement extends VisualElement implements Indexed
     }
 
     public boolean equals(Object o) {
-        if (!super.equals(o) || this.visualElementIndex != ((IndexedVisualElement) o).visualElementIndex) {
-            return false;
-        }
-        return true;
+        return super.equals(o) && this.visualElementIndex == ((IndexedVisualElement) o).visualElementIndex;
     }
 
     public int hashCode() {

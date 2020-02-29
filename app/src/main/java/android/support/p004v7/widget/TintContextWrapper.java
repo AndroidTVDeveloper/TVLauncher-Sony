@@ -47,10 +47,7 @@ public class TintContextWrapper extends ContextWrapper {
         if ((context instanceof TintContextWrapper) || (context.getResources() instanceof TintResources) || (context.getResources() instanceof VectorEnabledTintResources)) {
             return false;
         }
-        if (Build.VERSION.SDK_INT < 21 || VectorEnabledTintResources.shouldBeUsed()) {
-            return true;
-        }
-        return false;
+        return Build.VERSION.SDK_INT < 21 || VectorEnabledTintResources.shouldBeUsed();
     }
 
     private TintContextWrapper(Context base) {

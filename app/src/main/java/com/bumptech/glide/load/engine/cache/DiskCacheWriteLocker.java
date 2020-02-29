@@ -43,7 +43,7 @@ final class DiskCacheWriteLocker {
                     } else {
                         String valueOf = String.valueOf(writeLock);
                         String valueOf2 = String.valueOf(removed);
-                        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 79 + String.valueOf(valueOf2).length() + String.valueOf(safeKey).length());
+                        StringBuilder sb = new StringBuilder(valueOf.length() + 79 + valueOf2.length() + String.valueOf(safeKey).length());
                         sb.append("Removed the wrong lock, expected to remove: ");
                         sb.append(valueOf);
                         sb.append(", but actually removed: ");

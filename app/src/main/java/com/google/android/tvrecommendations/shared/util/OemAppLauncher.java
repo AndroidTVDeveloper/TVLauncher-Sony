@@ -124,9 +124,9 @@ public class OemAppLauncher {
 
     private static boolean openPlayStoreForPackage(Context context, String packageName) {
         Intent flags = new Intent("android.intent.action.VIEW").setFlags(C0847C.ENCODING_PCM_MU_LAW);
-        String valueOf = String.valueOf("market://details?id=");
+        String valueOf = "market://details?id=";
         String valueOf2 = String.valueOf(packageName);
-        Intent playStoreIntent = flags.setData(Uri.parse(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf))).putExtra(GOOGLE_PLAY_EXTRA_CALLER_ID, context.getPackageName()).setPackage("com.android.vending");
+        Intent playStoreIntent = flags.setData(Uri.parse(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf)).putExtra(GOOGLE_PLAY_EXTRA_CALLER_ID, context.getPackageName()).setPackage("com.android.vending");
         if (playStoreIntent.resolveActivity(context.getPackageManager()) == null) {
             return false;
         }

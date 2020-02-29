@@ -58,7 +58,7 @@ public class CustomCreativeAdParser {
                 throw new JSONException("Custom ContentAds are not currently supported");
             } else {
                 String valueOf = String.valueOf(jsonObject);
-                StringBuilder sb = new StringBuilder(String.valueOf(templateId).length() + 43 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(templateId.length() + 43 + valueOf.length());
                 sb.append("TemplateID: ");
                 sb.append(templateId);
                 sb.append(" is unknown when parsing json: ");

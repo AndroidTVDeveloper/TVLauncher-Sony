@@ -285,7 +285,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
         public boolean isNavigationVisible() {
             ActionBar actionBar = this.mActivity.getActionBar();
-            return (actionBar == null || (actionBar.getDisplayOptions() & 4) == 0) ? false : true;
+            return actionBar != null && (actionBar.getDisplayOptions() & 4) != 0;
         }
 
         public void setActionBarUpIndicator(Drawable themeImage, int contentDescRes) {

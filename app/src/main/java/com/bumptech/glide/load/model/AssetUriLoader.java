@@ -32,10 +32,7 @@ public class AssetUriLoader<Data> implements ModelLoader<Uri, Data> {
     }
 
     public boolean handles(Uri model) {
-        if (!"file".equals(model.getScheme()) || model.getPathSegments().isEmpty() || !ASSET_PATH_SEGMENT.equals(model.getPathSegments().get(0))) {
-            return false;
-        }
-        return true;
+        return "file".equals(model.getScheme()) && !model.getPathSegments().isEmpty() && ASSET_PATH_SEGMENT.equals(model.getPathSegments().get(0));
     }
 
     public static class StreamFactory implements ModelLoaderFactory<Uri, InputStream>, AssetFetcherFactory<InputStream> {

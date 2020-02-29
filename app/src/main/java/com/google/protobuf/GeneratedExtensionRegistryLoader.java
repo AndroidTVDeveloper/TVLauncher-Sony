@@ -59,8 +59,8 @@ abstract class GeneratedExtensionRegistryLoader<T extends ExtensionRegistryLite>
                     ServiceConfigurationError e3 = e2;
                     Logger logger2 = logger;
                     Level level = Level.SEVERE;
-                    String valueOf = String.valueOf(extensionRegistryClass.getSimpleName());
-                    logger2.logp(level, "com.google.protobuf.GeneratedExtensionRegistryLoader", "load", valueOf.length() != 0 ? "Unable to load ".concat(valueOf) : new String("Unable to load "), (Throwable) e3);
+                    String valueOf = extensionRegistryClass.getSimpleName();
+                    logger2.logp(level, "com.google.protobuf.GeneratedExtensionRegistryLoader", "load", valueOf.length() != 0 ? "Unable to load ".concat(valueOf) : "Unable to load ", (Throwable) e3);
                 }
             }
             if (registries.size() == 1) {

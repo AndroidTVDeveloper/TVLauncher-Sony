@@ -193,8 +193,8 @@ class WatchNextRowController implements HomeRow, ChannelView.OnStateChangeGestur
             case 27:
             case 28:
             case 29:
-                String valueOf = String.valueOf(ChannelView.stateToString(channelViewState));
-                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next row state ".concat(valueOf) : new String("Unsupported Watch Next row state "));
+                String valueOf = ChannelView.stateToString(channelViewState);
+                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next row state ".concat(valueOf) : "Unsupported Watch Next row state ");
             case 8:
                 return 6;
             case 9:
@@ -284,8 +284,8 @@ class WatchNextRowController implements HomeRow, ChannelView.OnStateChangeGestur
             case 27:
             case 28:
             case 29:
-                String valueOf = String.valueOf(ChannelView.stateToString(newState));
-                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported ChannelView state change gesture: ".concat(valueOf) : new String("Unsupported ChannelView state change gesture: "));
+                String valueOf = ChannelView.stateToString(newState);
+                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported ChannelView state change gesture: ".concat(valueOf) : "Unsupported ChannelView state change gesture: ");
             case 8:
                 OnHomeRowSelectedListener onHomeRowSelectedListener3 = this.onHomeRowSelectedListener;
                 if (onHomeRowSelectedListener3 != null) {

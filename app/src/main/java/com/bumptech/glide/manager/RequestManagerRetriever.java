@@ -373,7 +373,7 @@ public class RequestManagerRetriever implements Handler.Callback {
         }
         if (handled && removed == null && Log.isLoggable(TAG, 5)) {
             String valueOf = String.valueOf(key);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 61);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 61);
             sb.append("Failed to remove expected request manager fragment, manager: ");
             sb.append(valueOf);
             Log.w(TAG, sb.toString());

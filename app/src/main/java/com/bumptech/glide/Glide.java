@@ -144,7 +144,7 @@ public class Glide implements ComponentCallbacks2 {
                 if (excludedModuleClasses.contains(current.getClass())) {
                     if (Log.isLoggable(TAG, 3)) {
                         String valueOf = String.valueOf(current);
-                        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 46);
+                        StringBuilder sb = new StringBuilder(valueOf.length() + 46);
                         sb.append("AppGlideModule excludes manifest GlideModule: ");
                         sb.append(valueOf);
                         Log.d(TAG, sb.toString());
@@ -156,7 +156,7 @@ public class Glide implements ComponentCallbacks2 {
         if (Log.isLoggable(TAG, 3)) {
             for (GlideModule glideModule : manifestModules) {
                 String valueOf2 = String.valueOf(glideModule.getClass());
-                StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 38);
+                StringBuilder sb2 = new StringBuilder(valueOf2.length() + 38);
                 sb2.append("Discovered GlideModule from manifest: ");
                 sb2.append(valueOf2);
                 Log.d(TAG, sb2.toString());
@@ -179,8 +179,8 @@ public class Glide implements ComponentCallbacks2 {
             try {
                 module2.registerComponents(applicationContext, glide2, glide2.registry);
             } catch (AbstractMethodError e) {
-                String valueOf3 = String.valueOf(module2.getClass().getName());
-                throw new IllegalStateException(valueOf3.length() != 0 ? "Attempting to register a Glide v3 module. If you see this, you or one of your dependencies may be including Glide v3 even though you're using Glide v4. You'll need to find and remove (or update) the offending dependency. The v3 module name is: ".concat(valueOf3) : new String("Attempting to register a Glide v3 module. If you see this, you or one of your dependencies may be including Glide v3 even though you're using Glide v4. You'll need to find and remove (or update) the offending dependency. The v3 module name is: "), e);
+                String valueOf3 = module2.getClass().getName();
+                throw new IllegalStateException(valueOf3.length() != 0 ? "Attempting to register a Glide v3 module. If you see this, you or one of your dependencies may be including Glide v3 even though you're using Glide v4. You'll need to find and remove (or update) the offending dependency. The v3 module name is: ".concat(valueOf3) : "Attempting to register a Glide v3 module. If you see this, you or one of your dependencies may be including Glide v3 even though you're using Glide v4. You'll need to find and remove (or update) the offending dependency. The v3 module name is: ", e);
             }
         }
         if (annotationGeneratedModule != null) {

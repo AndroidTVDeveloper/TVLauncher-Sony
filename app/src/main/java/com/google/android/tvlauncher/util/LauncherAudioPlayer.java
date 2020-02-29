@@ -81,7 +81,7 @@ public class LauncherAudioPlayer {
             this.mediaPlayer.prepareAsync();
         } catch (IOException e) {
             String valueOf = String.valueOf(e.getMessage());
-            Log.e(TAG, valueOf.length() != 0 ? "[ERROR] ".concat(valueOf) : new String("[ERROR] "));
+            Log.e(TAG, valueOf.length() != 0 ? "[ERROR] ".concat(valueOf) : "[ERROR] ");
             stopAndRelease();
             CallBacks callBacks2 = this.callBacks;
             if (callBacks2 != null) {

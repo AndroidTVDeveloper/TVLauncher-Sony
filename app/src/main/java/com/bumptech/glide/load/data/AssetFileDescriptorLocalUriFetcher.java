@@ -18,7 +18,7 @@ public final class AssetFileDescriptorLocalUriFetcher extends LocalUriFetcher<As
             return result;
         }
         String valueOf = String.valueOf(uri);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 28);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 28);
         sb.append("FileDescriptor is null for: ");
         sb.append(valueOf);
         throw new FileNotFoundException(sb.toString());

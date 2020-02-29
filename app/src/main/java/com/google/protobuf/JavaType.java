@@ -16,7 +16,7 @@ public enum JavaType {
     private final Object defaultDefault;
     private final Class<?> type;
 
-    private JavaType(Class<?> type2, Class<?> boxedType2, Object defaultDefault2) {
+    JavaType(Class<?> type2, Class<?> boxedType2, Object defaultDefault2) {
         this.type = type2;
         this.boxedType = boxedType2;
         this.defaultDefault = defaultDefault2;

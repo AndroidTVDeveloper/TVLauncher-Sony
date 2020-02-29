@@ -116,7 +116,7 @@ public abstract class CustomViewTarget<T extends View, Z> implements Target<Z> {
 
     public String toString() {
         String valueOf = String.valueOf(this.view);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 12);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 12);
         sb.append("Target for: ");
         sb.append(valueOf);
         return sb.toString();
@@ -380,7 +380,7 @@ public abstract class CustomViewTarget<T extends View, Z> implements Target<Z> {
             public boolean onPreDraw() {
                 if (Log.isLoggable(CustomViewTarget.TAG, 2)) {
                     String valueOf = String.valueOf(this);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 50);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 50);
                     sb.append("OnGlobalLayoutListener called attachStateListener=");
                     sb.append(valueOf);
                     Log.v(CustomViewTarget.TAG, sb.toString());

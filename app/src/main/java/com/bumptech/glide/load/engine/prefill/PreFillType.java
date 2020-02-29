@@ -42,10 +42,7 @@ public final class PreFillType {
             return false;
         }
         PreFillType other = (PreFillType) o;
-        if (this.height == other.height && this.width == other.width && this.weight == other.weight && this.config == other.config) {
-            return true;
-        }
-        return false;
+        return this.height == other.height && this.width == other.width && this.weight == other.weight && this.config == other.config;
     }
 
     public int hashCode() {
@@ -57,7 +54,7 @@ public final class PreFillType {
         int i2 = this.height;
         String valueOf = String.valueOf(this.config);
         int i3 = this.weight;
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 79);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 79);
         sb.append("PreFillSize{width=");
         sb.append(i);
         sb.append(", height=");

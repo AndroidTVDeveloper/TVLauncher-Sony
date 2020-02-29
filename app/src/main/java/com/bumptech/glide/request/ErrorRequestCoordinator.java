@@ -57,10 +57,7 @@ public final class ErrorRequestCoordinator implements RequestCoordinator, Reques
             return false;
         }
         ErrorRequestCoordinator other = (ErrorRequestCoordinator) o;
-        if (!this.primary.isEquivalentTo(other.primary) || !this.error.isEquivalentTo(other.error)) {
-            return false;
-        }
-        return true;
+        return this.primary.isEquivalentTo(other.primary) && this.error.isEquivalentTo(other.error);
     }
 
     public boolean canSetImage(Request request) {

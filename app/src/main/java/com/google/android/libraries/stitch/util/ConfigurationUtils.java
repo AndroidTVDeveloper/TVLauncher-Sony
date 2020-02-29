@@ -9,15 +9,8 @@ public final class ConfigurationUtils {
     public static boolean isTablet(Configuration configuration) {
         if (Build.VERSION.SDK_INT < 13) {
             int screenSize = configuration.screenLayout & 15;
-            if (screenSize == 3 || screenSize == 4) {
-                return true;
-            }
-            return false;
-        } else if (configuration.smallestScreenWidthDp >= 600) {
-            return true;
-        } else {
-            return false;
-        }
+            return screenSize == 3 || screenSize == 4;
+        } else return configuration.smallestScreenWidthDp >= 600;
     }
 
     private ConfigurationUtils() {

@@ -19,7 +19,7 @@ public final class NetworkCapture {
                 networkType = networkInfo.getType();
             }
         } catch (SecurityException e) {
-            PrimesLog.m56w(TAG, "Failed to get network type, Please add: android.permission.ACCESS_NETWORK_STATE to AndroidManifest.xml", new Object[0]);
+            PrimesLog.m56w(TAG, "Failed to get network type, Please add: android.permission.ACCESS_NETWORK_STATE to AndroidManifest.xml");
         }
         NetworkMetric.NetworkConnectionInfo.NetworkType result = NetworkMetric.NetworkConnectionInfo.NetworkType.forNumber(networkType);
         return result == null ? NetworkMetric.NetworkConnectionInfo.NetworkType.NONE : result;

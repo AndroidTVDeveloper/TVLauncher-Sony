@@ -12,7 +12,7 @@ public interface ModelLoader<Model, Data> {
 
     boolean handles(Object obj);
 
-    public static class LoadData<Data> {
+    class LoadData<Data> {
         public final List<Key> alternateKeys;
         public final DataFetcher<Data> fetcher;
         public final Key sourceKey;

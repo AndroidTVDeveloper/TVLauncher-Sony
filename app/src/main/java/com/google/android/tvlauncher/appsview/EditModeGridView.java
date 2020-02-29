@@ -158,25 +158,10 @@ public class EditModeGridView extends VerticalGridView {
         if (relativeDirection != 17) {
             if (relativeDirection != 33) {
                 if (relativeDirection != 66) {
-                    if (relativeDirection == 130 && position + 4 <= getAdapter().getItemCount() - 1) {
-                        return true;
-                    }
-                    return false;
-                } else if (position % 4 >= 3 || position >= getAdapter().getItemCount() - 1) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } else if (position - 4 >= 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (position % 4 > 0) {
-            return true;
-        } else {
-            return false;
-        }
+                    return relativeDirection == 130 && position + 4 <= getAdapter().getItemCount() - 1;
+                } else return position % 4 < 3 && position < getAdapter().getItemCount() - 1;
+            } else return position - 4 >= 0;
+        } else return position % 4 > 0;
     }
 
     private void moveLaunchPoint(int fromPosition, int toPosition, int direction) {

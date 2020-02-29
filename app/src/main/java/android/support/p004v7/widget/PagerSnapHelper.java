@@ -82,15 +82,8 @@ public class PagerSnapHelper extends SnapHelper {
 
     private boolean isForwardFling(RecyclerView.LayoutManager layoutManager, int velocityX, int velocityY) {
         if (layoutManager.canScrollHorizontally()) {
-            if (velocityX > 0) {
-                return true;
-            }
-            return false;
-        } else if (velocityY > 0) {
-            return true;
-        } else {
-            return false;
-        }
+            return velocityX > 0;
+        } else return velocityY > 0;
     }
 
     private boolean isReverseLayout(RecyclerView.LayoutManager layoutManager) {
@@ -99,10 +92,7 @@ public class PagerSnapHelper extends SnapHelper {
         if (!(layoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider) || (vectorForEnd = ((RecyclerView.SmoothScroller.ScrollVectorProvider) layoutManager).computeScrollVectorForPosition(itemCount - 1)) == null) {
             return false;
         }
-        if (vectorForEnd.x < 0.0f || vectorForEnd.y < 0.0f) {
-            return true;
-        }
-        return false;
+        return vectorForEnd.x < 0.0f || vectorForEnd.y < 0.0f;
     }
 
     /* access modifiers changed from: protected */

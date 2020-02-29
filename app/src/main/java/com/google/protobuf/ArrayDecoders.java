@@ -805,7 +805,7 @@ final class ArrayDecoders {
                 return position22;
             default:
                 String valueOf = String.valueOf(generatedExtension.descriptor.getLiteType());
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 23);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 23);
                 sb.append("Type cannot be packed: ");
                 sb.append(valueOf);
                 throw new IllegalStateException(sb.toString());

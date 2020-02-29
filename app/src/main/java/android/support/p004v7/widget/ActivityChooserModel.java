@@ -373,10 +373,7 @@ class ActivityChooserModel extends DataSetObservable {
             } else if (!componentName.equals(other.activity)) {
                 return false;
             }
-            if (this.time == other.time && Float.floatToIntBits(this.weight) == Float.floatToIntBits(other.weight)) {
-                return true;
-            }
-            return false;
+            return this.time == other.time && Float.floatToIntBits(this.weight) == Float.floatToIntBits(other.weight);
         }
 
         public String toString() {
@@ -401,10 +398,7 @@ class ActivityChooserModel extends DataSetObservable {
             if (this == obj) {
                 return true;
             }
-            if (obj != null && getClass() == obj.getClass() && Float.floatToIntBits(this.weight) == Float.floatToIntBits(((ActivityResolveInfo) obj).weight)) {
-                return true;
-            }
-            return false;
+            return obj != null && getClass() == obj.getClass() && Float.floatToIntBits(this.weight) == Float.floatToIntBits(((ActivityResolveInfo) obj).weight);
         }
 
         public int compareTo(ActivityResolveInfo another) {

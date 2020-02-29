@@ -479,7 +479,7 @@ public final class SemanticAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private SemanticType(int value2) {
+        SemanticType(int value2) {
             this.value = value2;
         }
     }
@@ -559,7 +559,7 @@ public final class SemanticAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private DataFormat(int value2) {
+        DataFormat(int value2) {
             this.value = value2;
         }
     }

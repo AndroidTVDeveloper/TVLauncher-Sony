@@ -90,10 +90,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             if (ItemTouchHelper.this.mVelocityTracker != null) {
                 ItemTouchHelper.this.mVelocityTracker.addMovement(event);
             }
-            if (ItemTouchHelper.this.mSelected != null) {
-                return true;
-            }
-            return false;
+            return ItemTouchHelper.this.mSelected != null;
         }
 
         public void onTouchEvent(RecyclerView recyclerView, MotionEvent event) {

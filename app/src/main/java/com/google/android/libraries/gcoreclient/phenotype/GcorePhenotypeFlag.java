@@ -3,7 +3,7 @@ package com.google.android.libraries.gcoreclient.phenotype;
 @Deprecated
 public interface GcorePhenotypeFlag<T> {
 
-    public interface Builder {
+    interface Builder {
         GcorePhenotypeFlag<Double> buildFlag(String str, double d);
 
         GcorePhenotypeFlag<Integer> buildFlag(String str, int i);
@@ -23,7 +23,7 @@ public interface GcorePhenotypeFlag<T> {
         Builder skipGservices();
     }
 
-    public interface BuilderFactory {
+    interface BuilderFactory {
         Builder create(String str, String str2);
     }
 

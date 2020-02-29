@@ -108,7 +108,7 @@ public class LaunchItem implements Comparable<LaunchItem> {
     public String toString() {
         String valueOf = String.valueOf(this.label);
         String packageName = getPackageName();
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 4 + String.valueOf(packageName).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 4 + String.valueOf(packageName).length());
         sb.append(valueOf);
         sb.append(" -- ");
         sb.append(packageName);

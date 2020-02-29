@@ -71,7 +71,7 @@ final class BitmapPreFillRunner implements Runnable {
                 int width = toAllocate.getWidth();
                 int height = toAllocate.getHeight();
                 String valueOf = String.valueOf(toAllocate.getConfig());
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 54);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 54);
                 sb.append("allocated [");
                 sb.append(width);
                 sb.append("x");

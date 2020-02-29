@@ -112,7 +112,7 @@ public final class PrimesStartupMeasure {
                 try {
                     activity.reportFullyDrawn();
                 } catch (RuntimeException e) {
-                    PrimesLog.m47d(TAG, "Failed to report App usable time.", e, new Object[0]);
+                    PrimesLog.m47d(TAG, "Failed to report App usable time.", e);
                 }
             }
         }
@@ -168,7 +168,7 @@ public final class PrimesStartupMeasure {
                 View rootView = activity.findViewById(16908290);
                 rootView.getViewTreeObserver().addOnPreDrawListener(new MyOnPreDrawListener(rootView));
             } catch (RuntimeException e) {
-                PrimesLog.m47d(PrimesStartupMeasure.TAG, "Error handling PrimesStartupMeasure's onActivityResume", e, new Object[0]);
+                PrimesLog.m47d(PrimesStartupMeasure.TAG, "Error handling PrimesStartupMeasure's onActivityResume", e);
             }
         }
 
@@ -199,7 +199,7 @@ public final class PrimesStartupMeasure {
                         ThreadUtil.postOnUiThread(new C1098xee2b9e1f(this));
                     }
                 } catch (RuntimeException e) {
-                    PrimesLog.m47d(PrimesStartupMeasure.TAG, "Error handling PrimesStartupMeasure's onPreDraw", e, new Object[0]);
+                    PrimesLog.m47d(PrimesStartupMeasure.TAG, "Error handling PrimesStartupMeasure's onPreDraw", e);
                 } catch (Throwable th) {
                     this.view = null;
                     throw th;
@@ -260,7 +260,7 @@ public final class PrimesStartupMeasure {
         try {
             listener.onActivityInit();
         } catch (RuntimeException e) {
-            PrimesLog.m47d(TAG, "Error running onActivityInit listener", e, new Object[0]);
+            PrimesLog.m47d(TAG, "Error running onActivityInit listener", e);
         }
     }
 
@@ -278,7 +278,7 @@ public final class PrimesStartupMeasure {
         try {
             listener.onDraw();
         } catch (RuntimeException e) {
-            PrimesLog.m47d(TAG, "Error running onDraw listener", e, new Object[0]);
+            PrimesLog.m47d(TAG, "Error running onDraw listener", e);
         }
     }
 

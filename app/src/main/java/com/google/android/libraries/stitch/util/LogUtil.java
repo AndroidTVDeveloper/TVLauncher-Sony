@@ -16,7 +16,7 @@ public final class LogUtil {
 
     public static void doWriteToLog(int priority, String tag, String logEntry) {
         int lastIndex = 0;
-        int index = logEntry.indexOf(10, 0);
+        int index = logEntry.indexOf(10);
         while (index != -1) {
             Log.println(priority, tag, logEntry.substring(lastIndex, index));
             lastIndex = index + 1;

@@ -31,7 +31,7 @@ public class DecodePath<DataType, ResourceType, Transcode> {
         String simpleName = dataClass2.getSimpleName();
         String simpleName2 = resourceClass.getSimpleName();
         String simpleName3 = transcodeClass.getSimpleName();
-        StringBuilder sb = new StringBuilder(String.valueOf(simpleName).length() + 23 + String.valueOf(simpleName2).length() + String.valueOf(simpleName3).length());
+        StringBuilder sb = new StringBuilder(simpleName.length() + 23 + simpleName2.length() + simpleName3.length());
         sb.append("Failed DecodePath{");
         sb.append(simpleName);
         sb.append("->");
@@ -92,7 +92,7 @@ public class DecodePath<DataType, ResourceType, Transcode> {
             } catch (IOException | OutOfMemoryError | RuntimeException e) {
                 if (Log.isLoggable(TAG, 2)) {
                     String valueOf = String.valueOf(decoder);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 26);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 26);
                     sb.append("Failed to decode data for ");
                     sb.append(valueOf);
                     Log.v(TAG, sb.toString(), e);
@@ -113,7 +113,7 @@ public class DecodePath<DataType, ResourceType, Transcode> {
         String valueOf = String.valueOf(this.dataClass);
         String valueOf2 = String.valueOf(this.decoders);
         String valueOf3 = String.valueOf(this.transcoder);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 47 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 47 + valueOf2.length() + valueOf3.length());
         sb.append("DecodePath{ dataClass=");
         sb.append(valueOf);
         sb.append(", decoders=");

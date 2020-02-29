@@ -871,7 +871,7 @@ class FragmentTransition {
     }
 
     static boolean supportsTransition() {
-        return (PLATFORM_IMPL == null && SUPPORT_IMPL == null) ? false : true;
+        return PLATFORM_IMPL != null || SUPPORT_IMPL != null;
     }
 
     /* JADX WARNING: Removed duplicated region for block: B:102:0x012b  */

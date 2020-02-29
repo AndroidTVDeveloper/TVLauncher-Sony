@@ -74,7 +74,7 @@ final class SizeStrategy implements LruPoolStrategy {
     public String toString() {
         String valueOf = String.valueOf(this.groupedMap);
         String valueOf2 = String.valueOf(this.sortedSizes);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 30 + valueOf2.length());
         sb.append("SizeStrategy:\n  ");
         sb.append(valueOf);
         sb.append("\n  SortedSizes");
@@ -123,10 +123,7 @@ final class SizeStrategy implements LruPoolStrategy {
         }
 
         public boolean equals(Object o) {
-            if (!(o instanceof Key) || this.size != ((Key) o).size) {
-                return false;
-            }
-            return true;
+            return o instanceof Key && this.size == ((Key) o).size;
         }
 
         public int hashCode() {

@@ -23,17 +23,17 @@ public class PrimesBatterySnapshot {
     @Nullable
     public BatteryCapture.Snapshot getBatterySnapshot() {
         if (this == EMPTY_SNAPSHOT) {
-            PrimesLog.m56w(TAG, "metric requested for EMPTY_SNAPSHOT", new Object[0]);
+            PrimesLog.m56w(TAG, "metric requested for EMPTY_SNAPSHOT");
             return null;
         }
         try {
             return this.capture.get();
         } catch (InterruptedException ex) {
-            PrimesLog.m55w(TAG, "exception during battery snapshot", ex, new Object[0]);
+            PrimesLog.m55w(TAG, "exception during battery snapshot", ex);
             Thread.currentThread().interrupt();
             return null;
         } catch (ExecutionException ex2) {
-            PrimesLog.m55w(TAG, "exception during battery snapshot", ex2, new Object[0]);
+            PrimesLog.m55w(TAG, "exception during battery snapshot", ex2);
             return null;
         }
     }

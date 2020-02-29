@@ -5,12 +5,12 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.SOURCE)
 public @interface HomeAppState {
-    public static final int CHANNEL_ACTIONS = 6;
-    public static final int DEFAULT = 0;
-    public static final int DEFAULT_ABOVE_SELECTED_CHANNEL = 1;
-    public static final int DEFAULT_SELECTED_CHANNEL = 2;
-    public static final int MOVE_CHANNEL = 7;
-    public static final int ZOOMED_OUT = 3;
-    public static final int ZOOMED_OUT_SELECTED_CHANNEL = 4;
-    public static final int ZOOMED_OUT_TOP_ROW_SELECTED = 5;
+    int CHANNEL_ACTIONS = 6;
+    int DEFAULT = 0;
+    int DEFAULT_ABOVE_SELECTED_CHANNEL = 1;
+    int DEFAULT_SELECTED_CHANNEL = 2;
+    int MOVE_CHANNEL = 7;
+    int ZOOMED_OUT = 3;
+    int ZOOMED_OUT_SELECTED_CHANNEL = 4;
+    int ZOOMED_OUT_TOP_ROW_SELECTED = 5;
 }

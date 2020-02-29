@@ -5,13 +5,13 @@ import android.os.Bundle;
 @Deprecated
 public interface GooglePlayServicesClient {
 
-    public interface ConnectionCallbacks {
+    interface ConnectionCallbacks {
         void onConnected(Bundle bundle);
 
         void onDisconnected();
     }
 
-    public interface OnConnectionFailedListener {
+    interface OnConnectionFailedListener {
         void onConnectionFailed(GcoreConnectionResult gcoreConnectionResult);
     }
 }

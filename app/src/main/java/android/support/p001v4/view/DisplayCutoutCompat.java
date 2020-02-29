@@ -65,10 +65,7 @@ public final class DisplayCutoutCompat {
         if (obj != null) {
             return obj.equals(other.mDisplayCutout);
         }
-        if (other.mDisplayCutout == null) {
-            return true;
-        }
-        return false;
+        return other.mDisplayCutout == null;
     }
 
     public int hashCode() {

@@ -47,7 +47,7 @@ final class NetworkMetricService extends AbstractMetricService implements AppLif
             return;
         }
         if (!event.isReadyToRecord()) {
-            PrimesLog.m56w(TAG, "skip logging NetworkEvent due to empty bandwidth/latency data", new Object[0]);
+            PrimesLog.m56w(TAG, "skip logging NetworkEvent due to empty bandwidth/latency data");
             return;
         }
         this.pendingRecords.incrementAndGet();

@@ -42,9 +42,6 @@ public class ActiveMediaSessionManager implements MediaSessionManager.OnActiveSe
     public boolean hasActiveMediaSession() {
         PlaybackState state;
         MediaController mediaController = this.activeMediaController;
-        if (mediaController == null || (state = mediaController.getPlaybackState()) == null || state.getState() != 3) {
-            return false;
-        }
-        return true;
+        return mediaController != null && (state = mediaController.getPlaybackState()) != null && state.getState() == 3;
     }
 }

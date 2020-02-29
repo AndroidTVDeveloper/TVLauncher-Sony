@@ -4,12 +4,12 @@ import android.net.Uri;
 import android.view.View;
 
 public interface MediaPlayer {
-    public static final int STATE_BUFFERING = 2;
-    public static final int STATE_ENDED = 4;
-    public static final int STATE_IDLE = 1;
-    public static final int STATE_READY = 3;
+    int STATE_BUFFERING = 2;
+    int STATE_ENDED = 4;
+    int STATE_IDLE = 1;
+    int STATE_READY = 3;
 
-    public interface VideoCallback {
+    interface VideoCallback {
         void onVideoAvailable();
 
         void onVideoEnded();

@@ -6,7 +6,7 @@ import androidx.versionedparcelable.VersionedParcelable;
 interface AudioAttributesImpl extends VersionedParcelable {
 
     /* renamed from: android.support.v4.media.AudioAttributesImpl$Builder */
-    public interface Builder {
+    interface Builder {
         AudioAttributesImpl build();
 
         Builder setContentType(int i);

@@ -106,22 +106,22 @@ class InstallingLaunchItemsDbHelper extends SQLiteOpenHelper {
 
     /* access modifiers changed from: package-private */
     public void insertInstallingItem(String packageName, boolean isGame, Drawable icon, OnTaskCompletedListener callback) {
-        new InsertInstallingItemTask(packageName, isGame, icon, callback).execute(new Void[0]);
+        new InsertInstallingItemTask(packageName, isGame, icon, callback).execute();
     }
 
     /* access modifiers changed from: package-private */
     public void updateInstallingItem(String packageName, boolean isGame, Drawable icon, OnTaskCompletedListener callback) {
-        new UpdateInstallingItemTask(packageName, isGame, icon, callback).execute(new Void[0]);
+        new UpdateInstallingItemTask(packageName, isGame, icon, callback).execute();
     }
 
     /* access modifiers changed from: package-private */
     public void deleteInstallingItem(String pkgName, OnTaskCompletedListener callback) {
-        new DeleteInstallingItemTask(pkgName, callback).execute(new Void[0]);
+        new DeleteInstallingItemTask(pkgName, callback).execute();
     }
 
     /* access modifiers changed from: package-private */
     public void readAllInstallingItems(OnInstallingAppsReadListener onInstallingAppsReadListener) {
-        new ReadAllInstallingItemsTask(onInstallingAppsReadListener).execute(new Void[0]);
+        new ReadAllInstallingItemsTask(onInstallingAppsReadListener).execute();
     }
 
     private class InsertInstallingItemTask extends AsyncTask<Void, Void, Void> {
@@ -155,7 +155,7 @@ class InstallingLaunchItemsDbHelper extends SQLiteOpenHelper {
                 throw new SQLiteException("Unable to insert into database.");
             } catch (SQLiteException e) {
                 String valueOf = String.valueOf(this.packageName);
-                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Could not insert installing app into database : ".concat(valueOf) : new String("Could not insert installing app into database : "), e);
+                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Could not insert installing app into database : ".concat(valueOf) : "Could not insert installing app into database : ", e);
             } catch (Throwable th) {
                 db.endTransaction();
                 throw th;
@@ -194,12 +194,12 @@ class InstallingLaunchItemsDbHelper extends SQLiteOpenHelper {
             try {
                 if (db.update(InstallingLaunchItemsDbHelper.TABLE_NAME, values, InstallingLaunchItemsDbHelper.PACKAGE_NAME_SELECTION, new String[]{this.packageName}) == 0) {
                     String valueOf = String.valueOf(this.packageName);
-                    Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Missing package requested for update : ".concat(valueOf) : new String("Missing package requested for update : "));
+                    Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Missing package requested for update : ".concat(valueOf) : "Missing package requested for update : ");
                 }
                 db.setTransactionSuccessful();
             } catch (SQLiteException e) {
                 String valueOf2 = String.valueOf(this.packageName);
-                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf2.length() != 0 ? "Could not update installing app in database : ".concat(valueOf2) : new String("Could not update installing app in database : "), e);
+                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf2.length() != 0 ? "Could not update installing app in database : ".concat(valueOf2) : "Could not update installing app in database : ", e);
             } catch (Throwable th) {
                 db.endTransaction();
                 throw th;
@@ -235,7 +235,7 @@ class InstallingLaunchItemsDbHelper extends SQLiteOpenHelper {
                 db.setTransactionSuccessful();
             } catch (SQLiteException e) {
                 String valueOf = String.valueOf(this.packageName);
-                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Could not delete installing app into database : ".concat(valueOf) : new String("Could not delete installing app into database : "), e);
+                Log.e(InstallingLaunchItemsDbHelper.TAG, valueOf.length() != 0 ? "Could not delete installing app into database : ".concat(valueOf) : "Could not delete installing app into database : ", e);
             } catch (Throwable th) {
                 db.endTransaction();
                 throw th;

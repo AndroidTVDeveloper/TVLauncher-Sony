@@ -76,7 +76,7 @@ public final class WireFormat {
         
         private final Object defaultDefault;
 
-        private JavaType(Object defaultDefault2) {
+        JavaType(Object defaultDefault2) {
             this.defaultDefault = defaultDefault2;
         }
 
@@ -125,7 +125,7 @@ public final class WireFormat {
         private final JavaType javaType;
         private final int wireType;
 
-        private FieldType(JavaType javaType2, int wireType2) {
+        FieldType(JavaType javaType2, int wireType2) {
             this.javaType = javaType2;
             this.wireType = wireType2;
         }

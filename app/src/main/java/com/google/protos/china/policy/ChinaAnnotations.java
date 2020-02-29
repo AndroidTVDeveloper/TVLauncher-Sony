@@ -75,7 +75,7 @@ public final class ChinaAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private PrcRestrictionTag(int value2) {
+        PrcRestrictionTag(int value2) {
             this.value = value2;
         }
     }
@@ -140,7 +140,7 @@ public final class ChinaAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private SerializedDataTag(int value2) {
+        SerializedDataTag(int value2) {
             this.value = value2;
         }
     }

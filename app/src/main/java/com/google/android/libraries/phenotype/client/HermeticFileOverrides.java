@@ -36,9 +36,9 @@ final class HermeticFileOverrides {
             return null;
         }
         if (phenotypePrefix != null) {
-            String valueOf = String.valueOf(phenotypePrefix);
+            String valueOf = phenotypePrefix;
             String valueOf2 = String.valueOf(flagName);
-            mendelFlagName = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+            mendelFlagName = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
         } else {
             mendelFlagName = flagName;
         }

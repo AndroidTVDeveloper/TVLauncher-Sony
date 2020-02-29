@@ -198,7 +198,7 @@ public final class DrawableCompat {
         }
         if (!sGetLayoutDirectionMethodFetched) {
             try {
-                sGetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
+                sGetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("getLayoutDirection");
                 sGetLayoutDirectionMethod.setAccessible(true);
             } catch (NoSuchMethodException e) {
                 Log.i(TAG, "Failed to retrieve getLayoutDirection() method", e);

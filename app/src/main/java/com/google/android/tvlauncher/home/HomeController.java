@@ -470,7 +470,7 @@ class HomeController extends RecyclerView.Adapter<HomeRowViewHolder> implements 
         } else {
             stateString = "STATE_MOVE_CHANNEL";
         }
-        StringBuilder sb = new StringBuilder(String.valueOf(stateString).length() + 14);
+        StringBuilder sb = new StringBuilder(stateString.length() + 14);
         sb.append(stateString);
         sb.append(" (");
         sb.append(state2);
@@ -844,7 +844,7 @@ class HomeController extends RecyclerView.Adapter<HomeRowViewHolder> implements 
 
     /* access modifiers changed from: package-private */
     public void onHotwordEnabledUpdated(Boolean enabled) {
-        this.hotwordEnabled = enabled == null ? false : enabled.booleanValue();
+        this.hotwordEnabled = enabled != null && enabled.booleanValue();
         notifyItemChanged(0, PAYLOAD_HOTWORD_STATUS);
     }
 
@@ -1370,7 +1370,7 @@ class HomeController extends RecyclerView.Adapter<HomeRowViewHolder> implements 
     public boolean onFailedToRecycleView(HomeRowViewHolder holder) {
         String valueOf = String.valueOf(holder);
         String valueOf2 = String.valueOf(holder.homeRow);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 29 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 29 + valueOf2.length());
         sb.append("onFailedToRecycleView: h=");
         sb.append(valueOf);
         sb.append(", r=");

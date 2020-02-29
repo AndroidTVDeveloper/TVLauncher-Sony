@@ -6,7 +6,7 @@ public final class BuildType {
 
     public static <T> T newInstance(Class<T> cls, String className, Object... constructorArgs) {
         String valueOf = String.valueOf(className);
-        throw new UnsupportedOperationException(valueOf.length() != 0 ? "Cannot allocate ".concat(valueOf) : new String("Cannot allocate "));
+        throw new UnsupportedOperationException(valueOf.length() != 0 ? "Cannot allocate ".concat(valueOf) : "Cannot allocate ");
     }
 
     private BuildType() {

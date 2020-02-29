@@ -50,37 +50,37 @@ final class MessageLiteToString {
         for (String getter : getters) {
             String suffix = getter.replaceFirst(PeopleConstants.Endpoints.ENDPOINT_GET, "");
             if (suffix.endsWith(LIST_SUFFIX) && !suffix.endsWith(BUILDER_LIST_SUFFIX) && !suffix.equals(LIST_SUFFIX)) {
-                String valueOf = String.valueOf(suffix.substring(i2, 1).toLowerCase());
-                String valueOf2 = String.valueOf(suffix.substring(1, suffix.length() - LIST_SUFFIX.length()));
-                String camelCase = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+                String valueOf = suffix.substring(i2, 1).toLowerCase();
+                String valueOf2 = suffix.substring(1, suffix.length() - LIST_SUFFIX.length());
+                String camelCase = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
                 Method listMethod = (Method) hashMap.get(getter);
                 if (listMethod != null && listMethod.getReturnType().equals(List.class)) {
                     printField(sb, i, camelCaseToSnakeCase(camelCase), GeneratedMessageLite.invokeOrDie(listMethod, messageLite2, new Object[i2]));
                 }
             }
             if (suffix.endsWith(MAP_SUFFIX) && !suffix.equals(MAP_SUFFIX)) {
-                String valueOf3 = String.valueOf(suffix.substring(i2, 1).toLowerCase());
-                String valueOf4 = String.valueOf(suffix.substring(1, suffix.length() - MAP_SUFFIX.length()));
-                String camelCase2 = valueOf4.length() != 0 ? valueOf3.concat(valueOf4) : new String(valueOf3);
+                String valueOf3 = suffix.substring(i2, 1).toLowerCase();
+                String valueOf4 = suffix.substring(1, suffix.length() - MAP_SUFFIX.length());
+                String camelCase2 = valueOf4.length() != 0 ? valueOf3.concat(valueOf4) : valueOf3;
                 Method mapMethod = (Method) hashMap.get(getter);
                 if (mapMethod != null && mapMethod.getReturnType().equals(Map.class) && !mapMethod.isAnnotationPresent(Deprecated.class) && Modifier.isPublic(mapMethod.getModifiers())) {
                     printField(sb, i, camelCaseToSnakeCase(camelCase2), GeneratedMessageLite.invokeOrDie(mapMethod, messageLite2, new Object[i2]));
                 }
             }
-            String valueOf5 = String.valueOf(suffix);
-            if (((Method) nameToMethod.get(valueOf5.length() != 0 ? "set".concat(valueOf5) : new String("set"))) != null) {
+            String valueOf5 = suffix;
+            if (((Method) nameToMethod.get(valueOf5.length() != 0 ? "set".concat(valueOf5) : "set")) != null) {
                 if (suffix.endsWith(BYTES_SUFFIX)) {
-                    String valueOf6 = String.valueOf(suffix.substring(i2, suffix.length() - BYTES_SUFFIX.length()));
+                    String valueOf6 = suffix.substring(i2, suffix.length() - BYTES_SUFFIX.length());
                     if (hashMap.containsKey(valueOf6.length() != 0 ? PeopleConstants.Endpoints.ENDPOINT_GET.concat(valueOf6) : new String(PeopleConstants.Endpoints.ENDPOINT_GET))) {
                     }
                 }
-                String valueOf7 = String.valueOf(suffix.substring(i2, 1).toLowerCase());
-                String valueOf8 = String.valueOf(suffix.substring(1));
-                String camelCase3 = valueOf8.length() != 0 ? valueOf7.concat(valueOf8) : new String(valueOf7);
-                String valueOf9 = String.valueOf(suffix);
+                String valueOf7 = suffix.substring(i2, 1).toLowerCase();
+                String valueOf8 = suffix.substring(1);
+                String camelCase3 = valueOf8.length() != 0 ? valueOf7.concat(valueOf8) : valueOf7;
+                String valueOf9 = suffix;
                 Method getMethod = (Method) hashMap.get(valueOf9.length() != 0 ? PeopleConstants.Endpoints.ENDPOINT_GET.concat(valueOf9) : new String(PeopleConstants.Endpoints.ENDPOINT_GET));
-                String valueOf10 = String.valueOf(suffix);
-                Method hasMethod = (Method) hashMap.get(valueOf10.length() != 0 ? "has".concat(valueOf10) : new String("has"));
+                String valueOf10 = suffix;
+                Method hasMethod = (Method) hashMap.get(valueOf10.length() != 0 ? "has".concat(valueOf10) : "has");
                 if (getMethod != null) {
                     Object value = GeneratedMessageLite.invokeOrDie(getMethod, messageLite2, new Object[i2]);
                     if (hasMethod == null) {
@@ -125,20 +125,11 @@ final class MessageLiteToString {
             return !((Boolean) o).booleanValue();
         }
         if (o instanceof Integer) {
-            if (((Integer) o).intValue() == 0) {
-                return true;
-            }
-            return false;
+            return ((Integer) o).intValue() == 0;
         } else if (o instanceof Float) {
-            if (((Float) o).floatValue() == 0.0f) {
-                return true;
-            }
-            return false;
+            return ((Float) o).floatValue() == 0.0f;
         } else if (o instanceof Double) {
-            if (((Double) o).doubleValue() == 0.0d) {
-                return true;
-            }
-            return false;
+            return ((Double) o).doubleValue() == 0.0d;
         } else if (o instanceof String) {
             return o.equals("");
         } else {
@@ -146,15 +137,8 @@ final class MessageLiteToString {
                 return o.equals(ByteString.EMPTY);
             }
             if (o instanceof MessageLite) {
-                if (o == ((MessageLite) o).getDefaultInstanceForType()) {
-                    return true;
-                }
-                return false;
-            } else if (!(o instanceof Enum) || ((Enum) o).ordinal() != 0) {
-                return false;
-            } else {
-                return true;
-            }
+                return o == ((MessageLite) o).getDefaultInstanceForType();
+            } else return o instanceof Enum && ((Enum) o).ordinal() == 0;
         }
     }
 

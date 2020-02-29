@@ -41,10 +41,7 @@ public final class PathSegment {
             return false;
         }
         PathSegment that = (PathSegment) o;
-        if (Float.compare(this.mStartFraction, that.mStartFraction) != 0 || Float.compare(this.mEndFraction, that.mEndFraction) != 0 || !this.mStart.equals(that.mStart) || !this.mEnd.equals(that.mEnd)) {
-            return false;
-        }
-        return true;
+        return Float.compare(this.mStartFraction, that.mStartFraction) == 0 && Float.compare(this.mEndFraction, that.mEndFraction) == 0 && this.mStart.equals(that.mStart) && this.mEnd.equals(that.mEnd);
     }
 
     public int hashCode() {

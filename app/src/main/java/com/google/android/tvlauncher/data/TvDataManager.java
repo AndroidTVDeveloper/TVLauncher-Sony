@@ -178,7 +178,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                 try {
                     this.homeChannelIds.add(Long.valueOf(Long.parseLong(homeChannelIdStr)));
                 } catch (NumberFormatException e) {
-                    StringBuilder sb = new StringBuilder(String.valueOf(homeChannelIdStr).length() + 61 + String.valueOf(allOldHomeChannelIds).length());
+                    StringBuilder sb = new StringBuilder(String.valueOf(homeChannelIdStr).length() + 61 + allOldHomeChannelIds.length());
                     sb.append("Invalid channel ID: [");
                     sb.append(homeChannelIdStr);
                     sb.append("] in old home channel ids shared pref [");
@@ -263,7 +263,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
             obj = Integer.valueOf(watchNextProgramsDataBuffer.getCount());
         }
         String valueOf7 = String.valueOf(obj);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 150 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length() + String.valueOf(valueOf4).length() + String.valueOf(valueOf5).length() + String.valueOf(valueOf6).length() + String.valueOf(valueOf7).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 150 + valueOf2.length() + valueOf3.length() + valueOf4.length() + valueOf5.length() + valueOf6.length() + valueOf7.length());
         sb.append("Cache: \nhomeChannels=");
         sb.append(valueOf);
         sb.append("\nchannelPrograms=");
@@ -648,10 +648,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
     public boolean areChannelProgramsAlwaysCached(Long channelId) {
         Integer position;
         ChannelOrderManager channelOrderManager2 = this.channelOrderManager;
-        if (channelOrderManager2 == null || (position = channelOrderManager2.getChannelPosition(channelId.longValue())) == null || position.intValue() >= 5) {
-            return false;
-        }
-        return true;
+        return channelOrderManager2 != null && (position = channelOrderManager2.getChannelPosition(channelId.longValue())) != null && position.intValue() < 5;
     }
 
     public boolean isPackagesWithChannelsDataLoaded() {
@@ -834,9 +831,9 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
         sb.setLength(sb.length() - 1);
         sb.append(")");
         String notInClause = sb.toString();
-        String valueOf = String.valueOf("browsable=1 AND last_engagement_time_utc_millis<=? AND package_name");
-        String valueOf2 = String.valueOf(notInClause);
-        return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+        String valueOf = "browsable=1 AND last_engagement_time_utc_millis<=? AND package_name";
+        String valueOf2 = notInClause;
+        return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
     }
 
     private ChannelConfigurationInfo getChannelConfigInfo(GoogleConfiguration googleConfiguration, OemConfiguration oemConfiguration, String packageName, String systemChannelKey) {
@@ -974,7 +971,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                 return;
             }
             String valueOf = String.valueOf(task.getExtraParam());
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 51);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 51);
             sb.append("error loading programs for channel ");
             sb.append(valueOf);
             sb.append(", cursor is null");
@@ -1108,7 +1105,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
         for (int i = 0; i < channelIdsCount; i += channelProgramCountBatchSize) {
             List<Long> subChannelIdList = channelIdsList.subList(i, Math.min(channelProgramCountBatchSize + i, channelIdsCount));
             String buildCountProgramForChannelsSelection = buildCountProgramForChannelsSelection(subChannelIdList);
-            StringBuilder sb = new StringBuilder(String.valueOf(buildCountProgramForChannelsSelection).length() + 38);
+            StringBuilder sb = new StringBuilder(buildCountProgramForChannelsSelection.length() + 38);
             sb.append("browsable=1 AND ");
             sb.append(buildCountProgramForChannelsSelection);
             sb.append(") GROUP BY (");
@@ -1198,7 +1195,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                         }
                     }
                 }
-            }.executeOnExecutor(Executors.getThreadPoolExecutor(), new Object[0]);
+            }.executeOnExecutor(Executors.getThreadPoolExecutor());
         }
     }
 
@@ -1342,7 +1339,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
     public void onTaskFailed(DataLoadingBackgroundTask task, Throwable throwable) {
         String valueOf = String.valueOf(task);
         String valueOf2 = String.valueOf(throwable);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 27 + valueOf2.length());
         sb.append("onTaskFailed: ");
         sb.append(valueOf);
         sb.append(", throwable: ");
@@ -1356,10 +1353,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
         if (liveChannelConfigurationInfo == null || !liveChannelConfigurationInfo.getPackageName().equals(packageName)) {
             return false;
         }
-        if (TextUtils.isEmpty(liveChannelConfigurationInfo.getSystemChannelKey()) || TextUtils.equals(liveChannelConfigurationInfo.getSystemChannelKey(), systemChannelKey)) {
-            return true;
-        }
-        return false;
+        return TextUtils.isEmpty(liveChannelConfigurationInfo.getSystemChannelKey()) || TextUtils.equals(liveChannelConfigurationInfo.getSystemChannelKey(), systemChannelKey);
     }
 
     private void saveLiveTvChannelId(long liveChannelId) {
@@ -1430,7 +1424,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                     TvDataManager.this.loadHomeChannelProgramData(j2);
                 }
             }
-        }.executeOnExecutor(Executors.getThreadPoolExecutor(), new Object[0]);
+        }.executeOnExecutor(Executors.getThreadPoolExecutor());
     }
 
     public void removeProgramFromWatchlist(final long programId, final String packageName) {
@@ -1466,7 +1460,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                     TvDataManager.this.loadWatchNextProgramDataInternal();
                 }
             }
-        }.executeOnExecutor(Executors.getThreadPoolExecutor(), new Object[0]);
+        }.executeOnExecutor(Executors.getThreadPoolExecutor());
     }
 
     public void addProgramToWatchlist(final long programId, final String packageName) {
@@ -1884,7 +1878,7 @@ public class TvDataManager implements DataLoadingBackgroundTask.Callbacks {
                     TvDataManager.this.loadWatchNextProgramDataInternal();
                 }
             }
-        }.executeOnExecutor(Executors.getThreadPoolExecutor(), new Object[0]);
+        }.executeOnExecutor(Executors.getThreadPoolExecutor());
     }
 
     public ChannelOrderManager getChannelOrderManager() {

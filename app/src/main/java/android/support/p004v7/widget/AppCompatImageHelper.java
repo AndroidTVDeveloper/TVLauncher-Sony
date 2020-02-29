@@ -60,10 +60,7 @@ public class AppCompatImageHelper {
     /* access modifiers changed from: package-private */
     public boolean hasOverlappingRendering() {
         Drawable background = this.mView.getBackground();
-        if (Build.VERSION.SDK_INT < 21 || !(background instanceof RippleDrawable)) {
-            return true;
-        }
-        return false;
+        return Build.VERSION.SDK_INT < 21 || !(background instanceof RippleDrawable);
     }
 
     /* access modifiers changed from: package-private */
@@ -148,10 +145,7 @@ public class AppCompatImageHelper {
         if (sdk <= 21) {
             return sdk == 21;
         }
-        if (this.mInternalImageTint != null) {
-            return true;
-        }
-        return false;
+        return this.mInternalImageTint != null;
     }
 
     private boolean applyFrameworkTintUsingColorFilter(Drawable imageSource) {

@@ -290,11 +290,7 @@ class FastScroller extends RecyclerView.ItemDecoration implements RecyclerView.O
             }
             setState(2);
             return true;
-        } else if (i == 2) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return i == 2;
     }
 
     public void onTouchEvent(RecyclerView recyclerView, MotionEvent me) {

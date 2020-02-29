@@ -33,7 +33,7 @@ public final class ManifestParser {
             }
             if (Log.isLoggable(TAG, 2)) {
                 String valueOf = String.valueOf(appInfo.metaData);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 23);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 23);
                 sb.append("Got app info metadata: ");
                 sb.append(valueOf);
                 Log.v(TAG, sb.toString());
@@ -43,7 +43,7 @@ public final class ManifestParser {
                     modules.add(parseModule(key));
                     if (Log.isLoggable(TAG, 3)) {
                         String valueOf2 = String.valueOf(key);
-                        Log.d(TAG, valueOf2.length() != 0 ? "Loaded Glide module: ".concat(valueOf2) : new String("Loaded Glide module: "));
+                        Log.d(TAG, valueOf2.length() != 0 ? "Loaded Glide module: ".concat(valueOf2) : "Loaded Glide module: ");
                     }
                 }
             }
@@ -61,7 +61,7 @@ public final class ManifestParser {
             Class<?> clazz = Class.forName(className);
             Object module = null;
             try {
-                module = clazz.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+                module = clazz.getDeclaredConstructor(new Class[0]).newInstance();
             } catch (InstantiationException e) {
                 throwInstantiateGlideModuleException(clazz, e);
             } catch (IllegalAccessException e2) {
@@ -75,7 +75,7 @@ public final class ManifestParser {
                 return (GlideModule) module;
             }
             String valueOf = String.valueOf(module);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 44);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 44);
             sb.append("Expected instanceof GlideModule, but found: ");
             sb.append(valueOf);
             throw new RuntimeException(sb.toString());
@@ -86,7 +86,7 @@ public final class ManifestParser {
 
     private static void throwInstantiateGlideModuleException(Class<?> clazz, Exception e) {
         String valueOf = String.valueOf(clazz);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 53);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 53);
         sb.append("Unable to instantiate GlideModule implementation for ");
         sb.append(valueOf);
         throw new RuntimeException(sb.toString(), e);

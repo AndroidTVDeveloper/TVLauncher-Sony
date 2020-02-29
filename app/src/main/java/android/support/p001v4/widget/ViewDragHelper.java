@@ -366,10 +366,7 @@ public class ViewDragHelper {
                 }
             }
         }
-        if (this.mDragState == 2) {
-            return true;
-        }
-        return false;
+        return this.mDragState == 2;
     }
 
     private void dispatchViewReleased(float xvel, float yvel) {
@@ -531,9 +528,7 @@ public class ViewDragHelper {
             if (view.canScrollHorizontally(-dx)) {
                 return true;
             }
-            if (view.canScrollVertically(-dy)) {
-                return true;
-            }
+            return view.canScrollVertically(-dy);
         }
         return false;
     }
@@ -911,11 +906,7 @@ public class ViewDragHelper {
                     int[] iArr = this.mEdgeDragsLocked;
                     iArr[pointerId] = iArr[pointerId] | edge;
                     return false;
-                } else if ((this.mEdgeDragsInProgress[pointerId] & edge) != 0 || absDelta <= ((float) this.mTouchSlop)) {
-                    return false;
-                } else {
-                    return true;
-                }
+                } else return (this.mEdgeDragsInProgress[pointerId] & edge) == 0 && !(absDelta <= ((float) this.mTouchSlop));
             }
         }
         return false;
@@ -930,20 +921,10 @@ public class ViewDragHelper {
         if (checkHorizontal && checkVertical) {
             float f = (dx * dx) + (dy * dy);
             int i = this.mTouchSlop;
-            if (f > ((float) (i * i))) {
-                return true;
-            }
-            return false;
+            return f > ((float) (i * i));
         } else if (checkHorizontal) {
-            if (Math.abs(dx) > ((float) this.mTouchSlop)) {
-                return true;
-            }
-            return false;
-        } else if (!checkVertical || Math.abs(dy) <= ((float) this.mTouchSlop)) {
-            return false;
-        } else {
-            return true;
-        }
+            return Math.abs(dx) > ((float) this.mTouchSlop);
+        } else return checkVertical && !(Math.abs(dy) <= ((float) this.mTouchSlop));
     }
 
     public boolean checkTouchSlop(int directions) {
@@ -967,20 +948,10 @@ public class ViewDragHelper {
         if (checkHorizontal && checkVertical) {
             float f = (dx * dx) + (dy * dy);
             int i = this.mTouchSlop;
-            if (f > ((float) (i * i))) {
-                return true;
-            }
-            return false;
+            return f > ((float) (i * i));
         } else if (checkHorizontal) {
-            if (Math.abs(dx) > ((float) this.mTouchSlop)) {
-                return true;
-            }
-            return false;
-        } else if (!checkVertical || Math.abs(dy) <= ((float) this.mTouchSlop)) {
-            return false;
-        } else {
-            return true;
-        }
+            return Math.abs(dx) > ((float) this.mTouchSlop);
+        } else return checkVertical && !(Math.abs(dy) <= ((float) this.mTouchSlop));
     }
 
     public boolean isEdgeTouched(int edges) {
@@ -1027,10 +998,7 @@ public class ViewDragHelper {
     }
 
     public boolean isViewUnder(View view, int x, int y) {
-        if (view != null && x >= view.getLeft() && x < view.getRight() && y >= view.getTop() && y < view.getBottom()) {
-            return true;
-        }
-        return false;
+        return view != null && x >= view.getLeft() && x < view.getRight() && y >= view.getTop() && y < view.getBottom();
     }
 
     public View findTopChildUnder(int x, int y) {

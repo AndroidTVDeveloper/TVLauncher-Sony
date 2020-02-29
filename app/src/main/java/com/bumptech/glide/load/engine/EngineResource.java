@@ -93,7 +93,7 @@ class EngineResource<Z> implements Resource<Z> {
         int i = this.acquired;
         boolean z2 = this.isRecycled;
         String valueOf3 = String.valueOf(this.resource);
-        sb = new StringBuilder(String.valueOf(valueOf).length() + 107 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+        sb = new StringBuilder(valueOf.length() + 107 + valueOf2.length() + valueOf3.length());
         sb.append("EngineResource{isMemoryCacheable=");
         sb.append(z);
         sb.append(", listener=");

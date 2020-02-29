@@ -509,10 +509,7 @@ public class SwitchCompat extends CompoundButton {
         int i4 = this.mTouchSlop;
         int thumbRight = i3 + i4;
         int thumbBottom = this.mSwitchBottom + i4;
-        if (x <= ((float) thumbLeft) || x >= ((float) thumbRight) || y <= ((float) thumbTop) || y >= ((float) thumbBottom)) {
-            return false;
-        }
-        return true;
+        return !(x <= ((float) thumbLeft)) && !(x >= ((float) thumbRight)) && !(y <= ((float) thumbTop)) && !(y >= ((float) thumbBottom));
     }
 
     /* JADX INFO: Multiple debug info for r3v3 float: [D('x' float), D('thumbScrollRange' int)] */

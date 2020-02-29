@@ -19,7 +19,7 @@ public class TvRecommendationsIntentLauncher implements IntentLauncher {
         List<ResolveInfo> receivers = context.getPackageManager().queryBroadcastReceivers(originalIntent, 0);
         if (receivers == null || receivers.size() <= 0) {
             String valueOf = String.valueOf(originalIntent);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 31);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 31);
             sb.append("Activity not found for intent: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());

@@ -394,7 +394,7 @@ class DropDownListView extends ListView {
     private void positionSelectorLikeFocusCompat(int position, View sel) {
         Drawable selector = getSelector();
         boolean z = true;
-        boolean manageState = (selector == null || position == -1) ? false : true;
+        boolean manageState = selector != null && position != -1;
         if (manageState) {
             selector.setVisible(false, false);
         }

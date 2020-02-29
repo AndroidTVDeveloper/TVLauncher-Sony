@@ -420,7 +420,7 @@ public abstract class JobIntentService extends Service {
             if (workEnqueuer != null && reportStarted) {
                 workEnqueuer.serviceProcessingStarted();
             }
-            this.mCurProcessor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+            this.mCurProcessor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
     }
 

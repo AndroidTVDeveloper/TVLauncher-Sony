@@ -50,7 +50,7 @@ public final class ViewGroupCompat {
             return group.isTransitionGroup();
         }
         Boolean explicit = (Boolean) group.getTag(C0014R.C0016id.tag_transition_group);
-        return ((explicit == null || !explicit.booleanValue()) && group.getBackground() == null && ViewCompat.getTransitionName(group) == null) ? false : true;
+        return (explicit != null && explicit.booleanValue()) || group.getBackground() != null || ViewCompat.getTransitionName(group) != null;
     }
 
     public static int getNestedScrollAxes(ViewGroup group) {

@@ -85,7 +85,7 @@ final class MemoryMetricMonitor {
     /* access modifiers changed from: package-private */
     public void start() {
         if (this.hasMemoryMonitorStarted.getAndSet(true)) {
-            PrimesLog.m56w(TAG, "Memory Monitor has already started. This MemoryMetricMonitor.start() is ignored.", new Object[0]);
+            PrimesLog.m56w(TAG, "Memory Monitor has already started. This MemoryMetricMonitor.start() is ignored.");
             return;
         }
         this.appLifecycleMonitor.register(this.onAppToBackground);

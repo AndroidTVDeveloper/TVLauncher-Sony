@@ -39,10 +39,7 @@ public final class AddBackgroundColorTransformation extends BitmapTransformation
     }
 
     public boolean equals(Object o) {
-        if ((o instanceof AddBackgroundColorTransformation) && ((AddBackgroundColorTransformation) o).backgroundColor == this.backgroundColor) {
-            return true;
-        }
-        return false;
+        return (o instanceof AddBackgroundColorTransformation) && ((AddBackgroundColorTransformation) o).backgroundColor == this.backgroundColor;
     }
 
     public int hashCode() {

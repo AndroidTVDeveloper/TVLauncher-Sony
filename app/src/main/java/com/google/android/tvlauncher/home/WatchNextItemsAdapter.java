@@ -465,8 +465,8 @@ class WatchNextItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         break;
                     case 9:
                     case 11:
-                        String valueOf = String.valueOf(ProgramStateUtil.stateToString(WatchNextItemsAdapter.this.programState));
-                        throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : new String("Unsupported Watch Next program state: "));
+                        String valueOf = ProgramStateUtil.stateToString(WatchNextItemsAdapter.this.programState);
+                        throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : "Unsupported Watch Next program state: ");
                 }
                 double d = (double) prevCardHeight;
                 Double.isNaN(d);

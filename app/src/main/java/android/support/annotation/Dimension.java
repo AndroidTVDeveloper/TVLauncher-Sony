@@ -12,13 +12,13 @@ import java.lang.annotation.Target;
 public @interface Dimension {
 
     /* renamed from: DP */
-    public static final int f1DP = 0;
+    int f1DP = 0;
 
     /* renamed from: PX */
-    public static final int f2PX = 1;
+    int f2PX = 1;
 
     /* renamed from: SP */
-    public static final int f3SP = 2;
+    int f3SP = 2;
 
     int unit() default 1;
 }

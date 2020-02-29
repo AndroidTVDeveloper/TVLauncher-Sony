@@ -68,7 +68,7 @@ public class AppsViewActivity extends BlockForDataLauncherActivity implements Ap
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
             String valueOf = String.valueOf(e);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 30);
             sb.append("AppsViewActivity not found :  ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());

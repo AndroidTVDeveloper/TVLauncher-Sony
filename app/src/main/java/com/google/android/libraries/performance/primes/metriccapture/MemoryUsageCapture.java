@@ -41,9 +41,9 @@ public final class MemoryUsageCapture {
                     try {
                         otherPssGetter = cls.getDeclaredMethod("getOtherPss", Integer.TYPE);
                     } catch (NoSuchMethodException me) {
-                        PrimesLog.m47d(TAG, "MemoryInfo.getOtherPss(which) not found", me, new Object[0]);
+                        PrimesLog.m47d(TAG, "MemoryInfo.getOtherPss(which) not found", me);
                     } catch (Error | Exception e) {
-                        PrimesLog.m49e(TAG, "MemoryInfo.getOtherPss(which) failure", e, new Object[0]);
+                        PrimesLog.m49e(TAG, "MemoryInfo.getOtherPss(which) failure", e);
                     }
                     otherPssGetterInitialized = true;
                 }
@@ -61,7 +61,7 @@ public final class MemoryUsageCapture {
             return ((Integer) method.invoke(memInfo, 14)).intValue();
         } catch (Error | Exception e) {
             otherPssGetter = null;
-            PrimesLog.m49e(TAG, "MemoryInfo.getOtherPss(which) invocation failure", e, new Object[0]);
+            PrimesLog.m49e(TAG, "MemoryInfo.getOtherPss(which) invocation failure", e);
             return -1;
         }
     }
@@ -104,10 +104,10 @@ public final class MemoryUsageCapture {
             if (!Strings.isNullOrEmpty(procStatusContents)) {
                 return tryParseLong(RSS_HIGH_WATERMARK_IN_KILOBYTES, procStatusContents);
             }
-            PrimesLog.m50e(TAG, "Null or empty proc status", new Object[0]);
+            PrimesLog.m50e(TAG, "Null or empty proc status");
             return null;
         } catch (IOException e) {
-            PrimesLog.m49e(TAG, "Error reading proc status", e, new Object[0]);
+            PrimesLog.m49e(TAG, "Error reading proc status", e);
             return null;
         }
     }
@@ -165,7 +165,7 @@ public final class MemoryUsageCapture {
                     stats.setSummaryPrivateOtherKb(summaryPrivateOtherKb.intValue());
                 }
             } catch (NumberFormatException e) {
-                PrimesLog.m50e(TAG, "failed to collect memory summary stats", new Object[0]);
+                PrimesLog.m50e(TAG, "failed to collect memory summary stats");
             }
         }
         return (MemoryMetric.AndroidMemoryStats) stats.setAvailableMemoryKb((int) (memInfo.availMem >> 10)).setTotalMemoryMb((int) (memInfo.totalMem >> 20)).build();

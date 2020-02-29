@@ -171,7 +171,7 @@ public class ChannelOrderManager {
                     if (channelPosition.length == 2) {
                         this.allChannelPositions.put(Long.parseLong(channelPosition[c]), Integer.valueOf(Integer.parseInt(channelPosition[1])));
                     } else {
-                        StringBuilder sb2 = new StringBuilder(String.valueOf(channelString).length() + 44 + String.valueOf(allChannelsString).length());
+                        StringBuilder sb2 = new StringBuilder(String.valueOf(channelString).length() + 44 + allChannelsString.length());
                         sb2.append("Error parsing all channel positions ");
                         sb2.append(channelString);
                         sb2.append(" within ");
@@ -179,8 +179,8 @@ public class ChannelOrderManager {
                         Log.e(TAG, sb2.toString());
                     }
                 } catch (NumberFormatException e3) {
-                    String valueOf = String.valueOf(allChannelsString);
-                    Log.e(TAG, valueOf.length() != 0 ? "Invalid info in all channel positions ".concat(valueOf) : new String("Invalid info in all channel positions "));
+                    String valueOf = allChannelsString;
+                    Log.e(TAG, valueOf.length() != 0 ? "Invalid info in all channel positions ".concat(valueOf) : "Invalid info in all channel positions ");
                 }
                 i++;
                 c = 0;

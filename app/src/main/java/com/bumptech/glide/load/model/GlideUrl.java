@@ -94,10 +94,7 @@ public class GlideUrl implements Key {
             return false;
         }
         GlideUrl other = (GlideUrl) o;
-        if (!getCacheKey().equals(other.getCacheKey()) || !this.headers.equals(other.headers)) {
-            return false;
-        }
-        return true;
+        return getCacheKey().equals(other.getCacheKey()) && this.headers.equals(other.headers);
     }
 
     public int hashCode() {

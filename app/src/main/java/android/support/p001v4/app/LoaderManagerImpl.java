@@ -87,10 +87,7 @@ class LoaderManagerImpl extends LoaderManager {
         /* access modifiers changed from: package-private */
         public boolean isCallbackWaitingForData() {
             LoaderObserver<D> loaderObserver;
-            if (hasActiveObservers() && (loaderObserver = this.mObserver) != null && !loaderObserver.hasDeliveredData()) {
-                return true;
-            }
-            return false;
+            return hasActiveObservers() && (loaderObserver = this.mObserver) != null && !loaderObserver.hasDeliveredData();
         }
 
         public void removeObserver(Observer<? super D> observer) {

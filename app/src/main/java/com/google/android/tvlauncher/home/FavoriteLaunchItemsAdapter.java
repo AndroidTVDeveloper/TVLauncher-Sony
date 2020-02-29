@@ -372,7 +372,7 @@ class FavoriteLaunchItemsAdapter extends RecyclerView.Adapter<BaseViewHolder> im
             } catch (ActivityNotFoundException | SecurityException e) {
                 Toast.makeText(this.context, C1167R.string.failed_launch, 0).show();
                 String valueOf = String.valueOf(e);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 24);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 24);
                 sb.append("Cannot start activity : ");
                 sb.append(valueOf);
                 Log.e(FavoriteLaunchItemsAdapter.TAG, sb.toString());
@@ -678,7 +678,7 @@ class FavoriteLaunchItemsAdapter extends RecyclerView.Adapter<BaseViewHolder> im
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(this.context, C1167R.string.failed_launch, 0).show();
                 String valueOf = String.valueOf(e);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 24);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 24);
                 sb.append("Cannot start activity : ");
                 sb.append(valueOf);
                 Log.e(FavoriteLaunchItemsAdapter.TAG, sb.toString());

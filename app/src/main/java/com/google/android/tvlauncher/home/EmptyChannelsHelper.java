@@ -108,7 +108,7 @@ class EmptyChannelsHelper {
             case 28:
             case 29:
                 String stateToString = ChannelView.stateToString(nonEmptyState);
-                StringBuilder sb = new StringBuilder(String.valueOf(stateToString).length() + 47);
+                StringBuilder sb = new StringBuilder(stateToString.length() + 47);
                 sb.append("Unsupported ChannelView state ");
                 sb.append(stateToString);
                 sb.append(" when it is empty");

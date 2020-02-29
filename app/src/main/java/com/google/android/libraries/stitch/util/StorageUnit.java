@@ -33,7 +33,7 @@ public enum StorageUnit {
 
     public abstract long convert(long j, StorageUnit storageUnit);
 
-    private StorageUnit(long numBytes2) {
+    StorageUnit(long numBytes2) {
         this.numBytes = numBytes2;
     }
 

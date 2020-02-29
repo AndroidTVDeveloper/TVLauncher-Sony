@@ -24,7 +24,7 @@ public final class PhenotypeConstants {
             uri = uriByConfigPackageName.get(configPackageName);
             if (uri == null) {
                 String valueOf = String.valueOf(Uri.encode(configPackageName));
-                uri = Uri.parse(valueOf.length() != 0 ? "content://com.google.android.gms.phenotype/".concat(valueOf) : new String("content://com.google.android.gms.phenotype/"));
+                uri = Uri.parse(valueOf.length() != 0 ? "content://com.google.android.gms.phenotype/".concat(valueOf) : "content://com.google.android.gms.phenotype/");
                 uriByConfigPackageName.put(configPackageName, uri);
             }
         }
@@ -33,7 +33,7 @@ public final class PhenotypeConstants {
 
     public static String getSharedPreferencesName(String configPackageName) {
         String valueOf = String.valueOf(configPackageName);
-        return valueOf.length() != 0 ? "phenotype__".concat(valueOf) : new String("phenotype__");
+        return valueOf.length() != 0 ? "phenotype__".concat(valueOf) : "phenotype__";
     }
 
     public static String getSubpackagedName(Context context, String configPackageName) {
@@ -42,12 +42,12 @@ public final class PhenotypeConstants {
 
     public static String getSubpackagedName(Context context, String configPackageName, boolean multiCommit) {
         if (configPackageName.contains("#")) {
-            String valueOf = String.valueOf(configPackageName);
-            throw new IllegalArgumentException(valueOf.length() != 0 ? "The passed in package cannot already have a subpackage: ".concat(valueOf) : new String("The passed in package cannot already have a subpackage: "));
+            String valueOf = configPackageName;
+            throw new IllegalArgumentException(valueOf.length() != 0 ? "The passed in package cannot already have a subpackage: ".concat(valueOf) : "The passed in package cannot already have a subpackage: ");
         }
         String str = multiCommit ? "@" : "";
         String packageName = context.getPackageName();
-        StringBuilder sb = new StringBuilder(String.valueOf(configPackageName).length() + 1 + String.valueOf(str).length() + String.valueOf(packageName).length());
+        StringBuilder sb = new StringBuilder(configPackageName.length() + 1 + str.length() + String.valueOf(packageName).length());
         sb.append(configPackageName);
         sb.append("#");
         sb.append(str);
@@ -57,10 +57,7 @@ public final class PhenotypeConstants {
 
     public static boolean isMultiCommitPackage(String configPackageName) {
         int index = configPackageName.indexOf("#");
-        if (index < 0 || index + 1 >= configPackageName.length() || configPackageName.charAt(index + 1) != '@') {
-            return false;
-        }
-        return true;
+        return index >= 0 && index + 1 < configPackageName.length() && configPackageName.charAt(index + 1) == '@';
     }
 
     private PhenotypeConstants() {

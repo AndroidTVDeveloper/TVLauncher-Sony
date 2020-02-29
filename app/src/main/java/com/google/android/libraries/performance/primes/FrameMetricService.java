@@ -85,7 +85,7 @@ final class FrameMetricService extends AbstractMetricService implements AppLifec
                 try {
                     activity.getWindow().removeOnFrameMetricsAvailableListener(this);
                 } catch (RuntimeException ex) {
-                    PrimesLog.m47d(FrameMetricService.TAG, "remove frame metrics listener failed", ex, new Object[0]);
+                    PrimesLog.m47d(FrameMetricService.TAG, "remove frame metrics listener failed", ex);
                 }
             }
         }
@@ -128,7 +128,7 @@ final class FrameMetricService extends AbstractMetricService implements AppLifec
                 if (this.currentActivity != null) {
                     attachToCurrentActivity();
                 } else {
-                    PrimesLog.m48d(FrameMetricService.TAG, "No activity", new Object[0]);
+                    PrimesLog.m48d(FrameMetricService.TAG, "No activity");
                 }
             }
         }
@@ -282,7 +282,7 @@ final class FrameMetricService extends AbstractMetricService implements AppLifec
                         systemHealthMetric.setMetricExtension(metricExtension1);
                     }
                 } catch (Exception e) {
-                    PrimesLog.m55w(TAG, "Exception while getting jank metric extension!", e, new Object[0]);
+                    PrimesLog.m55w(TAG, "Exception while getting jank metric extension!", e);
                 }
             } else if (metricExtension != null) {
                 systemHealthMetric.setMetricExtension(metricExtension);

@@ -92,10 +92,7 @@ public class NotificationsTrayItemView extends LinearLayout {
 
     /* access modifiers changed from: private */
     public boolean isFocusableChild(View v) {
-        if (v != null && v.getParent() == this) {
-            return true;
-        }
-        return false;
+        return v != null && v.getParent() == this;
     }
 
     public void setNotification(TvNotification notif, EventLogger eventLogger2) {

@@ -97,10 +97,7 @@ public class AdsManager {
                 return false;
             }
             AdLoaderTask adLoaderTask = (AdLoaderTask) obj;
-            if (!TextUtils.equals(this.adId, adLoaderTask.adId) || this.programId != adLoaderTask.programId) {
-                return false;
-            }
-            return true;
+            return TextUtils.equals(this.adId, adLoaderTask.adId) && this.programId == adLoaderTask.programId;
         }
 
         public void run() {
@@ -116,7 +113,7 @@ public class AdsManager {
                 OutstreamVideoAd outstreamVideoAd = this.outstreamVideoAdFactory.createOutstreamVideoAdFromAdResponse(this.adId, inputStream);
                 if (outstreamVideoAd == null) {
                     String valueOf = String.valueOf(this.adId);
-                    Log.e(AdsManager.TAG, valueOf.length() != 0 ? "AdLoaderTask: failed to create outstream video ad for ad id: ".concat(valueOf) : new String("AdLoaderTask: failed to create outstream video ad for ad id: "));
+                    Log.e(AdsManager.TAG, valueOf.length() != 0 ? "AdLoaderTask: failed to create outstream video ad for ad id: ".concat(valueOf) : "AdLoaderTask: failed to create outstream video ad for ad id: ");
                     return;
                 }
                 byte[] adConfigBlob = this.doubleClickAdConfigSerializer.serialize(outstreamVideoAd.getAdAsset());

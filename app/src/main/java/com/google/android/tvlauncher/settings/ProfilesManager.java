@@ -45,7 +45,7 @@ public class ProfilesManager {
             return this.userManager.isRestrictedProfile();
         }
         try {
-            return ((Boolean) this.userManager.getClass().getMethod("isLinkedUser", new Class[0]).invoke(this.userManager, new Object[0])).booleanValue();
+            return ((Boolean) this.userManager.getClass().getMethod("isLinkedUser").invoke(this.userManager, new Object[0])).booleanValue();
         } catch (Exception e) {
             Log.e(TAG, "Fail to check restricted profile", e);
             return false;

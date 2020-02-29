@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @Deprecated
 public interface GcoreGoogleApiClient {
 
-    public interface Builder {
+    interface Builder {
         Builder addApi(GcoreApi<? extends GcoreApi.GcoreApiOptions.GcoreNotRequiredOptions> gcoreApi);
 
         Builder addApi(GcoreApi<? extends GcoreApi.GcoreApiOptions.GcoreHasOptions> gcoreApi, GcoreApi.GcoreApiOptions.GcoreHasOptions gcoreHasOptions);
@@ -43,20 +43,20 @@ public interface GcoreGoogleApiClient {
         Builder useDefaultAccount();
     }
 
-    public interface BuilderFactory {
+    interface BuilderFactory {
         Builder newBuilder(Context context);
     }
 
-    public interface GcoreConnectionCallbacks {
-        public static final int CAUSE_NETWORK_LOST = 2;
-        public static final int CAUSE_SERVICE_DISCONNECTED = 1;
+    interface GcoreConnectionCallbacks {
+        int CAUSE_NETWORK_LOST = 2;
+        int CAUSE_SERVICE_DISCONNECTED = 1;
 
         void onConnected(Bundle bundle);
 
         void onConnectionSuspended(int i);
     }
 
-    public interface GcoreOnConnectionFailedListener {
+    interface GcoreOnConnectionFailedListener {
         void onConnectionFailed(GcoreConnectionResult gcoreConnectionResult);
     }
 

@@ -55,6 +55,6 @@ final class ExtensionRegistryFactory {
     }
 
     private static final ExtensionRegistryLite invokeSubclassFactory(String methodName) throws Exception {
-        return (ExtensionRegistryLite) EXTENSION_REGISTRY_CLASS.getDeclaredMethod(methodName, new Class[0]).invoke(null, new Object[0]);
+        return (ExtensionRegistryLite) EXTENSION_REGISTRY_CLASS.getDeclaredMethod(methodName).invoke(null, new Object[0]);
     }
 }

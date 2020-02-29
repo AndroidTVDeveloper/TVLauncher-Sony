@@ -38,10 +38,7 @@ public final class Insets {
             return false;
         }
         Insets insets = (Insets) o;
-        if (this.bottom == insets.bottom && this.left == insets.left && this.right == insets.right && this.top == insets.top) {
-            return true;
-        }
-        return false;
+        return this.bottom == insets.bottom && this.left == insets.left && this.right == insets.right && this.top == insets.top;
     }
 
     public int hashCode() {

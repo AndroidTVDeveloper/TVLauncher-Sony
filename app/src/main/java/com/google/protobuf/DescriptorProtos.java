@@ -5136,7 +5136,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Type(int value2) {
+            Type(int value2) {
                 this.value = value2;
             }
         }
@@ -5196,7 +5196,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Label(int value2) {
+            Label(int value2) {
                 this.value = value2;
             }
         }
@@ -9076,7 +9076,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private OptimizeMode(int value2) {
+            OptimizeMode(int value2) {
                 this.value = value2;
             }
         }
@@ -11963,7 +11963,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private CType(int value2) {
+            CType(int value2) {
                 this.value = value2;
             }
         }
@@ -12023,7 +12023,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private JSType(int value2) {
+            JSType(int value2) {
                 this.value = value2;
             }
         }
@@ -14681,7 +14681,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Protocol(int value2) {
+            Protocol(int value2) {
                 this.value = value2;
             }
         }
@@ -14746,7 +14746,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private SecurityLevel(int value2) {
+            SecurityLevel(int value2) {
                 this.value = value2;
             }
         }
@@ -14801,7 +14801,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Format(int value2) {
+            Format(int value2) {
                 this.value = value2;
             }
         }
@@ -14871,7 +14871,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private LogLevel(int value2) {
+            LogLevel(int value2) {
                 this.value = value2;
             }
         }
@@ -14926,7 +14926,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private TokenUnit(int value2) {
+            TokenUnit(int value2) {
                 this.value = value2;
             }
         }
@@ -14986,7 +14986,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private IdempotencyLevel(int value2) {
+            IdempotencyLevel(int value2) {
                 this.value = value2;
             }
         }
@@ -16421,7 +16421,7 @@ public final class DescriptorProtos {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private TokenUnit(int value2) {
+            TokenUnit(int value2) {
                 this.value = value2;
             }
         }

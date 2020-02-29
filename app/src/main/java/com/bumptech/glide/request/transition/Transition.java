@@ -5,7 +5,7 @@ import android.view.View;
 
 public interface Transition<R> {
 
-    public interface ViewAdapter {
+    interface ViewAdapter {
         Drawable getCurrentDrawable();
 
         View getView();

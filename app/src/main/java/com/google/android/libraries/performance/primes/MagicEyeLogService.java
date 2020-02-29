@@ -30,12 +30,12 @@ final class MagicEyeLogService extends AbstractMetricService implements PrimesSt
 
     public void onAppToBackground(Activity activity) {
         sendInBackground(SystemHealthProto.MagicEyeMetric.AppStateEvent.APP_TO_BACKGROUND);
-        PrimesLog.m48d(TAG, "Logging APP_TO_BACKGROUND", new Object[0]);
+        PrimesLog.m48d(TAG, "Logging APP_TO_BACKGROUND");
     }
 
     public void onAppToForeground(Activity activity) {
         sendInBackground(SystemHealthProto.MagicEyeMetric.AppStateEvent.APP_TO_FOREGROUND);
-        PrimesLog.m48d(TAG, "Logging APP_TO_FOREGROUND", new Object[0]);
+        PrimesLog.m48d(TAG, "Logging APP_TO_FOREGROUND");
     }
 
     /* access modifiers changed from: package-private */

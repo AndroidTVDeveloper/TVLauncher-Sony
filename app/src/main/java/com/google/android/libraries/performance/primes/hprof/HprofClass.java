@@ -51,12 +51,12 @@ public final class HprofClass extends HprofObject {
 
     public String buildLeakSegment(ParseContext parseContext, int fieldIndex) {
         if (fieldIndex < 0 || fieldIndex >= this.staticValueIds.length) {
-            String valueOf = String.valueOf(getClassName(parseContext));
-            return valueOf.length() != 0 ? "static ".concat(valueOf) : new String("static ");
+            String valueOf = getClassName(parseContext);
+            return valueOf.length() != 0 ? "static ".concat(valueOf) : "static ";
         }
         String className = getClassName(parseContext);
         String childName = getChildName(parseContext, fieldIndex);
-        StringBuilder sb = new StringBuilder(String.valueOf(className).length() + 8 + String.valueOf(childName).length());
+        StringBuilder sb = new StringBuilder(className.length() + 8 + childName.length());
         sb.append("static ");
         sb.append(className);
         sb.append("#");

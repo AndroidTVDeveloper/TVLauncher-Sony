@@ -32,10 +32,7 @@ final class HermeticFileOverridesReader {
         if (!hardware.equals("goldfish") && !hardware.equals("ranchu") && !hardware.equals("robolectric")) {
             return false;
         }
-        if (buildTags.contains("dev-keys") || buildTags.contains("test-keys")) {
-            return true;
-        }
-        return false;
+        return buildTags.contains("dev-keys") || buildTags.contains("test-keys");
     }
 
     /* access modifiers changed from: package-private */

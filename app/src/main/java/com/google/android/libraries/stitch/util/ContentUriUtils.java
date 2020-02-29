@@ -55,7 +55,7 @@ public final class ContentUriUtils {
         if (cursor == null) {
             if (Log.isLoggable(TAG, 5)) {
                 String valueOf = String.valueOf(uri);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 48);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 48);
                 sb.append("getFilePath: query returned null cursor for uri=");
                 sb.append(valueOf);
                 Log.w(TAG, sb.toString());
@@ -66,7 +66,7 @@ public final class ContentUriUtils {
             if (!cursor.moveToFirst()) {
                 if (Log.isLoggable(TAG, 5)) {
                     String valueOf2 = String.valueOf(uri);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 49);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 49);
                     sb2.append("getFilePath: query returned empty cursor for uri=");
                     sb2.append(valueOf2);
                     Log.w(TAG, sb2.toString());
@@ -77,7 +77,7 @@ public final class ContentUriUtils {
             if (TextUtils.isEmpty(path)) {
                 if (Log.isLoggable(TAG, 5)) {
                     String valueOf3 = String.valueOf(uri);
-                    StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf3).length() + 49);
+                    StringBuilder sb3 = new StringBuilder(valueOf3.length() + 49);
                     sb3.append("getFilePath: MediaColumns.DATA was empty for uri=");
                     sb3.append(valueOf3);
                     Log.w(TAG, sb3.toString());
@@ -98,7 +98,7 @@ public final class ContentUriUtils {
         if (cursor == null || !cursor.moveToNext()) {
             if (Log.isLoggable(TAG, 5)) {
                 String valueOf = String.valueOf(uri);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 49);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 49);
                 sb.append("getBucketName: query returned no results for uri=");
                 sb.append(valueOf);
                 Log.w(TAG, sb.toString());
@@ -113,7 +113,7 @@ public final class ContentUriUtils {
             if (TextUtils.isEmpty(bucketName)) {
                 if (Log.isLoggable(TAG, 5)) {
                     String valueOf2 = String.valueOf(uri);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 66);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 66);
                     sb2.append("getBucketName: ImageColumns.BUCKET_DISPLAY_NAME was empty for uri=");
                     sb2.append(valueOf2);
                     Log.w(TAG, sb2.toString());
@@ -142,7 +142,7 @@ public final class ContentUriUtils {
                 return null;
             }
             String valueOf = String.valueOf(uri);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 27);
             sb.append("getMimeType failed for uri=");
             sb.append(valueOf);
             Log.w(TAG, sb.toString(), e);
@@ -182,7 +182,7 @@ public final class ContentUriUtils {
                 return null;
             }
             String valueOf = String.valueOf(uri);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 31);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 31);
             sb.append("safeGetMimeType failed for uri=");
             sb.append(valueOf);
             Log.w(TAG, sb.toString(), e);

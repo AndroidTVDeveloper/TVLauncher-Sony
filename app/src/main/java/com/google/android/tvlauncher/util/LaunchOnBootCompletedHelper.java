@@ -91,10 +91,7 @@ public class LaunchOnBootCompletedHelper {
         if (postOta) {
             bootPrefs.edit().putInt(CURRENT_SDK_INT_KEY, currentSdkInt).apply();
         }
-        if (postOta || getBootCount() == 1) {
-            return true;
-        }
-        return false;
+        return postOta || getBootCount() == 1;
     }
 
     /* access modifiers changed from: package-private */
@@ -106,7 +103,7 @@ public class LaunchOnBootCompletedHelper {
         } catch (ActivityNotFoundException e) {
             String valueOf = String.valueOf(intent);
             String valueOf2 = String.valueOf(e);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 40 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 40 + valueOf2.length());
             sb.append("Activity for intent : ");
             sb.append(valueOf);
             sb.append(", was not found : ");
@@ -161,7 +158,7 @@ public class LaunchOnBootCompletedHelper {
                                 e = e;
                                 lastForegroundActivityBeforeShutdown2 = null;
                                 String valueOf = String.valueOf(e);
-                                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 55);
+                                StringBuilder sb = new StringBuilder(valueOf.length() + 55);
                                 sb.append("Error in retrieving foreground activity package name : ");
                                 sb.append(valueOf);
                                 Log.e(LaunchOnBootCompletedHelper.TAG, sb.toString());

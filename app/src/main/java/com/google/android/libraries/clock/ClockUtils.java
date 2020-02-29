@@ -19,8 +19,8 @@ public final class ClockUtils {
             float offset = Math.abs(Float.parseFloat(timeZone.substring(4))) % 24.0f;
             return String.format(Locale.US, "GMT%c%d:%d", Character.valueOf(sign), Integer.valueOf((int) offset), Integer.valueOf((int) ((offset * 60.0f) % 60.0f)));
         } catch (NumberFormatException e) {
-            String valueOf = String.valueOf(timeZone);
-            Log.w(TAG, valueOf.length() != 0 ? "Invalid time zone: ".concat(valueOf) : new String("Invalid time zone: "));
+            String valueOf = timeZone;
+            Log.w(TAG, valueOf.length() != 0 ? "Invalid time zone: ".concat(valueOf) : "Invalid time zone: ");
             return timeZone;
         }
     }

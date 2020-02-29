@@ -12,7 +12,7 @@ public interface IResultReceiver extends IInterface {
     void send(int i, Bundle bundle) throws RemoteException;
 
     /* renamed from: android.support.v4.os.IResultReceiver$Stub */
-    public static abstract class Stub extends Binder implements IResultReceiver {
+    abstract class Stub extends Binder implements IResultReceiver {
         private static final String DESCRIPTOR = "android.support.v4.os.IResultReceiver";
         static final int TRANSACTION_send = 1;
 

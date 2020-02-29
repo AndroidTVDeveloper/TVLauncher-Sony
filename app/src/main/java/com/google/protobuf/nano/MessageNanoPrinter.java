@@ -23,10 +23,10 @@ public final class MessageNanoPrinter {
             return buf.toString();
         } catch (IllegalAccessException e) {
             String valueOf = String.valueOf(e.getMessage());
-            return valueOf.length() != 0 ? "Error printing proto: ".concat(valueOf) : new String("Error printing proto: ");
+            return valueOf.length() != 0 ? "Error printing proto: ".concat(valueOf) : "Error printing proto: ";
         } catch (InvocationTargetException e2) {
             String valueOf2 = String.valueOf(e2.getMessage());
-            return valueOf2.length() != 0 ? "Error printing proto: ".concat(valueOf2) : new String("Error printing proto: ");
+            return valueOf2.length() != 0 ? "Error printing proto: ".concat(valueOf2) : "Error printing proto: ";
         }
     }
 
@@ -88,12 +88,12 @@ public final class MessageNanoPrinter {
                     if (name.startsWith("set")) {
                         String subfieldName = name.substring(3);
                         try {
-                            String valueOf = String.valueOf(subfieldName);
-                            if (((Boolean) clazz.getMethod(valueOf.length() != 0 ? "has".concat(valueOf) : new String("has"), new Class[0]).invoke(obj, new Object[0])).booleanValue()) {
+                            String valueOf = subfieldName;
+                            if (((Boolean) clazz.getMethod(valueOf.length() != 0 ? "has".concat(valueOf) : "has").invoke(obj, new Object[0])).booleanValue()) {
                                 try {
-                                    String valueOf2 = String.valueOf(subfieldName);
+                                    String valueOf2 = subfieldName;
                                     try {
-                                        print(subfieldName, clazz.getMethod(valueOf2.length() != 0 ? PeopleConstants.Endpoints.ENDPOINT_GET.concat(valueOf2) : new String(PeopleConstants.Endpoints.ENDPOINT_GET), new Class[0]).invoke(obj, new Object[0]), stringBuffer, stringBuffer2);
+                                        print(subfieldName, clazz.getMethod(valueOf2.length() != 0 ? PeopleConstants.Endpoints.ENDPOINT_GET.concat(valueOf2) : new String(PeopleConstants.Endpoints.ENDPOINT_GET)).invoke(obj), stringBuffer, stringBuffer2);
                                     } catch (NoSuchMethodException e) {
                                     }
                                 } catch (NoSuchMethodException e2) {
@@ -146,7 +146,7 @@ public final class MessageNanoPrinter {
 
     private static String sanitizeString(String str) {
         if (!str.startsWith("http") && str.length() > 200) {
-            str = String.valueOf(str.substring(0, 200)).concat("[...]");
+            str = str.substring(0, 200).concat("[...]");
         }
         return escapeString(str);
     }

@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public interface AdConfig {
 
-    public static final class AdAsset extends MessageNano {
+    final class AdAsset extends MessageNano {
         public static final int DIRECT_AD_CONFIG_FIELD_NUMBER = 1;
         public static final int DOUBLECLICK_AD_CONFIG_FIELD_NUMBER = 2;
         private static volatile AdAsset[] _emptyArray;
@@ -166,7 +166,7 @@ public interface AdConfig {
         }
     }
 
-    public static final class DirectAdConfig extends MessageNano {
+    final class DirectAdConfig extends MessageNano {
         private static volatile DirectAdConfig[] _emptyArray;
         public String dataUrl;
         public String packageName;
@@ -240,7 +240,7 @@ public interface AdConfig {
         }
     }
 
-    public static final class DoubleClickAdConfig extends MessageNano {
+    final class DoubleClickAdConfig extends MessageNano {
         public static final int CUSTOM_CREATIVE_FIELD_NUMBER = 2;
         public static final int VAST_FIELD_NUMBER = 3;
         private static volatile DoubleClickAdConfig[] _emptyArray;
@@ -383,7 +383,7 @@ public interface AdConfig {
         }
     }
 
-    public static final class CustomCreative extends MessageNano {
+    final class CustomCreative extends MessageNano {
         public static final int APP_INSTALL_CREATIVE_INFO_FIELD_NUMBER = 5;
         public static final int CONTENT_CREATIVE_INFO_FIELD_NUMBER = 6;
         private static volatile CustomCreative[] _emptyArray;
@@ -556,7 +556,7 @@ public interface AdConfig {
         }
     }
 
-    public static final class AppInstallCreativeInfo extends MessageNano {
+    final class AppInstallCreativeInfo extends MessageNano {
         private static volatile AppInstallCreativeInfo[] _emptyArray;
         public String deeplinkUrl;
         public String marketUrl;
@@ -640,7 +640,7 @@ public interface AdConfig {
         }
     }
 
-    public static final class ContentCreativeInfo extends MessageNano {
+    final class ContentCreativeInfo extends MessageNano {
         private static volatile ContentCreativeInfo[] _emptyArray;
 
         public static ContentCreativeInfo[] emptyArray() {

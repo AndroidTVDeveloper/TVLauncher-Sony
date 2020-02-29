@@ -393,7 +393,7 @@ public class StandardGifDecoder implements GifDecoder {
         String valueOf = String.valueOf(config);
         String valueOf2 = String.valueOf(Bitmap.Config.ARGB_8888);
         String valueOf3 = String.valueOf(Bitmap.Config.RGB_565);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 41 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 41 + valueOf2.length() + valueOf3.length());
         sb.append("Unsupported format: ");
         sb.append(valueOf);
         sb.append(", must be one of ");
@@ -631,7 +631,7 @@ public class StandardGifDecoder implements GifDecoder {
         }
         Boolean isFirstFrameTransparent4 = isFirstFrameTransparent2;
         if (this.isFirstFrameTransparent == null) {
-            this.isFirstFrameTransparent = Boolean.valueOf(isFirstFrameTransparent4 == null ? false : isFirstFrameTransparent4.booleanValue());
+            this.isFirstFrameTransparent = Boolean.valueOf(isFirstFrameTransparent4 != null && isFirstFrameTransparent4.booleanValue());
         }
     }
 

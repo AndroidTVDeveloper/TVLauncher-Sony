@@ -1056,7 +1056,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements I
 
     /* access modifiers changed from: package-private */
     public boolean shouldMeasureTwice() {
-        return (getHeightMode() == 1073741824 || getWidthMode() == 1073741824 || !hasFlexibleChildInBothOrientations()) ? false : true;
+        return getHeightMode() != 1073741824 && getWidthMode() != 1073741824 && hasFlexibleChildInBothOrientations();
     }
 
     /* access modifiers changed from: package-private */
@@ -1500,7 +1500,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements I
         SavedState(Parcel in) {
             this.mAnchorPosition = in.readInt();
             this.mAnchorOffset = in.readInt();
-            this.mAnchorLayoutFromEnd = in.readInt() != 1 ? false : true;
+            this.mAnchorLayoutFromEnd = in.readInt() == 1;
         }
 
         public SavedState(SavedState other) {

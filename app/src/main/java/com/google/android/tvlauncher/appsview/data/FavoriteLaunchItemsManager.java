@@ -155,10 +155,7 @@ public class FavoriteLaunchItemsManager implements LaunchItemsManager.AppsViewCh
 
     /* access modifiers changed from: package-private */
     public boolean isOnlyFavorite(LaunchItem item) {
-        if (this.favoriteItemsToDesiredPosition.size() != 1 || !this.favoriteItemsToDesiredPosition.containsKey(item)) {
-            return false;
-        }
-        return true;
+        return this.favoriteItemsToDesiredPosition.size() == 1 && this.favoriteItemsToDesiredPosition.containsKey(item);
     }
 
     /* access modifiers changed from: package-private */
@@ -249,7 +246,7 @@ public class FavoriteLaunchItemsManager implements LaunchItemsManager.AppsViewCh
         Map<String, ?> keyValMap = this.packageNamePrefs.getAll();
         for (LaunchItem item : LaunchItemsManagerProvider.getInstance(this.context).getAllLaunchItemsWithoutSorting()) {
             addToPinnedApps(item);
-            if (keyValMap.keySet().contains(item.getPackageName()) && !isPinnedFavorite(item)) {
+            if (keyValMap.containsKey(item.getPackageName()) && !isPinnedFavorite(item)) {
                 this.favoriteItemsToDesiredPosition.put(item, (Integer) keyValMap.get(item.getPackageName()));
             }
         }

@@ -23,10 +23,7 @@ public class MediaStoreSignature implements Key {
             return false;
         }
         MediaStoreSignature that = (MediaStoreSignature) o;
-        if (this.dateModified == that.dateModified && this.orientation == that.orientation && this.mimeType.equals(that.mimeType)) {
-            return true;
-        }
-        return false;
+        return this.dateModified == that.dateModified && this.orientation == that.orientation && this.mimeType.equals(that.mimeType);
     }
 
     public int hashCode() {

@@ -207,7 +207,7 @@ public abstract class PhenotypeFlag<T> {
         }
         String valueOf = String.valueOf(prefix);
         String valueOf2 = String.valueOf(this.name);
-        return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+        return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
     }
 
     public String getMendelFlagName() {
@@ -305,7 +305,7 @@ public abstract class PhenotypeFlag<T> {
             return null;
         } else {
             String valueOf = String.valueOf(getMendelFlagName());
-            Log.d(TAG, valueOf.length() != 0 ? "Bypass reading Phenotype values for flag: ".concat(valueOf) : new String("Bypass reading Phenotype values for flag: "));
+            Log.d(TAG, valueOf.length() != 0 ? "Bypass reading Phenotype values for flag: ".concat(valueOf) : "Bypass reading Phenotype values for flag: ");
             return null;
         }
     }
@@ -369,7 +369,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 25 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 25 + valueOf.length());
                 sb.append("Invalid long value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");
@@ -399,7 +399,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 24 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 24 + valueOf.length());
                 sb.append("Invalid int value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");
@@ -429,7 +429,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String s2 = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(s2).length() + 28 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(s2).length() + 28 + valueOf.length());
                 sb.append("Invalid boolean value for ");
                 sb.append(s2);
                 sb.append(": ");
@@ -459,7 +459,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + valueOf.length());
                 sb.append("Invalid double value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");
@@ -489,7 +489,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 26 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 26 + valueOf.length());
                 sb.append("Invalid float value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");
@@ -526,7 +526,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + valueOf.length());
                 sb.append("Invalid byte[] value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");
@@ -550,7 +550,7 @@ public abstract class PhenotypeFlag<T> {
                 }
                 String mendelFlagName = PhenotypeFlag.super.getMendelFlagName();
                 String valueOf = String.valueOf(o);
-                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(mendelFlagName).length() + 27 + valueOf.length());
                 sb.append("Invalid byte[] value for ");
                 sb.append(mendelFlagName);
                 sb.append(": ");

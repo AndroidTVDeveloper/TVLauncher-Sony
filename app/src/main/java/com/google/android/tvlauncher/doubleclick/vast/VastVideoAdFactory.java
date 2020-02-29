@@ -35,7 +35,7 @@ public class VastVideoAdFactory {
     public VastVideoAd createVastVideoAdFromAdAsset(AdConfig.AdAsset adAsset) {
         if (!adAsset.hasDoubleclickAdConfig() || !adAsset.getDoubleclickAdConfig().hasVast()) {
             String valueOf = String.valueOf(adAsset);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 41);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 41);
             sb.append("createVastVideoAd: a non-vast ad passed: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -203,8 +203,8 @@ public class VastVideoAdFactory {
         if (preferredVastMedia != null) {
             return preferredVastMedia.url;
         }
-        String valueOf = String.valueOf(Arrays.toString(vastMedias));
-        Log.e(TAG, valueOf.length() != 0 ? "No MP4 video found in VAST response medias: ".concat(valueOf) : new String("No MP4 video found in VAST response medias: "));
+        String valueOf = Arrays.toString(vastMedias);
+        Log.e(TAG, valueOf.length() != 0 ? "No MP4 video found in VAST response medias: ".concat(valueOf) : "No MP4 video found in VAST response medias: ");
         return "";
     }
 
@@ -221,7 +221,7 @@ public class VastVideoAdFactory {
         }
         if (TextUtils.isEmpty(deeplinkUrl)) {
             String valueOf = String.valueOf(destinationUrl);
-            Log.d(TAG, valueOf.length() != 0 ? "No deeplinkUrl found in destinationUrl: ".concat(valueOf) : new String("No deeplinkUrl found in destinationUrl: "));
+            Log.d(TAG, valueOf.length() != 0 ? "No deeplinkUrl found in destinationUrl: ".concat(valueOf) : "No deeplinkUrl found in destinationUrl: ");
         }
         return deeplinkUrl;
     }
@@ -231,7 +231,7 @@ public class VastVideoAdFactory {
             return customParamsMap.get(PACKAGE_NAME_AD_PARAMETERS_KEY);
         }
         String valueOf = String.valueOf(customParamsMap);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 40);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 40);
         sb.append("no package name found in ad parameters: ");
         sb.append(valueOf);
         Log.e(TAG, sb.toString());
@@ -243,7 +243,7 @@ public class VastVideoAdFactory {
             return customParamsMap.get(MARKET_URL_AD_PARAMETERS_KEY);
         }
         String valueOf = String.valueOf(customParamsMap);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 38);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 38);
         sb.append("no market URL found in ad parameters: ");
         sb.append(valueOf);
         Log.e(TAG, sb.toString());
@@ -262,8 +262,8 @@ public class VastVideoAdFactory {
         for (String keyValue : customParams.split(",")) {
             String[] pair = keyValue.split("=");
             if (pair.length != 2) {
-                String valueOf = String.valueOf(customParams);
-                Log.e(TAG, valueOf.length() != 0 ? "Syntax error in ad parameters, must be comma-separated pairs key=value: ".concat(valueOf) : new String("Syntax error in ad parameters, must be comma-separated pairs key=value: "));
+                String valueOf = customParams;
+                Log.e(TAG, valueOf.length() != 0 ? "Syntax error in ad parameters, must be comma-separated pairs key=value: ".concat(valueOf) : "Syntax error in ad parameters, must be comma-separated pairs key=value: ");
                 return null;
             }
             customParamsMap.put(pair[0], pair[1]);

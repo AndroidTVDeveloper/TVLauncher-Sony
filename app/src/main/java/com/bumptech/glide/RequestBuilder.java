@@ -381,7 +381,7 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
             return Priority.IMMEDIATE;
         }
         String valueOf = String.valueOf(getPriority());
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 18);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 18);
         sb.append("unknown priority: ");
         sb.append(valueOf);
         throw new IllegalArgumentException(sb.toString());

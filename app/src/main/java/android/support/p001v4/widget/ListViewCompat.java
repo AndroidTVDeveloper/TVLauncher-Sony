@@ -29,16 +29,10 @@ public final class ListViewCompat {
         int firstPosition = listView.getFirstVisiblePosition();
         if (direction > 0) {
             int lastBottom = listView.getChildAt(childCount - 1).getBottom();
-            if (firstPosition + childCount < listView.getCount() || lastBottom > listView.getHeight() - listView.getListPaddingBottom()) {
-                return true;
-            }
-            return false;
+            return firstPosition + childCount < listView.getCount() || lastBottom > listView.getHeight() - listView.getListPaddingBottom();
         }
         int firstTop = listView.getChildAt(0).getTop();
-        if (firstPosition > 0 || firstTop < listView.getListPaddingTop()) {
-            return true;
-        }
-        return false;
+        return firstPosition > 0 || firstTop < listView.getListPaddingTop();
     }
 
     private ListViewCompat() {

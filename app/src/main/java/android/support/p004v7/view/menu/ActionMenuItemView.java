@@ -245,10 +245,7 @@ public class ActionMenuItemView extends AppCompatTextView implements MenuView.It
         /* access modifiers changed from: protected */
         public boolean onForwardingStarted() {
             ShowableListMenu popup;
-            if (ActionMenuItemView.this.mItemInvoker == null || !ActionMenuItemView.this.mItemInvoker.invokeItem(ActionMenuItemView.this.mItemData) || (popup = getPopup()) == null || !popup.isShowing()) {
-                return false;
-            }
-            return true;
+            return ActionMenuItemView.this.mItemInvoker != null && ActionMenuItemView.this.mItemInvoker.invokeItem(ActionMenuItemView.this.mItemData) && (popup = getPopup()) != null && popup.isShowing();
         }
     }
 

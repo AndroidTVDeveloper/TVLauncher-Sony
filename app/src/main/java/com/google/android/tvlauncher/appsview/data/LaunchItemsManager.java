@@ -254,7 +254,7 @@ public abstract class LaunchItemsManager implements PackageChangedReceiver.Liste
         if (asyncTask != null) {
             asyncTask.cancel(true);
         }
-        this.refreshTask = new CreateLaunchItemsListTask().execute(new Void[0]);
+        this.refreshTask = new CreateLaunchItemsListTask().execute();
     }
 
     public void addSearchPackageChangeListener(SearchPackageChangeListener listener) {
@@ -706,7 +706,7 @@ public abstract class LaunchItemsManager implements PackageChangedReceiver.Liste
             item.setLastUpdateTime(context2.getPackageManager().getPackageInfo(item.getPackageName(), 0).lastUpdateTime);
         } catch (PackageManager.NameNotFoundException e) {
             String valueOf = String.valueOf(item.getPackageName());
-            Log.e(TAG, valueOf.length() != 0 ? "Package not found when converting to native launch item : ".concat(valueOf) : new String("Package not found when converting to native launch item : "));
+            Log.e(TAG, valueOf.length() != 0 ? "Package not found when converting to native launch item : ".concat(valueOf) : "Package not found when converting to native launch item : ");
             item.setLastUpdateTime(0);
         }
         boolean z = true;

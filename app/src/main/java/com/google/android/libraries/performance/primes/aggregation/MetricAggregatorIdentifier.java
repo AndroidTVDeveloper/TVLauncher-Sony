@@ -35,10 +35,7 @@ public final class MetricAggregatorIdentifier {
             return false;
         }
         MetricAggregatorIdentifier o = (MetricAggregatorIdentifier) other;
-        if (this.metric != o.metric || !TextUtils.equals(this.componentName, o.componentName) || !TextUtils.equals(this.customCounterName, o.customCounterName)) {
-            return false;
-        }
-        return true;
+        return this.metric == o.metric && TextUtils.equals(this.componentName, o.componentName) && TextUtils.equals(this.customCounterName, o.customCounterName);
     }
 
     public int hashCode() {

@@ -9,20 +9,10 @@ public class MediaBrowserCompatUtils {
             return true;
         }
         if (options1 == null) {
-            if (options2.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == -1 && options2.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == -1) {
-                return true;
-            }
-            return false;
+            return options2.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == -1 && options2.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == -1;
         } else if (options2 == null) {
-            if (options1.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == -1 && options1.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == -1) {
-                return true;
-            }
-            return false;
-        } else if (options1.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == options2.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) && options1.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == options2.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1)) {
-            return true;
-        } else {
-            return false;
-        }
+            return options1.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == -1 && options1.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == -1;
+        } else return options1.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) == options2.getInt(MediaBrowserCompat.EXTRA_PAGE, -1) && options1.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1) == options2.getInt(MediaBrowserCompat.EXTRA_PAGE_SIZE, -1);
     }
 
     public static boolean hasDuplicatedItems(Bundle options1, Bundle options2) {
@@ -58,10 +48,7 @@ public class MediaBrowserCompatUtils {
             startIndex2 = pageSize2 * page2;
             endIndex2 = (startIndex2 + pageSize2) - 1;
         }
-        if (endIndex1 < startIndex2 || endIndex2 < startIndex1) {
-            return false;
-        }
-        return true;
+        return endIndex1 >= startIndex2 && endIndex2 >= startIndex1;
     }
 
     private MediaBrowserCompatUtils() {

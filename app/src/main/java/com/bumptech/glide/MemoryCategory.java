@@ -7,7 +7,7 @@ public enum MemoryCategory {
     
     private final float multiplier;
 
-    private MemoryCategory(float multiplier2) {
+    MemoryCategory(float multiplier2) {
         this.multiplier = multiplier2;
     }
 

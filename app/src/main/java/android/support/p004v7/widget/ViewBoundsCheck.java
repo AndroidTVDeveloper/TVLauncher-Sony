@@ -112,10 +112,7 @@ class ViewBoundsCheck {
                 return false;
             }
             int i4 = this.mBoundFlags;
-            if ((i4 & 28672) == 0 || (i4 & (compare(this.mChildEnd, this.mRvEnd) << 12)) != 0) {
-                return true;
-            }
-            return false;
+            return (i4 & 28672) == 0 || (i4 & (compare(this.mChildEnd, this.mRvEnd) << 12)) != 0;
         }
     }
 

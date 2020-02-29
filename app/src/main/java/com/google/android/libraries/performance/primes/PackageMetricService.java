@@ -54,7 +54,7 @@ final class PackageMetricService extends AbstractMetricService implements Primes
     }
 
     PackageMetricService(MetricTransmitter transmitter, Application application, Supplier<MetricStamper> metricStamperSupplier, Supplier<ListeningScheduledExecutorService> executorSupplier, SharedPreferences sharedPrefs2) {
-        this(transmitter, application, metricStamperSupplier, executorSupplier, sharedPrefs2, false, -1, new Pattern[0]);
+        this(transmitter, application, metricStamperSupplier, executorSupplier, sharedPrefs2, false, -1);
     }
 
     PackageMetricService(MetricTransmitter transmitter, Application application, Supplier<MetricStamper> metricStamperSupplier, Supplier<ListeningScheduledExecutorService> executorSupplier, SharedPreferences sharedPrefs2, boolean captureDirStats2, int maxFolderDepth2, Pattern... listFilesPatterns2) {
@@ -101,12 +101,12 @@ final class PackageMetricService extends AbstractMetricService implements Primes
             metric.setPackageMetric(packageMetric);
             recordSystemHealthMetric((SystemHealthProto.SystemHealthMetric) metric.build());
             if (!writeSendTime(this.sharedPrefs)) {
-                PrimesLog.m48d(TAG, "Failure storing timestamp persistently", new Object[0]);
+                PrimesLog.m48d(TAG, "Failure storing timestamp persistently");
                 return;
             }
             return;
         }
-        PrimesLog.m56w(TAG, "PackageStats capture failed.", new Object[0]);
+        PrimesLog.m56w(TAG, "PackageStats capture failed.");
     }
 
     /* access modifiers changed from: package-private */

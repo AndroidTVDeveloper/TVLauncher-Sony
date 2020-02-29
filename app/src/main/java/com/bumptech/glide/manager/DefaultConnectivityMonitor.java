@@ -64,10 +64,7 @@ final class DefaultConnectivityMonitor implements ConnectivityMonitor {
     public boolean isConnected(Context context2) {
         try {
             NetworkInfo networkInfo = ((ConnectivityManager) Preconditions.checkNotNull((ConnectivityManager) context2.getSystemService("connectivity"))).getActiveNetworkInfo();
-            if (networkInfo == null || !networkInfo.isConnected()) {
-                return false;
-            }
-            return true;
+            return networkInfo != null && networkInfo.isConnected();
         } catch (RuntimeException e) {
             if (Log.isLoggable(TAG, 5)) {
                 Log.w(TAG, "Failed to determine connectivity status when connectivity changed", e);

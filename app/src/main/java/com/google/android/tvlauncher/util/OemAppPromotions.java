@@ -128,7 +128,7 @@ public class OemAppPromotions implements LaunchItemsManager.AppsViewChangeListen
             long j = this.promotionsLastLoadedTime;
             if (elapsedRealtime - j > PROMOTIONS_LOAD_THROTTLE_TIME || j < 0 || forceRefresh) {
                 this.promotionsLastLoadedTime = SystemClock.elapsedRealtime();
-                new AppPromotionsLoadingTask(this.context).execute(new Void[0]);
+                new AppPromotionsLoadingTask(this.context).execute();
             }
         }
     }
@@ -225,14 +225,14 @@ public class OemAppPromotions implements LaunchItemsManager.AppsViewChangeListen
                         promotionsFile.close();
                     } catch (IOException e) {
                         String valueOf = String.valueOf(PartnerCustomizationContract.OEM_APP_RECS_URI);
-                        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 14);
+                        StringBuilder sb = new StringBuilder(valueOf.length() + 14);
                         sb.append("Error closing ");
                         sb.append(valueOf);
                         Log.e(OemAppPromotions.TAG, sb.toString(), e);
                     }
                 } else {
                     String valueOf2 = String.valueOf(PartnerCustomizationContract.OEM_APP_RECS_URI);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 14);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 14);
                     sb2.append("Error opening ");
                     sb2.append(valueOf2);
                     Log.e(OemAppPromotions.TAG, sb2.toString());
@@ -243,7 +243,7 @@ public class OemAppPromotions implements LaunchItemsManager.AppsViewChangeListen
                 return Boolean.valueOf(z);
             } catch (Exception e2) {
                 String valueOf3 = String.valueOf(PartnerCustomizationContract.OEM_APP_RECS_URI);
-                StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf3).length() + 14);
+                StringBuilder sb3 = new StringBuilder(valueOf3.length() + 14);
                 sb3.append("Error opening ");
                 sb3.append(valueOf3);
                 Log.e(OemAppPromotions.TAG, sb3.toString(), e2);

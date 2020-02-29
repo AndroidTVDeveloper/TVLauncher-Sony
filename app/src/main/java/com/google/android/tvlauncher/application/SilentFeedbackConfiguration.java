@@ -27,10 +27,7 @@ class SilentFeedbackConfiguration {
                 if (exceptionMessage == null) {
                     exceptionMessage = "";
                 }
-                if (!TestUtils.isRunningInTest() || exceptionMessage.startsWith(SilentFeedbackConfiguration.TEST_EXCEPTION_MESSAGE_PREFIX)) {
-                    return true;
-                }
-                return false;
+                return !TestUtils.isRunningInTest() || exceptionMessage.startsWith(SilentFeedbackConfiguration.TEST_EXCEPTION_MESSAGE_PREFIX);
             }
 
             public boolean shouldReportException(Throwable throwable, Thread thread, boolean isForegroundCrash) {

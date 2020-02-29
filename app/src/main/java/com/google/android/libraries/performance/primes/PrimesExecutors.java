@@ -128,7 +128,7 @@ public class PrimesExecutors {
         }
 
         public void onFailure(Throwable t) {
-            PrimesLog.m55w(PrimesExecutors.TAG, "Background task failed", t, new Object[0]);
+            PrimesLog.m55w(PrimesExecutors.TAG, "Background task failed", t);
         }
     }
 
@@ -138,10 +138,10 @@ public class PrimesExecutors {
 
         public void rejectedExecution(Runnable runnable, ThreadPoolExecutor threadPoolExecutor) {
             String valueOf = String.valueOf(runnable);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 30);
             sb.append("Service rejected execution of ");
             sb.append(valueOf);
-            PrimesLog.m48d(PrimesExecutors.TAG, sb.toString(), new Object[0]);
+            PrimesLog.m48d(PrimesExecutors.TAG, sb.toString());
         }
     }
 

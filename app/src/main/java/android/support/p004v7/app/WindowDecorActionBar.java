@@ -634,10 +634,7 @@ public class WindowDecorActionBar extends ActionBar implements ActionBarOverlayL
         if (showingForMode) {
             return true;
         }
-        if (hiddenByApp || hiddenBySystem) {
-            return false;
-        }
-        return true;
+        return !hiddenByApp && !hiddenBySystem;
     }
 
     private void updateVisibility(boolean fromSystem) {

@@ -161,10 +161,7 @@ public class NestedScrollingChildHelper {
                     iArr[0] = iArr[0] - startX;
                     iArr[1] = iArr[1] - startY;
                 }
-                if (consumed2[0] == 0 && consumed2[1] == 0) {
-                    return false;
-                }
-                return true;
+                return consumed2[0] != 0 || consumed2[1] != 0;
             } else if (iArr != null) {
                 iArr[0] = 0;
                 iArr[1] = 0;

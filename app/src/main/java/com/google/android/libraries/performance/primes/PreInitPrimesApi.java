@@ -358,7 +358,7 @@ final class PreInitPrimesApi implements PrimesApi {
                         Executors.newSingleThreadExecutor(PreInitPrimesApi$EarlyUncaughtExceptionHandler$$Lambda$0.$instance).execute(initTask);
                         initDoneSignal.await(1000, TimeUnit.MILLISECONDS);
                     } catch (InterruptedException e) {
-                        PrimesLog.m56w(PreInitPrimesApi.TAG, "Wait for initialization is interrupted", new Object[0]);
+                        PrimesLog.m56w(PreInitPrimesApi.TAG, "Wait for initialization is interrupted");
                         Thread.currentThread().interrupt();
                     }
                 }

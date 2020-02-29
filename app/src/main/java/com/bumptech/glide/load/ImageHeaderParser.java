@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 public interface ImageHeaderParser {
-    public static final int UNKNOWN_ORIENTATION = -1;
+    int UNKNOWN_ORIENTATION = -1;
 
     int getOrientation(InputStream inputStream, ArrayPool arrayPool) throws IOException;
 
@@ -16,7 +16,7 @@ public interface ImageHeaderParser {
 
     ImageType getType(ByteBuffer byteBuffer) throws IOException;
 
-    public enum ImageType {
+    enum ImageType {
         GIF(true),
         JPEG(false),
         RAW(false),
@@ -28,7 +28,7 @@ public interface ImageHeaderParser {
         
         private final boolean hasAlpha;
 
-        private ImageType(boolean hasAlpha2) {
+        ImageType(boolean hasAlpha2) {
             this.hasAlpha = hasAlpha2;
         }
 

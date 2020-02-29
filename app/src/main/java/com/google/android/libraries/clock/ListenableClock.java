@@ -2,11 +2,11 @@ package com.google.android.libraries.clock;
 
 public interface ListenableClock extends Clock {
 
-    public interface TimeResetListener {
+    interface TimeResetListener {
         void onTimeReset();
     }
 
-    public interface TimeTickListener {
+    interface TimeTickListener {
         void onTimeTick();
     }
 

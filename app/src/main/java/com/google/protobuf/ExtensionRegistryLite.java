@@ -142,10 +142,7 @@ public class ExtensionRegistryLite {
                 return false;
             }
             ObjectIntPair other = (ObjectIntPair) obj;
-            if (this.object == other.object && this.number == other.number) {
-                return true;
-            }
-            return false;
+            return this.object == other.object && this.number == other.number;
         }
     }
 }

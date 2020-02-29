@@ -166,10 +166,7 @@ class FragmentManagerViewModel extends ViewModel {
             return false;
         }
         FragmentManagerViewModel that = (FragmentManagerViewModel) o;
-        if (!this.mRetainedFragments.equals(that.mRetainedFragments) || !this.mChildNonConfigs.equals(that.mChildNonConfigs) || !this.mViewModelStores.equals(that.mViewModelStores)) {
-            return false;
-        }
-        return true;
+        return this.mRetainedFragments.equals(that.mRetainedFragments) && this.mChildNonConfigs.equals(that.mChildNonConfigs) && this.mViewModelStores.equals(that.mViewModelStores);
     }
 
     public int hashCode() {

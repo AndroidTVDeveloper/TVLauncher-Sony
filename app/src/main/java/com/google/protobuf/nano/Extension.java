@@ -104,10 +104,7 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
             return false;
         }
         Extension<?, ?> that = (Extension) other;
-        if (this.type == that.type && this.clazz == that.clazz && this.tag == that.tag && this.repeated == that.repeated) {
-            return true;
-        }
-        return false;
+        return this.type == that.type && this.clazz == that.clazz && this.tag == that.tag && this.repeated == that.repeated;
     }
 
     public int hashCode() {
@@ -178,13 +175,13 @@ public class Extension<M extends ExtendableMessageNano<M>, T> {
             }
         } catch (InstantiationException e) {
             String valueOf = String.valueOf(componentType);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf).length() + 33);
+            StringBuilder sb2 = new StringBuilder(valueOf.length() + 33);
             sb2.append("Error creating instance of class ");
             sb2.append(valueOf);
             throw new IllegalArgumentException(sb2.toString(), e);
         } catch (IllegalAccessException e2) {
             String valueOf2 = String.valueOf(componentType);
-            StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf2).length() + 33);
+            StringBuilder sb3 = new StringBuilder(valueOf2.length() + 33);
             sb3.append("Error creating instance of class ");
             sb3.append(valueOf2);
             throw new IllegalArgumentException(sb3.toString(), e2);

@@ -45,7 +45,7 @@ public class ResourceLoader<Data> implements ModelLoader<Integer, Data> {
                 return null;
             }
             String valueOf = String.valueOf(model);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf).length() + 30);
+            StringBuilder sb2 = new StringBuilder(valueOf.length() + 30);
             sb2.append("Received invalid resource id: ");
             sb2.append(valueOf);
             Log.w(TAG, sb2.toString(), e);

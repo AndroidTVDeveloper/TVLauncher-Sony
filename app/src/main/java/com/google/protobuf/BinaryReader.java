@@ -136,10 +136,7 @@ abstract class BinaryReader implements Reader {
 
         public boolean readBool() throws IOException {
             requireWireType(0);
-            if (readVarint32() != 0) {
-                return true;
-            }
-            return false;
+            return readVarint32() != 0;
         }
 
         public String readString() throws IOException {

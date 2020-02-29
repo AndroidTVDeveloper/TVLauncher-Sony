@@ -192,7 +192,7 @@ final class ExtensionSchemaLite extends ExtensionSchema<GeneratedMessageLite.Ext
                     break;
                 default:
                     String valueOf = String.valueOf(extension.descriptor.getLiteType());
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 23);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 23);
                     sb.append("Type cannot be packed: ");
                     sb.append(valueOf);
                     throw new IllegalStateException(sb.toString());

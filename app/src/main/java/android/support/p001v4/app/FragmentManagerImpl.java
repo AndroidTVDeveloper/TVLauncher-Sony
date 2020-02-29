@@ -175,10 +175,7 @@ final class FragmentManagerImpl extends FragmentManager implements LayoutInflate
             return true;
         }
         FragmentManagerImpl parentFragmentManager = parent.mFragmentManager;
-        if (parent != parentFragmentManager.getPrimaryNavigationFragment() || !isPrimaryNavigation(parentFragmentManager.mParent)) {
-            return false;
-        }
-        return true;
+        return parent == parentFragmentManager.getPrimaryNavigationFragment() && isPrimaryNavigation(parentFragmentManager.mParent);
     }
 
     /* access modifiers changed from: package-private */

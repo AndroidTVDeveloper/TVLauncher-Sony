@@ -5,43 +5,43 @@ import android.os.Bundle;
 
 public interface AppLifecycleListener {
 
-    public interface OnActivityCreated extends AppLifecycleListener {
+    interface OnActivityCreated extends AppLifecycleListener {
         void onActivityCreated(Activity activity, Bundle bundle);
     }
 
-    public interface OnActivityDestroyed extends AppLifecycleListener {
+    interface OnActivityDestroyed extends AppLifecycleListener {
         void onActivityDestroyed(Activity activity);
     }
 
-    public interface OnActivityPaused extends AppLifecycleListener {
+    interface OnActivityPaused extends AppLifecycleListener {
         void onActivityPaused(Activity activity);
     }
 
-    public interface OnActivityResumed extends AppLifecycleListener {
+    interface OnActivityResumed extends AppLifecycleListener {
         void onActivityResumed(Activity activity);
     }
 
-    public interface OnActivitySaveInstanceState extends AppLifecycleListener {
+    interface OnActivitySaveInstanceState extends AppLifecycleListener {
         void onActivitySaveInstanceState(Activity activity, Bundle bundle);
     }
 
-    public interface OnActivityStarted extends AppLifecycleListener {
+    interface OnActivityStarted extends AppLifecycleListener {
         void onActivityStarted(Activity activity);
     }
 
-    public interface OnActivityStopped extends AppLifecycleListener {
+    interface OnActivityStopped extends AppLifecycleListener {
         void onActivityStopped(Activity activity);
     }
 
-    public interface OnAppToBackground extends AppLifecycleListener {
+    interface OnAppToBackground extends AppLifecycleListener {
         void onAppToBackground(Activity activity);
     }
 
-    public interface OnAppToForeground extends AppLifecycleListener {
+    interface OnAppToForeground extends AppLifecycleListener {
         void onAppToForeground(Activity activity);
     }
 
-    public interface OnTrimMemory extends AppLifecycleListener {
+    interface OnTrimMemory extends AppLifecycleListener {
         void onTrimMemory(int i);
     }
 }

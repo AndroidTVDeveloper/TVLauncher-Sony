@@ -108,7 +108,7 @@ class RefreshTifInputsTask extends AsyncTask<Void, Void, Void> {
             }
         } catch (IllegalArgumentException e) {
             String valueOf = String.valueOf(input.getId());
-            Log.e(TAG, valueOf.length() != 0 ? "Failed to get state for Input, dropping entry. Id = ".concat(valueOf) : new String("Failed to get state for Input, dropping entry. Id = "));
+            Log.e(TAG, valueOf.length() != 0 ? "Failed to get state for Input, dropping entry. Id = ".concat(valueOf) : "Failed to get state for Input, dropping entry. Id = ");
         }
     }
 

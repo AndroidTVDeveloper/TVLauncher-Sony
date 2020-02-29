@@ -38,7 +38,7 @@ final class DrawableToBitmapConverter {
         if (width == Integer.MIN_VALUE && drawable.getIntrinsicWidth() <= 0) {
             if (Log.isLoggable(TAG, 5)) {
                 String valueOf = String.valueOf(drawable);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 95);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 95);
                 sb.append("Unable to draw ");
                 sb.append(valueOf);
                 sb.append(" to Bitmap with Target.SIZE_ORIGINAL because the Drawable has no intrinsic width");
@@ -63,7 +63,7 @@ final class DrawableToBitmapConverter {
         } else {
             if (Log.isLoggable(TAG, 5)) {
                 String valueOf2 = String.valueOf(drawable);
-                StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 96);
+                StringBuilder sb2 = new StringBuilder(valueOf2.length() + 96);
                 sb2.append("Unable to draw ");
                 sb2.append(valueOf2);
                 sb2.append(" to Bitmap with Target.SIZE_ORIGINAL because the Drawable has no intrinsic height");

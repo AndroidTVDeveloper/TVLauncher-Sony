@@ -83,10 +83,7 @@ class WrappedDrawableApi21 extends WrappedDrawableApi14 {
             return false;
         }
         Drawable drawable = this.mDrawable;
-        if ((drawable instanceof GradientDrawable) || (drawable instanceof DrawableContainer) || (drawable instanceof InsetDrawable) || (drawable instanceof RippleDrawable)) {
-            return true;
-        }
-        return false;
+        return (drawable instanceof GradientDrawable) || (drawable instanceof DrawableContainer) || (drawable instanceof InsetDrawable) || (drawable instanceof RippleDrawable);
     }
 
     public boolean isProjected() {
@@ -104,7 +101,7 @@ class WrappedDrawableApi21 extends WrappedDrawableApi14 {
     private void findAndCacheIsProjectedDrawableMethod() {
         if (sIsProjectedDrawableMethod == null) {
             try {
-                sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+                sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected");
             } catch (Exception ex) {
                 Log.w(TAG, "Failed to retrieve Drawable#isProjected() method", ex);
             }

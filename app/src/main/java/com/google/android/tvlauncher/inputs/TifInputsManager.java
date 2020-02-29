@@ -155,7 +155,7 @@ public class TifInputsManager implements InputsManager {
         if (asyncTask != null) {
             asyncTask.cancel(true);
         }
-        this.refreshTask = new RefreshTifInputsTask(this.tvManager, this.context, this.loadedDataCallback).execute(new Void[0]);
+        this.refreshTask = new RefreshTifInputsTask(this.tvManager, this.context, this.loadedDataCallback).execute();
     }
 
     public void loadInputs() {
@@ -378,7 +378,7 @@ public class TifInputsManager implements InputsManager {
             }
         } catch (IllegalArgumentException e) {
             String valueOf = String.valueOf(input.getId());
-            Log.e(TAG, valueOf.length() != 0 ? "Failed to get state for Input, dropping entry. Id = ".concat(valueOf) : new String("Failed to get state for Input, dropping entry. Id = "));
+            Log.e(TAG, valueOf.length() != 0 ? "Failed to get state for Input, dropping entry. Id = ".concat(valueOf) : "Failed to get state for Input, dropping entry. Id = ");
         }
     }
 
@@ -548,10 +548,7 @@ public class TifInputsManager implements InputsManager {
             return true;
         }
         try {
-            if ((pkgMan.getApplicationInfo(input.getServiceInfo().packageName, 0).flags & 129) == 0) {
-                return false;
-            }
-            return true;
+            return (pkgMan.getApplicationInfo(input.getServiceInfo().packageName, 0).flags & 129) != 0;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

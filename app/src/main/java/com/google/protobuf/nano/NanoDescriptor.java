@@ -121,7 +121,7 @@ public final class NanoDescriptor {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private GenerateAs(int value2) {
+        GenerateAs(int value2) {
             this.value = value2;
         }
     }
@@ -255,7 +255,7 @@ public final class NanoDescriptor {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private Munger(int value2) {
+        Munger(int value2) {
             this.value = value2;
         }
     }

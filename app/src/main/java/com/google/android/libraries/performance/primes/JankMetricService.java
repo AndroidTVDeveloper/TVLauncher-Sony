@@ -50,7 +50,7 @@ final class JankMetricService extends AbstractMetricService {
             return null;
         }
         if (eventName == null) {
-            PrimesLog.m56w(TAG, "Can't start an event with null name.", new Object[0]);
+            PrimesLog.m56w(TAG, "Can't start an event with null name.");
             return null;
         }
         JankEvent event = new JankEvent(this.maxAcceptedFrameRenderTimeMs);
@@ -68,14 +68,14 @@ final class JankMetricService extends AbstractMetricService {
         JankEvent event;
         if (shouldRecord()) {
             if (eventName == null) {
-                PrimesLog.m56w(TAG, "Can't stop an event with null name.", new Object[0]);
+                PrimesLog.m56w(TAG, "Can't stop an event with null name.");
                 return;
             }
             synchronized (this) {
                 event = this.jankEvents.remove(eventName);
             }
             if (event == null) {
-                PrimesLog.m56w(TAG, "Can't stop an event that was never started or has been stopped already.", new Object[0]);
+                PrimesLog.m56w(TAG, "Can't stop an event that was never started or has been stopped already.");
                 return;
             }
             event.stop();
@@ -97,7 +97,7 @@ final class JankMetricService extends AbstractMetricService {
                                     metric.clearMetricExtension();
                                 }
                             } catch (Exception e) {
-                                PrimesLog.m55w(JankMetricService.TAG, "Exception while getting jank metric extension!", e, new Object[0]);
+                                PrimesLog.m55w(JankMetricService.TAG, "Exception while getting jank metric extension!", e);
                             }
                         } else {
                             metric.setMetricExtension(metricExtension);
@@ -112,7 +112,7 @@ final class JankMetricService extends AbstractMetricService {
     /* access modifiers changed from: package-private */
     public void cancel(String eventName) {
         if (eventName == null) {
-            PrimesLog.m56w(TAG, "Can't cancel an event with null name.", new Object[0]);
+            PrimesLog.m56w(TAG, "Can't cancel an event with null name.");
             return;
         }
         synchronized (this) {

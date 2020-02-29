@@ -324,7 +324,7 @@ public final class Binder {
     }
 
     private Object getConstant(String key, Object defaultValue) {
-        beginTrace("GetConstant", key, new Object[0]);
+        beginTrace("GetConstant", key);
         try {
             return getConstantInternal(key, defaultValue);
         } finally {
@@ -424,13 +424,13 @@ public final class Binder {
             if (Flags.get(EXTRA_VERIFICATION)) {
                 if (this.multiBindings.containsKey(key)) {
                     String valueOf = String.valueOf(key);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 42);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 42);
                     sb.append("Attempt to single-bind multibound object: ");
                     sb.append(valueOf);
                     throw new IllegalStateException(sb.toString());
                 } else if (this.keyBindings.containsKey(key)) {
                     String valueOf2 = String.valueOf(key);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 71);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 71);
                     sb2.append("Attempt to single-bind an object that is already multibound with keys: ");
                     sb2.append(valueOf2);
                     throw new IllegalStateException(sb2.toString());
@@ -441,14 +441,14 @@ public final class Binder {
                 this.bindings.put(key, value);
             } else if (boundInstance == UNBOUND) {
                 String valueOf3 = String.valueOf(key);
-                StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf3).length() + 51);
+                StringBuilder sb3 = new StringBuilder(valueOf3.length() + 51);
                 sb3.append("Bind call too late - someone already tried to get: ");
                 sb3.append(valueOf3);
                 throw new LateBindingException(sb3.toString());
             } else {
                 String valueOf4 = String.valueOf(key);
                 String valueOf5 = String.valueOf(boundInstance);
-                StringBuilder sb4 = new StringBuilder(String.valueOf(valueOf4).length() + 21 + String.valueOf(valueOf5).length());
+                StringBuilder sb4 = new StringBuilder(valueOf4.length() + 21 + valueOf5.length());
                 sb4.append("Duplicate binding: ");
                 sb4.append(valueOf4);
                 sb4.append(", ");
@@ -464,13 +464,13 @@ public final class Binder {
             if (Flags.get(EXTRA_VERIFICATION)) {
                 if (this.bindings.containsKey(type)) {
                     String valueOf = String.valueOf(type);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 42);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 42);
                     sb.append("Attempt to multibind single-bound object: ");
                     sb.append(valueOf);
                     throw new IllegalStateException(sb.toString());
                 } else if (this.keyBindings.containsKey(type)) {
                     String valueOf2 = String.valueOf(type);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 85);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 85);
                     sb2.append("Attempt to multibind an object without a key, even though other instances have keys: ");
                     sb2.append(valueOf2);
                     throw new IllegalStateException(sb2.toString());
@@ -493,7 +493,7 @@ public final class Binder {
                 if (this.bindings.containsKey(type)) {
                     String valueOf = String.valueOf(type);
                     String valueOf2 = String.valueOf(key);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 79 + String.valueOf(valueOf2).length());
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 79 + valueOf2.length());
                     sb.append("Attempt to multibind with a key even though the type is already single-bound: ");
                     sb.append(valueOf);
                     sb.append(" ");
@@ -503,7 +503,7 @@ public final class Binder {
                     if (!this.multiBindings.get(type).isEmpty()) {
                         String valueOf3 = String.valueOf(type);
                         String valueOf4 = String.valueOf(key);
-                        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf3).length() + 87 + String.valueOf(valueOf4).length());
+                        StringBuilder sb2 = new StringBuilder(valueOf3.length() + 87 + valueOf4.length());
                         sb2.append("Attempt to multi-bind with a key even though multibound instances without keys exist: ");
                         sb2.append(valueOf3);
                         sb2.append(" ");
@@ -523,7 +523,7 @@ public final class Binder {
             } else if (boundInstance == UNBOUND) {
                 String valueOf5 = String.valueOf(type);
                 String valueOf6 = String.valueOf(key);
-                StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf5).length() + 52 + String.valueOf(valueOf6).length());
+                StringBuilder sb3 = new StringBuilder(valueOf5.length() + 52 + valueOf6.length());
                 sb3.append("Bind call too late - someone already tried to get: ");
                 sb3.append(valueOf5);
                 sb3.append(" ");
@@ -533,7 +533,7 @@ public final class Binder {
                 String valueOf7 = String.valueOf(type);
                 String valueOf8 = String.valueOf(key);
                 String valueOf9 = String.valueOf(boundInstance);
-                StringBuilder sb4 = new StringBuilder(String.valueOf(valueOf7).length() + 22 + String.valueOf(valueOf8).length() + String.valueOf(valueOf9).length());
+                StringBuilder sb4 = new StringBuilder(valueOf7.length() + 22 + valueOf8.length() + valueOf9.length());
                 sb4.append("Duplicate binding: ");
                 sb4.append(valueOf7);
                 sb4.append(" ");
@@ -1109,7 +1109,7 @@ public final class Binder {
             return binder;
         }
         String valueOf = String.valueOf(object);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 43);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 43);
         sb.append("BinderContext must not return null Binder: ");
         sb.append(valueOf);
         throw new IllegalStateException(sb.toString());
@@ -1117,7 +1117,7 @@ public final class Binder {
 
     private static void beginTrace(String method, Class<?> type) {
         if (isTracingEnabled()) {
-            beginTrace(method, type.getSimpleName(), new Object[0]);
+            beginTrace(method, type.getSimpleName());
         }
     }
 
@@ -1137,7 +1137,7 @@ public final class Binder {
         String traceSectionName = null;
         if (Flags.get(DETAIL_TRACE_ENABLED)) {
             String format = String.format(label, formatArgs);
-            StringBuilder sb = new StringBuilder(String.valueOf(method).length() + 10 + String.valueOf(format).length());
+            StringBuilder sb = new StringBuilder(String.valueOf(method).length() + 10 + format.length());
             sb.append("Binder.");
             sb.append(method);
             sb.append(" - ");
@@ -1145,7 +1145,7 @@ public final class Binder {
             traceSectionName = sb.toString();
         } else if (Flags.get(TRACE_ENABLED)) {
             String valueOf = String.valueOf(method);
-            traceSectionName = valueOf.length() != 0 ? "Binder.".concat(valueOf) : new String("Binder.");
+            traceSectionName = valueOf.length() != 0 ? "Binder.".concat(valueOf) : "Binder.";
         }
         if (traceSectionName != null) {
             TraceCompat.beginSection(traceSectionName.substring(0, Math.min(traceSectionName.length(), 127)));

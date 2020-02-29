@@ -249,7 +249,7 @@ public final class TvlauncherLogEnum {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private TvLauncherEventCode(int value2) {
+        TvLauncherEventCode(int value2) {
             this.value = value2;
         }
     }

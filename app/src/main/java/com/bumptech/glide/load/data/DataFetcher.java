@@ -5,7 +5,7 @@ import com.bumptech.glide.load.DataSource;
 
 public interface DataFetcher<T> {
 
-    public interface DataCallback<T> {
+    interface DataCallback<T> {
         void onDataReady(T t);
 
         void onLoadFailed(Exception exc);

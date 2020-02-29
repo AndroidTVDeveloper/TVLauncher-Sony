@@ -74,7 +74,7 @@ final class PrimesForPrimesLogger {
             PrimesForPrimesMeasurements.PrimesApiMeasurement api = PrimesForPrimesMeasurements.apiMeasurement();
             return messageFor(new TimerBuilder().addTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.PRIMES_INITIALIZE, api.getPrimesInitializeStartTime(), api.getPrimesInitializeEndTime()).addTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.INIT_ALL, init.getInitStartTime(), init.getInitEndTime()).addTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.INIT_SHUTDOWN, init.getInitStartTime(), init.getShutdownInitializedTime()).addTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.INIT_CONFIGS, init.getShutdownInitializedTime(), init.getConfigsCreatedTime()).addTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.INIT_FLAGS, init.getConfigsCreatedTime(), init.getFlagsCreatedTime()).addWallTimer(PrimesForPrimesEventProto.PrimesForPrimesEvent.INIT_DELAY, api.getPrimesInitializeStartTime(), init.getInitStartTime()).build());
         } catch (RuntimeException ex) {
-            PrimesLog.m55w(TAG, "Exception getting Primes Init timers", ex, new Object[0]);
+            PrimesLog.m55w(TAG, "Exception getting Primes Init timers", ex);
             return null;
         }
     }

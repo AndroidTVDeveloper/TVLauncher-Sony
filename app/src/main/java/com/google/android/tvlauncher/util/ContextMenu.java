@@ -265,15 +265,8 @@ public class ContextMenu {
 
     private boolean testBit(int bitSet, int mask) {
         if (mask == 0) {
-            if (bitSet == 0) {
-                return true;
-            }
-            return false;
-        } else if ((bitSet & mask) == mask) {
-            return true;
-        } else {
-            return false;
-        }
+            return bitSet == 0;
+        } else return (bitSet & mask) == mask;
     }
 
     private void dimBackground() {

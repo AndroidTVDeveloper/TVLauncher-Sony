@@ -16,13 +16,13 @@ public class FragmentEventLogger implements EventLogger {
         Activity activity = this.fragment.getActivity();
         if (activity == null) {
             String valueOf = String.valueOf(event);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 60);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 60);
             sb.append("Cannot log fragment event: not attached to activity. Event: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
         } else if (!(activity instanceof EventLoggerProvider)) {
             String valueOf2 = String.valueOf(event);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 74);
+            StringBuilder sb2 = new StringBuilder(valueOf2.length() + 74);
             sb2.append("Cannot log fragment event: activity is not an EventLoggerProvider. Event: ");
             sb2.append(valueOf2);
             Log.e(TAG, sb2.toString());

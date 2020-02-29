@@ -144,10 +144,7 @@ public class SearchView extends FrameLayout implements LaunchItemsManager.Search
         } catch (PackageManager.NameNotFoundException e) {
             info = null;
         }
-        if (info != null) {
-            return true;
-        }
-        return false;
+        return info != null;
     }
 
     public void onFinishInflate() {
@@ -485,7 +482,7 @@ public class SearchView extends FrameLayout implements LaunchItemsManager.Search
             return true;
         } catch (ActivityNotFoundException e) {
             String valueOf = String.valueOf(intent);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 27);
             sb.append("Exception launching intent ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString(), e);
@@ -510,10 +507,7 @@ public class SearchView extends FrameLayout implements LaunchItemsManager.Search
     }
 
     private static boolean isConfirmKey(int keyCode) {
-        if (keyCode == 23 || keyCode == 62 || keyCode == 66 || keyCode == 96 || keyCode == 160) {
-            return true;
-        }
-        return false;
+        return keyCode == 23 || keyCode == 62 || keyCode == 66 || keyCode == 96 || keyCode == 160;
     }
 
     public void updateSearchSuggestions(String[] suggestions) {

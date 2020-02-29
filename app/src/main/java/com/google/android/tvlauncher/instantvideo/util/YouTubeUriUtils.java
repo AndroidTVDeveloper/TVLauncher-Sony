@@ -18,13 +18,13 @@ public class YouTubeUriUtils {
 
     static {
         String valueOf = String.valueOf(YOUTUBE_ID_MATCHER);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 11);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 11);
         sb.append("^/video/(");
         sb.append(valueOf);
         sb.append(")$");
         YOUTUBE_VIDEO_PATH_MATCHER = Pattern.compile(sb.toString());
         String valueOf2 = String.valueOf(YOUTUBE_ID_MATCHER);
-        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 5);
+        StringBuilder sb2 = new StringBuilder(valueOf2.length() + 5);
         sb2.append("^/(");
         sb2.append(valueOf2);
         sb2.append(")$");

@@ -2250,7 +2250,7 @@ public final class TvlauncherClientLog {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Type(int value2) {
+            Type(int value2) {
                 this.value = value2;
             }
         }
@@ -2608,7 +2608,7 @@ public final class TvlauncherClientLog {
                     return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
                 }
 
-                private PreviewType(int value2) {
+                PreviewType(int value2) {
                     this.value = value2;
                 }
             }
@@ -2971,7 +2971,7 @@ public final class TvlauncherClientLog {
                     return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
                 }
 
-                private Type(int value2) {
+                Type(int value2) {
                     this.value = value2;
                 }
             }
@@ -4017,7 +4017,7 @@ public final class TvlauncherClientLog {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private DenialReason(int value2) {
+            DenialReason(int value2) {
                 this.value = value2;
             }
         }
@@ -5286,7 +5286,7 @@ public final class TvlauncherClientLog {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Importance(int value2) {
+            Importance(int value2) {
                 this.value = value2;
             }
         }
@@ -7612,7 +7612,7 @@ public final class TvlauncherClientLog {
                 return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
             }
 
-            private Type(int value2) {
+            Type(int value2) {
                 this.value = value2;
             }
         }

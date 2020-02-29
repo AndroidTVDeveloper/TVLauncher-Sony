@@ -403,7 +403,7 @@ public class Toolbar extends ViewGroup {
 
     public boolean hasExpandedActionView() {
         ExpandedActionViewMenuPresenter expandedActionViewMenuPresenter = this.mExpandedMenuPresenter;
-        return (expandedActionViewMenuPresenter == null || expandedActionViewMenuPresenter.mCurrentExpandedItem == null) ? false : true;
+        return expandedActionViewMenuPresenter != null && expandedActionViewMenuPresenter.mCurrentExpandedItem != null;
     }
 
     public void collapseActionView() {
@@ -1677,7 +1677,7 @@ public class Toolbar extends ViewGroup {
     }
 
     private boolean shouldLayout(View view) {
-        return (view == null || view.getParent() != this || view.getVisibility() == 8) ? false : true;
+        return view != null && view.getParent() == this && view.getVisibility() != 8;
     }
 
     private int getHorizontalMargins(View v) {

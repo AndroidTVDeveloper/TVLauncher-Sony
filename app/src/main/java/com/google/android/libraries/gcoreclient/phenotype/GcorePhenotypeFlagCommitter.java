@@ -3,7 +3,7 @@ package com.google.android.libraries.gcoreclient.phenotype;
 @Deprecated
 public interface GcorePhenotypeFlagCommitter {
 
-    public interface ConfigurationsHandler {
+    interface ConfigurationsHandler {
         void handleConfigurations(GcoreConfigurations gcoreConfigurations);
     }
 

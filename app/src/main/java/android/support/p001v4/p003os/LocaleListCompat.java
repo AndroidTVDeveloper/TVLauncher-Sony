@@ -6,7 +6,7 @@ import java.util.Locale;
 
 /* renamed from: android.support.v4.os.LocaleListCompat */
 public final class LocaleListCompat {
-    private static final LocaleListCompat sEmptyLocaleList = create(new Locale[0]);
+    private static final LocaleListCompat sEmptyLocaleList = create();
     private LocaleListInterface mImpl;
 
     private LocaleListCompat(LocaleListInterface impl) {

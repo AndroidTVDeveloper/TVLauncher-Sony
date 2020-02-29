@@ -133,15 +133,8 @@ public class PrecomputedTextCompat implements Spannable {
                 return false;
             }
             if (this.mPaint.getTypeface() == null) {
-                if (other.getTextPaint().getTypeface() != null) {
-                    return false;
-                }
-                return true;
-            } else if (!this.mPaint.getTypeface().equals(other.getTextPaint().getTypeface())) {
-                return false;
-            } else {
-                return true;
-            }
+                return other.getTextPaint().getTypeface() == null;
+            } else return this.mPaint.getTypeface().equals(other.getTextPaint().getTypeface());
         }
 
         public boolean equals(Object o) {
@@ -155,10 +148,7 @@ public class PrecomputedTextCompat implements Spannable {
             if (!equalsWithoutTextDirection(other)) {
                 return false;
             }
-            if (Build.VERSION.SDK_INT < 18 || this.mTextDir == other.getTextDirection()) {
-                return true;
-            }
-            return false;
+            return Build.VERSION.SDK_INT < 18 || this.mTextDir == other.getTextDirection();
         }
 
         public int hashCode() {

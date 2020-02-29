@@ -42,7 +42,7 @@ final class PrimesStartupMetricHandler implements AppLifecycleListener.OnAppToBa
             recordStartupTrace(startupMeasure);
             return;
         }
-        PrimesLog.m52i(TAG, "missing firstDraw timestamp", new Object[0]);
+        PrimesLog.m52i(TAG, "missing firstDraw timestamp");
     }
 
     private static long getStartTimeMs(PrimesStartupMeasure startupMeasure) {

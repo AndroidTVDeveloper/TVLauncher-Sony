@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 public @interface RestrictTo {
 
-    public enum Scope {
+    enum Scope {
         LIBRARY,
         LIBRARY_GROUP,
         LIBRARY_GROUP_PREFIX,

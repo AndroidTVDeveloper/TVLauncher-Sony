@@ -81,7 +81,7 @@ class ResourceCacheGenerator implements DataFetcherGenerator, DataFetcher.DataCa
         } else {
             String valueOf = String.valueOf(this.helper.getModelClass());
             String valueOf2 = String.valueOf(this.helper.getTranscodeClass());
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 38 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 38 + valueOf2.length());
             sb.append("Failed to find any load path from ");
             sb.append(valueOf);
             sb.append(" to ");

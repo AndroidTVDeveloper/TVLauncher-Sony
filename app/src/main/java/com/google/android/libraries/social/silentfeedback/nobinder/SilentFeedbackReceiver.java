@@ -73,7 +73,7 @@ public final class SilentFeedbackReceiver extends BroadcastReceiver {
         }).addOnFailureListener(new OnFailureListener(this) {
             public void onFailure(Exception e) {
                 String valueOf = String.valueOf(e);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 54);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 54);
                 sb.append("FeedbackClient silent feedback failed with exception: ");
                 sb.append(valueOf);
                 Log.e(SilentFeedbackReceiver.TAG, sb.toString());

@@ -99,10 +99,7 @@ public class MarketUpdateReceiver extends BroadcastReceiver {
         PackageManager pm = context.getPackageManager();
         try {
             pm.getPackageInfo(pkgName, 1);
-            if (pm.getLeanbackLaunchIntentForPackage(pkgName) != null) {
-                return true;
-            }
-            return false;
+            return pm.getLeanbackLaunchIntentForPackage(pkgName) != null;
         } catch (PackageManager.NameNotFoundException e) {
             return true;
         }

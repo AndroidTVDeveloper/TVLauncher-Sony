@@ -33,10 +33,7 @@ class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionMan
             if (this.mContext.getPackageManager().getApplicationInfo(userInfo.getPackageName(), 0) == null) {
                 return false;
             }
-            if (isPermissionGranted(userInfo, PERMISSION_STATUS_BAR_SERVICE) || isPermissionGranted(userInfo, PERMISSION_MEDIA_CONTENT_CONTROL) || userInfo.getUid() == 1000 || isEnabledNotificationListener(userInfo)) {
-                return true;
-            }
-            return false;
+            return isPermissionGranted(userInfo, PERMISSION_STATUS_BAR_SERVICE) || isPermissionGranted(userInfo, PERMISSION_MEDIA_CONTENT_CONTROL) || userInfo.getUid() == 1000 || isEnabledNotificationListener(userInfo);
         } catch (PackageManager.NameNotFoundException e) {
             if (DEBUG) {
                 Log.d(TAG, "Package " + userInfo.getPackageName() + " doesn't exist");
@@ -47,15 +44,8 @@ class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionMan
 
     private boolean isPermissionGranted(MediaSessionManager.RemoteUserInfoImpl userInfo, String permission) {
         if (userInfo.getPid() < 0) {
-            if (this.mContext.getPackageManager().checkPermission(permission, userInfo.getPackageName()) == 0) {
-                return true;
-            }
-            return false;
-        } else if (this.mContext.checkPermission(permission, userInfo.getPid(), userInfo.getUid()) == 0) {
-            return true;
-        } else {
-            return false;
-        }
+            return this.mContext.getPackageManager().checkPermission(permission, userInfo.getPackageName()) == 0;
+        } else return this.mContext.checkPermission(permission, userInfo.getPid(), userInfo.getUid()) == 0;
     }
 
     /* access modifiers changed from: package-private */
@@ -107,15 +97,8 @@ class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionMan
             }
             RemoteUserInfoImplBase otherUserInfo = (RemoteUserInfoImplBase) obj;
             if (this.mPid == -1 || otherUserInfo.mPid == -1) {
-                if (!TextUtils.equals(this.mPackageName, otherUserInfo.mPackageName) || this.mUid != otherUserInfo.mUid) {
-                    return false;
-                }
-                return true;
-            } else if (TextUtils.equals(this.mPackageName, otherUserInfo.mPackageName) && this.mPid == otherUserInfo.mPid && this.mUid == otherUserInfo.mUid) {
-                return true;
-            } else {
-                return false;
-            }
+                return TextUtils.equals(this.mPackageName, otherUserInfo.mPackageName) && this.mUid == otherUserInfo.mUid;
+            } else return TextUtils.equals(this.mPackageName, otherUserInfo.mPackageName) && this.mPid == otherUserInfo.mPid && this.mUid == otherUserInfo.mUid;
         }
 
         public int hashCode() {

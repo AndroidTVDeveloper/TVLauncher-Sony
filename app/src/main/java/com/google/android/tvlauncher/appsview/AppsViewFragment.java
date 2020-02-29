@@ -212,7 +212,7 @@ public class AppsViewFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
                 String valueOf = String.valueOf(packageName);
-                intent.setData(Uri.parse(valueOf.length() != 0 ? "package:".concat(valueOf) : new String("package:")));
+                intent.setData(Uri.parse(valueOf.length() != 0 ? "package:".concat(valueOf) : "package:"));
                 AppsViewFragment.this.startActivity(intent);
             }
 
@@ -226,7 +226,7 @@ public class AppsViewFragment extends Fragment {
                     Intent intent2 = new Intent();
                     intent2.setAction("android.intent.action.UNINSTALL_PACKAGE");
                     String valueOf = String.valueOf(packageName);
-                    intent2.setData(Uri.parse(valueOf.length() != 0 ? "package:".concat(valueOf) : new String("package:")));
+                    intent2.setData(Uri.parse(valueOf.length() != 0 ? "package:".concat(valueOf) : "package:"));
                     AppsViewFragment.this.startActivity(intent2);
                 }
                 AppsViewFragment.this.forceFinishListener.onForceFinishAnimation(false);
@@ -244,7 +244,7 @@ public class AppsViewFragment extends Fragment {
                 } catch (ActivityNotFoundException | SecurityException e) {
                     Toast.makeText(AppsViewFragment.this.getContext(), C1167R.string.failed_launch, 0).show();
                     String valueOf = String.valueOf(e);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 24);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 24);
                     sb.append("Cannot start activity : ");
                     sb.append(valueOf);
                     Log.e(AppsViewFragment.TAG, sb.toString());
@@ -274,7 +274,7 @@ public class AppsViewFragment extends Fragment {
                     Toast.makeText(AppsViewFragment.this.getContext(), C1167R.string.failed_launch, 0).show();
                     String str = LogUtils.getPackage(intent);
                     String valueOf = String.valueOf(e);
-                    StringBuilder sb = new StringBuilder(String.valueOf(str).length() + 44 + String.valueOf(valueOf).length());
+                    StringBuilder sb = new StringBuilder(String.valueOf(str).length() + 44 + valueOf.length());
                     sb.append("Cannot start store with package: ");
                     sb.append(str);
                     sb.append(", due to : ");

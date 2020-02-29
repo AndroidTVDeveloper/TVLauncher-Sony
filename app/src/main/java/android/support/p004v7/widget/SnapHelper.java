@@ -41,10 +41,7 @@ public abstract class SnapHelper extends RecyclerView.OnFlingListener {
             return false;
         }
         int minFlingVelocity = this.mRecyclerView.getMinFlingVelocity();
-        if ((Math.abs(velocityY) > minFlingVelocity || Math.abs(velocityX) > minFlingVelocity) && snapFromFling(layoutManager, velocityX, velocityY)) {
-            return true;
-        }
-        return false;
+        return (Math.abs(velocityY) > minFlingVelocity || Math.abs(velocityX) > minFlingVelocity) && snapFromFling(layoutManager, velocityX, velocityY);
     }
 
     public void attachToRecyclerView(RecyclerView recyclerView) throws IllegalStateException {

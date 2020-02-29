@@ -371,7 +371,7 @@ public class NotificationCompat {
             notification.ledOnMS = onMs;
             notification.ledOffMS = offMs;
             int i = 1;
-            boolean showLights = (notification.ledOnMS == 0 || this.mNotification.ledOffMS == 0) ? false : true;
+            boolean showLights = notification.ledOnMS != 0 && this.mNotification.ledOffMS != 0;
             Notification notification2 = this.mNotification;
             int i2 = notification2.flags & -2;
             if (!showLights) {
@@ -1006,7 +1006,7 @@ public class NotificationCompat {
         }
 
         private Bitmap createIconWithBackground(int iconId, int size, int iconSize, int color) {
-            Bitmap coloredBitmap = createColoredBitmap(C0014R.C0015drawable.notification_icon_background, color == 0 ? 0 : color, size);
+            Bitmap coloredBitmap = createColoredBitmap(C0014R.C0015drawable.notification_icon_background, color, size);
             Canvas canvas = new Canvas(coloredBitmap);
             Drawable icon = this.mBuilder.mContext.getResources().getDrawable(iconId).mutate();
             icon.setFilterBitmap(true);
@@ -1214,11 +1214,7 @@ public class NotificationCompat {
                     return bool.booleanValue();
                 }
                 return false;
-            } else if (this.mConversationTitle != null) {
-                return true;
-            } else {
-                return false;
-            }
+            } else return this.mConversationTitle != null;
         }
 
         public static MessagingStyle extractMessagingStyleFromNotification(Notification notification) {
@@ -3052,7 +3048,7 @@ public class NotificationCompat {
         } else {
             semanticAction = action.getExtras().getInt("android.support.action.semanticAction", 0);
         }
-        return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputs, null, allowGeneratedReplies, semanticAction, showsUserInterface, Build.VERSION.SDK_INT >= 29 ? action.isContextual() : false);
+        return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputs, null, allowGeneratedReplies, semanticAction, showsUserInterface, Build.VERSION.SDK_INT >= 29 && action.isContextual());
     }
 
     public static List<Action> getInvisibleActions(Notification notification) {
@@ -3080,10 +3076,7 @@ public class NotificationCompat {
 
     public static boolean getLocalOnly(Notification notification) {
         if (Build.VERSION.SDK_INT >= 20) {
-            if ((notification.flags & 256) != 0) {
-                return true;
-            }
-            return false;
+            return (notification.flags & 256) != 0;
         } else if (Build.VERSION.SDK_INT >= 19) {
             return notification.extras.getBoolean(NotificationCompatExtras.EXTRA_LOCAL_ONLY);
         } else {
@@ -3109,10 +3102,7 @@ public class NotificationCompat {
 
     public static boolean isGroupSummary(Notification notification) {
         if (Build.VERSION.SDK_INT >= 20) {
-            if ((notification.flags & 512) != 0) {
-                return true;
-            }
-            return false;
+            return (notification.flags & 512) != 0;
         } else if (Build.VERSION.SDK_INT >= 19) {
             return notification.extras.getBoolean(NotificationCompatExtras.EXTRA_GROUP_SUMMARY);
         } else {

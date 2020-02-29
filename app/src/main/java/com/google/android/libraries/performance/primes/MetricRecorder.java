@@ -69,7 +69,7 @@ class MetricRecorder {
     public void recordInternal(String customEventName, boolean isEventNameConstant, SystemHealthProto.SystemHealthMetric metric, ExtensionMetric.MetricExtension metricExtension, String accountableComponentName) {
         if (metric == null) {
             String valueOf = String.valueOf(customEventName);
-            PrimesLog.m56w(TAG, valueOf.length() != 0 ? "metric is null, skipping recorded metric for event: ".concat(valueOf) : new String("metric is null, skipping recorded metric for event: "), new Object[0]);
+            PrimesLog.m56w(TAG, valueOf.length() != 0 ? "metric is null, skipping recorded metric for event: ".concat(valueOf) : "metric is null, skipping recorded metric for event: ");
             return;
         }
         SystemHealthProto.SystemHealthMetric.Builder metricBuilder = (SystemHealthProto.SystemHealthMetric.Builder) this.metricStamperSupplier.get().stamp(metric).toBuilder();

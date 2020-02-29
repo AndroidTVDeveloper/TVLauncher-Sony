@@ -205,10 +205,7 @@ public final class UnknownFieldSetLite {
         }
         UnknownFieldSetLite other = (UnknownFieldSetLite) obj;
         int i = this.count;
-        if (i != other.count || !equals(this.tags, other.tags, i) || !equals(this.objects, other.objects, this.count)) {
-            return false;
-        }
-        return true;
+        return i == other.count && equals(this.tags, other.tags, i) && equals(this.objects, other.objects, this.count);
     }
 
     private static int hashCode(int[] tags2, int count2) {

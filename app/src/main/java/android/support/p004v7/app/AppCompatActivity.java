@@ -276,10 +276,7 @@ public class AppCompatActivity extends FragmentActivity implements AppCompatCall
 
     private boolean performMenuItemShortcut(int keycode, KeyEvent event) {
         Window currentWindow;
-        if (Build.VERSION.SDK_INT >= 26 || event.isCtrlPressed() || KeyEvent.metaStateHasNoModifiers(event.getMetaState()) || event.getRepeatCount() != 0 || KeyEvent.isModifierKey(event.getKeyCode()) || (currentWindow = getWindow()) == null || currentWindow.getDecorView() == null || !currentWindow.getDecorView().dispatchKeyShortcutEvent(event)) {
-            return false;
-        }
-        return true;
+        return Build.VERSION.SDK_INT < 26 && !event.isCtrlPressed() && !KeyEvent.metaStateHasNoModifiers(event.getMetaState()) && event.getRepeatCount() == 0 && !KeyEvent.isModifierKey(event.getKeyCode()) && (currentWindow = getWindow()) != null && currentWindow.getDecorView() != null && currentWindow.getDecorView().dispatchKeyShortcutEvent(event);
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

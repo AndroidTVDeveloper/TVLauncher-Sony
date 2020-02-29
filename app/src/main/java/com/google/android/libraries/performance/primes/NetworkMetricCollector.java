@@ -153,7 +153,7 @@ final class NetworkMetricCollector {
                 }
             }
         } catch (Exception e) {
-            PrimesLog.m55w(TAG, "Exception while getting network metric extension!", e, new Object[0]);
+            PrimesLog.m55w(TAG, "Exception while getting network metric extension!", e);
         }
         return (SystemHealthProto.SystemHealthMetric) systemHealthMetric.build();
     }

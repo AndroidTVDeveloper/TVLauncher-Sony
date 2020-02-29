@@ -7,12 +7,12 @@ public final class UrlUtils {
         if (TextUtils.isEmpty(url) || url.startsWith("http:") || url.startsWith("https:")) {
             return url;
         }
-        String valueOf = String.valueOf(url);
-        return valueOf.length() != 0 ? "https:".concat(valueOf) : new String("https:");
+        String valueOf = url;
+        return valueOf.length() != 0 ? "https:".concat(valueOf) : "https:";
     }
 
     public static String getParameter(String url, String param) {
-        String queryParam = param.endsWith("=") ? param : String.valueOf(param).concat("=");
+        String queryParam = param.endsWith("=") ? param : param.concat("=");
         int start = url.indexOf(queryParam);
         if (start == -1) {
             return null;

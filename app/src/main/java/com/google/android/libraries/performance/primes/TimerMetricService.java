@@ -80,7 +80,7 @@ class TimerMetricService extends AbstractMetricService {
     public TimerEvent stopGlobal(String eventName, String newEventName, boolean isEventNameConstant, ExtensionMetric.MetricExtension metricExtension, TimerEvent.TimerStatus timerStatus) {
         TimerEvent timerEvent = this.timerEvents.remove(eventName);
         if (timerEvent == null) {
-            PrimesLog.m48d(TAG, "Can't stop global event that was never started or has been stopped already", new Object[0]);
+            PrimesLog.m48d(TAG, "Can't stop global event that was never started or has been stopped already");
             return null;
         }
         timerEvent.stop();
@@ -105,7 +105,7 @@ class TimerMetricService extends AbstractMetricService {
     public TimerEvent cancelGlobal(String eventName) {
         TimerEvent event = this.timerEvents.remove(eventName);
         if (event == null) {
-            PrimesLog.m48d(TAG, "Can't cancel global event that was never started or has been stopped already", new Object[0]);
+            PrimesLog.m48d(TAG, "Can't cancel global event that was never started or has been stopped already");
             return TimerEvent.EMPTY_TIMER;
         }
         PrimesLog.m48d(TAG, "Cancelled global timer for event name %s", eventName);
@@ -127,7 +127,7 @@ class TimerMetricService extends AbstractMetricService {
     /* access modifiers changed from: package-private */
     public void recordTimer(TimerEvent event, String customEventName, boolean isEventNameConstant, ExtensionMetric.MetricExtension metricExtension, String accountableComponentName) {
         if (event == null || event == TimerEvent.EMPTY_TIMER || customEventName == null || customEventName.isEmpty()) {
-            PrimesLog.m48d(TAG, "Can't record an event that was never started or has been stopped already", new Object[0]);
+            PrimesLog.m48d(TAG, "Can't record an event that was never started or has been stopped already");
         } else if (isReserved(customEventName)) {
             PrimesLog.m56w(TAG, "%s is reserved event. Dropping timer.", customEventName);
         } else if (shouldRecord()) {

@@ -145,10 +145,7 @@ final class MemoryLeakMetricService extends AbstractMetricService implements App
                 return false;
             }
             long lastSentTime = MemoryLeakMetricService.this.lastSent.get();
-            if (lastSentTime == 0 || MemoryLeakMetricService.MIN_HEAP_DUMP_INTERVAL + lastSentTime <= TimeCapture.getTime()) {
-                return true;
-            }
-            return false;
+            return lastSentTime == 0 || MemoryLeakMetricService.MIN_HEAP_DUMP_INTERVAL + lastSentTime <= TimeCapture.getTime();
         }
 
         private void scheduleHprofDump() {

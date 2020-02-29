@@ -316,15 +316,9 @@ public class LinearLayoutCompat extends ViewGroup {
     /* access modifiers changed from: protected */
     public boolean hasDividerBeforeChildAt(int childIndex) {
         if (childIndex == 0) {
-            if ((this.mShowDividers & 1) != 0) {
-                return true;
-            }
-            return false;
+            return (this.mShowDividers & 1) != 0;
         } else if (childIndex == getChildCount()) {
-            if ((this.mShowDividers & 4) != 0) {
-                return true;
-            }
-            return false;
+            return (this.mShowDividers & 4) != 0;
         } else if ((this.mShowDividers & 2) == 0) {
             return false;
         } else {

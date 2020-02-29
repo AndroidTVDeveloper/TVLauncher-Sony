@@ -88,10 +88,7 @@ public class ContentRatingSystem {
             return false;
         }
         ContentRatingSystem other = (ContentRatingSystem) obj;
-        if (!this.name.equals(other.name) || !this.domain.equals(other.domain)) {
-            return false;
-        }
-        return true;
+        return this.name.equals(other.name) && this.domain.equals(other.domain);
     }
 
     public int hashCode() {
@@ -320,7 +317,7 @@ public class ContentRatingSystem {
                     throw new IllegalArgumentException("A rating should have non-empty name");
                 } else if (allDefinedSubRatings == null && this.subRatingNames.size() > 0) {
                     String valueOf = String.valueOf(this.name);
-                    throw new IllegalArgumentException(valueOf.length() != 0 ? "Invalid subrating for rating ".concat(valueOf) : new String("Invalid subrating for rating "));
+                    throw new IllegalArgumentException(valueOf.length() != 0 ? "Invalid subrating for rating ".concat(valueOf) : "Invalid subrating for rating ");
                 } else if (this.contentAgeHint >= 0) {
                     List<SubRating> subRatings = new ArrayList<>();
                     for (String subRatingId : this.subRatingNames) {

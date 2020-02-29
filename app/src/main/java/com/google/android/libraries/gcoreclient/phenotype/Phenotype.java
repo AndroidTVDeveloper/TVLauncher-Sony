@@ -8,14 +8,14 @@ import com.google.android.libraries.gcoreclient.common.api.GcoreStatus;
 
 @Deprecated
 public interface Phenotype {
-    public static final int ERROR_STALE_SNAPSHOT_TOKEN = 29501;
-    public static final String LOGGED_OUT_USER = "";
+    int ERROR_STALE_SNAPSHOT_TOKEN = 29501;
+    String LOGGED_OUT_USER = "";
 
-    public interface Factory {
+    interface Factory {
         Phenotype create();
     }
 
-    public interface GcoreConfigurationsResult extends GcoreResult {
+    interface GcoreConfigurationsResult extends GcoreResult {
         GcoreConfigurations getConfigurations();
     }
 

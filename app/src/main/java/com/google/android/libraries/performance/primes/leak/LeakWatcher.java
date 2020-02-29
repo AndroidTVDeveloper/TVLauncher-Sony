@@ -30,7 +30,7 @@ public class LeakWatcher {
             if (this.leakWatcherThread == null) {
                 this.leakWatcherThread = this.leakWatcherThreadFactory.newInstance(this.leakListener);
                 this.leakWatcherThread.start();
-                PrimesLog.m48d(TAG, "Starting leak watcher thread.", new Object[0]);
+                PrimesLog.m48d(TAG, "Starting leak watcher thread.");
             }
             this.leakWatcherThread.watch(object, name);
         }
@@ -51,7 +51,7 @@ public class LeakWatcher {
                 this.leakWatcherThread.interrupt();
                 this.leakWatcherThread = null;
             }
-            PrimesLog.m48d(TAG, "Stopping leak watcher thread.", new Object[0]);
+            PrimesLog.m48d(TAG, "Stopping leak watcher thread.");
         }
     }
 

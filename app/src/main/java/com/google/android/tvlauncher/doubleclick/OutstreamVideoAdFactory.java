@@ -24,7 +24,7 @@ public class OutstreamVideoAdFactory {
             return this.vastVideoAdFactory.createVastVideoAdFromAdAsset(adAsset);
         }
         String valueOf = String.valueOf(adAsset);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 56);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 56);
         sb.append("DoubleClickAdConfig does not have any known format set: ");
         sb.append(valueOf);
         Log.e(TAG, sb.toString());

@@ -71,7 +71,7 @@ class SourceGenerator implements DataFetcherGenerator, DataFetcher.DataCallback<
                 String valueOf2 = String.valueOf(dataToCache2);
                 String valueOf3 = String.valueOf(encoder);
                 double elapsedMillis = LogTime.getElapsedMillis(startTime);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 95 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+                StringBuilder sb = new StringBuilder(valueOf.length() + 95 + valueOf2.length() + valueOf3.length());
                 sb.append("Finished encoding source to cache, key: ");
                 sb.append(valueOf);
                 sb.append(", data: ");

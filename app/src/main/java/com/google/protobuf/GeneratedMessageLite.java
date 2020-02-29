@@ -879,7 +879,7 @@ public abstract class GeneratedMessageLite<MessageType extends GeneratedMessageL
             return clazz.getMethod(name, params);
         } catch (NoSuchMethodException e) {
             String name2 = clazz.getName();
-            StringBuilder sb = new StringBuilder(String.valueOf(name2).length() + 45 + String.valueOf(name).length());
+            StringBuilder sb = new StringBuilder(name2.length() + 45 + name.length());
             sb.append("Generated message class \"");
             sb.append(name2);
             sb.append("\" missing method \"");
@@ -1128,14 +1128,14 @@ public abstract class GeneratedMessageLite<MessageType extends GeneratedMessageL
                 defaultInstanceField.setAccessible(true);
                 return ((MessageLite) defaultInstanceField.get(null)).newBuilderForType().mergeFrom(this.asBytes).buildPartial();
             } catch (ClassNotFoundException e) {
-                String valueOf = String.valueOf(this.messageClassName);
-                throw new RuntimeException(valueOf.length() != 0 ? "Unable to find proto buffer class: ".concat(valueOf) : new String("Unable to find proto buffer class: "), e);
+                String valueOf = this.messageClassName;
+                throw new RuntimeException(valueOf.length() != 0 ? "Unable to find proto buffer class: ".concat(valueOf) : "Unable to find proto buffer class: ", e);
             } catch (NoSuchFieldException e2) {
-                String valueOf2 = String.valueOf(this.messageClassName);
-                throw new RuntimeException(valueOf2.length() != 0 ? "Unable to find DEFAULT_INSTANCE in ".concat(valueOf2) : new String("Unable to find DEFAULT_INSTANCE in "), e2);
+                String valueOf2 = this.messageClassName;
+                throw new RuntimeException(valueOf2.length() != 0 ? "Unable to find DEFAULT_INSTANCE in ".concat(valueOf2) : "Unable to find DEFAULT_INSTANCE in ", e2);
             } catch (SecurityException e3) {
-                String valueOf3 = String.valueOf(this.messageClassName);
-                throw new RuntimeException(valueOf3.length() != 0 ? "Unable to call DEFAULT_INSTANCE in ".concat(valueOf3) : new String("Unable to call DEFAULT_INSTANCE in "), e3);
+                String valueOf3 = this.messageClassName;
+                throw new RuntimeException(valueOf3.length() != 0 ? "Unable to call DEFAULT_INSTANCE in ".concat(valueOf3) : "Unable to call DEFAULT_INSTANCE in ", e3);
             } catch (IllegalAccessException e4) {
                 throw new RuntimeException("Unable to call parsePartialFrom", e4);
             } catch (InvalidProtocolBufferException e5) {

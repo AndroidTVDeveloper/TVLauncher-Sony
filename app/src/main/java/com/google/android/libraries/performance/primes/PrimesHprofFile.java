@@ -16,7 +16,7 @@ final class PrimesHprofFile {
         Preconditions.checkNotNull(context);
         File cacheDir = context.getCacheDir();
         String preparePrefix = preparePrefix(context);
-        StringBuilder sb = new StringBuilder(String.valueOf(preparePrefix).length() + 12);
+        StringBuilder sb = new StringBuilder(preparePrefix.length() + 12);
         sb.append(preparePrefix);
         sb.append("_");
         sb.append(HPROF_FILE_NAME);
@@ -34,7 +34,7 @@ final class PrimesHprofFile {
         Preconditions.checkNotNull(context);
         File cacheDir = context.getCacheDir();
         String preparePrefix = preparePrefix(context);
-        StringBuilder sb = new StringBuilder(String.valueOf(preparePrefix).length() + 17);
+        StringBuilder sb = new StringBuilder(preparePrefix.length() + 17);
         sb.append(preparePrefix);
         sb.append("_");
         sb.append(MINI_HEAP_DUMP_HPROF_FILE_NAME);

@@ -3,7 +3,7 @@ package com.google.android.libraries.performance.primes;
 public interface Supplier<T> {
     T get();
 
-    public static final class Lazy<X> implements Supplier<X> {
+    final class Lazy<X> implements Supplier<X> {
         private volatile Supplier<X> factory;
         private volatile X instance;
 

@@ -17,7 +17,7 @@ public class PlayStoreIntentLauncher implements IntentLauncher {
     public boolean launchIntent(Context context, String packageName, Intent originalIntent) {
         if (TextUtils.isEmpty(packageName)) {
             String valueOf = String.valueOf(originalIntent);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 49);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 49);
             sb.append("No package was specified in the original intent: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());

@@ -36,7 +36,7 @@ public class StreamLocalUriFetcher extends LocalUriFetcher<InputStream> {
             return inputStream;
         }
         String valueOf = String.valueOf(uri);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 24);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 24);
         sb.append("InputStream is null for ");
         sb.append(valueOf);
         throw new FileNotFoundException(sb.toString());

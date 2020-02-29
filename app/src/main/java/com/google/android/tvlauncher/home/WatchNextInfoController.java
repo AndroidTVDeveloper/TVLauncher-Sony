@@ -143,8 +143,8 @@ class WatchNextInfoController {
                 break;
             case 9:
             case 11:
-                String valueOf = String.valueOf(ProgramStateUtil.stateToString(i));
-                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : new String("Unsupported Watch Next program state: "));
+                String valueOf = ProgramStateUtil.stateToString(i);
+                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : "Unsupported Watch Next program state: ");
         }
         iconLayoutParams.height = iconLayoutParams.width;
         this.icon.setLayoutParams(iconLayoutParams);
@@ -214,8 +214,8 @@ class WatchNextInfoController {
                 break;
             case 9:
             case 11:
-                String valueOf = String.valueOf(ProgramStateUtil.stateToString(i));
-                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : new String("Unsupported Watch Next program state: "));
+                String valueOf = ProgramStateUtil.stateToString(i);
+                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported Watch Next program state: ".concat(valueOf) : "Unsupported Watch Next program state: ");
         }
         this.container.setLayoutParams(containerLayoutParams);
         int i2 = this.programState;

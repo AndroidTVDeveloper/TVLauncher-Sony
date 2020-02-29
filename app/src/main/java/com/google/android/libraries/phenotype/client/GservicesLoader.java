@@ -49,7 +49,7 @@ final class GservicesLoader implements FlagLoader {
             return (String) FlagLoader$$CC.executeBinderAware$$STATIC$$(new GservicesLoader$$Lambda$0(this, flagName));
         } catch (IllegalStateException | SecurityException e) {
             String valueOf = String.valueOf(flagName);
-            Log.e(TAG, valueOf.length() != 0 ? "Unable to read GServices for: ".concat(valueOf) : new String("Unable to read GServices for: "), e);
+            Log.e(TAG, valueOf.length() != 0 ? "Unable to read GServices for: ".concat(valueOf) : "Unable to read GServices for: ", e);
             return null;
         }
     }

@@ -279,7 +279,7 @@ public class DoubleClickAdServer {
                 return connection;
             }
             String valueOf = String.valueOf(serverUrl);
-            throw new NetworkException(valueOf.length() != 0 ? "Error http status when connecting to DoubleClick for server Url: ".concat(valueOf) : new String("Error http status when connecting to DoubleClick for server Url: "), httpStatus);
+            throw new NetworkException(valueOf.length() != 0 ? "Error http status when connecting to DoubleClick for server Url: ".concat(valueOf) : "Error http status when connecting to DoubleClick for server Url: ", httpStatus);
         }
     }
 

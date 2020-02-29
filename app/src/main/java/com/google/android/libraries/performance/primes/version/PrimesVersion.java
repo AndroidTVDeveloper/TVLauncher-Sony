@@ -17,11 +17,11 @@ public final class PrimesVersion {
                 return Long.valueOf(Long.parseLong(primesVersionString));
             } catch (NumberFormatException e) {
                 String valueOf = String.valueOf(primesVersionString);
-                PrimesLog.m56w(TAG, valueOf.length() != 0 ? "Couldn't parse Primes version number from ".concat(valueOf) : new String("Couldn't parse Primes version number from "), new Object[0]);
+                PrimesLog.m56w(TAG, valueOf.length() != 0 ? "Couldn't parse Primes version number from ".concat(valueOf) : "Couldn't parse Primes version number from ");
                 return null;
             }
         } catch (Resources.NotFoundException e2) {
-            PrimesLog.m56w(TAG, "Primes version number string not found", new Object[0]);
+            PrimesLog.m56w(TAG, "Primes version number string not found");
             return null;
         }
     }

@@ -31,16 +31,16 @@ public final class PersistentStorage {
     public <T extends MessageLite> T readProto(String key, Parser<T> parser) {
         byte[] data = read(key);
         if (data == null || data.length == 0) {
-            PrimesLog.m56w(TAG, "unknown key", new Object[0]);
+            PrimesLog.m56w(TAG, "unknown key");
             return null;
         } else if (data[0] == 1) {
             try {
                 return (MessageLite) parser.parseFrom(data, 1, data.length - 1);
             } catch (InvalidProtocolBufferException e) {
-                PrimesLog.m55w(TAG, "failure reading proto", e, new Object[0]);
+                PrimesLog.m55w(TAG, "failure reading proto", e);
             }
         } else {
-            PrimesLog.m56w(TAG, "wrong header", new Object[0]);
+            PrimesLog.m56w(TAG, "wrong header");
             return null;
         }
     }

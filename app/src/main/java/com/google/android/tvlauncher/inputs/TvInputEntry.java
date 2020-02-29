@@ -286,10 +286,7 @@ public class TvInputEntry {
             return true;
         }
         TvInputInfo tvInputInfo2 = this.info;
-        if (tvInputInfo2 == null || (tvInputInfo = obj.info) == null || !tvInputInfo2.equals(tvInputInfo)) {
-            return false;
-        }
-        return true;
+        return tvInputInfo2 != null && (tvInputInfo = obj.info) != null && tvInputInfo2.equals(tvInputInfo);
     }
 
     public int hashCode() {

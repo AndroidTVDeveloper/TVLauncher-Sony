@@ -20,9 +20,6 @@ public final class PrimesHprofs {
         } else {
             encryptionStatus = dpm.getStorageEncryptionStatus();
         }
-        if (encryptionStatus == 3 || encryptionStatus == 4 || encryptionStatus == 5) {
-            return true;
-        }
-        return false;
+        return encryptionStatus == 3 || encryptionStatus == 4 || encryptionStatus == 5;
     }
 }

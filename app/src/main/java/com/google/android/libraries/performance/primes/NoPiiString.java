@@ -13,9 +13,9 @@ public final class NoPiiString {
     }
 
     public static NoPiiString fromConstant(String value1, String value2) {
-        String valueOf = String.valueOf((String) Preconditions.checkNotNull(value1));
-        String valueOf2 = String.valueOf((String) Preconditions.checkNotNull(value2));
-        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf));
+        String valueOf = (String) Preconditions.checkNotNull(value1);
+        String valueOf2 = (String) Preconditions.checkNotNull(value2);
+        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf);
     }
 
     public static NoPiiString fromClass(Class<?> clazz) {
@@ -27,8 +27,8 @@ public final class NoPiiString {
             return new NoPiiString(clazz.getSimpleName());
         }
         String valueOf = String.valueOf(prefix);
-        String valueOf2 = String.valueOf(clazz.getSimpleName());
-        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf));
+        String valueOf2 = clazz.getSimpleName();
+        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf);
     }
 
     public static NoPiiString fromClassToFullyQualifiedName(Class<?> clazz) {
@@ -44,14 +44,14 @@ public final class NoPiiString {
             return new NoPiiString(enumValue.name());
         }
         String valueOf = String.valueOf(prefix);
-        String valueOf2 = String.valueOf(enumValue.name());
-        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf));
+        String valueOf2 = enumValue.name();
+        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf);
     }
 
     public static NoPiiString concat(NoPiiString left, NoPiiString right) {
         String valueOf = String.valueOf(left.value);
         String valueOf2 = String.valueOf(right.value);
-        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf));
+        return new NoPiiString(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf);
     }
 
     public static boolean isNullOrEmpty(NoPiiString noPiiString) {

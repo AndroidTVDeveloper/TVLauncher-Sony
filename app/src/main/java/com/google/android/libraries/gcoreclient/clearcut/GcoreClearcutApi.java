@@ -6,7 +6,7 @@ import com.google.android.libraries.gcoreclient.common.api.GcoreApi.GcoreApiOpti
 @Deprecated
 public interface GcoreClearcutApi<O extends GcoreApi.GcoreApiOptions.GcoreNoOptions> extends GcoreApi<O> {
 
-    public interface Builder {
+    interface Builder {
         <O extends GcoreApi.GcoreApiOptions.GcoreNoOptions> GcoreClearcutApi<O> build();
     }
 }

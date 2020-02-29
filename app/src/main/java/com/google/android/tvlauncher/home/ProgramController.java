@@ -207,7 +207,7 @@ public class ProgramController implements View.OnClickListener, ContextMenu.OnIt
 
             public void onVideoError(InstantVideoView view) {
                 String valueOf = String.valueOf(view.getVideoUri());
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 20);
                 sb.append("onVideoError: uri=[");
                 sb.append(valueOf);
                 sb.append("]");
@@ -710,10 +710,7 @@ public class ProgramController implements View.OnClickListener, ContextMenu.OnIt
             return false;
         }
         int i = this.programType;
-        if (i == 0 || i == 1 || i == 2 || i == 3 || i == 5 || i == 6) {
-            return true;
-        }
-        return false;
+        return i == 0 || i == 1 || i == 2 || i == 3 || i == 5 || i == 6;
     }
 
     private boolean needLiveBadge() {
@@ -726,10 +723,7 @@ public class ProgramController implements View.OnClickListener, ContextMenu.OnIt
         }
         long j = this.programDuration;
         long hours = j / 3600000;
-        if (j < 1000 || hours > 99 || this.programType != 4) {
-            return false;
-        }
-        return true;
+        return j >= 1000 && hours <= 99 && this.programType == 4;
     }
 
     private void updateLogoAndBadgesVisibility(boolean programSelected2) {
@@ -1319,7 +1313,7 @@ public class ProgramController implements View.OnClickListener, ContextMenu.OnIt
     public String toString() {
         String programView = this.view.toString();
         String str = this.debugTitle;
-        StringBuilder sb = new StringBuilder(String.valueOf(programView).length() + 12 + String.valueOf(str).length());
+        StringBuilder sb = new StringBuilder(programView.length() + 12 + String.valueOf(str).length());
         sb.append('{');
         sb.append(programView);
         sb.append(", title='");

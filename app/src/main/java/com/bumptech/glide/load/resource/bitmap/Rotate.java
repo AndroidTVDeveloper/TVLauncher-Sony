@@ -23,10 +23,7 @@ public class Rotate extends BitmapTransformation {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof Rotate) || this.degreesToRotate != ((Rotate) o).degreesToRotate) {
-            return false;
-        }
-        return true;
+        return o instanceof Rotate && this.degreesToRotate == ((Rotate) o).degreesToRotate;
     }
 
     public int hashCode() {

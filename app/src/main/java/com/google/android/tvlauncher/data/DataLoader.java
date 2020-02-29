@@ -45,7 +45,7 @@ public abstract class DataLoader<T> extends AsyncTaskLoader<T> {
             } catch (SecurityException e) {
                 String valueOf = String.valueOf(this.uri);
                 String message = e.getMessage();
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 55 + String.valueOf(message).length());
+                StringBuilder sb = new StringBuilder(valueOf.length() + 55 + String.valueOf(message).length());
                 sb.append("Failed to register content observer for URI: ");
                 sb.append(valueOf);
                 sb.append(".\nReason: ");

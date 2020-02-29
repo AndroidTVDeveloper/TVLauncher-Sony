@@ -4,7 +4,7 @@ import android.os.Build;
 
 /* renamed from: android.support.v4.widget.AutoSizeableTextView */
 public interface AutoSizeableTextView {
-    public static final boolean PLATFORM_SUPPORTS_AUTOSIZE = (Build.VERSION.SDK_INT >= 27);
+    boolean PLATFORM_SUPPORTS_AUTOSIZE = (Build.VERSION.SDK_INT >= 27);
 
     int getAutoSizeMaxTextSize();
 

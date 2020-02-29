@@ -231,7 +231,7 @@ public final class AppLifecycleTracker {
             }
             this.lastForegroundState = inForeground;
             if (inForeground.booleanValue()) {
-                PrimesLog.m52i(AppLifecycleTracker.TAG, "App transition to foreground", new Object[0]);
+                PrimesLog.m52i(AppLifecycleTracker.TAG, "App transition to foreground");
                 for (AppLifecycleListener listener : this.lifecycleListeners) {
                     if (listener instanceof AppLifecycleListener.OnAppToForeground) {
                         ((AppLifecycleListener.OnAppToForeground) listener).onAppToForeground(activity);
@@ -239,7 +239,7 @@ public final class AppLifecycleTracker {
                 }
                 return;
             }
-            PrimesLog.m52i(AppLifecycleTracker.TAG, "App transition to background", new Object[0]);
+            PrimesLog.m52i(AppLifecycleTracker.TAG, "App transition to background");
             for (AppLifecycleListener listener2 : this.lifecycleListeners) {
                 if (listener2 instanceof AppLifecycleListener.OnAppToBackground) {
                     ((AppLifecycleListener.OnAppToBackground) listener2).onAppToBackground(activity);

@@ -126,7 +126,7 @@ public final class DiskLruCache implements Closeable {
                     PrintStream printStream = System.out;
                     String valueOf = String.valueOf(directory2);
                     String message = journalIsCorrupt.getMessage();
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 36 + String.valueOf(message).length());
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 36 + String.valueOf(message).length());
                     sb.append("DiskLruCache ");
                     sb.append(valueOf);
                     sb.append(" is corrupt: ");
@@ -196,8 +196,8 @@ public final class DiskLruCache implements Closeable {
         String key;
         int firstSpace = line.indexOf(32);
         if (firstSpace == -1) {
-            String valueOf = String.valueOf(line);
-            throw new IOException(valueOf.length() != 0 ? "unexpected journal line: ".concat(valueOf) : new String("unexpected journal line: "));
+            String valueOf = line;
+            throw new IOException(valueOf.length() != 0 ? "unexpected journal line: ".concat(valueOf) : "unexpected journal line: ");
         }
         int keyBegin = firstSpace + 1;
         int secondSpace = line.indexOf(32, keyBegin);
@@ -223,8 +223,8 @@ public final class DiskLruCache implements Closeable {
         } else if (secondSpace == -1 && firstSpace == DIRTY.length() && line.startsWith(DIRTY)) {
             Editor unused3 = entry.currentEditor = new Editor(entry);
         } else if (secondSpace != -1 || firstSpace != READ.length() || !line.startsWith(READ)) {
-            String valueOf2 = String.valueOf(line);
-            throw new IOException(valueOf2.length() != 0 ? "unexpected journal line: ".concat(valueOf2) : new String("unexpected journal line: "));
+            String valueOf2 = line;
+            throw new IOException(valueOf2.length() != 0 ? "unexpected journal line: ".concat(valueOf2) : "unexpected journal line: ");
         }
     }
 
@@ -274,7 +274,7 @@ public final class DiskLruCache implements Closeable {
             for (Entry entry : this.lruEntries.values()) {
                 if (entry.currentEditor != null) {
                     String access$1200 = entry.key;
-                    StringBuilder sb = new StringBuilder(String.valueOf(access$1200).length() + 7);
+                    StringBuilder sb = new StringBuilder(access$1200.length() + 7);
                     sb.append("DIRTY ");
                     sb.append(access$1200);
                     sb.append(10);
@@ -282,7 +282,7 @@ public final class DiskLruCache implements Closeable {
                 } else {
                     String access$12002 = entry.key;
                     String lengths = entry.getLengths();
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(access$12002).length() + 7 + String.valueOf(lengths).length());
+                    StringBuilder sb2 = new StringBuilder(access$12002.length() + 7 + lengths.length());
                     sb2.append("CLEAN ");
                     sb2.append(access$12002);
                     sb2.append(lengths);
@@ -924,8 +924,8 @@ public final class DiskLruCache implements Closeable {
         }
 
         private IOException invalidLengths(String[] strings) throws IOException {
-            String valueOf = String.valueOf(Arrays.toString(strings));
-            throw new IOException(valueOf.length() != 0 ? "unexpected journal line: ".concat(valueOf) : new String("unexpected journal line: "));
+            String valueOf = Arrays.toString(strings);
+            throw new IOException(valueOf.length() != 0 ? "unexpected journal line: ".concat(valueOf) : "unexpected journal line: ");
         }
 
         public File getCleanFile(int i) {

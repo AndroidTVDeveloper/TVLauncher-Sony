@@ -8,7 +8,7 @@ public interface AccessibilityViewCommand {
     boolean perform(View view, CommandArguments commandArguments);
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$CommandArguments */
-    public static abstract class CommandArguments {
+    abstract class CommandArguments {
         private static final Bundle sEmptyBundle = new Bundle();
         Bundle mBundle;
 
@@ -18,7 +18,7 @@ public interface AccessibilityViewCommand {
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments */
-    public static final class MoveAtGranularityArguments extends CommandArguments {
+    final class MoveAtGranularityArguments extends CommandArguments {
         public int getGranularity() {
             return this.mBundle.getInt(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT);
         }
@@ -29,14 +29,14 @@ public interface AccessibilityViewCommand {
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$MoveHtmlArguments */
-    public static final class MoveHtmlArguments extends CommandArguments {
+    final class MoveHtmlArguments extends CommandArguments {
         public String getHTMLElement() {
             return this.mBundle.getString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_HTML_ELEMENT_STRING);
         }
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$SetSelectionArguments */
-    public static final class SetSelectionArguments extends CommandArguments {
+    final class SetSelectionArguments extends CommandArguments {
         public int getStart() {
             return this.mBundle.getInt(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SELECTION_START_INT);
         }
@@ -47,14 +47,14 @@ public interface AccessibilityViewCommand {
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$SetTextArguments */
-    public static final class SetTextArguments extends CommandArguments {
+    final class SetTextArguments extends CommandArguments {
         public CharSequence getText() {
             return this.mBundle.getCharSequence(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE);
         }
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$ScrollToPositionArguments */
-    public static final class ScrollToPositionArguments extends CommandArguments {
+    final class ScrollToPositionArguments extends CommandArguments {
         public int getRow() {
             return this.mBundle.getInt(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_ROW_INT);
         }
@@ -65,14 +65,14 @@ public interface AccessibilityViewCommand {
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$SetProgressArguments */
-    public static final class SetProgressArguments extends CommandArguments {
+    final class SetProgressArguments extends CommandArguments {
         public float getProgress() {
             return this.mBundle.getFloat(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_PROGRESS_VALUE);
         }
     }
 
     /* renamed from: android.support.v4.view.accessibility.AccessibilityViewCommand$MoveWindowArguments */
-    public static final class MoveWindowArguments extends CommandArguments {
+    final class MoveWindowArguments extends CommandArguments {
         public int getX() {
             return this.mBundle.getInt(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_MOVE_WINDOW_X);
         }

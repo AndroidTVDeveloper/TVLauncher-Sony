@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.AbstractList;
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -25,8 +26,8 @@ public final class Internal {
     public static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     public static final ByteBuffer EMPTY_BYTE_BUFFER = ByteBuffer.wrap(EMPTY_BYTE_ARRAY);
     public static final CodedInputStream EMPTY_CODED_INPUT_STREAM = CodedInputStream.newInstance(EMPTY_BYTE_ARRAY);
-    static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
-    static final Charset UTF_8 = Charset.forName("UTF-8");
+    static final Charset ISO_8859_1 = StandardCharsets.ISO_8859_1;
+    static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     public interface BooleanList extends ProtobufList<Boolean> {
         void addBoolean(boolean z);
@@ -291,11 +292,11 @@ public final class Internal {
 
     public static <T extends MessageLite> T getDefaultInstance(Class<T> clazz) {
         try {
-            Method method = clazz.getMethod("getDefaultInstance", new Class[0]);
+            Method method = clazz.getMethod("getDefaultInstance");
             return (MessageLite) method.invoke(method, new Object[0]);
         } catch (Exception e) {
             String valueOf = String.valueOf(clazz);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 35);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 35);
             sb.append("Failed to get default instance for ");
             sb.append(valueOf);
             throw new RuntimeException(sb.toString(), e);
@@ -530,10 +531,7 @@ public final class Internal {
                 if (o == this) {
                     return true;
                 }
-                if ((o instanceof Map.Entry) && getKey().equals(((Map.Entry) o).getKey()) && getValue().equals(getValue())) {
-                    return true;
-                }
-                return false;
+                return (o instanceof Map.Entry) && getKey().equals(((Entry) o).getKey()) && getValue().equals(getValue());
             }
 
             public int hashCode() {

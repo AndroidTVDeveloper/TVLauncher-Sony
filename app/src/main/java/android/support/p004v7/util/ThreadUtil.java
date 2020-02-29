@@ -6,7 +6,7 @@ import android.support.p004v7.util.TileList;
 interface ThreadUtil<T> {
 
     /* renamed from: android.support.v7.util.ThreadUtil$BackgroundCallback */
-    public interface BackgroundCallback<T> {
+    interface BackgroundCallback<T> {
         void loadTile(int i, int i2);
 
         void recycleTile(TileList.Tile<T> tile);
@@ -17,7 +17,7 @@ interface ThreadUtil<T> {
     }
 
     /* renamed from: android.support.v7.util.ThreadUtil$MainThreadCallback */
-    public interface MainThreadCallback<T> {
+    interface MainThreadCallback<T> {
         void addTile(int i, TileList.Tile<T> tile);
 
         void removeTile(int i, int i2);

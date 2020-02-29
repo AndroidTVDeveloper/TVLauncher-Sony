@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 public interface MenuView {
 
     /* renamed from: android.support.v7.view.menu.MenuView$ItemView */
-    public interface ItemView {
+    interface ItemView {
         MenuItemImpl getItemData();
 
         void initialize(MenuItemImpl menuItemImpl, int i);

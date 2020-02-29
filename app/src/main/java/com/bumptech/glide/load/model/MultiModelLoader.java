@@ -51,7 +51,7 @@ class MultiModelLoader<Model, Data> implements ModelLoader<Model, Data> {
 
     public String toString() {
         String arrays = Arrays.toString(this.modelLoaders.toArray());
-        StringBuilder sb = new StringBuilder(String.valueOf(arrays).length() + 31);
+        StringBuilder sb = new StringBuilder(arrays.length() + 31);
         sb.append("MultiModelLoader{modelLoaders=");
         sb.append(arrays);
         sb.append('}');

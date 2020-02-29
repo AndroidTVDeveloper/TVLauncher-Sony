@@ -205,7 +205,7 @@ public class DomDigester {
         }
         String upperCase = fieldName.substring(0, 1).toUpperCase();
         String substring = fieldName.substring(1);
-        StringBuilder sb = new StringBuilder(String.valueOf(upperCase).length() + 3 + String.valueOf(substring).length());
+        StringBuilder sb = new StringBuilder(upperCase.length() + 3 + substring.length());
         sb.append("set");
         sb.append(upperCase);
         sb.append(substring);
@@ -228,7 +228,7 @@ public class DomDigester {
             }
         }
         String valueOf = String.valueOf(target);
-        StringBuilder sb = new StringBuilder(String.valueOf(methodName).length() + 26 + String.valueOf(valueOf).length());
+        StringBuilder sb = new StringBuilder(String.valueOf(methodName).length() + 26 + valueOf.length());
         sb.append("Did not find method '");
         sb.append(methodName);
         sb.append("' in ");
@@ -308,7 +308,7 @@ public class DomDigester {
     private void processElement(Element element, String path) {
         String str = path.isEmpty() ? "" : "/";
         String nodeName = element.getNodeName();
-        StringBuilder sb = new StringBuilder(String.valueOf(path).length() + String.valueOf(str).length() + String.valueOf(nodeName).length());
+        StringBuilder sb = new StringBuilder(path.length() + str.length() + String.valueOf(nodeName).length());
         sb.append(path);
         sb.append(str);
         sb.append(nodeName);
@@ -336,8 +336,8 @@ public class DomDigester {
                 List<Rule> rulesForPath = this.rules.remove(path);
                 Map<String, List<Rule>> map = this.rules;
                 String valueOf = String.valueOf(rootName);
-                String valueOf2 = String.valueOf(path.substring(1));
-                map.put(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf), rulesForPath);
+                String valueOf2 = path.substring(1);
+                map.put(valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf, rulesForPath);
             }
         }
     }

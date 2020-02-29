@@ -276,7 +276,7 @@ public class RequestManager implements LifecycleListener, ModelTypes<RequestBuil
         String obj = super.toString();
         String valueOf = String.valueOf(this.requestTracker);
         String valueOf2 = String.valueOf(this.treeNode);
-        sb = new StringBuilder(String.valueOf(obj).length() + 21 + String.valueOf(valueOf).length() + String.valueOf(valueOf2).length());
+        sb = new StringBuilder(obj.length() + 21 + valueOf.length() + valueOf2.length());
         sb.append(obj);
         sb.append("{tracker=");
         sb.append(valueOf);

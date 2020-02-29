@@ -77,7 +77,7 @@ public enum FieldType {
         }
     }
 
-    private FieldType(int id, Collection collection2, JavaType javaType2) {
+    FieldType(int id, Collection collection2, JavaType javaType2) {
         int i;
         this.f247id = id;
         this.collection = collection2;
@@ -255,7 +255,7 @@ public enum FieldType {
                                 }
                                 if (!foundReplacement) {
                                     String valueOf = String.valueOf(superArg);
-                                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 31);
+                                    StringBuilder sb = new StringBuilder(valueOf.length() + 31);
                                     sb.append("Unable to find replacement for ");
                                     sb.append(valueOf);
                                     throw new RuntimeException(sb.toString());
@@ -284,7 +284,7 @@ public enum FieldType {
         
         private final boolean isList;
 
-        private Collection(boolean isList2) {
+        Collection(boolean isList2) {
             this.isList = isList2;
         }
 

@@ -115,7 +115,7 @@ public final class PopupWindowCompat {
         }
         if (!sGetWindowLayoutTypeMethodAttempted) {
             try {
-                sGetWindowLayoutTypeMethod = PopupWindow.class.getDeclaredMethod("getWindowLayoutType", new Class[0]);
+                sGetWindowLayoutTypeMethod = PopupWindow.class.getDeclaredMethod("getWindowLayoutType");
                 sGetWindowLayoutTypeMethod.setAccessible(true);
             } catch (Exception e) {
             }

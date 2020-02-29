@@ -151,7 +151,7 @@ final class PrimesApiImpl implements PrimesApi {
         PrimesApi currentApi = api();
         if (currentApi instanceof PreInitPrimesApi) {
             ((PreInitPrimesApi) currentApi).setPrimesInitTask(initTask, this.initializationDoneSignal);
-            PrimesLog.m52i(TAG, "init task registered", new Object[0]);
+            PrimesLog.m52i(TAG, "init task registered");
             return;
         }
         PrimesLog.m56w(TAG, "could not register init task - current api: %s", currentApi);
@@ -162,7 +162,7 @@ final class PrimesApiImpl implements PrimesApi {
         try {
             PrimesExecutors.handleFuture(initExecutor.submit(initTask));
         } catch (RuntimeException e) {
-            PrimesLog.m55w(TAG, "Primes failed to initialize", e, new Object[0]);
+            PrimesLog.m55w(TAG, "Primes failed to initialize", e);
             primesApiImpl.shutdown();
         }
     }
@@ -190,10 +190,10 @@ final class PrimesApiImpl implements PrimesApi {
         return oneOffRunnable(new Runnable() {
             public void run() {
                 try {
-                    PrimesLog.m56w(PrimesApiImpl.TAG, "background initialization", new Object[0]);
+                    PrimesLog.m56w(PrimesApiImpl.TAG, "background initialization");
                     PrimesApiImpl.initializeInBackground(PrimesApiImpl.this, primesConfigurationsProvider, supplier, supplier2, supplier3, firstActivityCreateListener, firstAppToBackgroundListener);
                 } catch (RuntimeException e) {
-                    PrimesLog.m55w(PrimesApiImpl.TAG, "Primes failed to initialize in the background", e, new Object[0]);
+                    PrimesLog.m55w(PrimesApiImpl.TAG, "Primes failed to initialize in the background", e);
                     PrimesApiImpl.this.shutdown();
                 } catch (Throwable th) {
                     PrimesApiImpl.this.initializationDoneSignal.countDown();
@@ -243,7 +243,7 @@ final class PrimesApiImpl implements PrimesApi {
             }
             PrimesApi prevApi = primesApiRef2.get();
             if (!(prevApi instanceof PreInitPrimesApi) || !primesApiRef2.compareAndSet(prevApi, configuredPrimesApi)) {
-                PrimesLog.m48d(TAG, "Primes shutdown during initialization", new Object[0]);
+                PrimesLog.m48d(TAG, "Primes shutdown during initialization");
                 configuredPrimesApi.shutdown();
             } else {
                 for (PrimesStartupListener listener : configuredPrimesApi.initAndGetServices()) {
@@ -273,7 +273,7 @@ final class PrimesApiImpl implements PrimesApi {
         try {
             AppLifecycleMonitor.shutdownInstance(this.application);
         } catch (RuntimeException e) {
-            PrimesLog.m56w(TAG, "Failed to shutdown app lifecycle monitor", new Object[0]);
+            PrimesLog.m56w(TAG, "Failed to shutdown app lifecycle monitor");
         }
     }
 
@@ -281,7 +281,7 @@ final class PrimesApiImpl implements PrimesApi {
         if (Build.VERSION.SDK_INT >= 16) {
             return true;
         }
-        PrimesLog.m56w(TAG, "Primes calls will be ignored. API's < 16 are not supported.", new Object[0]);
+        PrimesLog.m56w(TAG, "Primes calls will be ignored. API's < 16 are not supported.");
         return false;
     }
 

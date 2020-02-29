@@ -52,10 +52,7 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
     }
 
     private boolean needsMirroring() {
-        if (!isAutoMirrored() || DrawableCompat.getLayoutDirection(this) != 1) {
-            return false;
-        }
-        return true;
+        return isAutoMirrored() && DrawableCompat.getLayoutDirection(this) == 1;
     }
 
     public boolean getPadding(Rect padding) {

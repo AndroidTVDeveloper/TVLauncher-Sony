@@ -311,7 +311,7 @@ public final class LogsAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private IdentifierType(int value2) {
+        IdentifierType(int value2) {
             this.value = value2;
         }
     }

@@ -144,7 +144,7 @@ public class TvPlayerImpl implements MediaPlayer {
                     }
                     return new String[]{"input_id"};
                 }
-            }.execute(new Void[0]);
+            }.execute();
         } else {
             Log.e(TAG, "TV input id must be given via URI query parameter");
             stop();
@@ -217,10 +217,7 @@ public class TvPlayerImpl implements MediaPlayer {
 
     private static boolean isTwoSegmentUriStartingWith(Uri uri, String pathSegment) {
         List<String> pathSegments = uri.getPathSegments();
-        if (pathSegments != null && pathSegments.size() == 2 && pathSegment.equals(pathSegments.get(0))) {
-            return true;
-        }
-        return false;
+        return pathSegments != null && pathSegments.size() == 2 && pathSegment.equals(pathSegments.get(0));
     }
 
     /* access modifiers changed from: private */

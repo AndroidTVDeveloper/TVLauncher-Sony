@@ -29,17 +29,17 @@ final class MemoryEvent {
     /* access modifiers changed from: package-private */
     public MemoryMetric.MemoryUsageMetric getMemoryUsageMetric() {
         if (this == EMPTY_SNAPSHOT) {
-            PrimesLog.m56w(TAG, "metric requested for EMPTY_SNAPSHOT", new Object[0]);
+            PrimesLog.m56w(TAG, "metric requested for EMPTY_SNAPSHOT");
             return null;
         }
         try {
             return this.capture.get();
         } catch (InterruptedException ex) {
-            PrimesLog.m55w(TAG, "exception during memory snapshot", ex, new Object[0]);
+            PrimesLog.m55w(TAG, "exception during memory snapshot", ex);
             Thread.currentThread().interrupt();
             return null;
         } catch (ExecutionException ex2) {
-            PrimesLog.m55w(TAG, "exception during memory snapshot", ex2, new Object[0]);
+            PrimesLog.m55w(TAG, "exception during memory snapshot", ex2);
             return null;
         }
     }

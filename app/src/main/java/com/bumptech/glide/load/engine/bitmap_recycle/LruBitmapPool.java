@@ -67,7 +67,7 @@ public class LruBitmapPool implements BitmapPool {
                             this.currentSize += (long) size;
                             if (Log.isLoggable(TAG, 2)) {
                                 String valueOf = String.valueOf(this.strategy.logBitmap(bitmap));
-                                Log.v(TAG, valueOf.length() != 0 ? "Put bitmap in pool=".concat(valueOf) : new String("Put bitmap in pool="));
+                                Log.v(TAG, valueOf.length() != 0 ? "Put bitmap in pool=".concat(valueOf) : "Put bitmap in pool=");
                             }
                             dump();
                             evict();
@@ -127,7 +127,7 @@ public class LruBitmapPool implements BitmapPool {
     private static void assertNotHardwareConfig(Bitmap.Config config) {
         if (Build.VERSION.SDK_INT >= 26 && config == Bitmap.Config.HARDWARE) {
             String valueOf = String.valueOf(config);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + ClientAnalytics.LogRequest.LogSource.ANDROID_DIALER_VALUE);
+            StringBuilder sb = new StringBuilder(valueOf.length() + ClientAnalytics.LogRequest.LogSource.ANDROID_DIALER_VALUE);
             sb.append("Cannot create a mutable Bitmap with config: ");
             sb.append(valueOf);
             sb.append(". Consider setting Downsampler#ALLOW_HARDWARE_CONFIG to false in your RequestOptions and/or in GlideBuilder.setDefaultRequestOptions");
@@ -142,7 +142,7 @@ public class LruBitmapPool implements BitmapPool {
         if (result == null) {
             if (Log.isLoggable(TAG, 3)) {
                 String valueOf = String.valueOf(this.strategy.logBitmap(width, height, config));
-                Log.d(TAG, valueOf.length() != 0 ? "Missing bitmap=".concat(valueOf) : new String("Missing bitmap="));
+                Log.d(TAG, valueOf.length() != 0 ? "Missing bitmap=".concat(valueOf) : "Missing bitmap=");
             }
             this.misses++;
         } else {
@@ -153,7 +153,7 @@ public class LruBitmapPool implements BitmapPool {
         }
         if (Log.isLoggable(TAG, 2)) {
             String valueOf2 = String.valueOf(this.strategy.logBitmap(width, height, config));
-            Log.v(TAG, valueOf2.length() != 0 ? "Get bitmap=".concat(valueOf2) : new String("Get bitmap="));
+            Log.v(TAG, valueOf2.length() != 0 ? "Get bitmap=".concat(valueOf2) : "Get bitmap=");
         }
         dump();
         return result;
@@ -207,7 +207,7 @@ public class LruBitmapPool implements BitmapPool {
             this.evictions++;
             if (Log.isLoggable(TAG, 3)) {
                 String valueOf = String.valueOf(this.strategy.logBitmap(removed));
-                Log.d(TAG, valueOf.length() != 0 ? "Evicting bitmap=".concat(valueOf) : new String("Evicting bitmap="));
+                Log.d(TAG, valueOf.length() != 0 ? "Evicting bitmap=".concat(valueOf) : "Evicting bitmap=");
             }
             dump();
             removed.recycle();
@@ -228,7 +228,7 @@ public class LruBitmapPool implements BitmapPool {
         long j = this.currentSize;
         long j2 = this.maxSize;
         String valueOf = String.valueOf(this.strategy);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 151);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 151);
         sb.append("Hits=");
         sb.append(i);
         sb.append(", misses=");
@@ -278,7 +278,7 @@ public class LruBitmapPool implements BitmapPool {
             String valueOf = String.valueOf(bitmap);
             int width = bitmap.getWidth();
             int height = bitmap.getHeight();
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 58);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 58);
             sb.append("Can't add already added bitmap: ");
             sb.append(valueOf);
             sb.append(" [");

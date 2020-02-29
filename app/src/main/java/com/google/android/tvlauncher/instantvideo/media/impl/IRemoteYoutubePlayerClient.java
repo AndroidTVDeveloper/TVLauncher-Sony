@@ -16,7 +16,7 @@ public interface IRemoteYoutubePlayerClient extends IInterface {
 
     void onVideoError() throws RemoteException;
 
-    public static abstract class Stub extends BaseStub implements IRemoteYoutubePlayerClient {
+    abstract class Stub extends BaseStub implements IRemoteYoutubePlayerClient {
         private static final String DESCRIPTOR = "com.google.android.tvlauncher.instantvideo.media.impl.IRemoteYoutubePlayerClient";
         static final int TRANSACTION_onSessionCreated = 1;
         static final int TRANSACTION_onVideoAvailable = 2;

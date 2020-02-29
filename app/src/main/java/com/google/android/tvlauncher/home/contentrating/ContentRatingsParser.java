@@ -131,8 +131,8 @@ public class ContentRatingsParser {
         try {
             this.resources = this.context.getPackageManager().getResourcesForApplication(domain);
         } catch (PackageManager.NameNotFoundException e) {
-            String valueOf = String.valueOf(domain);
-            Log.w(TAG, valueOf.length() != 0 ? "Failed to get resources for ".concat(valueOf) : new String("Failed to get resources for "), e);
+            String valueOf = domain;
+            Log.w(TAG, valueOf.length() != 0 ? "Failed to get resources for ".concat(valueOf) : "Failed to get resources for ", e);
             this.resources = this.context.getResources();
         }
         if (domain.equals(this.context.getPackageName()) || domain.equals(LIVE_TV_APP_DOMAIN)) {
@@ -432,7 +432,7 @@ public class ContentRatingsParser {
             } else if (c == 3) {
                 builder.setIcon(this.resources.getDrawable(parser.getAttributeResourceValue(i, 0), null));
             } else if (c != 4) {
-                StringBuilder sb = new StringBuilder(String.valueOf(attr).length() + 54);
+                StringBuilder sb = new StringBuilder(attr.length() + 54);
                 sb.append("Malformed XML: Unknown attribute ");
                 sb.append(attr);
                 sb.append(" in ");
@@ -508,7 +508,7 @@ public class ContentRatingsParser {
             } else if (c == 2) {
                 builder.setDescription(this.resources.getString(parser.getAttributeResourceValue(i, 0)));
             } else if (c != 3) {
-                StringBuilder sb = new StringBuilder(String.valueOf(attr).length() + 58);
+                StringBuilder sb = new StringBuilder(attr.length() + 58);
                 sb.append("Malformed XML: Unknown attribute ");
                 sb.append(attr);
                 sb.append(" in ");

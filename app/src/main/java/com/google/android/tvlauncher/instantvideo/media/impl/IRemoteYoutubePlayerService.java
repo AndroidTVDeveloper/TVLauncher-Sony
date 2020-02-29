@@ -22,7 +22,7 @@ public interface IRemoteYoutubePlayerService extends IInterface {
 
     void start(String str, Uri uri, float f) throws RemoteException;
 
-    public static abstract class Stub extends BaseStub implements IRemoteYoutubePlayerService {
+    abstract class Stub extends BaseStub implements IRemoteYoutubePlayerService {
         private static final String DESCRIPTOR = "com.google.android.tvlauncher.instantvideo.media.impl.IRemoteYoutubePlayerService";
         static final int TRANSACTION_createSession = 1;
         static final int TRANSACTION_destroySession = 2;

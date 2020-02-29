@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +73,7 @@ public class VastParser {
         
         private final String type;
 
-        private ParserType(String type2) {
+        ParserType(String type2) {
             this.type = type2;
         }
 
@@ -92,7 +93,7 @@ public class VastParser {
 
     public boolean isVast1(byte[] input) {
         try {
-            return isVast1(new String(input, Charset.forName("UTF-8")));
+            return isVast1(new String(input, StandardCharsets.UTF_8));
         } catch (Exception e) {
             return false;
         }
@@ -166,7 +167,7 @@ public class VastParser {
                 s = s2.replace("/Linear", str);
             }
             if (addUrlInVast1) {
-                s = String.valueOf(s).concat("/URL");
+                s = s.concat("/URL");
             }
         }
         return String.format(s, this.parserType.toString());

@@ -129,7 +129,7 @@ public class SizeConfigStrategy implements LruPoolStrategy {
             String valueOf = String.valueOf(size);
             String logBitmap = logBitmap(removed);
             String valueOf2 = String.valueOf(this);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 56 + String.valueOf(logBitmap).length() + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 56 + String.valueOf(logBitmap).length() + valueOf2.length());
             sb.append("Tried to decrement empty size, size: ");
             sb.append(valueOf);
             sb.append(", removed: ");
@@ -232,10 +232,7 @@ public class SizeConfigStrategy implements LruPoolStrategy {
                 return false;
             }
             Key other = (Key) o;
-            if (this.size != other.size || !Util.bothNullOrEqual(this.config, other.config)) {
-                return false;
-            }
-            return true;
+            return this.size == other.size && Util.bothNullOrEqual(this.config, other.config);
         }
 
         public int hashCode() {
@@ -247,7 +244,7 @@ public class SizeConfigStrategy implements LruPoolStrategy {
 
     static String getBitmapString(int size, Bitmap.Config config) {
         String valueOf = String.valueOf(config);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 15);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 15);
         sb.append("[");
         sb.append(size);
         sb.append("](");

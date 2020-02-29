@@ -98,7 +98,7 @@ public class YoutubePlayerImpl implements MediaPlayer {
     public void setVideoUri(Uri uri) {
         if (Uri.EMPTY.equals(uri) || !YouTubeUriUtils.isYouTubeWatchUri(uri)) {
             String valueOf = String.valueOf(uri);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 22);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 22);
             sb.append("Malformed youtube uri:");
             sb.append(valueOf);
             throw new IllegalArgumentException(sb.toString());

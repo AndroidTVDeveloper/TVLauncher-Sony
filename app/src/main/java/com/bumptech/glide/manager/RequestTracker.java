@@ -113,7 +113,7 @@ public class RequestTracker {
         String obj = super.toString();
         int size = this.requests.size();
         boolean z = this.isPaused;
-        StringBuilder sb = new StringBuilder(String.valueOf(obj).length() + 41);
+        StringBuilder sb = new StringBuilder(obj.length() + 41);
         sb.append(obj);
         sb.append("{numRequests=");
         sb.append(size);

@@ -76,7 +76,7 @@ class DefaultItemAnimator extends SimpleItemAnimator {
             int i2 = this.fromY;
             int i3 = this.toX;
             int i4 = this.toY;
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 106 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 106 + valueOf2.length());
             sb.append("ChangeInfo{oldHolder=");
             sb.append(valueOf);
             sb.append(", newHolder=");

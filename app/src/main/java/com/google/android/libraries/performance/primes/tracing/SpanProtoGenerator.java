@@ -87,7 +87,7 @@ public final class SpanProtoGenerator {
     public PrimesTraceOuterClass.Span[] generate() {
         traverse(this.rootSpan, 0);
         if (this.result.size() == 1) {
-            PrimesLog.m48d(TAG, "No other span except for root span. Dropping trace...", new Object[0]);
+            PrimesLog.m48d(TAG, "No other span except for root span. Dropping trace...");
             return null;
         }
         List<PrimesTraceOuterClass.Span> list = this.result;

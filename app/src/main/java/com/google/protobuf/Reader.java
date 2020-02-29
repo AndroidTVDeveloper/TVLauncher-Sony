@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 interface Reader {
-    public static final int READ_DONE = Integer.MAX_VALUE;
-    public static final int TAG_UNKNOWN = 0;
+    int READ_DONE = Integer.MAX_VALUE;
+    int TAG_UNKNOWN = 0;
 
     int getFieldNumber() throws IOException;
 

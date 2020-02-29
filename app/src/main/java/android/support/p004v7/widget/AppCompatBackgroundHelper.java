@@ -139,10 +139,7 @@ class AppCompatBackgroundHelper {
         if (sdk <= 21) {
             return sdk == 21;
         }
-        if (this.mInternalBackgroundTint != null) {
-            return true;
-        }
-        return false;
+        return this.mInternalBackgroundTint != null;
     }
 
     private boolean applyFrameworkTintUsingColorFilter(Drawable background) {

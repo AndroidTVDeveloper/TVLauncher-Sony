@@ -52,7 +52,7 @@ public class DiskLruCacheWrapper implements DiskCache {
         String safeKey = this.safeKeyGenerator.getSafeKey(key);
         if (Log.isLoggable(TAG, 2)) {
             String valueOf = String.valueOf(key);
-            StringBuilder sb = new StringBuilder(String.valueOf(safeKey).length() + 29 + String.valueOf(valueOf).length());
+            StringBuilder sb = new StringBuilder(String.valueOf(safeKey).length() + 29 + valueOf.length());
             sb.append("Get: Obtained: ");
             sb.append(safeKey);
             sb.append(" for for Key: ");
@@ -81,7 +81,7 @@ public class DiskLruCacheWrapper implements DiskCache {
         try {
             if (Log.isLoggable(TAG, 2)) {
                 String valueOf = String.valueOf(key);
-                StringBuilder sb = new StringBuilder(String.valueOf(safeKey).length() + 29 + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(String.valueOf(safeKey).length() + 29 + valueOf.length());
                 sb.append("Put: Obtained: ");
                 sb.append(safeKey);
                 sb.append(" for for Key: ");
@@ -94,7 +94,7 @@ public class DiskLruCacheWrapper implements DiskCache {
                     editor = diskCache.edit(safeKey);
                     if (editor == null) {
                         String valueOf2 = String.valueOf(safeKey);
-                        throw new IllegalStateException(valueOf2.length() != 0 ? "Had two simultaneous puts for: ".concat(valueOf2) : new String("Had two simultaneous puts for: "));
+                        throw new IllegalStateException(valueOf2.length() != 0 ? "Had two simultaneous puts for: ".concat(valueOf2) : "Had two simultaneous puts for: ");
                     }
                     if (writer.write(editor.getFile(0))) {
                         editor.commit();

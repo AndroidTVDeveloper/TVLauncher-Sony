@@ -56,7 +56,7 @@ final class PrimesForPrimesTransmitterWrapper implements MetricTransmitter, Prim
 
     public void enqueueMessage(Supplier<SystemHealthProto.PrimesForPrimes> primesForPrimesSupplier) {
         if (!this.primesForPrimesQueue.offer(primesForPrimesSupplier)) {
-            PrimesLog.m56w("PrimesForPrimes", "Queue overflow", new Object[0]);
+            PrimesLog.m56w("PrimesForPrimes", "Queue overflow");
         }
     }
 }

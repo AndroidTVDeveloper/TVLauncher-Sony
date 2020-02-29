@@ -1,12 +1,13 @@
 package com.google.protobuf.nano;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public final class InternalNano {
-    protected static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
+    protected static final Charset ISO_8859_1 = StandardCharsets.ISO_8859_1;
     public static final Object LAZY_INIT_LOCK = new Object();
-    protected static final Charset UTF_8 = Charset.forName("UTF-8");
+    protected static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     private InternalNano() {
     }

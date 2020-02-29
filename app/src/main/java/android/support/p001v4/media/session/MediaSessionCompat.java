@@ -1016,11 +1016,7 @@ public class MediaSessionCompat {
                     return false;
                 }
                 return obj2.equals(obj3);
-            } else if (other.mInner == null) {
-                return true;
-            } else {
-                return false;
-            }
+            } else return other.mInner == null;
         }
 
         public Object getToken() {
@@ -2666,7 +2662,7 @@ public class MediaSessionCompat {
                 return null;
             }
             try {
-                return (String) this.mSessionFwk.getClass().getMethod("getCallingPackage", new Class[0]).invoke(this.mSessionFwk, new Object[0]);
+                return (String) this.mSessionFwk.getClass().getMethod("getCallingPackage").invoke(this.mSessionFwk, new Object[0]);
             } catch (Exception e) {
                 Log.e(MediaSessionCompat.TAG, "Cannot execute MediaSession.getCallingPackage()", e);
                 return null;

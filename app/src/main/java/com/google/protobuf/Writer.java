@@ -7,7 +7,7 @@ import java.util.Map;
 
 interface Writer {
 
-    public enum FieldOrder {
+    enum FieldOrder {
         ASCENDING,
         DESCENDING
     }

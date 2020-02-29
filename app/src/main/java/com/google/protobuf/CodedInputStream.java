@@ -2690,7 +2690,7 @@ public abstract class CodedInputStream {
                 int bytesRead = inputStream.read(bArr2, i5, Math.min(bArr2.length - i5, (this.sizeLimit - this.totalBytesRetired) - this.bufferSize));
                 if (bytesRead == 0 || bytesRead < -1 || bytesRead > this.buffer.length) {
                     String valueOf = String.valueOf(this.input.getClass());
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 91);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 91);
                     sb.append(valueOf);
                     sb.append("#read(byte[]) returned invalid result: ");
                     sb.append(bytesRead);

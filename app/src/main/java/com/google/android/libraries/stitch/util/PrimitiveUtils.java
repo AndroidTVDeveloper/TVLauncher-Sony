@@ -85,14 +85,7 @@ public final class PrimitiveUtils {
 
     public static boolean equals(Integer lhs, Integer rhs) {
         if (lhs != null) {
-            if (rhs == null || safeInt(lhs) != safeInt(rhs)) {
-                return false;
-            }
-            return true;
-        } else if (rhs == null) {
-            return true;
-        } else {
-            return false;
-        }
+            return rhs != null && safeInt(lhs) == safeInt(rhs);
+        } else return rhs == null;
     }
 }

@@ -36,7 +36,7 @@ class AttributeStrategy implements LruPoolStrategy {
 
     public String toString() {
         String valueOf = String.valueOf(this.groupedMap);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 21);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 21);
         sb.append("AttributeStrategy:\n  ");
         sb.append(valueOf);
         return sb.toString();
@@ -48,7 +48,7 @@ class AttributeStrategy implements LruPoolStrategy {
 
     static String getBitmapString(int width, int height, Bitmap.Config config) {
         String valueOf = String.valueOf(config);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 27);
         sb.append("[");
         sb.append(width);
         sb.append("x");
@@ -96,10 +96,7 @@ class AttributeStrategy implements LruPoolStrategy {
                 return false;
             }
             Key other = (Key) o;
-            if (this.width == other.width && this.height == other.height && this.config == other.config) {
-                return true;
-            }
-            return false;
+            return this.width == other.width && this.height == other.height && this.config == other.config;
         }
 
         public int hashCode() {

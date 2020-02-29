@@ -24,18 +24,12 @@ public final class FingerprintManagerCompat {
 
     public boolean hasEnrolledFingerprints() {
         FingerprintManager fp;
-        if (Build.VERSION.SDK_INT < 23 || (fp = getFingerprintManagerOrNull(this.mContext)) == null || !fp.hasEnrolledFingerprints()) {
-            return false;
-        }
-        return true;
+        return Build.VERSION.SDK_INT >= 23 && (fp = getFingerprintManagerOrNull(this.mContext)) != null && fp.hasEnrolledFingerprints();
     }
 
     public boolean isHardwareDetected() {
         FingerprintManager fp;
-        if (Build.VERSION.SDK_INT < 23 || (fp = getFingerprintManagerOrNull(this.mContext)) == null || !fp.isHardwareDetected()) {
-            return false;
-        }
-        return true;
+        return Build.VERSION.SDK_INT >= 23 && (fp = getFingerprintManagerOrNull(this.mContext)) != null && fp.isHardwareDetected();
     }
 
     public void authenticate(CryptoObject crypto, int flags, CancellationSignal cancel, AuthenticationCallback callback, Handler handler) {

@@ -97,7 +97,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                             fileOutputStream = CrashMetricService.this.getApplication().openFileOutput(CrashMetricService.CRASH_STORE_FILE_NAME, 0);
                             fileOutputStream.flush();
                         } catch (IOException e) {
-                            PrimesLog.m56w(CrashMetricService.TAG, "IO failure creating empty file.", new Object[0]);
+                            PrimesLog.m56w(CrashMetricService.TAG, "IO failure creating empty file.");
                         }
                     }
                     SystemHealthProto.CrashMetric crash = CrashMetricService.this.createCrashMetric(thread.getName(), throwable);
@@ -105,7 +105,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                         try {
                             fileOutputStream.write(crash.toByteArray());
                         } catch (IOException e2) {
-                            PrimesLog.m56w(CrashMetricService.TAG, "IO failure storing crash.", new Object[0]);
+                            PrimesLog.m56w(CrashMetricService.TAG, "IO failure storing crash.");
                         }
                     }
                     SystemHealthProto.SystemHealthMetric.Builder metric = SystemHealthProto.SystemHealthMetric.newBuilder().setCrashMetric(crash);
@@ -116,7 +116,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                                 metric.setMetricExtension(metricExtension);
                             }
                         } catch (Exception e3) {
-                            PrimesLog.m55w(CrashMetricService.TAG, "Exception while getting crash metric extension!", e3, new Object[0]);
+                            PrimesLog.m55w(CrashMetricService.TAG, "Exception while getting crash metric extension!", e3);
                         }
                     }
                     CrashMetricService.this.maybeSendDeferredPrimesStats();
@@ -131,7 +131,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                     try {
                         fileOutputStream.close();
                     } catch (IOException e4) {
-                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.", new Object[0]);
+                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.");
                     }
                 }
                 if (prevThreadPolicy != null) {
@@ -142,12 +142,12 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                     return;
                 }
             } catch (Exception e5) {
-                PrimesLog.m55w(CrashMetricService.TAG, "Failed to record crash.", e5, new Object[0]);
+                PrimesLog.m55w(CrashMetricService.TAG, "Failed to record crash.", e5);
                 if (fileOutputStream != null) {
                     try {
                         fileOutputStream.close();
                     } catch (IOException e6) {
-                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.", new Object[0]);
+                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.");
                     }
                 }
                 if (prevThreadPolicy != null) {
@@ -162,7 +162,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
                     try {
                         fileOutputStream.close();
                     } catch (IOException e7) {
-                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.", new Object[0]);
+                        PrimesLog.m56w(CrashMetricService.TAG, "Could not close file.");
                     }
                 }
                 if (prevThreadPolicy != null) {
@@ -217,15 +217,15 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
             }
         } catch (Exception e) {
             String valueOf = String.valueOf(e);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 38);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 38);
             sb.append("Failed to generate hashed stack trace.");
             sb.append(valueOf);
-            PrimesLog.m56w(TAG, sb.toString(), new Object[0]);
+            PrimesLog.m56w(TAG, sb.toString());
         }
         try {
             crash.setProcessStats(ProcessProto.ProcessStats.newBuilder().setAndroidProcessStats(ProcessStatsCapture.getAndroidProcessStats(getApplication())));
         } catch (Exception e2) {
-            PrimesLog.m55w(TAG, "Failed to get process stats.", e2, new Object[0]);
+            PrimesLog.m55w(TAG, "Failed to get process stats.", e2);
         }
         return (SystemHealthProto.CrashMetric) crash.build();
     }
@@ -237,18 +237,18 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
             if (!crashFile.exists()) {
                 return null;
             }
-            PrimesLog.m48d(TAG, "found persisted crash", new Object[0]);
+            PrimesLog.m48d(TAG, "found persisted crash");
             SystemHealthProto.CrashMetric.Builder ret = SystemHealthProto.CrashMetric.newBuilder();
             if (readAndDeleteStoredCrash(crashFile, ret)) {
                 return (SystemHealthProto.CrashMetric) ret.build();
             }
-            PrimesLog.m56w(TAG, "could not delete crash file", new Object[0]);
+            PrimesLog.m56w(TAG, "could not delete crash file");
             return null;
         } catch (IOException ex) {
-            PrimesLog.m47d(TAG, "IO failure", ex, new Object[0]);
+            PrimesLog.m47d(TAG, "IO failure", ex);
             return null;
         } catch (SecurityException se) {
-            PrimesLog.m47d(TAG, "Unexpected SecurityException", se, new Object[0]);
+            PrimesLog.m47d(TAG, "Unexpected SecurityException", se);
             return null;
         }
     }
@@ -295,20 +295,20 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
     }
 
     public void onPrimesInitialize() {
-        PrimesLog.m48d(TAG, "onPrimesInitialize", new Object[0]);
+        PrimesLog.m48d(TAG, "onPrimesInitialize");
         SystemHealthProto.CrashMetric prevCrash = null;
         if (this.persistCrashStatsEnabled) {
-            PrimesLog.m48d(TAG, "persistent crash enabled.", new Object[0]);
+            PrimesLog.m48d(TAG, "persistent crash enabled.");
             try {
                 prevCrash = readAndClearStoredCrash();
             } catch (RuntimeException re) {
-                PrimesLog.m55w(TAG, "Unexpected failure: ", re, new Object[0]);
+                PrimesLog.m55w(TAG, "Unexpected failure: ", re);
             }
         }
         if (this.deferPrimesStats.get()) {
             this.deferredPrevCrash = prevCrash;
         } else if (!shouldRecord() || (prevCrash == null && !this.shouldSendStartupMetric)) {
-            PrimesLog.m52i(TAG, "Startup metric for 'PRIMES_CRASH_MONITORING_INITIALIZED' dropped.", new Object[0]);
+            PrimesLog.m52i(TAG, "Startup metric for 'PRIMES_CRASH_MONITORING_INITIALIZED' dropped.");
         } else {
             recordStartupEvent(SystemHealthProto.PrimesStats.PrimesEvent.PRIMES_CRASH_MONITORING_INITIALIZED, prevCrash);
         }
@@ -317,7 +317,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
     /* access modifiers changed from: package-private */
     public void setActiveComponentName(NoPiiString activeComponentName2) {
         String valueOf = String.valueOf(NoPiiString.safeToString(activeComponentName2));
-        PrimesLog.m48d(TAG, valueOf.length() != 0 ? "activeComponentName: ".concat(valueOf) : new String("activeComponentName: "), new Object[0]);
+        PrimesLog.m48d(TAG, valueOf.length() != 0 ? "activeComponentName: ".concat(valueOf) : "activeComponentName: ");
         this.activeComponentName = activeComponentName2;
     }
 
@@ -342,7 +342,7 @@ final class CrashMetricService extends AbstractMetricService implements PrimesSt
     }
 
     public void onFirstActivityCreated() {
-        PrimesLog.m48d(TAG, "onFirstActivityCreated", new Object[0]);
+        PrimesLog.m48d(TAG, "onFirstActivityCreated");
         if (!this.deferPrimesStats.get()) {
             sendActivityCreatedEvent();
         }

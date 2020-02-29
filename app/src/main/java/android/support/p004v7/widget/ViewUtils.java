@@ -47,11 +47,11 @@ public class ViewUtils {
     public static void makeOptionalFitsSystemWindows(View view) {
         if (Build.VERSION.SDK_INT >= 16) {
             try {
-                Method method = view.getClass().getMethod("makeOptionalFitsSystemWindows", new Class[0]);
+                Method method = view.getClass().getMethod("makeOptionalFitsSystemWindows");
                 if (!method.isAccessible()) {
                     method.setAccessible(true);
                 }
-                method.invoke(view, new Object[0]);
+                method.invoke(view);
             } catch (NoSuchMethodException e) {
                 Log.d(TAG, "Could not find method makeOptionalFitsSystemWindows. Oh well...");
             } catch (InvocationTargetException e2) {

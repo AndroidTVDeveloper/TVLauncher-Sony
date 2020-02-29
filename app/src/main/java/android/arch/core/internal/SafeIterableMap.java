@@ -148,10 +148,7 @@ public class SafeIterableMap<K, V> implements Iterable<Map.Entry<K, V>> {
                 return false;
             }
         }
-        if (iterator1.hasNext() || iterator2.hasNext()) {
-            return false;
-        }
-        return true;
+        return !iterator1.hasNext() && !iterator2.hasNext();
     }
 
     public int hashCode() {
@@ -276,15 +273,8 @@ public class SafeIterableMap<K, V> implements Iterable<Map.Entry<K, V>> {
         public boolean hasNext() {
             if (!this.mBeforeStart) {
                 Entry<K, V> entry = this.mCurrent;
-                if (entry == null || entry.mNext == null) {
-                    return false;
-                }
-                return true;
-            } else if (SafeIterableMap.this.mStart != null) {
-                return true;
-            } else {
-                return false;
-            }
+                return entry != null && entry.mNext != null;
+            } else return SafeIterableMap.this.mStart != null;
         }
 
         public Map.Entry<K, V> next() {

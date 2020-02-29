@@ -39,10 +39,7 @@ public final class HardwareConfigState {
     }
 
     public boolean isHardwareConfigAllowed(int targetWidth, int targetHeight, boolean isHardwareConfigAllowed, boolean isExifOrientationRequired) {
-        if (!isHardwareConfigAllowed || !this.isHardwareConfigAllowedByDeviceModel || Build.VERSION.SDK_INT < 26 || isExifOrientationRequired || targetWidth < 128 || targetHeight < 128 || !isFdSizeBelowHardwareLimit()) {
-            return false;
-        }
-        return true;
+        return isHardwareConfigAllowed && this.isHardwareConfigAllowedByDeviceModel && Build.VERSION.SDK_INT >= 26 && !isExifOrientationRequired && targetWidth >= 128 && targetHeight >= 128 && isFdSizeBelowHardwareLimit();
     }
 
     /* access modifiers changed from: package-private */
@@ -124,10 +121,7 @@ public final class HardwareConfigState {
             case 4:
             case 5:
             case 6:
-                if (Build.VERSION.SDK_INT != 26) {
-                    return true;
-                }
-                return false;
+                return Build.VERSION.SDK_INT != 26;
             default:
                 return true;
         }

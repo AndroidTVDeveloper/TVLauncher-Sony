@@ -13,7 +13,7 @@ public class ImageViewTargetFactory {
             return new DrawableImageViewTarget(view);
         }
         String valueOf = String.valueOf(clazz);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 64);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 64);
         sb.append("Unhandled class: ");
         sb.append(valueOf);
         sb.append(", try .as*(Class).transcode(ResourceTranscoder)");

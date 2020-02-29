@@ -342,10 +342,7 @@ public final class GestureDetectorCompat {
             }
             int deltaX = ((int) firstDown.getX()) - ((int) secondDown.getX());
             int deltaY = ((int) firstDown.getY()) - ((int) secondDown.getY());
-            if ((deltaX * deltaX) + (deltaY * deltaY) < this.mDoubleTapSlopSquare) {
-                return true;
-            }
-            return false;
+            return (deltaX * deltaX) + (deltaY * deltaY) < this.mDoubleTapSlopSquare;
         }
 
         /* access modifiers changed from: package-private */

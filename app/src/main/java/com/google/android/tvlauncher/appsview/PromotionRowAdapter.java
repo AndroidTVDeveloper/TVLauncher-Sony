@@ -110,7 +110,7 @@ public class PromotionRowAdapter extends RecyclerView.Adapter<PromotionViewHolde
                 } else {
                     intent = new Intent("android.intent.action.VIEW");
                     String valueOf = String.valueOf(this.promotion.getPackageName());
-                    intent.setData(Uri.parse(valueOf.length() != 0 ? "market://details?id=".concat(valueOf) : new String("market://details?id=")));
+                    intent.setData(Uri.parse(valueOf.length() != 0 ? "market://details?id=".concat(valueOf) : "market://details?id="));
                 }
             }
             PromotionRowAdapter.this.onAppsViewActionListener.onLaunchApp(intent, this.itemView);

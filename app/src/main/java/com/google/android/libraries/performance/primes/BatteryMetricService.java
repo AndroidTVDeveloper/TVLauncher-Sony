@@ -67,7 +67,7 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
         if (!this.inForeground.getAndSet(true)) {
             return scheduleCapture(BatteryMetric.BatteryStatsDiff.SampleInfo.BACKGROUND_TO_FOREGROUND);
         }
-        PrimesLog.m56w(TAG, "unexpected state onAppToForeground", new Object[0]);
+        PrimesLog.m56w(TAG, "unexpected state onAppToForeground");
         return null;
     }
 
@@ -80,7 +80,7 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
         if (this.inForeground.getAndSet(false)) {
             return scheduleCapture(BatteryMetric.BatteryStatsDiff.SampleInfo.FOREGROUND_TO_BACKGROUND);
         }
-        PrimesLog.m56w(TAG, "unexpected state onAppToBackground", new Object[0]);
+        PrimesLog.m56w(TAG, "unexpected state onAppToBackground");
         return null;
     }
 
@@ -113,15 +113,15 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
             recordBatteryStatsDiff(startSnapshot, new PrimesBatterySnapshot(captureCustomDiffSnapshot(BatteryMetric.BatteryStatsDiff.SampleInfo.CUSTOM_MEASURE_STOP, customEventName, isEventNameConstant)), customEventName, isEventNameConstant, metricExtension);
             return;
         }
-        String valueOf = String.valueOf(customEventName);
-        PrimesLog.m56w(TAG, valueOf.length() != 0 ? "startBatteryDiffMeasurement() failed for customEventName ".concat(valueOf) : new String("startBatteryDiffMeasurement() failed for customEventName "), new Object[0]);
+        String valueOf = customEventName;
+        PrimesLog.m56w(TAG, valueOf.length() != 0 ? "startBatteryDiffMeasurement() failed for customEventName ".concat(valueOf) : "startBatteryDiffMeasurement() failed for customEventName ");
     }
 
     /* access modifiers changed from: package-private */
     public void cancelBatteryDiffMeasurement(String customEventName) {
         if (this.startSnapshots.remove(customEventName) != null) {
-            String valueOf = String.valueOf(customEventName);
-            PrimesLog.m56w(TAG, valueOf.length() != 0 ? "Cancel battery diff measurement for customEventName ".concat(valueOf) : new String("Cancel battery diff measurement for customEventName "), new Object[0]);
+            String valueOf = customEventName;
+            PrimesLog.m56w(TAG, valueOf.length() != 0 ? "Cancel battery diff measurement for customEventName ".concat(valueOf) : "Cancel battery diff measurement for customEventName ");
         }
     }
 
@@ -141,7 +141,7 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
         if (startSnapshot.getBatterySnapshot() != null && endSnapshot.getBatterySnapshot() != null) {
             SystemHealthProto.SystemHealthMetric metric = this.batteryCapture.createBatteryMetric(startSnapshot.getBatterySnapshot().toStatsRecord(), endSnapshot.getBatterySnapshot().toStatsRecord());
             if (metric == null || !metric.hasBatteryUsageMetric()) {
-                PrimesLog.m56w(TAG, "at least one battery snapshot failed", new Object[0]);
+                PrimesLog.m56w(TAG, "at least one battery snapshot failed");
             } else {
                 recordSystemHealthMetric(customEventName, isEventNameConstant, metric, metricExtension);
             }
@@ -225,7 +225,7 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
 
     private Future<?> captureForDeferredLogging(BatteryMetric.BatteryStatsDiff.SampleInfo sampleInfo, String customEventName, boolean isEventNameConstant) {
         Future<BatteryCapture.Snapshot> future = getListeningScheduledExecutorService().submit((Callable) new BatteryMetricService$$Lambda$4(this, sampleInfo, customEventName, isEventNameConstant));
-        PrimesLog.m48d(TAG, "adding future BatteryCapture", new Object[0]);
+        PrimesLog.m48d(TAG, "adding future BatteryCapture");
         synchronized (this.batteryCaptures) {
             this.batteryCaptures.add(future);
             if (this.inForeground.get()) {
@@ -258,7 +258,7 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
                     log(startRecord, endRecord);
                 }
             } catch (Exception e) {
-                PrimesLog.m49e(TAG, "unpexpected failure", e, new Object[0]);
+                PrimesLog.m49e(TAG, "unpexpected failure", e);
             }
         }
         toStorage(endRecord);
@@ -280,11 +280,11 @@ final class BatteryMetricService extends AbstractMetricService implements Primes
                     log(start, end);
                 } else {
                     shutdownService();
-                    PrimesLog.m56w(TAG, "Failure storing persistent snapshot and helper data", new Object[0]);
+                    PrimesLog.m56w(TAG, "Failure storing persistent snapshot and helper data");
                 }
             }
             return;
         }
-        PrimesLog.m48d(TAG, "shutdown - skipping capture", new Object[0]);
+        PrimesLog.m48d(TAG, "shutdown - skipping capture");
     }
 }

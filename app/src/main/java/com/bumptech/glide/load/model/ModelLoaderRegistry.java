@@ -116,7 +116,7 @@ public class ModelLoaderRegistry {
         public <Model> void put(Class<Model> modelClass, List<ModelLoader<Model, ?>> loaders) {
             if (this.cachedModelLoaders.put(modelClass, new Entry(loaders)) != null) {
                 String valueOf = String.valueOf(modelClass);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 34);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 34);
                 sb.append("Already cached loaders for model: ");
                 sb.append(valueOf);
                 throw new IllegalStateException(sb.toString());

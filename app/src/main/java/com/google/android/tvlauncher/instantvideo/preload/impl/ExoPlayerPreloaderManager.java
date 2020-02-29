@@ -165,7 +165,7 @@ public class ExoPlayerPreloaderManager extends PreloaderManager {
                                         readTimeoutStartTimeMs = System.currentTimeMillis();
                                     } else if (System.currentTimeMillis() - readTimeoutStartTimeMs > ExoPlayerPreloaderManager.PRELOAD_TIMEOUT_MS) {
                                         String valueOf = String.valueOf(this.videoUri);
-                                        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 42);
+                                        StringBuilder sb = new StringBuilder(valueOf.length() + 42);
                                         sb.append("Timeout during preloading the video uri (");
                                         sb.append(valueOf);
                                         sb.append(")");

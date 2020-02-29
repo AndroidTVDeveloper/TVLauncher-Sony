@@ -74,11 +74,11 @@ public class ClearcutAppEventLogger extends AppEventLogger implements EventLogge
         LogEvent logEvent = this.pendingEvent;
         if (logEvent == null) {
             String valueOf = String.valueOf(parameters.getParameterName());
-            Log.e(TAG, valueOf.length() != 0 ? "Unexpected log parameter ".concat(valueOf) : new String("Unexpected log parameter "));
+            Log.e(TAG, valueOf.length() != 0 ? "Unexpected log parameter ".concat(valueOf) : "Unexpected log parameter ");
         } else if (logEvent.getEventCode() == null || !this.pendingEvent.getEventCode().equals(parameters.getEventCode())) {
             String valueOf2 = String.valueOf(parameters.getEventCode());
             String valueOf3 = String.valueOf(this.pendingEvent.getEventCode());
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf2).length() + 56 + String.valueOf(valueOf3).length());
+            StringBuilder sb = new StringBuilder(valueOf2.length() + 56 + valueOf3.length());
             sb.append("Parameters for a previous event. Event code: ");
             sb.append(valueOf2);
             sb.append(", expected ");
@@ -101,7 +101,7 @@ public class ClearcutAppEventLogger extends AppEventLogger implements EventLogge
             }
             if (!expected) {
                 String valueOf4 = String.valueOf(parameters.getParameterName());
-                Log.e(TAG, valueOf4.length() != 0 ? "Unexpected log parameter ".concat(valueOf4) : new String("Unexpected log parameter "));
+                Log.e(TAG, valueOf4.length() != 0 ? "Unexpected log parameter ".concat(valueOf4) : "Unexpected log parameter ");
                 return;
             }
             this.pendingEvent.mergeFrom(parameters);

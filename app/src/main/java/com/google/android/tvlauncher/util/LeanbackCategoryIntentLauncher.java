@@ -14,7 +14,7 @@ public class LeanbackCategoryIntentLauncher implements IntentLauncher {
     public boolean launchIntent(Context context, String packageName, Intent originalIntent) {
         if (TextUtils.isEmpty(packageName)) {
             String valueOf = String.valueOf(originalIntent);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 49);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 49);
             sb.append("No package was specified in the original intent: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -22,8 +22,8 @@ public class LeanbackCategoryIntentLauncher implements IntentLauncher {
         }
         Intent intent = context.getPackageManager().getLeanbackLaunchIntentForPackage(packageName);
         if (intent == null) {
-            String valueOf2 = String.valueOf(packageName);
-            Log.e(TAG, valueOf2.length() != 0 ? "Could not find a Leanback intent for package: ".concat(valueOf2) : new String("Could not find a Leanback intent for package: "));
+            String valueOf2 = packageName;
+            Log.e(TAG, valueOf2.length() != 0 ? "Could not find a Leanback intent for package: ".concat(valueOf2) : "Could not find a Leanback intent for package: ");
             return false;
         }
         intent.addFlags(C0847C.ENCODING_PCM_MU_LAW);

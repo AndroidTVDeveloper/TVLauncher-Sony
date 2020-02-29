@@ -160,10 +160,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
                     if (!(throwable instanceof Resources.NotFoundException) || (message = throwable.getMessage()) == null) {
                         return false;
                     }
-                    if (message.contains("drawable") || message.contains("Drawable")) {
-                        return true;
-                    }
-                    return false;
+                    return message.contains("drawable") || message.contains("Drawable");
                 }
             });
         }
@@ -795,10 +792,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
         } else if (sanitizeWindowFeatureId == 109) {
             result = this.mOverlayActionBar;
         }
-        if (result || this.mWindow.hasFeature(featureId)) {
-            return true;
-        }
-        return false;
+        return result || this.mWindow.hasFeature(featureId);
     }
 
     public final void setTitle(CharSequence title) {
@@ -1055,10 +1049,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             return true;
         }
         ActionBar ab = getSupportActionBar();
-        if (ab == null || !ab.collapseActionView()) {
-            return false;
-        }
-        return true;
+        return ab != null && ab.collapseActionView();
     }
 
     /* access modifiers changed from: package-private */
@@ -1074,9 +1065,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
                 preparePanel(st, ev);
                 boolean handled = performPanelShortcut(st, ev.getKeyCode(), ev, 1);
                 st.isPrepared = false;
-                if (handled) {
-                    return true;
-                }
+                return handled;
             }
             return false;
         }
@@ -1116,9 +1105,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
                     closePanel(st, true);
                 }
                 return true;
-            } else if (onBackPressed()) {
-                return true;
-            }
+            } else return onBackPressed();
         } else if (keyCode == 82) {
             onKeyUpPanel(0, event);
             return true;
@@ -1348,10 +1335,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
                 this.mPanelMenuPresenterCallback = new PanelMenuPresenterCallback();
             }
             st.shownPanelView = (View) st.getListMenuView(this.mPanelMenuPresenterCallback);
-            if (st.shownPanelView != null) {
-                return true;
-            }
-            return false;
+            return st.shownPanelView != null;
         }
     }
 
@@ -1874,7 +1858,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             }
             try {
                 ActivityInfo info = pm.getActivityInfo(new ComponentName(this.mContext, this.mHost.getClass()), 0);
-                this.mActivityHandlesUiMode = (info == null || (info.configChanges & 512) == 0) ? false : true;
+                this.mActivityHandlesUiMode = info != null && (info.configChanges & 512) != 0;
             } catch (PackageManager.NameNotFoundException e) {
                 Log.d("AppCompatDelegate", "Exception while getting ActivityInfo", e);
                 this.mActivityHandlesUiMode = false;
@@ -2019,10 +2003,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             if (this.shownPanelView == null) {
                 return false;
             }
-            if (this.createdPanelView == null && this.listMenuPresenter.getAdapter().getCount() <= 0) {
-                return false;
-            }
-            return true;
+            return this.createdPanelView != null || this.listMenuPresenter.getAdapter().getCount() > 0;
         }
 
         public void clearMenuPresenters() {
@@ -2410,7 +2391,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
 
         public boolean isNavigationVisible() {
             ActionBar ab = AppCompatDelegateImpl.this.getSupportActionBar();
-            return (ab == null || (ab.getDisplayOptions() & 4) == 0) ? false : true;
+            return ab != null && (ab.getDisplayOptions() & 4) != 0;
         }
 
         public void setActionBarUpIndicator(Drawable upDrawable, int contentDescRes) {

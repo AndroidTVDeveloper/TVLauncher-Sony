@@ -691,7 +691,7 @@ public class IconCompat extends CustomVersionedParcelable {
             return icon.getType();
         }
         try {
-            return ((Integer) icon.getClass().getMethod("getType", new Class[0]).invoke(icon, new Object[0])).intValue();
+            return ((Integer) icon.getClass().getMethod("getType").invoke(icon, new Object[0])).intValue();
         } catch (IllegalAccessException e) {
             Log.e(TAG, "Unable to get icon type " + icon, e);
             return -1;
@@ -709,7 +709,7 @@ public class IconCompat extends CustomVersionedParcelable {
             return icon.getResPackage();
         }
         try {
-            return (String) icon.getClass().getMethod("getResPackage", new Class[0]).invoke(icon, new Object[0]);
+            return (String) icon.getClass().getMethod("getResPackage").invoke(icon, new Object[0]);
         } catch (IllegalAccessException e) {
             Log.e(TAG, "Unable to get icon package", e);
             return null;
@@ -727,7 +727,7 @@ public class IconCompat extends CustomVersionedParcelable {
             return icon.getResId();
         }
         try {
-            return ((Integer) icon.getClass().getMethod("getResId", new Class[0]).invoke(icon, new Object[0])).intValue();
+            return ((Integer) icon.getClass().getMethod("getResId").invoke(icon, new Object[0])).intValue();
         } catch (IllegalAccessException e) {
             Log.e(TAG, "Unable to get icon resource", e);
             return 0;
@@ -745,7 +745,7 @@ public class IconCompat extends CustomVersionedParcelable {
             return icon.getUri();
         }
         try {
-            return (Uri) icon.getClass().getMethod("getUri", new Class[0]).invoke(icon, new Object[0]);
+            return (Uri) icon.getClass().getMethod("getUri").invoke(icon, new Object[0]);
         } catch (IllegalAccessException e) {
             Log.e(TAG, "Unable to get icon uri", e);
             return null;

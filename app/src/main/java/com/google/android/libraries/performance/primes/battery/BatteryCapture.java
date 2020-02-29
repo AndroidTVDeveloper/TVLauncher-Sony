@@ -79,15 +79,15 @@ public final class BatteryCapture {
 
     public SystemHealthProto.SystemHealthMetric createBatteryMetric(StatsStorage.StatsRecord start, StatsStorage.StatsRecord end) {
         if (!consistentRecords(start, end)) {
-            PrimesLog.m48d(TAG, "inconsistent stats", new Object[0]);
+            PrimesLog.m48d(TAG, "inconsistent stats");
             return null;
         }
         BatteryMetric.UidHealthProto diffProto = this.systemHealthCapture.diffStats(end.getProto(), start.getProto());
         if (diffProto == null) {
-            PrimesLog.m48d(TAG, "null diff", new Object[0]);
+            PrimesLog.m48d(TAG, "null diff");
             return null;
         } else if (!diffProto.hasRealtimeBatteryMs() || diffProto.getRealtimeBatteryMs() <= 0) {
-            PrimesLog.m48d(TAG, "invalid realtime", new Object[0]);
+            PrimesLog.m48d(TAG, "invalid realtime");
             return null;
         } else {
             BatteryMetric.BatteryStatsDiff.Builder batteryStatsDiff = BatteryMetric.BatteryStatsDiff.newBuilder().setDurationMs(((Long) Preconditions.checkNotNull(end.getElapsedTime())).longValue() - ((Long) Preconditions.checkNotNull(start.getElapsedTime())).longValue());
@@ -138,10 +138,7 @@ public final class BatteryCapture {
             double d2 = (double) currentDuration;
             Double.isNaN(d);
             Double.isNaN(d2);
-            if (d / d2 <= MAX_REL_TOL) {
-                return true;
-            }
-            return false;
+            return d / d2 <= MAX_REL_TOL;
         }
         return true;
     }

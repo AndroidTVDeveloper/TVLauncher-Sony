@@ -367,10 +367,7 @@ public final class TextViewCompat {
             if (!info.activityInfo.exported) {
                 return false;
             }
-            if (info.activityInfo.permission == null || context.checkSelfPermission(info.activityInfo.permission) == 0) {
-                return true;
-            }
-            return false;
+            return info.activityInfo.permission == null || context.checkSelfPermission(info.activityInfo.permission) == 0;
         }
 
         private Intent createProcessTextIntentForResolveInfo(ResolveInfo info, TextView textView11) {

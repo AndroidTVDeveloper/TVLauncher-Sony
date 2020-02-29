@@ -124,7 +124,7 @@ final class MemoryMetricService extends AbstractMetricService {
                         MemoryMetricService.this.recordSystemHealthMetric(str, z, (SystemHealthProto.SystemHealthMetric) SystemHealthProto.SystemHealthMetric.newBuilder().setMemoryUsageMetric(memoryUsageMetric).build(), metricExtension2);
                         return;
                     }
-                    PrimesLog.m56w(MemoryMetricService.TAG, "at least one memory snapshot failed", new Object[0]);
+                    PrimesLog.m56w(MemoryMetricService.TAG, "at least one memory snapshot failed");
                 }
             }));
         }
@@ -179,7 +179,7 @@ final class MemoryMetricService extends AbstractMetricService {
                         try {
                             recordedExtension = MemoryMetricService.this.metricExtensionProvider.getMetricExtension(str, memoryEventCode);
                         } catch (RuntimeException e) {
-                            PrimesLog.m50e(MemoryMetricService.TAG, "Metric extension provider failed.", new Object[0]);
+                            PrimesLog.m50e(MemoryMetricService.TAG, "Metric extension provider failed.");
                         }
                     }
                     if (MemoryMetricService.this.recordMemoryPerProcess) {

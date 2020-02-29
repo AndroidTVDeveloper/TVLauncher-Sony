@@ -575,8 +575,8 @@ public class ViewCompat {
 
     private static void bindTempDetach() {
         try {
-            sDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach", new Class[0]);
-            sDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach", new Class[0]);
+            sDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach");
+            sDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach");
         } catch (NoSuchMethodException e) {
             Log.e(TAG, "Couldn't find method", e);
         }
@@ -594,7 +594,7 @@ public class ViewCompat {
         Method method = sDispatchStartTemporaryDetach;
         if (method != null) {
             try {
-                method.invoke(view, new Object[0]);
+                method.invoke(view);
             } catch (Exception e) {
                 Log.d(TAG, "Error calling dispatchStartTemporaryDetach", e);
             }
@@ -614,7 +614,7 @@ public class ViewCompat {
         Method method = sDispatchFinishTemporaryDetach;
         if (method != null) {
             try {
-                method.invoke(view, new Object[0]);
+                method.invoke(view);
             } catch (Exception e) {
                 Log.d(TAG, "Error calling dispatchFinishTemporaryDetach", e);
             }
@@ -1003,7 +1003,7 @@ public class ViewCompat {
             view.setBackgroundTintList(tintList);
             if (Build.VERSION.SDK_INT == 21) {
                 Drawable background = view.getBackground();
-                boolean hasTint = (view.getBackgroundTintList() == null && view.getBackgroundTintMode() == null) ? false : true;
+                boolean hasTint = view.getBackgroundTintList() != null || view.getBackgroundTintMode() != null;
                 if (background != null && hasTint) {
                     if (background.isStateful()) {
                         background.setState(view.getDrawableState());
@@ -1031,7 +1031,7 @@ public class ViewCompat {
             view.setBackgroundTintMode(mode);
             if (Build.VERSION.SDK_INT == 21) {
                 Drawable background = view.getBackground();
-                boolean hasTint = (view.getBackgroundTintList() == null && view.getBackgroundTintMode() == null) ? false : true;
+                boolean hasTint = view.getBackgroundTintList() != null || view.getBackgroundTintMode() != null;
                 if (background != null && hasTint) {
                     if (background.isStateful()) {
                         background.setState(view.getDrawableState());
@@ -1705,10 +1705,7 @@ public class ViewCompat {
 
         /* access modifiers changed from: package-private */
         public boolean booleanNullToFalseEquals(Boolean a, Boolean b) {
-            if ((a == null ? false : a.booleanValue()) == (b == null ? false : b.booleanValue())) {
-                return true;
-            }
-            return false;
+            return (a != null && a.booleanValue()) == (b != null && b.booleanValue());
         }
     }
 

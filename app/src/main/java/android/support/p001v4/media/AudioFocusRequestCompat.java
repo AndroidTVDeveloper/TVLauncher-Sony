@@ -72,10 +72,7 @@ public class AudioFocusRequestCompat {
             return false;
         }
         AudioFocusRequestCompat that = (AudioFocusRequestCompat) o;
-        if (this.mFocusGain != that.mFocusGain || this.mPauseOnDuck != that.mPauseOnDuck || !ObjectsCompat.equals(this.mOnAudioFocusChangeListener, that.mOnAudioFocusChangeListener) || !ObjectsCompat.equals(this.mFocusChangeHandler, that.mFocusChangeHandler) || !ObjectsCompat.equals(this.mAudioAttributesCompat, that.mAudioAttributesCompat)) {
-            return false;
-        }
-        return true;
+        return this.mFocusGain == that.mFocusGain && this.mPauseOnDuck == that.mPauseOnDuck && ObjectsCompat.equals(this.mOnAudioFocusChangeListener, that.mOnAudioFocusChangeListener) && ObjectsCompat.equals(this.mFocusChangeHandler, that.mFocusChangeHandler) && ObjectsCompat.equals(this.mAudioAttributesCompat, that.mAudioAttributesCompat);
     }
 
     public int hashCode() {
@@ -170,10 +167,7 @@ public class AudioFocusRequestCompat {
         }
 
         static boolean isValidFocusGain(int focusGain) {
-            if (focusGain == 1 || focusGain == 2 || focusGain == 3 || focusGain == 4) {
-                return true;
-            }
-            return false;
+            return focusGain == 1 || focusGain == 2 || focusGain == 3 || focusGain == 4;
         }
     }
 

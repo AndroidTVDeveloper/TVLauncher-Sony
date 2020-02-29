@@ -29,7 +29,7 @@ public class MultiClassKey {
     public String toString() {
         String valueOf = String.valueOf(this.first);
         String valueOf2 = String.valueOf(this.second);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 30 + valueOf2.length());
         sb.append("MultiClassKey{first=");
         sb.append(valueOf);
         sb.append(", second=");
@@ -46,10 +46,7 @@ public class MultiClassKey {
             return false;
         }
         MultiClassKey that = (MultiClassKey) o;
-        if (this.first.equals(that.first) && this.second.equals(that.second) && Util.bothNullOrEqual(this.third, that.third)) {
-            return true;
-        }
-        return false;
+        return this.first.equals(that.first) && this.second.equals(that.second) && Util.bothNullOrEqual(this.third, that.third);
     }
 
     public int hashCode() {

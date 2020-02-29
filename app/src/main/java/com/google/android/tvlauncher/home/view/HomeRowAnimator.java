@@ -657,7 +657,7 @@ public class HomeRowAnimator extends BoundsItemAnimator {
             int i4 = this.bottom;
             String valueOf = String.valueOf(this.itemsListBounds);
             String valueOf2 = String.valueOf(this.itemsListContainersBounds);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 130 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 130 + valueOf2.length());
             sb.append("MyHolderInfo left=");
             sb.append(i);
             sb.append(", top=");

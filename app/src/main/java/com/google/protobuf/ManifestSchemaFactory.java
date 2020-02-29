@@ -75,14 +75,14 @@ final class ManifestSchemaFactory implements SchemaFactory {
                     return factory.messageInfoFor(clazz);
                 }
             }
-            String valueOf = String.valueOf(clazz.getName());
-            throw new UnsupportedOperationException(valueOf.length() != 0 ? "No factory is available for message type: ".concat(valueOf) : new String("No factory is available for message type: "));
+            String valueOf = clazz.getName();
+            throw new UnsupportedOperationException(valueOf.length() != 0 ? "No factory is available for message type: ".concat(valueOf) : "No factory is available for message type: ");
         }
     }
 
     private static MessageInfoFactory getDescriptorMessageInfoFactory() {
         try {
-            return (MessageInfoFactory) Class.forName("com.google.protobuf.DescriptorMessageInfoFactory").getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
+            return (MessageInfoFactory) Class.forName("com.google.protobuf.DescriptorMessageInfoFactory").getDeclaredMethod("getInstance").invoke(null, new Object[0]);
         } catch (Exception e) {
             return EMPTY_FACTORY;
         }

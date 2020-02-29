@@ -325,10 +325,7 @@ class SmallSortedMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
                 return false;
             }
             Map.Entry<?, ?> other = (Map.Entry) o;
-            if (!equals(this.key, other.getKey()) || !equals(this.value, other.getValue())) {
-                return false;
-            }
-            return true;
+            return equals(this.key, other.getKey()) && equals(this.value, other.getValue());
         }
 
         public int hashCode() {
@@ -345,7 +342,7 @@ class SmallSortedMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
         public String toString() {
             String valueOf = String.valueOf(this.key);
             String valueOf2 = String.valueOf(this.value);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 1 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 1 + valueOf2.length());
             sb.append(valueOf);
             sb.append("=");
             sb.append(valueOf2);
@@ -432,10 +429,7 @@ class SmallSortedMap<K extends Comparable<K>, V> extends AbstractMap<K, V> {
             if (this.pos + 1 < SmallSortedMap.this.entryList.size()) {
                 return true;
             }
-            if (SmallSortedMap.this.overflowEntries.isEmpty() || !getOverflowIterator().hasNext()) {
-                return false;
-            }
-            return true;
+            return !SmallSortedMap.this.overflowEntries.isEmpty() && getOverflowIterator().hasNext();
         }
 
         public Map.Entry<K, V> next() {

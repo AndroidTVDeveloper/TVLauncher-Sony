@@ -54,13 +54,13 @@ public final class PackageStatsCapture {
         public void onGetStatsCompleted(PackageStats stats, boolean success) {
             if (success) {
                 String valueOf = String.valueOf(stats);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 30);
                 sb.append("Success getting PackageStats: ");
                 sb.append(valueOf);
-                PrimesLog.m48d(PackageStatsCapture.TAG, sb.toString(), new Object[0]);
+                PrimesLog.m48d(PackageStatsCapture.TAG, sb.toString());
                 this.packageStats = stats;
             } else {
-                PrimesLog.m56w(PackageStatsCapture.TAG, "Failure getting PackageStats", new Object[0]);
+                PrimesLog.m56w(PackageStatsCapture.TAG, "Failure getting PackageStats");
             }
             this.semaphore.release();
         }
@@ -70,7 +70,7 @@ public final class PackageStatsCapture {
             if (this.semaphore.tryAcquire(timeoutMs, TimeUnit.MILLISECONDS)) {
                 return this.packageStats;
             }
-            PrimesLog.m56w(PackageStatsCapture.TAG, "Timeout while waiting for PackageStats callback", new Object[0]);
+            PrimesLog.m56w(PackageStatsCapture.TAG, "Timeout while waiting for PackageStats callback");
             return null;
         }
     }
@@ -93,10 +93,10 @@ public final class PackageStatsCapture {
                 packageManager.getClass().getMethod(this.methodName, this.paramTypes).invoke(packageManager, params(packageName, uid, callback));
                 return true;
             } catch (NoSuchMethodException me) {
-                PrimesLog.m47d(PackageStatsCapture.TAG, "PackageStats getter not found", me, new Object[0]);
+                PrimesLog.m47d(PackageStatsCapture.TAG, "PackageStats getter not found", me);
                 return false;
             } catch (Error | Exception e) {
-                PrimesLog.m52i(PackageStatsCapture.TAG, e.getClass().getSimpleName() + " for " + this.methodName + '(' + Arrays.asList(this.paramTypes) + ") invocation", new Object[0]);
+                PrimesLog.m52i(PackageStatsCapture.TAG, e.getClass().getSimpleName() + " for " + this.methodName + '(' + Arrays.asList(this.paramTypes) + ") invocation");
                 return false;
             }
         }
@@ -106,14 +106,14 @@ public final class PackageStatsCapture {
         try {
             return !Modifier.isAbstract(PackageStatsCallback.class.getMethod("onGetStatsCompleted", PackageStats.class, Boolean.TYPE).getModifiers());
         } catch (Error | Exception e) {
-            PrimesLog.m47d(TAG, "failure", e, new Object[0]);
+            PrimesLog.m47d(TAG, "failure", e);
             return false;
         }
     }
 
     static PackageStats getPackageStatsUsingInternalAPI(Context context, long callbackTimeoutMs, PackageStatsInvocation... getterInvocations) {
         if (!isCallbackPresent()) {
-            PrimesLog.m56w(TAG, "Callback implementation stripped by proguard.", new Object[0]);
+            PrimesLog.m56w(TAG, "Callback implementation stripped by proguard.");
             return null;
         }
         PackageStatsCallback callback = new PackageStatsCallback();
@@ -124,11 +124,11 @@ public final class PackageStatsCapture {
             int uid = Process.myUid();
             for (PackageStatsInvocation invoker : getterInvocations) {
                 if (invoker.invoke(pm, packageName, uid, callback)) {
-                    PrimesLog.m52i(TAG, "Success invoking PackageStats capture.", new Object[0]);
+                    PrimesLog.m52i(TAG, "Success invoking PackageStats capture.");
                     return callback.waitForStats(callbackTimeoutMs);
                 }
             }
-            PrimesLog.m56w(TAG, "Couldn't capture PackageStats.", new Object[0]);
+            PrimesLog.m56w(TAG, "Couldn't capture PackageStats.");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -151,7 +151,7 @@ public final class PackageStatsCapture {
                 PrimesTrace.endSection();
                 return packageStatsUsingInternalAPI;
             }
-            PrimesLog.m56w(TAG, "android.permission.GET_PACKAGE_SIZE required", new Object[0]);
+            PrimesLog.m56w(TAG, "android.permission.GET_PACKAGE_SIZE required");
             PrimesTrace.endSection();
             return null;
         } finally {

@@ -25,10 +25,7 @@ public final class RoundedCorners extends BitmapTransformation {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof RoundedCorners) || this.roundingRadius != ((RoundedCorners) o).roundingRadius) {
-            return false;
-        }
-        return true;
+        return o instanceof RoundedCorners && this.roundingRadius == ((RoundedCorners) o).roundingRadius;
     }
 
     public int hashCode() {

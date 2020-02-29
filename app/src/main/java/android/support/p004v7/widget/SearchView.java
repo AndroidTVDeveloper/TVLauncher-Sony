@@ -578,10 +578,7 @@ public class SearchView extends LinearLayoutCompat implements CollapsibleActionV
             } else if (this.mSearchable.getVoiceSearchLaunchRecognizer()) {
                 testIntent = this.mVoiceAppSearchIntent;
             }
-            if (testIntent == null || getContext().getPackageManager().resolveActivity(testIntent, 65536) == null) {
-                return false;
-            }
-            return true;
+            return testIntent != null && getContext().getPackageManager().resolveActivity(testIntent, 65536) != null;
         }
         return false;
     }
@@ -1329,12 +1326,12 @@ public class SearchView extends LinearLayoutCompat implements CollapsibleActionV
 
         AutoCompleteTextViewReflector() {
             try {
-                this.doBeforeTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged", new Class[0]);
+                this.doBeforeTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged");
                 this.doBeforeTextChanged.setAccessible(true);
             } catch (NoSuchMethodException e) {
             }
             try {
-                this.doAfterTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
+                this.doAfterTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged");
                 this.doAfterTextChanged.setAccessible(true);
             } catch (NoSuchMethodException e2) {
             }
@@ -1351,7 +1348,7 @@ public class SearchView extends LinearLayoutCompat implements CollapsibleActionV
             Method method = this.doBeforeTextChanged;
             if (method != null) {
                 try {
-                    method.invoke(view, new Object[0]);
+                    method.invoke(view);
                 } catch (Exception e) {
                 }
             }
@@ -1362,7 +1359,7 @@ public class SearchView extends LinearLayoutCompat implements CollapsibleActionV
             Method method = this.doAfterTextChanged;
             if (method != null) {
                 try {
-                    method.invoke(view, new Object[0]);
+                    method.invoke(view);
                 } catch (Exception e) {
                 }
             }

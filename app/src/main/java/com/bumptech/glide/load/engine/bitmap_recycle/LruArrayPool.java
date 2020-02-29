@@ -157,7 +157,7 @@ public final class LruArrayPool implements ArrayPool {
         Integer current = (Integer) sizes.get(Integer.valueOf(size));
         if (current == null) {
             String valueOf = String.valueOf(this);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 56);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 56);
             sb.append("Tried to decrement empty size, size: ");
             sb.append(size);
             sb.append(", this: ");
@@ -192,8 +192,8 @@ public final class LruArrayPool implements ArrayPool {
             } else if (arrayPoolClass.equals(byte[].class)) {
                 arrayAdapterInterface = new ByteArrayAdapter();
             } else {
-                String valueOf = String.valueOf(arrayPoolClass.getSimpleName());
-                throw new IllegalArgumentException(valueOf.length() != 0 ? "No array pool found for: ".concat(valueOf) : new String("No array pool found for: "));
+                String valueOf = arrayPoolClass.getSimpleName();
+                throw new IllegalArgumentException(valueOf.length() != 0 ? "No array pool found for: ".concat(valueOf) : "No array pool found for: ");
             }
             this.adapters.put(arrayPoolClass, arrayAdapterInterface);
         }
@@ -248,16 +248,13 @@ public final class LruArrayPool implements ArrayPool {
                 return false;
             }
             Key other = (Key) o;
-            if (this.size == other.size && this.arrayClass == other.arrayClass) {
-                return true;
-            }
-            return false;
+            return this.size == other.size && this.arrayClass == other.arrayClass;
         }
 
         public String toString() {
             int i = this.size;
             String valueOf = String.valueOf(this.arrayClass);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 27);
             sb.append("Key{size=");
             sb.append(i);
             sb.append("array=");

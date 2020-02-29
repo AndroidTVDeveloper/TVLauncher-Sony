@@ -430,7 +430,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                         constructorArgs = new Object[]{context, attrs, Integer.valueOf(defStyleAttr), Integer.valueOf(defStyleRes)};
                         constructor = constructor2;
                     } catch (NoSuchMethodException e) {
-                        constructor = layoutManagerClass.getConstructor(new Class[0]);
+                        constructor = layoutManagerClass.getConstructor();
                     }
                     constructor.setAccessible(true);
                     setLayoutManager((LayoutManager) constructor.newInstance(constructorArgs));
@@ -1690,36 +1690,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                         if (direction != 66) {
                             if (direction != 130) {
                                 throw new IllegalArgumentException("Invalid direction: " + direction + exceptionLabel());
-                            } else if (downness > 0) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        } else if (rightness > 0) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    } else if (downness < 0) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else if (rightness < 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if (downness > 0 || (downness == 0 && rightness * rtl >= 0)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (downness < 0 || (downness == 0 && rightness * rtl <= 0)) {
-            return true;
-        } else {
-            return false;
-        }
+                            } else return downness > 0;
+                        } else return rightness > 0;
+                    } else return downness < 0;
+                } else return rightness < 0;
+            } else return downness > 0 || (downness == 0 && rightness * rtl >= 0);
+        } else return downness < 0 || (downness == 0 && rightness * rtl <= 0);
     }
 
     public void requestChildFocus(View child, View focused) {
@@ -1984,10 +1960,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         } else if (action == 6) {
             onPointerUp(e);
         }
-        if (this.mScrollState == 1) {
-            return true;
-        }
-        return false;
+        return this.mScrollState == 1;
     }
 
     public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
@@ -2750,7 +2723,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     private boolean didChildRangeChange(int minPositionPreLayout, int maxPositionPreLayout) {
         findMinMaxChildLayoutPositions(this.mMinMaxLayoutPositions);
         int[] iArr = this.mMinMaxLayoutPositions;
-        return (iArr[0] == minPositionPreLayout && iArr[1] == maxPositionPreLayout) ? false : true;
+        return iArr[0] != minPositionPreLayout || iArr[1] != maxPositionPreLayout;
     }
 
     /* access modifiers changed from: protected */
@@ -3875,10 +3848,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             } else if (!RecyclerView.this.mState.isPreLayout() && RecyclerView.this.mAdapter.getItemViewType(holder.mPosition) != holder.getItemViewType()) {
                 return false;
             } else {
-                if (!RecyclerView.this.mAdapter.hasStableIds() || holder.getItemId() == RecyclerView.this.mAdapter.getItemId(holder.mPosition)) {
-                    return true;
-                }
-                return false;
+                return !RecyclerView.this.mAdapter.hasStableIds() || holder.getItemId() == RecyclerView.this.mAdapter.getItemId(holder.mPosition);
             }
         }
 
@@ -5449,15 +5419,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 if (specMode == 0) {
                     return true;
                 }
-                if (specMode == 1073741824 && specSize == childSize) {
-                    return true;
-                }
-                return false;
-            } else if (specSize >= childSize) {
-                return true;
-            } else {
-                return false;
-            }
+                return specMode == 1073741824 && specSize == childSize;
+            } else return specSize >= childSize;
         }
 
         public void measureChildWithMargins(View child, int widthUsed, int heightUsed) {
@@ -5718,10 +5681,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             if (completelyVisible) {
                 return isViewFullyVisible;
             }
-            if (!isViewFullyVisible) {
-                return true;
-            }
-            return false;
+            return !isViewFullyVisible;
         }
 
         private boolean isFocusedChildVisibleAfterScrolling(RecyclerView parent, int dx, int dy) {
@@ -5735,10 +5695,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             int parentBottom = getHeight() - getPaddingBottom();
             Rect bounds = this.mRecyclerView.mTempRect;
             getDecoratedBoundsWithMargins(focusedChild, bounds);
-            if (bounds.left - dx >= parentRight || bounds.right - dx <= parentLeft || bounds.top - dy >= parentBottom || bounds.bottom - dy <= parentTop) {
-                return false;
-            }
-            return true;
+            return bounds.left - dx < parentRight && bounds.right - dx > parentLeft && bounds.top - dy < parentBottom && bounds.bottom - dy > parentTop;
         }
 
         @Deprecated
@@ -6237,7 +6194,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /* access modifiers changed from: package-private */
         public boolean isAttachedToTransitionOverlay() {
-            return (this.itemView.getParent() == null || this.itemView.getParent() == this.mOwnerRecyclerView) ? false : true;
+            return this.itemView.getParent() != null && this.itemView.getParent() != this.mOwnerRecyclerView;
         }
 
         /* access modifiers changed from: package-private */

@@ -36,7 +36,7 @@ public class HomeAppStateUtil {
                 stateString = "STATE_UNKNOWN";
                 break;
         }
-        StringBuilder sb = new StringBuilder(String.valueOf(stateString).length() + 14);
+        StringBuilder sb = new StringBuilder(stateString.length() + 14);
         sb.append(stateString);
         sb.append(" (");
         sb.append(state);

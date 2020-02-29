@@ -141,10 +141,7 @@ public final class IntIntMap {
             if (i2 > 0) {
                 this.key = this.keys[i2 - 1];
             }
-            if (this.value != this.emptyValue) {
-                return true;
-            }
-            return false;
+            return this.value != this.emptyValue;
         }
 
         public int getKey() {

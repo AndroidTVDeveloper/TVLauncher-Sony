@@ -18,7 +18,7 @@ public class DirectVideoAd extends OutstreamVideoAd {
     public static DirectVideoAd fromAdAsset(AdConfig.AdAsset adAsset) {
         if (!adAsset.hasDirectAdConfig()) {
             String valueOf = String.valueOf(adAsset);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 37);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 37);
             sb.append("fromAdAsset: a non-Direct ad passed: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());

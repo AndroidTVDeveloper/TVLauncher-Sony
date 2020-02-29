@@ -53,10 +53,7 @@ public class LifecycleRegistry extends Lifecycle {
         }
         Lifecycle.State eldestObserverState = this.mObserverMap.eldest().getValue().mState;
         Lifecycle.State newestObserverState = this.mObserverMap.newest().getValue().mState;
-        if (eldestObserverState == newestObserverState && this.mState == newestObserverState) {
-            return true;
-        }
-        return false;
+        return eldestObserverState == newestObserverState && this.mState == newestObserverState;
     }
 
     private Lifecycle.State calculateTargetState(LifecycleObserver observer) {

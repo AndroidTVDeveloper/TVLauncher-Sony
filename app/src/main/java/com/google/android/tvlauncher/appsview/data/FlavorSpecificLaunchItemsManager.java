@@ -19,8 +19,8 @@ public class FlavorSpecificLaunchItemsManager extends LaunchItemsManager {
     public Intent createNativeAppIntent(ResolveInfo info) {
         Intent intent = this.context.getPackageManager().getLeanbackLaunchIntentForPackage(info.activityInfo.packageName);
         if (intent == null) {
-            String valueOf = String.valueOf(info.toString());
-            Log.e(TAG, valueOf.length() != 0 ? "Could not find a Leanback intent for resolved info: ".concat(valueOf) : new String("Could not find a Leanback intent for resolved info: "));
+            String valueOf = info.toString();
+            Log.e(TAG, valueOf.length() != 0 ? "Could not find a Leanback intent for resolved info: ".concat(valueOf) : "Could not find a Leanback intent for resolved info: ");
             return null;
         }
         intent.addFlags(C0847C.ENCODING_PCM_MU_LAW);

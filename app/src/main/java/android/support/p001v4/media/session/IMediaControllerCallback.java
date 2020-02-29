@@ -40,7 +40,7 @@ public interface IMediaControllerCallback extends IInterface {
     void onVolumeInfoChanged(ParcelableVolumeInfo parcelableVolumeInfo) throws RemoteException;
 
     /* renamed from: android.support.v4.media.session.IMediaControllerCallback$Stub */
-    public static abstract class Stub extends Binder implements IMediaControllerCallback {
+    abstract class Stub extends Binder implements IMediaControllerCallback {
         private static final String DESCRIPTOR = "android.support.v4.media.session.IMediaControllerCallback";
         static final int TRANSACTION_onCaptioningEnabledChanged = 11;
         static final int TRANSACTION_onEvent = 1;

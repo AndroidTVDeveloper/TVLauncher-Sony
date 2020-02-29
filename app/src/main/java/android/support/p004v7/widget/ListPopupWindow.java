@@ -546,17 +546,10 @@ public class ListPopupWindow implements ShowableListMenu {
                     this.mPopup.setInputMethodMode(2);
                     this.mDropDownList.requestFocusFromTouch();
                     show();
-                    if (keyCode == 19 || keyCode == 20 || keyCode == 23 || keyCode == 66) {
-                        return true;
-                    }
+                    return keyCode == 19 || keyCode == 20 || keyCode == 23 || keyCode == 66;
                 } else if (!below || keyCode != 20) {
-                    if (!below && keyCode == 19 && curIndex == firstItem) {
-                        return true;
-                    }
-                    return false;
-                } else if (curIndex == lastItem) {
-                    return true;
-                }
+                    return !below && keyCode == 19 && curIndex == firstItem;
+                } else return curIndex == lastItem;
             } else {
                 clearListSelection();
                 this.mPopup.setInputMethodMode(1);

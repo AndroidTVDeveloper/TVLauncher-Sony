@@ -67,10 +67,7 @@ public class ProcessStats {
         }
         for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
             if (appProcess.pid == Process.myPid()) {
-                if (appProcess.importance == 100) {
-                    return true;
-                }
-                return false;
+                return appProcess.importance == 100;
             }
         }
         return false;

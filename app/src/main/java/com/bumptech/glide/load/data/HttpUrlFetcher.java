@@ -136,7 +136,7 @@ public class HttpUrlFetcher implements DataFetcher<InputStream> {
         } else {
             if (Log.isLoggable(TAG, 3)) {
                 String valueOf = String.valueOf(urlConnection2.getContentEncoding());
-                Log.d(TAG, valueOf.length() != 0 ? "Got non empty content encoding: ".concat(valueOf) : new String("Got non empty content encoding: "));
+                Log.d(TAG, valueOf.length() != 0 ? "Got non empty content encoding: ".concat(valueOf) : "Got non empty content encoding: ");
             }
             this.stream = urlConnection2.getInputStream();
         }

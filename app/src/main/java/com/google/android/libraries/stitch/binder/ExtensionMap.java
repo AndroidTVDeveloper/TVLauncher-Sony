@@ -15,7 +15,7 @@ public class ExtensionMap<K, T extends Extension<K>> {
                 throw new IllegalArgumentException("Extension key must not be null");
             } else if (this.extensionMap.put(key, extension) != null) {
                 String valueOf = String.valueOf(key);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 53);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 53);
                 sb.append("Instantiating multiple extensions with the same key: ");
                 sb.append(valueOf);
                 throw new IllegalArgumentException(sb.toString());

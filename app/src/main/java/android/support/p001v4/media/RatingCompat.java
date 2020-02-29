@@ -130,17 +130,11 @@ public final class RatingCompat implements Parcelable {
     }
 
     public boolean hasHeart() {
-        if (this.mRatingStyle == 1 && this.mRatingValue == 1.0f) {
-            return true;
-        }
-        return false;
+        return this.mRatingStyle == 1 && this.mRatingValue == 1.0f;
     }
 
     public boolean isThumbUp() {
-        if (this.mRatingStyle == 2 && this.mRatingValue == 1.0f) {
-            return true;
-        }
-        return false;
+        return this.mRatingStyle == 2 && this.mRatingValue == 1.0f;
     }
 
     public float getStarRating() {

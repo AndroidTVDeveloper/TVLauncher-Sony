@@ -37,7 +37,7 @@ class TypefaceCompatApi24Impl extends TypefaceCompatBaseImpl {
         Class<?> fontFamilyClass;
         try {
             fontFamilyClass = Class.forName(FONT_FAMILY_CLASS);
-            fontFamilyCtor = fontFamilyClass.getConstructor(new Class[0]);
+            fontFamilyCtor = fontFamilyClass.getConstructor();
             addFontMethod = fontFamilyClass.getMethod(ADD_FONT_WEIGHT_STYLE_METHOD, ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE);
             createFromFamiliesWithDefaultMethod = Typeface.class.getMethod(CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD, Array.newInstance(fontFamilyClass, 1).getClass());
         } catch (ClassNotFoundException | NoSuchMethodException e) {
@@ -62,7 +62,7 @@ class TypefaceCompatApi24Impl extends TypefaceCompatBaseImpl {
 
     private static Object newFamily() {
         try {
-            return sFontFamilyCtor.newInstance(new Object[0]);
+            return sFontFamilyCtor.newInstance();
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
             return null;
         }

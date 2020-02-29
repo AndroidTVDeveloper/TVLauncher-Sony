@@ -184,7 +184,7 @@ public class ExoPlayerImpl implements MediaPlayer {
         String str;
         if (!TextUtils.isEmpty(overrideExtension)) {
             String valueOf = String.valueOf(overrideExtension);
-            str = valueOf.length() != 0 ? ".".concat(valueOf) : new String(".");
+            str = valueOf.length() != 0 ? ".".concat(valueOf) : ".";
         } else {
             str = uri.getLastPathSegment();
         }

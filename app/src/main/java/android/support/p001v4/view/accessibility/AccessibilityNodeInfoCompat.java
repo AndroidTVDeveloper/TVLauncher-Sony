@@ -1326,10 +1326,7 @@ public class AccessibilityNodeInfoCompat {
             return true;
         }
         CollectionItemInfoCompat collectionItemInfo = getCollectionItemInfo();
-        if (collectionItemInfo == null || !collectionItemInfo.isHeading()) {
-            return false;
-        }
-        return true;
+        return collectionItemInfo != null && collectionItemInfo.isHeading();
     }
 
     public void setHeading(boolean isHeading) {
@@ -1413,10 +1410,7 @@ public class AccessibilityNodeInfoCompat {
         } else if (!accessibilityNodeInfo.equals(other.mInfo)) {
             return false;
         }
-        if (this.mVirtualDescendantId == other.mVirtualDescendantId && this.mParentVirtualDescendantId == other.mParentVirtualDescendantId) {
-            return true;
-        }
-        return false;
+        return this.mVirtualDescendantId == other.mVirtualDescendantId && this.mParentVirtualDescendantId == other.mParentVirtualDescendantId;
     }
 
     public String toString() {
@@ -1484,10 +1478,7 @@ public class AccessibilityNodeInfoCompat {
 
     private boolean getBooleanProperty(int property) {
         Bundle extras = getExtras();
-        if (extras != null && (extras.getInt(BOOLEAN_PROPERTY_KEY, 0) & property) == property) {
-            return true;
-        }
-        return false;
+        return extras != null && (extras.getInt(BOOLEAN_PROPERTY_KEY, 0) & property) == property;
     }
 
     private static String getActionSymbolicName(int action) {

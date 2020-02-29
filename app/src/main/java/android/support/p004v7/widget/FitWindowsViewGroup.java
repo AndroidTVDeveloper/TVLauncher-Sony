@@ -6,7 +6,7 @@ import android.graphics.Rect;
 public interface FitWindowsViewGroup {
 
     /* renamed from: android.support.v7.widget.FitWindowsViewGroup$OnFitSystemWindowsListener */
-    public interface OnFitSystemWindowsListener {
+    interface OnFitSystemWindowsListener {
         void onFitSystemWindows(Rect rect);
     }
 

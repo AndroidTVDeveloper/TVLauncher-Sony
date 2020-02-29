@@ -330,7 +330,7 @@ class AppCompatTextViewAutoSizeHelper {
                 try {
                     Method method = getTextViewMethod("nullLayouts");
                     if (method != null) {
-                        method.invoke(this.mTextView, new Object[0]);
+                        method.invoke(this.mTextView);
                     }
                 } catch (Exception ex) {
                     Log.w(TAG, "Failed to invoke TextView#nullLayouts() method", ex);
@@ -462,7 +462,7 @@ class AppCompatTextViewAutoSizeHelper {
     private static Method getTextViewMethod(String methodName) {
         try {
             Method method = sTextViewMethodByNameCache.get(methodName);
-            if (method == null && (method = TextView.class.getDeclaredMethod(methodName, new Class[0])) != null) {
+            if (method == null && (method = TextView.class.getDeclaredMethod(methodName)) != null) {
                 method.setAccessible(true);
                 sTextViewMethodByNameCache.put(methodName, method);
             }

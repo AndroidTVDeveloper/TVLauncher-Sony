@@ -103,7 +103,7 @@ class SponsoredProgramControllerHelper {
                 this.adVideoTracker.resetTracking(this.adId, this.outstreamVideoAd.getVideoImpressionTrackingUrls());
                 if (TextUtils.isEmpty(this.outstreamVideoAd.getDisplayBannerImpressionTrackingUrl())) {
                     String valueOf = String.valueOf(this.outstreamVideoAd);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 34);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 34);
                     sb.append("The ad has empty impression URLs: ");
                     sb.append(valueOf);
                     Log.e(TAG, sb.toString());
@@ -115,10 +115,7 @@ class SponsoredProgramControllerHelper {
             this.outstreamVideoAd = null;
             this.isAdFresh = false;
         }
-        if (this.outstreamVideoAd != null) {
-            return true;
-        }
-        return false;
+        return this.outstreamVideoAd != null;
     }
 
     /* access modifiers changed from: package-private */

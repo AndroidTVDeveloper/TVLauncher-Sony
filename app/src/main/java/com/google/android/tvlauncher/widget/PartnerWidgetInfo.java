@@ -28,6 +28,6 @@ public class PartnerWidgetInfo {
     }
 
     public boolean isComplete() {
-        return (this.icon == null || TextUtils.isEmpty(this.title) || this.intentUri == null) ? false : true;
+        return this.icon != null && !TextUtils.isEmpty(this.title) && this.intentUri != null;
     }
 }

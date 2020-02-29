@@ -152,10 +152,7 @@ class FocusStrategy {
         if (!isCandidate(source, currentBest, direction) || beamBeats(direction, source, candidate, currentBest)) {
             return true;
         }
-        if (!beamBeats(direction, source, currentBest, candidate) && getWeightedDistanceFor(majorAxisDistance(direction, source, candidate), minorAxisDistance(direction, source, candidate)) < getWeightedDistanceFor(majorAxisDistance(direction, source, currentBest), minorAxisDistance(direction, source, currentBest))) {
-            return true;
-        }
-        return false;
+        return !beamBeats(direction, source, currentBest, candidate) && getWeightedDistanceFor(majorAxisDistance(direction, source, candidate), minorAxisDistance(direction, source, candidate)) < getWeightedDistanceFor(majorAxisDistance(direction, source, currentBest), minorAxisDistance(direction, source, currentBest));
     }
 
     private static boolean beamBeats(int direction, Rect source, Rect rect1, Rect rect2) {
@@ -163,10 +160,7 @@ class FocusStrategy {
         if (beamsOverlap(direction, source, rect2) || !rect1InSrcBeam) {
             return false;
         }
-        if (isToDirectionOf(direction, source, rect2) && direction != 17 && direction != 66 && majorAxisDistance(direction, source, rect1) >= majorAxisDistanceToFarEdge(direction, source, rect2)) {
-            return false;
-        }
-        return true;
+        return !isToDirectionOf(direction, source, rect2) || direction == 17 || direction == 66 || majorAxisDistance(direction, source, rect1) < majorAxisDistanceToFarEdge(direction, source, rect2);
     }
 
     private static int getWeightedDistanceFor(int majorAxisDistance, int minorAxisDistance) {
@@ -181,21 +175,9 @@ class FocusStrategy {
                         return (srcRect.top < destRect.top || srcRect.bottom <= destRect.top) && srcRect.bottom < destRect.bottom;
                     }
                     throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-                } else if ((srcRect.left < destRect.left || srcRect.right <= destRect.left) && srcRect.right < destRect.right) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if ((srcRect.bottom > destRect.bottom || srcRect.top >= destRect.bottom) && srcRect.top > destRect.top) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if ((srcRect.right > destRect.right || srcRect.left >= destRect.right) && srcRect.left > destRect.left) {
-            return true;
-        } else {
-            return false;
-        }
+                } else return (srcRect.left < destRect.left || srcRect.right <= destRect.left) && srcRect.right < destRect.right;
+            } else return (srcRect.bottom > destRect.bottom || srcRect.top >= destRect.bottom) && srcRect.top > destRect.top;
+        } else return (srcRect.right > destRect.right || srcRect.left >= destRect.right) && srcRect.left > destRect.left;
     }
 
     private static boolean beamsOverlap(int direction, Rect rect1, Rect rect2) {
@@ -207,15 +189,9 @@ class FocusStrategy {
                     }
                 }
             }
-            if (rect2.right < rect1.left || rect2.left > rect1.right) {
-                return false;
-            }
-            return true;
+            return rect2.right >= rect1.left && rect2.left <= rect1.right;
         }
-        if (rect2.bottom < rect1.top || rect2.top > rect1.bottom) {
-            return false;
-        }
-        return true;
+        return rect2.bottom >= rect1.top && rect2.top <= rect1.bottom;
     }
 
     private static boolean isToDirectionOf(int direction, Rect src, Rect dest) {
@@ -224,26 +200,10 @@ class FocusStrategy {
                 if (direction != 66) {
                     if (direction != 130) {
                         throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-                    } else if (src.bottom <= dest.top) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else if (src.right <= dest.left) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if (src.top >= dest.bottom) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (src.left >= dest.right) {
-            return true;
-        } else {
-            return false;
-        }
+                    } else return src.bottom <= dest.top;
+                } else return src.right <= dest.left;
+            } else return src.top >= dest.bottom;
+        } else return src.left >= dest.right;
     }
 
     private static int majorAxisDistance(int direction, Rect source, Rect dest) {

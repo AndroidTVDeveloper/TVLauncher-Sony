@@ -302,12 +302,7 @@ public class AccessibilityRecordCompat {
         AccessibilityRecordCompat other = (AccessibilityRecordCompat) obj;
         AccessibilityRecord accessibilityRecord = this.mRecord;
         if (accessibilityRecord == null) {
-            if (other.mRecord != null) {
-                return false;
-            }
-        } else if (!accessibilityRecord.equals(other.mRecord)) {
-            return false;
-        }
-        return true;
+            return other.mRecord == null;
+        } else return accessibilityRecord.equals(other.mRecord);
     }
 }

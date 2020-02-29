@@ -1388,10 +1388,7 @@ public class Fragment implements ComponentCallbacks, View.OnCreateContextMenuLis
             return true;
         }
         FragmentManagerImpl fragmentManagerImpl = this.mChildFragmentManager;
-        if (fragmentManagerImpl == null || !fragmentManagerImpl.dispatchOptionsItemSelected(item)) {
-            return false;
-        }
-        return true;
+        return fragmentManagerImpl != null && fragmentManagerImpl.dispatchOptionsItemSelected(item);
     }
 
     /* access modifiers changed from: package-private */
@@ -1403,10 +1400,7 @@ public class Fragment implements ComponentCallbacks, View.OnCreateContextMenuLis
             return true;
         }
         FragmentManagerImpl fragmentManagerImpl = this.mChildFragmentManager;
-        if (fragmentManagerImpl == null || !fragmentManagerImpl.dispatchContextItemSelected(item)) {
-            return false;
-        }
-        return true;
+        return fragmentManagerImpl != null && fragmentManagerImpl.dispatchContextItemSelected(item);
     }
 
     /* access modifiers changed from: package-private */

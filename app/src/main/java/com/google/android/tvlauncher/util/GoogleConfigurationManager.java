@@ -39,7 +39,7 @@ public class GoogleConfigurationManager {
             this.context.getContentResolver().registerContentObserver(ChannelConfigContract.Uris.CHANNEL_CONFIG, true, this.configurationObserver);
         } catch (SecurityException e) {
             String valueOf = String.valueOf(ChannelConfigContract.Uris.CHANNEL_CONFIG);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 41);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 41);
             sb.append("Cannot register ContentObserver for Uri: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -53,7 +53,7 @@ public class GoogleConfigurationManager {
             this.context.getContentResolver().registerContentObserver(ChannelConfigContract.Uris.CHANNEL_CONFIG, true, this.configurationObserver);
         } catch (SecurityException e) {
             String valueOf = String.valueOf(ChannelConfigContract.Uris.CHANNEL_CONFIG);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 41);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 41);
             sb.append("Cannot register ContentObserver for Uri: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());

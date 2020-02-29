@@ -652,10 +652,7 @@ final class SchemaUtil {
         if (i < 40) {
             return true;
         }
-        if ((3 * 3) + (((long) i) - ((long) lo)) + 1 <= (3 * (((long) i2) + 3)) + (((long) i2) * 2) + 3) {
-            return true;
-        }
-        return false;
+        return (3 * 3) + (((long) i) - ((long) lo)) + 1 <= (3 * (((long) i2) + 3)) + (((long) i2) * 2) + 3;
     }
 
     public static UnknownFieldSchema<?, ?> proto2UnknownFieldSetSchema() {
@@ -702,7 +699,7 @@ final class SchemaUtil {
         try {
             String name2 = clazz.getName();
             String camelCase = toCamelCase(name, true);
-            StringBuilder sb = new StringBuilder(String.valueOf(name2).length() + 19 + String.valueOf(camelCase).length());
+            StringBuilder sb = new StringBuilder(name2.length() + 19 + camelCase.length());
             sb.append(name2);
             sb.append("$");
             sb.append(camelCase);
@@ -712,7 +709,7 @@ final class SchemaUtil {
                 return UnsafeUtil.getStaticObject(fields[0]);
             }
             String name3 = clazz.getName();
-            StringBuilder sb2 = new StringBuilder(String.valueOf(name).length() + 63 + String.valueOf(name3).length());
+            StringBuilder sb2 = new StringBuilder(name.length() + 63 + name3.length());
             sb2.append("Unable to look up map field default entry holder class for ");
             sb2.append(name);
             sb2.append(" in ");

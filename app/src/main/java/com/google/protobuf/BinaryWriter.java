@@ -640,7 +640,7 @@ abstract class BinaryWriter extends ByteOutput implements Writer {
                 }
             default:
                 String valueOf = String.valueOf(fieldType);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 32);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 32);
                 sb.append("Unsupported map value type for: ");
                 sb.append(valueOf);
                 throw new IllegalArgumentException(sb.toString());

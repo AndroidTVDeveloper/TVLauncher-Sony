@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public interface VideoCreative {
 
-    public static final class VastXml extends MessageNano {
+    final class VastXml extends MessageNano {
         private static volatile VastXml[] _emptyArray;
         public String adId;
         public VastTracking[] clickTracking;
@@ -653,7 +653,7 @@ public interface VideoCreative {
         }
     }
 
-    public static final class VastCompanion extends MessageNano {
+    final class VastCompanion extends MessageNano {
         private static volatile VastCompanion[] _emptyArray;
         public String apiFramework;
         public String destinationUrl;
@@ -879,7 +879,7 @@ public interface VideoCreative {
         }
     }
 
-    public static final class VastNonLinear extends MessageNano {
+    final class VastNonLinear extends MessageNano {
         private static volatile VastNonLinear[] _emptyArray;
         public String apiFramework;
         public String customParameters;
@@ -1105,7 +1105,7 @@ public interface VideoCreative {
         }
     }
 
-    public static final class VastMedia extends MessageNano {
+    final class VastMedia extends MessageNano {
         private static volatile VastMedia[] _emptyArray;
         public String apiFramework;
         public int bitrate;
@@ -1244,7 +1244,7 @@ public interface VideoCreative {
         }
     }
 
-    public static final class VastImpression extends MessageNano {
+    final class VastImpression extends MessageNano {
         private static volatile VastImpression[] _emptyArray;
 
         /* renamed from: id */
@@ -1320,7 +1320,7 @@ public interface VideoCreative {
         }
     }
 
-    public static final class VastTracking extends MessageNano {
+    final class VastTracking extends MessageNano {
         private static volatile VastTracking[] _emptyArray;
         public String eventName;
         public String eventUrl;

@@ -47,10 +47,7 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>> 
 
     public final boolean hasExtension(Extension<M, ?> extension) {
         FieldArray fieldArray = this.unknownFieldData;
-        if (fieldArray == null || fieldArray.get(WireFormatNano.getTagFieldNumber(extension.tag)) == null) {
-            return false;
-        }
-        return true;
+        return fieldArray != null && fieldArray.get(WireFormatNano.getTagFieldNumber(extension.tag)) != null;
     }
 
     public final <T> T getExtension(Extension<M, T> extension) {

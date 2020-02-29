@@ -44,10 +44,7 @@ public class KeyEventDispatcher {
         if (callback instanceof Dialog) {
             return dialogSuperDispatchKeyEventPre28((Dialog) callback, event);
         }
-        if ((root == null || !ViewCompat.dispatchUnhandledKeyEventBeforeCallback(root, event)) && !component.superDispatchKeyEvent(event)) {
-            return false;
-        }
-        return true;
+        return (root != null && ViewCompat.dispatchUnhandledKeyEventBeforeCallback(root, event)) || component.superDispatchKeyEvent(event);
     }
 
     private static boolean actionBarOnMenuKeyEventPre28(ActionBar actionBar, KeyEvent event) {

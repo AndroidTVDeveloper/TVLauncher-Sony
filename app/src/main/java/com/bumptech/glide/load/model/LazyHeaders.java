@@ -55,7 +55,7 @@ public final class LazyHeaders implements Headers {
 
     public String toString() {
         String valueOf = String.valueOf(this.headers);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 21);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 21);
         sb.append("LazyHeaders{headers=");
         sb.append(valueOf);
         sb.append('}');

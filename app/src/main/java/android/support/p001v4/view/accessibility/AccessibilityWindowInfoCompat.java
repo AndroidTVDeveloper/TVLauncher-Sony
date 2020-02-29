@@ -153,13 +153,8 @@ public class AccessibilityWindowInfoCompat {
         AccessibilityWindowInfoCompat other = (AccessibilityWindowInfoCompat) obj;
         Object obj2 = this.mInfo;
         if (obj2 == null) {
-            if (other.mInfo != null) {
-                return false;
-            }
-        } else if (!obj2.equals(other.mInfo)) {
-            return false;
-        }
-        return true;
+            return other.mInfo == null;
+        } else return obj2.equals(other.mInfo);
     }
 
     public String toString() {

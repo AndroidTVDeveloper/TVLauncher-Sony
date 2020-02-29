@@ -39,7 +39,7 @@ public class PartnerWidgetInfoLoader extends AsyncTaskLoader<PartnerWidgetInfo> 
             } catch (SecurityException e) {
                 String valueOf = String.valueOf(PartnerCustomizationContract.WIDGET_CONTENT_URI);
                 String message = e.getMessage();
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 55 + String.valueOf(message).length());
+                StringBuilder sb = new StringBuilder(valueOf.length() + 55 + String.valueOf(message).length());
                 sb.append("Failed to register content observer for URI: ");
                 sb.append(valueOf);
                 sb.append(".\nReason: ");

@@ -20,10 +20,10 @@ public final class Tracer {
         Preconditions.checkNotNull(token);
         Preconditions.checkNotNull(rootSpanName);
         if (traceData.get() != null) {
-            PrimesLog.m48d(TAG, "Ignore Tracer.start(), current active trace...", new Object[0]);
+            PrimesLog.m48d(TAG, "Ignore Tracer.start(), current active trace...");
             return false;
         } else if (!traceData.compareAndSet(null, new TraceData(rootSpanName))) {
-            PrimesLog.m48d(TAG, "Ignore Tracer.start(), current active trace...", new Object[0]);
+            PrimesLog.m48d(TAG, "Ignore Tracer.start(), current active trace...");
             return false;
         } else {
             minSpanDurationMs = minSpanDurationMs2;
@@ -80,7 +80,7 @@ public final class Tracer {
             TraceData traceDataRef = traceData.get();
             if (traceDataRef != null) {
                 if (span != traceDataRef.popThreadLocalSpan()) {
-                    PrimesLog.m56w(TAG, "Incorrect Span passed. Ignore...", new Object[0]);
+                    PrimesLog.m56w(TAG, "Incorrect Span passed. Ignore...");
                 } else if (span.getDurationMs() >= ((long) minSpanDurationMs)) {
                     if (traceDataRef.incrementAndGetSpanCount() >= maxBufferSize) {
                         PrimesLog.m56w(TAG, "Dropping trace as max buffer size is hit. Size: %d", Integer.valueOf(traceDataRef.getSpanCount()));

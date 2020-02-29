@@ -323,7 +323,7 @@ public class DataLoadingBackgroundTask implements Runnable {
         String str = this.selection;
         String arrays = Arrays.toString(this.selectionArgs);
         String str2 = this.sortOrder;
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 101 + String.valueOf(str).length() + String.valueOf(arrays).length() + String.valueOf(str2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 101 + String.valueOf(str).length() + arrays.length() + String.valueOf(str2).length());
         sb.append("DataLoadingBackgroundTask{tag=");
         sb.append(j);
         sb.append(", uri=");

@@ -10,7 +10,7 @@ public final class PrimesDirStatsConfigurations {
     private final int maxFolderDepth;
 
     public PrimesDirStatsConfigurations(boolean enabled2) {
-        this(enabled2, 5, new Pattern[0]);
+        this(enabled2, 5);
     }
 
     private PrimesDirStatsConfigurations(boolean enabled2, int maxFolderDepth2, Pattern... listFilesPatterns2) {
@@ -81,8 +81,8 @@ public final class PrimesDirStatsConfigurations {
         public Builder matchFilenames(String... filenames) {
             for (String filename : filenames) {
                 ArrayList<Pattern> arrayList = this.listFilesPatterns;
-                String valueOf = String.valueOf(Pattern.quote(filename));
-                arrayList.add(Pattern.compile(valueOf.length() != 0 ? ".*/".concat(valueOf) : new String(".*/")));
+                String valueOf = Pattern.quote(filename);
+                arrayList.add(Pattern.compile(valueOf.length() != 0 ? ".*/".concat(valueOf) : ".*/"));
             }
             return this;
         }
@@ -90,9 +90,9 @@ public final class PrimesDirStatsConfigurations {
         public Builder matchFolders(String... folderNames) {
             for (String name : folderNames) {
                 if (!name.endsWith("/")) {
-                    name = String.valueOf(name).concat("/");
+                    name = name.concat("/");
                 }
-                this.listFilesPatterns.add(Pattern.compile(String.valueOf(Pattern.quote(name)).concat("[^/]+")));
+                this.listFilesPatterns.add(Pattern.compile(Pattern.quote(name).concat("[^/]+")));
             }
             return this;
         }
@@ -101,8 +101,8 @@ public final class PrimesDirStatsConfigurations {
             for (String suffix : suffixes) {
                 ArrayList<Pattern> arrayList = this.listFilesPatterns;
                 String valueOf = String.valueOf(suffix);
-                String valueOf2 = String.valueOf(Pattern.quote(valueOf.length() != 0 ? ".".concat(valueOf) : new String(".")));
-                arrayList.add(Pattern.compile(valueOf2.length() != 0 ? ".*[^/]+".concat(valueOf2) : new String(".*[^/]+")));
+                String valueOf2 = Pattern.quote(valueOf.length() != 0 ? ".".concat(valueOf) : ".");
+                arrayList.add(Pattern.compile(valueOf2.length() != 0 ? ".*[^/]+".concat(valueOf2) : ".*[^/]+"));
             }
             return this;
         }

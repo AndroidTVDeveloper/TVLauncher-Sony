@@ -20,7 +20,7 @@ public class CustomCreativeVideoAdFactory {
     public CustomCreativeVideoAd createCustomCreativeVideoAdFromAdAsset(AdConfig.AdAsset adAsset) {
         if (!adAsset.hasDoubleclickAdConfig() || !adAsset.getDoubleclickAdConfig().hasCustomCreative()) {
             String valueOf = String.valueOf(adAsset);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 52);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 52);
             sb.append("createVastVideoAd: a non-custom creative ad passed: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -29,7 +29,7 @@ public class CustomCreativeVideoAdFactory {
         AdConfig.CustomCreative customCreative = adAsset.getDoubleclickAdConfig().getCustomCreative();
         if (!customCreative.hasAppInstallCreativeInfo()) {
             String valueOf2 = String.valueOf(adAsset);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 48);
+            StringBuilder sb2 = new StringBuilder(valueOf2.length() + 48);
             sb2.append("createVastVideoAd: a non-app install ad passed: ");
             sb2.append(valueOf2);
             Log.e(TAG, sb2.toString());

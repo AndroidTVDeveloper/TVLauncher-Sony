@@ -103,7 +103,7 @@ public class CustomInputsManager implements InputsManager {
         if (asyncTask != null) {
             asyncTask.cancel(true);
         }
-        this.refreshTask = new RefreshInputList(this.context, this.loadedDataCallback).execute(new Void[0]);
+        this.refreshTask = new RefreshInputList(this.context, this.loadedDataCallback).execute();
     }
 
     public void loadInputs() {
@@ -188,12 +188,12 @@ public class CustomInputsManager implements InputsManager {
     static Intent parseIntentUri(String inputId, String intentUriStr) {
         if (intentUriStr == null) {
             String valueOf = String.valueOf(inputId);
-            Log.e(TAG, valueOf.length() != 0 ? "parseIntentUri: intent URI can't be null\nInput ID=".concat(valueOf) : new String("parseIntentUri: intent URI can't be null\nInput ID="));
+            Log.e(TAG, valueOf.length() != 0 ? "parseIntentUri: intent URI can't be null\nInput ID=".concat(valueOf) : "parseIntentUri: intent URI can't be null\nInput ID=");
             return null;
         }
         Uri uri = Uri.parse(intentUriStr);
         if (!"intent".equals(uri.getScheme())) {
-            StringBuilder sb = new StringBuilder(String.valueOf(inputId).length() + 89 + String.valueOf(intentUriStr).length());
+            StringBuilder sb = new StringBuilder(String.valueOf(inputId).length() + 89 + intentUriStr.length());
             sb.append("parseIntentUri: have to use Intent.URI_INTENT_SCHEME for intent URI\nInput ID=");
             sb.append(inputId);
             sb.append("\nIntent Uri=");
@@ -207,7 +207,7 @@ public class CustomInputsManager implements InputsManager {
                 intent.addFlags(C0847C.ENCODING_PCM_MU_LAW);
                 return intent;
             }
-            StringBuilder sb2 = new StringBuilder(String.valueOf(inputId).length() + 93 + String.valueOf(intentUriStr).length());
+            StringBuilder sb2 = new StringBuilder(String.valueOf(inputId).length() + 93 + intentUriStr.length());
             sb2.append("parseIntentUri: Custom input intent URI should contain a component name\nInput ID=");
             sb2.append(inputId);
             sb2.append("\nIntent Uri=");
@@ -215,7 +215,7 @@ public class CustomInputsManager implements InputsManager {
             Log.e(TAG, sb2.toString());
             return null;
         } catch (URISyntaxException e) {
-            StringBuilder sb3 = new StringBuilder(String.valueOf(inputId).length() + 67 + String.valueOf(intentUriStr).length());
+            StringBuilder sb3 = new StringBuilder(String.valueOf(inputId).length() + 67 + intentUriStr.length());
             sb3.append("parseIntentUri: Cannot parse input intent URI\nInput ID=");
             sb3.append(inputId);
             sb3.append("\nIntent Uri=");

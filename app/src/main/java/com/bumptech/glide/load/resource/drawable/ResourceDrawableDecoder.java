@@ -44,7 +44,7 @@ public class ResourceDrawableDecoder implements ResourceDecoder<Uri, Drawable> {
                 return this.context;
             }
             String valueOf = String.valueOf(source);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 57);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 57);
             sb.append("Failed to obtain context or unrecognized Uri format for: ");
             sb.append(valueOf);
             throw new IllegalArgumentException(sb.toString(), e);
@@ -60,7 +60,7 @@ public class ResourceDrawableDecoder implements ResourceDecoder<Uri, Drawable> {
             return findResourceIdFromResourceIdUri(source);
         }
         String valueOf = String.valueOf(source);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 25);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 25);
         sb.append("Unrecognized Uri format: ");
         sb.append(valueOf);
         throw new IllegalArgumentException(sb.toString());
@@ -79,7 +79,7 @@ public class ResourceDrawableDecoder implements ResourceDecoder<Uri, Drawable> {
             return result;
         }
         String valueOf = String.valueOf(source);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 32);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 32);
         sb.append("Failed to find resource id for: ");
         sb.append(valueOf);
         throw new IllegalArgumentException(sb.toString());
@@ -90,7 +90,7 @@ public class ResourceDrawableDecoder implements ResourceDecoder<Uri, Drawable> {
             return Integer.parseInt(source.getPathSegments().get(0));
         } catch (NumberFormatException e) {
             String valueOf = String.valueOf(source);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 25);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 25);
             sb.append("Unrecognized Uri format: ");
             sb.append(valueOf);
             throw new IllegalArgumentException(sb.toString(), e);

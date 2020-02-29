@@ -119,7 +119,7 @@ public final class GlideException extends Exception {
         String str3 = "";
         if (cls != null) {
             String valueOf = String.valueOf(cls);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf).length() + 2);
+            StringBuilder sb2 = new StringBuilder(valueOf.length() + 2);
             sb2.append(", ");
             sb2.append(valueOf);
             str = sb2.toString();
@@ -130,7 +130,7 @@ public final class GlideException extends Exception {
         DataSource dataSource2 = this.dataSource;
         if (dataSource2 != null) {
             String valueOf2 = String.valueOf(dataSource2);
-            StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf2).length() + 2);
+            StringBuilder sb3 = new StringBuilder(valueOf2.length() + 2);
             sb3.append(", ");
             sb3.append(valueOf2);
             str2 = sb3.toString();
@@ -141,7 +141,7 @@ public final class GlideException extends Exception {
         Key key2 = this.key;
         if (key2 != null) {
             String valueOf3 = String.valueOf(key2);
-            StringBuilder sb4 = new StringBuilder(String.valueOf(valueOf3).length() + 2);
+            StringBuilder sb4 = new StringBuilder(valueOf3.length() + 2);
             sb4.append(", ");
             sb4.append(valueOf3);
             str3 = sb4.toString();

@@ -22,7 +22,7 @@ public class LoadPath<Data, ResourceType, Transcode> {
         String simpleName = dataClass2.getSimpleName();
         String simpleName2 = resourceClass.getSimpleName();
         String simpleName3 = transcodeClass.getSimpleName();
-        StringBuilder sb = new StringBuilder(String.valueOf(simpleName).length() + 21 + String.valueOf(simpleName2).length() + String.valueOf(simpleName3).length());
+        StringBuilder sb = new StringBuilder(simpleName.length() + 21 + simpleName2.length() + simpleName3.length());
         sb.append("Failed LoadPath{");
         sb.append(simpleName);
         sb.append("->");
@@ -68,7 +68,7 @@ public class LoadPath<Data, ResourceType, Transcode> {
 
     public String toString() {
         String arrays = Arrays.toString(this.decodePaths.toArray());
-        StringBuilder sb = new StringBuilder(String.valueOf(arrays).length() + 22);
+        StringBuilder sb = new StringBuilder(arrays.length() + 22);
         sb.append("LoadPath{decodePaths=");
         sb.append(arrays);
         sb.append('}');

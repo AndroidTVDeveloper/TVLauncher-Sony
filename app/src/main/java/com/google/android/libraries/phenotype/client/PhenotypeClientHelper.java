@@ -15,10 +15,7 @@ public final class PhenotypeClientHelper {
 
     private static boolean isGmsCorePreinstalled(Context context) {
         try {
-            if ((context.getPackageManager().getApplicationInfo("com.google.android.gms", 0).flags & 129) != 0) {
-                return true;
-            }
-            return false;
+            return (context.getPackageManager().getApplicationInfo("com.google.android.gms", 0).flags & 129) != 0;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

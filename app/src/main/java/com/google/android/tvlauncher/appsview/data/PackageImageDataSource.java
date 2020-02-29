@@ -44,10 +44,7 @@ public class PackageImageDataSource {
             return false;
         }
         PackageImageDataSource source = (PackageImageDataSource) obj;
-        if (!TextUtils.equals(this.packageName, source.getPackageName()) || !this.imageType.equals(source.getImageType()) || !this.locale.equals(source.getLocale())) {
-            return false;
-        }
-        return true;
+        return TextUtils.equals(this.packageName, source.getPackageName()) && this.imageType.equals(source.getImageType()) && this.locale.equals(source.getLocale());
     }
 
     public int hashCode() {
@@ -58,7 +55,7 @@ public class PackageImageDataSource {
         String str = this.packageName;
         String valueOf = String.valueOf(this.imageType);
         String valueOf2 = String.valueOf(getLocale());
-        StringBuilder sb = new StringBuilder(String.valueOf(str).length() + 25 + String.valueOf(valueOf).length() + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(String.valueOf(str).length() + 25 + valueOf.length() + valueOf2.length());
         sb.append(str);
         sb.append(", Image Type: ");
         sb.append(valueOf);

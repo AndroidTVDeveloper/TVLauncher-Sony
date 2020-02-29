@@ -4,7 +4,7 @@ package com.google.android.libraries.gcoreclient.common.version;
 public interface GcoreVersion {
     Version getVersion();
 
-    public enum Version {
+    enum Version {
         MANCHEGO(6000000),
         NACHO(6500000),
         OLIVET(6700000),
@@ -31,7 +31,7 @@ public interface GcoreVersion {
         
         private final int versionCode;
 
-        private Version(int versionCode2) {
+        Version(int versionCode2) {
             this.versionCode = versionCode2;
         }
 

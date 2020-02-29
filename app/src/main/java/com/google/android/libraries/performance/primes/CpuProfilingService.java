@@ -159,7 +159,7 @@ final class CpuProfilingService extends AbstractMetricService implements PrimesS
             CpuProfiling.DeviceMetadata deviceMetadata = CpuProfilingService.this.createAndInitDeviceMetadata(batteryStatus);
             File traceFile = CpuProfilingService.this.getTraceFile();
             if (traceFile == null) {
-                PrimesLog.m56w(CpuProfilingService.TAG, "Can't create file, aborting method sampling", new Object[0]);
+                PrimesLog.m56w(CpuProfilingService.TAG, "Can't create file, aborting method sampling");
                 return;
             }
             CpuProfilingService.this.clearTraceFile();
@@ -224,17 +224,17 @@ final class CpuProfilingService extends AbstractMetricService implements PrimesS
             CpuProfiling.CpuProfilingMetric.Builder cpuProfilingMetric = CpuProfiling.CpuProfilingMetric.newBuilder().setDeviceMetadata((CpuProfiling.DeviceMetadata) ((CpuProfiling.DeviceMetadata.Builder) this.deviceMetadata.toBuilder()).setAfterState(CpuProfilingService.this.getDeviceState(batteryStatus)).setBatteryDropPercent(this.batteryPercent.floatValue() - CpuProfilingService.this.getBatteryPercent(batteryStatus)).build());
             File file = this.traceFile;
             if (file == null || !file.exists()) {
-                PrimesLog.m50e(CpuProfilingService.TAG, "Missing trace file", new Object[0]);
+                PrimesLog.m50e(CpuProfilingService.TAG, "Missing trace file");
             } else {
                 try {
                     cpuProfilingMetric.setTraceBlob(ByteString.copyFrom(SamplingUtils.compressBytes(CpuProfilingService.readFile(this.traceFile, CpuProfilingService.this.maxBufferSizeBytes))));
                     CpuProfilingService.this.clearTraceFile();
                 } catch (IOException e) {
                     String valueOf = String.valueOf(this.traceFile);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 20);
                     sb.append("Unable to read file ");
                     sb.append(valueOf);
-                    PrimesLog.m49e(CpuProfilingService.TAG, sb.toString(), e, new Object[0]);
+                    PrimesLog.m49e(CpuProfilingService.TAG, sb.toString(), e);
                 }
             }
             cpuProfilingMetric.setSamplesPerEpoch(CpuProfilingService.this.samplesPerEpoch).setSampleFrequency(CpuProfilingService.this.frequencyMicro);
@@ -276,9 +276,9 @@ final class CpuProfilingService extends AbstractMetricService implements PrimesS
         String processName = ProcessStats.getCurrentProcessName();
         String filename = String.valueOf(processName).concat(".trace");
         File filesDir = getApplication().getFilesDir();
-        String valueOf = String.valueOf(TRACE_DIR_PREFIX);
+        String valueOf = TRACE_DIR_PREFIX;
         String valueOf2 = String.valueOf(processName);
-        File traceDir = new File(filesDir, valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf));
+        File traceDir = new File(filesDir, valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf);
         if (!traceDir.exists() && !traceDir.mkdir()) {
             return null;
         }

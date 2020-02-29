@@ -323,7 +323,7 @@ final class UnsafeUtil {
             Logger logger2 = logger;
             Level level = Level.WARNING;
             String valueOf = String.valueOf(e);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 71);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 71);
             sb.append("platform method missing - proto runtime falling back to safer methods: ");
             sb.append(valueOf);
             logger2.logp(level, "com.google.protobuf.UnsafeUtil", "supportsUnsafeArrayOperations", sb.toString());
@@ -359,7 +359,7 @@ final class UnsafeUtil {
             Logger logger2 = logger;
             Level level = Level.WARNING;
             String valueOf = String.valueOf(e);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 71);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 71);
             sb.append("platform method missing - proto runtime falling back to safer methods: ");
             sb.append(valueOf);
             logger2.logp(level, "com.google.protobuf.UnsafeUtil", "supportsUnsafeByteBufferOperations", sb.toString());

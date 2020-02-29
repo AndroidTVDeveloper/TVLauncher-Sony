@@ -31,7 +31,7 @@ public final class HprofClassInstance extends HprofObject {
         if (declaringClass == hprofClass) {
             String className = hprofClass.getClassName(parseContext);
             String childName = getChildName(parseContext, fieldIndex);
-            StringBuilder sb = new StringBuilder(String.valueOf(className).length() + 1 + String.valueOf(childName).length());
+            StringBuilder sb = new StringBuilder(className.length() + 1 + String.valueOf(childName).length());
             sb.append(className);
             sb.append('#');
             sb.append(childName);
@@ -40,7 +40,7 @@ public final class HprofClassInstance extends HprofObject {
         String className2 = hprofClass.getClassName(parseContext);
         String className3 = declaringClass.getClassName(parseContext);
         String childName2 = getChildName(parseContext, fieldIndex);
-        StringBuilder sb2 = new StringBuilder(String.valueOf(className2).length() + 2 + String.valueOf(className3).length() + String.valueOf(childName2).length());
+        StringBuilder sb2 = new StringBuilder(className2.length() + 2 + className3.length() + String.valueOf(childName2).length());
         sb2.append(className2);
         sb2.append(':');
         sb2.append(className3);

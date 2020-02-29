@@ -46,10 +46,7 @@ public abstract class ForwardingListener implements View.OnTouchListener, View.O
             }
         }
         this.mForwarding = forwarding;
-        if (forwarding || wasForwarding) {
-            return true;
-        }
-        return false;
+        return forwarding || wasForwarding;
     }
 
     public void onViewAttachedToWindow(View v) {
@@ -191,11 +188,8 @@ public abstract class ForwardingListener implements View.OnTouchListener, View.O
         boolean handled = dst.onForwardedEvent(dstEvent, this.mActivePointerId);
         dstEvent.recycle();
         int action = srcEvent.getActionMasked();
-        boolean keepForwarding = (action == 1 || action == 3) ? false : true;
-        if (!handled || !keepForwarding) {
-            return false;
-        }
-        return true;
+        boolean keepForwarding = action != 1 && action != 3;
+        return handled && keepForwarding;
     }
 
     private static boolean pointInView(View view, float localX, float localY, float slop) {

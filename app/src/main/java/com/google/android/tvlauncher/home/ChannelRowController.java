@@ -518,8 +518,8 @@ class ChannelRowController implements HomeRow, ChannelView.OnPerformMainActionLi
             case 27:
             case 28:
             case 29:
-                String valueOf = String.valueOf(ChannelView.stateToString(newState));
-                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported ChannelView state change gesture: ".concat(valueOf) : new String("Unsupported ChannelView state change gesture: "));
+                String valueOf = ChannelView.stateToString(newState);
+                throw new IllegalStateException(valueOf.length() != 0 ? "Unsupported ChannelView state change gesture: ".concat(valueOf) : "Unsupported ChannelView state change gesture: ");
             case 8:
             case 24:
                 OnHomeRowSelectedListener onHomeRowSelectedListener3 = this.onHomeRowSelectedListener;
@@ -669,7 +669,7 @@ class ChannelRowController implements HomeRow, ChannelView.OnPerformMainActionLi
         String obj = super.toString();
         long j = this.channelId;
         String str = this.title;
-        StringBuilder sb = new StringBuilder(String.valueOf(obj).length() + 46 + String.valueOf(str).length());
+        StringBuilder sb = new StringBuilder(obj.length() + 46 + String.valueOf(str).length());
         sb.append('{');
         sb.append(obj);
         sb.append(", channelId='");

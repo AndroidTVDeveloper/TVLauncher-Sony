@@ -115,10 +115,7 @@ public final class NotificationManagerCompat {
         int uid = appInfo.uid;
         try {
             Class<?> appOpsClass = Class.forName(AppOpsManager.class.getName());
-            if (((Integer) appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE, Integer.TYPE, String.class).invoke(appOps, Integer.valueOf(((Integer) appOpsClass.getDeclaredField(OP_POST_NOTIFICATION).get(Integer.class)).intValue()), Integer.valueOf(uid), pkg)).intValue() == 0) {
-                return true;
-            }
-            return false;
+            return ((Integer) appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE, Integer.TYPE, String.class).invoke(appOps, Integer.valueOf(((Integer) appOpsClass.getDeclaredField(OP_POST_NOTIFICATION).get(Integer.class)).intValue()), Integer.valueOf(uid), pkg)).intValue() == 0;
         } catch (ClassNotFoundException | IllegalAccessException | NoSuchFieldException | NoSuchMethodException | RuntimeException | InvocationTargetException e) {
             return true;
         }

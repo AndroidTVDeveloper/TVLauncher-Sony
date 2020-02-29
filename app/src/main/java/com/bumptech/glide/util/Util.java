@@ -56,7 +56,7 @@ public final class Util {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         String valueOf2 = String.valueOf(bitmap.getConfig());
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 66 + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + 66 + valueOf2.length());
         sb.append("Cannot obtain size for recycled Bitmap: ");
         sb.append(valueOf);
         sb.append("[");

@@ -342,7 +342,7 @@ public final class Downsampler {
             }
             int i8 = i2;
             String valueOf = String.valueOf(downsampleStrategy);
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf).length() + 118);
+            StringBuilder sb2 = new StringBuilder(valueOf.length() + 118);
             sb2.append("Cannot scale with factor: ");
             sb2.append(exactScaleFactor);
             sb2.append(" from: ");
@@ -360,7 +360,7 @@ public final class Downsampler {
         }
         if (Log.isLoggable(str, 3)) {
             String valueOf2 = String.valueOf(imageType);
-            StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf2).length() + 74);
+            StringBuilder sb3 = new StringBuilder(valueOf2.length() + 74);
             sb3.append("Unable to determine dimensions for: ");
             sb3.append(valueOf2);
             sb3.append(" with target [");
@@ -411,7 +411,7 @@ public final class Downsampler {
             } catch (IOException e) {
                 if (Log.isLoggable(TAG, 3)) {
                     String valueOf = String.valueOf(format);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 72);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 72);
                     sb.append("Cannot determine whether the image has alpha or not from header, format ");
                     sb.append(valueOf);
                     Log.d(TAG, sb.toString(), e);
@@ -484,7 +484,7 @@ public final class Downsampler {
         int i3 = options2.inTargetDensity;
         String name = Thread.currentThread().getName();
         double elapsedMillis = LogTime.getElapsedMillis(startTime);
-        StringBuilder sb = new StringBuilder(String.valueOf(bitmapString).length() + ClientAnalytics.LogRequest.LogSource.BLUETOOTH_VALUE + String.valueOf(outMimeType).length() + String.valueOf(inBitmapString).length() + String.valueOf(name).length());
+        StringBuilder sb = new StringBuilder(String.valueOf(bitmapString).length() + ClientAnalytics.LogRequest.LogSource.BLUETOOTH_VALUE + String.valueOf(outMimeType).length() + String.valueOf(inBitmapString).length() + name.length());
         sb.append("Decoded ");
         sb.append(bitmapString);
         sb.append(" from [");
@@ -534,7 +534,7 @@ public final class Downsampler {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         String valueOf = String.valueOf(bitmap.getConfig());
-        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf).length() + 26 + String.valueOf(sizeString).length());
+        StringBuilder sb2 = new StringBuilder(valueOf.length() + 26 + sizeString.length());
         sb2.append("[");
         sb2.append(width);
         sb2.append("x");

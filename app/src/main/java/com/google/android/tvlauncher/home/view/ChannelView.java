@@ -318,7 +318,7 @@ public class ChannelView extends FrameLayout {
                 stateString = "STATE_UNKNOWN";
                 break;
         }
-        StringBuilder sb = new StringBuilder(String.valueOf(stateString).length() + 14);
+        StringBuilder sb = new StringBuilder(stateString.length() + 14);
         sb.append(stateString);
         sb.append(" (");
         sb.append(state2);
@@ -339,7 +339,7 @@ public class ChannelView extends FrameLayout {
         } else {
             directionString = "FOCUS_DOWN";
         }
-        StringBuilder sb = new StringBuilder(String.valueOf(directionString).length() + 14);
+        StringBuilder sb = new StringBuilder(directionString.length() + 14);
         sb.append(directionString);
         sb.append(" (");
         sb.append(direction);
@@ -597,10 +597,7 @@ public class ChannelView extends FrameLayout {
             return false;
         }
         ViewParent parent = v.getParent();
-        if (v == this.emptyChannelMessage || parent == this.itemsList || parent == this.channelLogo.getParent() || parent == this) {
-            return true;
-        }
-        return false;
+        return v == this.emptyChannelMessage || parent == this.itemsList || parent == this.channelLogo.getParent() || parent == this;
     }
 
     private void onChannelSelected(boolean selected) {
@@ -752,10 +749,7 @@ public class ChannelView extends FrameLayout {
 
     private boolean isFirstItem(View itemView) {
         HorizontalGridView horizontalGridView;
-        if (itemView != null && itemView.getParent() == (horizontalGridView = this.itemsList) && horizontalGridView.getChildAdapterPosition(itemView) == 0) {
-            return true;
-        }
-        return false;
+        return itemView != null && itemView.getParent() == (horizontalGridView = this.itemsList) && horizontalGridView.getChildAdapterPosition(itemView) == 0;
     }
 
     private void updateUi(int oldState, int newState) {
@@ -1091,7 +1085,7 @@ public class ChannelView extends FrameLayout {
             if (Util.areHomeScreenAnimationsEnabled(getContext())) {
                 this.channelLogo.setElevation(i4 == 8 ? this.channelLogoSelectedElevation : 0.0f);
             }
-            setChannelLogoDimmed((i4 == 0 || i4 == 5 || i4 == 8 || i4 == 11 || i4 == 13 || i4 == 16 || i4 == 21 || i4 == 24 || i4 == 6 || i4 == 7 || i4 == 22 || i4 == 23) ? false : true);
+            setChannelLogoDimmed(i4 != 0 && i4 != 5 && i4 != 8 && i4 != 11 && i4 != 13 && i4 != 16 && i4 != 21 && i4 != 24 && i4 != 6 && i4 != 7 && i4 != 22 && i4 != 23);
             updateLogoTitleColor(i4);
             itemsTitleLayoutParams.setMarginStart(isZoomedOut ? this.itemsTitleZoomedOutMarginStart : this.itemsTitleDefaultMarginStart);
             this.itemsTitle.setLayoutParams(itemsTitleLayoutParams);
@@ -1539,7 +1533,7 @@ public class ChannelView extends FrameLayout {
     public String toString() {
         String frameLayout = super.toString();
         String valueOf = String.valueOf(this.zoomedOutLogoTitle.getText());
-        StringBuilder sb = new StringBuilder(String.valueOf(frameLayout).length() + 12 + String.valueOf(valueOf).length());
+        StringBuilder sb = new StringBuilder(frameLayout.length() + 12 + valueOf.length());
         sb.append('{');
         sb.append(frameLayout);
         sb.append(", title='");

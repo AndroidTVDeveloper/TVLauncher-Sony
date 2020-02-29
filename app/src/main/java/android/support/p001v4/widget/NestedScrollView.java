@@ -326,10 +326,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingPare
         }
         View child = getChildAt(0);
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
-        if (child.getHeight() + lp.topMargin + lp.bottomMargin > (getHeight() - getPaddingTop()) - getPaddingBottom()) {
-            return true;
-        }
-        return false;
+        return child.getHeight() + lp.topMargin + lp.bottomMargin > (getHeight() - getPaddingTop()) - getPaddingBottom();
     }
 
     public boolean isFillViewport() {
@@ -390,10 +387,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingPare
                 currentFocused = null;
             }
             View nextFocused = FocusFinder.getInstance().findNextFocus(this, currentFocused, 130);
-            if (nextFocused == null || nextFocused == this || !nextFocused.requestFocus(130)) {
-                return false;
-            }
-            return true;
+            return nextFocused != null && nextFocused != this && nextFocused.requestFocus(130);
         } else if (event.getAction() != 0) {
             return false;
         } else {
@@ -427,10 +421,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingPare
         }
         int scrollY = getScrollY();
         View child = getChildAt(0);
-        if (y < child.getTop() - scrollY || y >= child.getBottom() - scrollY || x < child.getLeft() || x >= child.getRight()) {
-            return false;
-        }
-        return true;
+        return y >= child.getTop() - scrollY && y < child.getBottom() - scrollY && x >= child.getLeft() && x < child.getRight();
     }
 
     private void initOrResetVelocityTracker() {
@@ -1222,10 +1213,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingPare
             return true;
         }
         ViewParent theParent = child.getParent();
-        if (!(theParent instanceof ViewGroup) || !isViewDescendantOf((View) theParent, parent)) {
-            return false;
-        }
-        return true;
+        return theParent instanceof ViewGroup && isViewDescendantOf((View) theParent, parent);
     }
 
     public void fling(int velocityY) {

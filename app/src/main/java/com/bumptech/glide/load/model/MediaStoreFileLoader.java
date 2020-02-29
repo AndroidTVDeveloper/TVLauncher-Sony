@@ -53,7 +53,7 @@ public final class MediaStoreFileLoader implements ModelLoader<Uri, File> {
             }
             if (TextUtils.isEmpty(filePath)) {
                 String valueOf = String.valueOf(this.uri);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 30);
                 sb.append("Failed to find file path for: ");
                 sb.append(valueOf);
                 callback.onLoadFailed(new FileNotFoundException(sb.toString()));

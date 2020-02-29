@@ -64,14 +64,14 @@ public class ServiceFlags {
         }
 
         public PrimesFlags get() {
-            PrimesLog.m52i("PrimesTesting", "GserviceFlagsSupplier.get()", new Object[0]);
+            PrimesLog.m52i("PrimesTesting", "GserviceFlagsSupplier.get()");
             return ServiceFlags.readPrimesFlags(this.context);
         }
     }
 
     public static class DefaultFlagsSupplier implements Supplier<PrimesFlags> {
         public PrimesFlags get() {
-            PrimesLog.m52i("PrimesTesting", "DefaultFlagsSupplier.get()", new Object[0]);
+            PrimesLog.m52i("PrimesTesting", "DefaultFlagsSupplier.get()");
             return PrimesFlags.newBuilder().build();
         }
     }

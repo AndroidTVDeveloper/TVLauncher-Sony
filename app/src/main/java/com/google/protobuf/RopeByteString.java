@@ -223,10 +223,7 @@ final class RopeByteString extends ByteString {
     public boolean isValidUtf8() {
         int leftPartial = this.left.partialIsValidUtf8(0, 0, this.leftLength);
         ByteString byteString = this.right;
-        if (byteString.partialIsValidUtf8(leftPartial, 0, byteString.size()) == 0) {
-            return true;
-        }
-        return false;
+        return byteString.partialIsValidUtf8(leftPartial, 0, byteString.size()) == 0;
     }
 
     /* access modifiers changed from: protected */
@@ -386,7 +383,7 @@ final class RopeByteString extends ByteString {
                 doBalance(rbs.right);
             } else {
                 String valueOf = String.valueOf(root.getClass());
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 49);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 49);
                 sb.append("Has a new type of ByteString been created? Found ");
                 sb.append(valueOf);
                 throw new IllegalArgumentException(sb.toString());

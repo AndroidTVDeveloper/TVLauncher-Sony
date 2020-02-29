@@ -26,7 +26,7 @@ public class Primes {
     public static synchronized Primes initialize(ApiProvider apiProvider) {
         synchronized (Primes.class) {
             if (primes.isInitialized()) {
-                PrimesLog.m48d(TAG, "Primes.initialize() is called more than once. This call will be ignored.", new Object[0]);
+                PrimesLog.m48d(TAG, "Primes.initialize() is called more than once. This call will be ignored.");
                 Primes primes2 = primes;
                 return primes2;
             }
@@ -46,7 +46,7 @@ public class Primes {
     public static Primes get() {
         if (primes == DEFAULT_PRIMES && warningNotYetLogged) {
             warningNotYetLogged = false;
-            PrimesLog.warning("Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.", new Object[0]);
+            PrimesLog.warning("Primes not initialized, returning default (no-op) Primes instance which will ignore all calls. Please call Primes.initialize(...) before using any Primes API.");
         }
         return primes;
     }
@@ -235,7 +235,7 @@ public class Primes {
         }
         Intent intent = Intents.createPrimesEventDebugActivityIntent(context);
         if (context.getPackageManager().queryIntentActivities(intent, 65536).isEmpty()) {
-            PrimesLog.m56w(TAG, "PrimesEventActivity not found: primes/debug is not included in the app.", new Object[0]);
+            PrimesLog.m56w(TAG, "PrimesEventActivity not found: primes/debug is not included in the app.");
             return false;
         }
         context.startActivity(intent);
@@ -270,7 +270,7 @@ public class Primes {
     public static synchronized void reset(ShutdownWhitelistToken token) {
         synchronized (Primes.class) {
             if (token == null) {
-                PrimesLog.m56w(TAG, "Primes Shutdown token null, ignoring reset.", new Object[0]);
+                PrimesLog.m56w(TAG, "Primes Shutdown token null, ignoring reset.");
                 return;
             }
             primes.primesApi.shutdown();
@@ -314,7 +314,7 @@ public class Primes {
 
     public void shutdown(ShutdownWhitelistToken token) {
         if (token == null) {
-            PrimesLog.m56w(TAG, "Primes Shutdown token null, ignoring Shutdown.", new Object[0]);
+            PrimesLog.m56w(TAG, "Primes Shutdown token null, ignoring Shutdown.");
         } else {
             this.primesApi.executeAfterInitialized(new Runnable() {
                 public void run() {
@@ -326,7 +326,7 @@ public class Primes {
 
     public void sendCustomLaunchedEvent(LaunchCountWhitelistToken token) {
         if (token == null) {
-            PrimesLog.m56w(TAG, "Primes Lifecycle token null, ignoring logFirstActivityLaunched.", new Object[0]);
+            PrimesLog.m56w(TAG, "Primes Lifecycle token null, ignoring logFirstActivityLaunched.");
         } else {
             this.primesApi.sendCustomLaunchedEvent();
         }

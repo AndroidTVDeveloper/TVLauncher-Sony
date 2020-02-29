@@ -41,10 +41,7 @@ final class UnknownFieldData {
             return false;
         }
         UnknownFieldData other = (UnknownFieldData) o;
-        if (this.tag != other.tag || !Arrays.equals(this.bytes, other.bytes)) {
-            return false;
-        }
-        return true;
+        return this.tag == other.tag && Arrays.equals(this.bytes, other.bytes);
     }
 
     public int hashCode() {

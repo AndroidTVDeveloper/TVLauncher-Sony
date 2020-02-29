@@ -51,7 +51,7 @@ public class DrawableUtils {
         if (sInsetsClazz != null) {
             try {
                 Drawable drawable2 = DrawableCompat.unwrap(drawable);
-                Object insets2 = drawable2.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(drawable2, new Object[0]);
+                Object insets2 = drawable2.getClass().getMethod("getOpticalInsets").invoke(drawable2);
                 if (insets2 != null) {
                     Rect result2 = new Rect();
                     for (Field field : sInsetsClazz.getFields()) {

@@ -26,7 +26,7 @@ final class ConfiguredPrimesApi implements PrimesApi {
         if (this.lazyServices.memoryLeakMetricEnabled()) {
             this.lazyServices.memoryLeakMetricService().startMonitoring();
         } else {
-            logDebug("Memory Leak metric disabled", new Object[0]);
+            logDebug("Memory Leak metric disabled");
         }
         return listeners;
     }
@@ -36,27 +36,27 @@ final class ConfiguredPrimesApi implements PrimesApi {
         if (this.lazyServices.crashMetricEnabled()) {
             startupListeners.add(this.lazyServices.crashMetricService());
         } else {
-            logDebug("Crash metric disabled - not registering for startup notifications.", new Object[0]);
+            logDebug("Crash metric disabled - not registering for startup notifications.");
         }
         if (this.lazyServices.strictModeEnabled()) {
             startupListeners.add(this.lazyServices.strictModeService());
         } else {
-            logDebug("Strict mode disabled", new Object[0]);
+            logDebug("Strict mode disabled");
         }
         if (this.lazyServices.autoPackageMetricEnabled()) {
             startupListeners.add(this.lazyServices.packageMetricService());
-            logDebug("Package metric: registered for startup notifications", new Object[0]);
+            logDebug("Package metric: registered for startup notifications");
         }
         if (this.lazyServices.batteryMetricEnabled()) {
             startupListeners.add(this.lazyServices.batteryMetricService());
-            logDebug("Battery metrics enabled", new Object[0]);
+            logDebug("Battery metrics enabled");
         } else {
-            logDebug("Battery metric disabled", new Object[0]);
+            logDebug("Battery metric disabled");
         }
         if (this.lazyServices.magicEyeLogEnabled()) {
             startupListeners.add(this.lazyServices.magicEyeLogService());
         } else {
-            logDebug("MagicEye logging metric disabled", new Object[0]);
+            logDebug("MagicEye logging metric disabled");
         }
         if (this.lazyServices.frameMetricEnabled()) {
             startupListeners.add(this.lazyServices.frameMetricService());
@@ -64,12 +64,12 @@ final class ConfiguredPrimesApi implements PrimesApi {
         if (this.lazyServices.cpuProfilingEnabled()) {
             startupListeners.add(this.lazyServices.cpuProfilingService());
         } else {
-            logDebug("Cpu profiling disabled", new Object[0]);
+            logDebug("Cpu profiling disabled");
         }
         if (this.lazyServices.startupMetricEnabled()) {
             this.lazyServices.startupMetricHandler();
         } else {
-            logDebug("Startup metric disabled", new Object[0]);
+            logDebug("Startup metric disabled");
         }
         return startupListeners;
     }
@@ -214,7 +214,7 @@ final class ConfiguredPrimesApi implements PrimesApi {
         if (this.lazyServices.crashMetricEnabled()) {
             this.lazyServices.crashMetricService().setPrimesExceptionHandlerAsDefaultHandler();
         } else {
-            logDebug("Primes crash monitoring is not enabled, yet crash monitoring was requested.", new Object[0]);
+            logDebug("Primes crash monitoring is not enabled, yet crash monitoring was requested.");
         }
     }
 
@@ -222,7 +222,7 @@ final class ConfiguredPrimesApi implements PrimesApi {
         if (this.lazyServices.crashMetricEnabled()) {
             return this.lazyServices.crashMetricService().wrapUncaughtExceptionHandlerWithPrimesHandler(handler);
         }
-        logDebug("Primes crash monitoring is not enabled, yet a UncaughtExceptionHandler withcrash monitoring was requested.", new Object[0]);
+        logDebug("Primes crash monitoring is not enabled, yet a UncaughtExceptionHandler withcrash monitoring was requested.");
         return handler;
     }
 
@@ -263,7 +263,7 @@ final class ConfiguredPrimesApi implements PrimesApi {
     public void recordTrace(TikTokWhitelistToken token, PrimesTraceOuterClass.PrimesTrace primesTrace, ExtensionMetric.MetricExtension metricExtension) {
         Preconditions.checkNotNull(token);
         if (primesTrace == null || primesTrace.getSpansCount() == 0) {
-            PrimesLog.m56w(TAG, "Invalid traces were logged.", new Object[0]);
+            PrimesLog.m56w(TAG, "Invalid traces were logged.");
         } else if (this.lazyServices.tiktokTraceEnabled()) {
             this.lazyServices.traceMetricService().record(primesTrace, metricExtension);
         }

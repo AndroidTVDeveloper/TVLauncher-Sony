@@ -39,7 +39,7 @@ public class ContentRatingsManager {
                 ContentRatingsManager.this.ensureLoaded();
                 return null;
             }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     /* access modifiers changed from: private */
@@ -63,7 +63,7 @@ public class ContentRatingsManager {
                 infos.add(TvContentRatingSystemInfo.createTvContentRatingSystemInfo(C1167R.xml.tv_content_rating_systems, this.context.getPackageManager().getApplicationInfo(this.context.getPackageName(), 0)));
             } catch (PackageManager.NameNotFoundException e) {
                 String valueOf = String.valueOf(e);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 65);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 65);
                 sb.append("Can't retrieve content ratings, failed to load application info: ");
                 sb.append(valueOf);
                 Log.e(TAG, sb.toString());

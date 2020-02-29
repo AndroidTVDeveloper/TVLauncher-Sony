@@ -33,9 +33,6 @@ public class TrackingUrl {
             return false;
         }
         TrackingUrl otherTrackingUrl = (TrackingUrl) obj;
-        if (!TextUtils.equals(this.url, otherTrackingUrl.url) || this.offsetMillis != otherTrackingUrl.offsetMillis) {
-            return false;
-        }
-        return true;
+        return TextUtils.equals(this.url, otherTrackingUrl.url) && this.offsetMillis == otherTrackingUrl.offsetMillis;
     }
 }

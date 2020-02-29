@@ -171,10 +171,10 @@ class LeakWatcherThread extends Thread {
         if (this.queueForDump.next != null) {
             this.hprofFile = (File) Preconditions.checkNotNull(hprofFile2);
             interrupt();
-            PrimesLog.m48d(TAG, "Schedule for heap dump", new Object[0]);
+            PrimesLog.m48d(TAG, "Schedule for heap dump");
             return true;
         }
-        PrimesLog.m48d(TAG, "Skip heap dump. No leak suspects found.", new Object[0]);
+        PrimesLog.m48d(TAG, "Skip heap dump. No leak suspects found.");
         return false;
     }
 
@@ -215,7 +215,7 @@ class LeakWatcherThread extends Thread {
                 sb.append(" leak(s). The analysis took ");
                 sb.append((System.nanoTime() - startTime2) / 1000000);
                 sb.append(" ms.");
-                PrimesLog.m48d(TAG, sb.toString(), new Object[0]);
+                PrimesLog.m48d(TAG, sb.toString());
             }
         } catch (Throwable t) {
             File fileToDelete = this.hprofFile;

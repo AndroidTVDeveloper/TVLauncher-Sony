@@ -216,7 +216,7 @@ public final class DirStatsCapture {
             try {
                 dataDir = new File(context.getPackageManager().getApplicationInfo(context.getPackageName(), 0).dataDir);
             } catch (PackageManager.NameNotFoundException e) {
-                PrimesLog.m56w(TAG, "Failed to use package manager getting data directory from context instead.", new Object[0]);
+                PrimesLog.m56w(TAG, "Failed to use package manager getting data directory from context instead.");
                 File filesDir = context.getFilesDir();
                 if (filesDir != null) {
                     dataDir = filesDir.getParentFile();
@@ -230,10 +230,10 @@ public final class DirStatsCapture {
             return dirStats;
         } catch (Exception e2) {
             String valueOf = String.valueOf(e2);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 29);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 29);
             sb.append("Failed to retrieve DirStats: ");
             sb.append(valueOf);
-            PrimesLog.m56w(TAG, sb.toString(), new Object[0]);
+            PrimesLog.m56w(TAG, sb.toString());
             return Collections.emptyList();
         } finally {
             PrimesTrace.endSection();

@@ -83,7 +83,7 @@ class DataSourceObserver {
                             return;
                         } catch (NumberFormatException e) {
                             String valueOf = String.valueOf(uri);
-                            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+                            StringBuilder sb = new StringBuilder(valueOf.length() + 27);
                             sb.append("Invalid channel ID in URI: ");
                             sb.append(valueOf);
                             Log.e(DataSourceObserver.TAG, sb.toString());
@@ -91,7 +91,7 @@ class DataSourceObserver {
                         }
                     } else {
                         String valueOf2 = String.valueOf(uri);
-                        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 26);
+                        StringBuilder sb2 = new StringBuilder(valueOf2.length() + 26);
                         sb2.append("Invalid channel logo URI: ");
                         sb2.append(valueOf2);
                         Log.e(DataSourceObserver.TAG, sb2.toString());
@@ -110,7 +110,7 @@ class DataSourceObserver {
                             return;
                         } catch (NumberFormatException e2) {
                             String valueOf3 = String.valueOf(uri);
-                            StringBuilder sb3 = new StringBuilder(String.valueOf(valueOf3).length() + 27);
+                            StringBuilder sb3 = new StringBuilder(valueOf3.length() + 27);
                             sb3.append("Invalid channel ID in URI: ");
                             sb3.append(valueOf3);
                             Log.e(DataSourceObserver.TAG, sb3.toString());
@@ -128,7 +128,7 @@ class DataSourceObserver {
                         return;
                     } catch (NumberFormatException e3) {
                         String valueOf4 = String.valueOf(uri);
-                        StringBuilder sb4 = new StringBuilder(String.valueOf(valueOf4).length() + 27);
+                        StringBuilder sb4 = new StringBuilder(valueOf4.length() + 27);
                         sb4.append("Invalid program ID in URI: ");
                         sb4.append(valueOf4);
                         Log.e(DataSourceObserver.TAG, sb4.toString());
@@ -562,7 +562,7 @@ class DataSourceObserver {
         public void onTaskFailed(DataLoadingBackgroundTask task, Throwable throwable) {
             String valueOf = String.valueOf(task);
             String valueOf2 = String.valueOf(throwable);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 20 + valueOf2.length());
             sb.append("onTaskFailed: ");
             sb.append(valueOf);
             sb.append(", ex: ");

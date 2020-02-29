@@ -82,7 +82,7 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
 
     private Object newFamily() {
         try {
-            return this.mFontFamilyCtor.newInstance(new Object[0]);
+            return this.mFontFamilyCtor.newInstance();
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
             return null;
         }
@@ -125,7 +125,7 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
 
     private void abortCreation(Object family) {
         try {
-            this.mAbortCreation.invoke(family, new Object[0]);
+            this.mAbortCreation.invoke(family);
         } catch (IllegalAccessException | InvocationTargetException e) {
         }
     }
@@ -240,7 +240,7 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
 
     /* access modifiers changed from: protected */
     public Constructor<?> obtainFontFamilyCtor(Class<?> fontFamily) throws NoSuchMethodException {
-        return fontFamily.getConstructor(new Class[0]);
+        return fontFamily.getConstructor();
     }
 
     /* access modifiers changed from: protected */
@@ -255,12 +255,12 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
 
     /* access modifiers changed from: protected */
     public Method obtainFreezeMethod(Class<?> fontFamily) throws NoSuchMethodException {
-        return fontFamily.getMethod(FREEZE_METHOD, new Class[0]);
+        return fontFamily.getMethod(FREEZE_METHOD);
     }
 
     /* access modifiers changed from: protected */
     public Method obtainAbortCreationMethod(Class<?> fontFamily) throws NoSuchMethodException {
-        return fontFamily.getMethod(ABORT_CREATION_METHOD, new Class[0]);
+        return fontFamily.getMethod(ABORT_CREATION_METHOD);
     }
 
     /* access modifiers changed from: protected */

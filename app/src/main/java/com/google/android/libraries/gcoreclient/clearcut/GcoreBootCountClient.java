@@ -6,7 +6,7 @@ import com.google.android.libraries.gcoreclient.tasks.GcoreTask;
 @Deprecated
 public interface GcoreBootCountClient {
 
-    public interface Factory {
+    interface Factory {
         GcoreBootCountClient createBootCountClient(Context context);
     }
 

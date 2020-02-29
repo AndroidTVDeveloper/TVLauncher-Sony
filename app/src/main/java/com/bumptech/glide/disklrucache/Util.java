@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 final class Util {
     static final Charset US_ASCII = Charset.forName(C0847C.ASCII_NAME);
-    static final Charset UTF_8 = Charset.forName("UTF-8");
+    static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     private Util() {
     }
@@ -46,7 +47,7 @@ final class Util {
                     i++;
                 } else {
                     String valueOf = String.valueOf(file);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 23);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 23);
                     sb.append("failed to delete file: ");
                     sb.append(valueOf);
                     throw new IOException(sb.toString());
@@ -55,7 +56,7 @@ final class Util {
             return;
         }
         String valueOf2 = String.valueOf(dir);
-        StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 26);
+        StringBuilder sb2 = new StringBuilder(valueOf2.length() + 26);
         sb2.append("not a readable directory: ");
         sb2.append(valueOf2);
         throw new IOException(sb2.toString());

@@ -22,6 +22,6 @@ public class AppUtil {
     }
 
     private static boolean hasSystemFlags(ApplicationInfo info) {
-        return (info == null || (info.flags & 129) == 0) ? false : true;
+        return info != null && (info.flags & 129) != 0;
     }
 }

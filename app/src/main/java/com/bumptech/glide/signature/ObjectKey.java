@@ -13,7 +13,7 @@ public final class ObjectKey implements Key {
 
     public String toString() {
         String valueOf = String.valueOf(this.object);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 18);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 18);
         sb.append("ObjectKey{object=");
         sb.append(valueOf);
         sb.append('}');

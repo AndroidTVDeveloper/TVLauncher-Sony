@@ -6,7 +6,7 @@ import com.bumptech.glide.load.data.DataFetcher;
 
 interface DataFetcherGenerator {
 
-    public interface FetcherReadyCallback {
+    interface FetcherReadyCallback {
         void onDataFetcherFailed(Key key, Exception exc, DataFetcher<?> dataFetcher, DataSource dataSource);
 
         void onDataFetcherReady(Key key, Object obj, DataFetcher<?> dataFetcher, DataSource dataSource, Key key2);

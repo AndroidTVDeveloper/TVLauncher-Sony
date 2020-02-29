@@ -72,7 +72,7 @@ public final class PrimesMemoryLeakConfigurations {
 
         public PrimesMemoryLeakConfigurations build() {
             if (this.quantifyLeakSizeEnabled && !this.heapDumpEnabled) {
-                PrimesLog.m56w(PrimesMemoryLeakConfigurations.TAG, "Can not quantify leak size without heapdump", new Object[0]);
+                PrimesLog.m56w(PrimesMemoryLeakConfigurations.TAG, "Can not quantify leak size without heapdump");
             }
             return new PrimesMemoryLeakConfigurations(this.enabled, this.heapDumpEnabled, this.quantifyLeakSizeEnabled);
         }

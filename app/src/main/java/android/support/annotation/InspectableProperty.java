@@ -11,7 +11,7 @@ public @interface InspectableProperty {
 
     @Target({ElementType.TYPE})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface EnumEntry {
+    @interface EnumEntry {
         String name();
 
         int value();
@@ -19,7 +19,7 @@ public @interface InspectableProperty {
 
     @Target({ElementType.TYPE})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface FlagEntry {
+    @interface FlagEntry {
         int mask() default 0;
 
         String name();
@@ -27,7 +27,7 @@ public @interface InspectableProperty {
         int target();
     }
 
-    public enum ValueType {
+    enum ValueType {
         NONE,
         INFERRED,
         INT_ENUM,

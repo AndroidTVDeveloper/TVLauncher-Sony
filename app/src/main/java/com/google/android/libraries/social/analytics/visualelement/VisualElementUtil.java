@@ -13,7 +13,7 @@ public final class VisualElementUtil {
             view.setTag(C1150R.C1152id.analytics_visual_element_view_tag, visualElement);
             return visualElement;
         }
-        throw new IllegalArgumentException(String.valueOf(view.getClass().getName()).concat(" implements VisualElementProvider; this metadata should be added to the result of VisualElementProvider.getVisualElement()."));
+        throw new IllegalArgumentException(view.getClass().getName().concat(" implements VisualElementProvider; this metadata should be added to the result of VisualElementProvider.getVisualElement()."));
     }
 
     public static void detach(View view) {

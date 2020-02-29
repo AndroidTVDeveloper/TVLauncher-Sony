@@ -69,10 +69,7 @@ public class AudioAttributesImplBase implements AudioAttributesImpl {
             return false;
         }
         AudioAttributesImplBase that = (AudioAttributesImplBase) o;
-        if (this.mContentType == that.getContentType() && this.mFlags == that.getFlags() && this.mUsage == that.getUsage() && this.mLegacyStream == that.mLegacyStream) {
-            return true;
-        }
-        return false;
+        return this.mContentType == that.getContentType() && this.mFlags == that.getFlags() && this.mUsage == that.getUsage() && this.mLegacyStream == that.mLegacyStream;
     }
 
     public String toString() {

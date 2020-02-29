@@ -244,7 +244,7 @@ public final class ClearcutMetricTransmitter extends HashedNamesTransmitter {
     public void handleResult(GcoreStatus gcoreStatus) {
         PrimesLog.m54v(TAG, "handleResult, success: %b", Boolean.valueOf(gcoreStatus.isSuccess()));
         if (!gcoreStatus.isSuccess()) {
-            PrimesLog.m48d(TAG, "Clearcut logging failed", new Object[0]);
+            PrimesLog.m48d(TAG, "Clearcut logging failed");
         }
     }
 

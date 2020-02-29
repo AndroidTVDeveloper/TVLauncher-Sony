@@ -45,7 +45,7 @@ class ViewInfoStore {
     /* access modifiers changed from: package-private */
     public boolean isDisappearing(RecyclerView.ViewHolder holder) {
         InfoRecord record = this.mLayoutHolderMap.get(holder);
-        return (record == null || (record.flags & 1) == 0) ? false : true;
+        return record != null && (record.flags & 1) != 0;
     }
 
     /* access modifiers changed from: package-private */
@@ -99,7 +99,7 @@ class ViewInfoStore {
     /* access modifiers changed from: package-private */
     public boolean isInPreLayout(RecyclerView.ViewHolder viewHolder) {
         InfoRecord record = this.mLayoutHolderMap.get(viewHolder);
-        return (record == null || (record.flags & 4) == 0) ? false : true;
+        return record != null && (record.flags & 4) != 0;
     }
 
     /* access modifiers changed from: package-private */

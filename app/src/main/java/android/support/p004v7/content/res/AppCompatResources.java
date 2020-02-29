@@ -117,10 +117,7 @@ public final class AppCompatResources {
         Resources r = context.getResources();
         TypedValue value = getTypedValue();
         r.getValue(resId, value, true);
-        if (value.type < 28 || value.type > 31) {
-            return false;
-        }
-        return true;
+        return value.type >= 28 && value.type <= 31;
     }
 
     private static TypedValue getTypedValue() {

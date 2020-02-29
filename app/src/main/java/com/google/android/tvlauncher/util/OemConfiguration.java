@@ -52,7 +52,7 @@ public abstract class OemConfiguration {
         
         private final String rowOrder;
 
-        private LayoutOrderOptions(String rowOrder2) {
+        LayoutOrderOptions(String rowOrder2) {
             this.rowOrder = rowOrder2;
         }
 

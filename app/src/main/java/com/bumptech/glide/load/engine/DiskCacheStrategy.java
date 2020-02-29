@@ -10,7 +10,7 @@ public abstract class DiskCacheStrategy {
         }
 
         public boolean isResourceCacheable(boolean isFromAlternateCacheKey, DataSource dataSource, EncodeStrategy encodeStrategy) {
-            return (dataSource == DataSource.RESOURCE_DISK_CACHE || dataSource == DataSource.MEMORY_CACHE) ? false : true;
+            return dataSource != DataSource.RESOURCE_DISK_CACHE && dataSource != DataSource.MEMORY_CACHE;
         }
 
         public boolean decodeCachedResource() {
@@ -40,7 +40,7 @@ public abstract class DiskCacheStrategy {
     };
     public static final DiskCacheStrategy DATA = new DiskCacheStrategy() {
         public boolean isDataCacheable(DataSource dataSource) {
-            return (dataSource == DataSource.DATA_DISK_CACHE || dataSource == DataSource.MEMORY_CACHE) ? false : true;
+            return dataSource != DataSource.DATA_DISK_CACHE && dataSource != DataSource.MEMORY_CACHE;
         }
 
         public boolean isResourceCacheable(boolean isFromAlternateCacheKey, DataSource dataSource, EncodeStrategy encodeStrategy) {
@@ -78,7 +78,7 @@ public abstract class DiskCacheStrategy {
         }
 
         public boolean isResourceCacheable(boolean isFromAlternateCacheKey, DataSource dataSource, EncodeStrategy encodeStrategy) {
-            return (dataSource == DataSource.RESOURCE_DISK_CACHE || dataSource == DataSource.MEMORY_CACHE) ? false : true;
+            return dataSource != DataSource.RESOURCE_DISK_CACHE && dataSource != DataSource.MEMORY_CACHE;
         }
 
         public boolean decodeCachedResource() {

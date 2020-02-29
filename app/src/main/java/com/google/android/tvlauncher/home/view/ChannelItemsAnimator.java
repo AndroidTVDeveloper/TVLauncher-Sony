@@ -597,7 +597,7 @@ public class ChannelItemsAnimator extends BoundsItemAnimator {
             float f3 = this.previewImageBackgroundScale;
             String valueOf5 = String.valueOf(this.previewImageBounds);
             float f4 = this.previewImageScale;
-            StringBuilder sb = new StringBuilder(String.valueOf(hexString).length() + ClientAnalytics.LogRequest.LogSource.BOQ_WEB_VALUE + String.valueOf(valueOf).length() + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length() + String.valueOf(valueOf4).length() + String.valueOf(valueOf5).length());
+            StringBuilder sb = new StringBuilder(hexString.length() + ClientAnalytics.LogRequest.LogSource.BOQ_WEB_VALUE + valueOf.length() + valueOf2.length() + valueOf3.length() + valueOf4.length() + valueOf5.length());
             sb.append("MyHolderInfo ");
             sb.append(hexString);
             sb.append(" bounds=");

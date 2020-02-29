@@ -63,7 +63,7 @@ public class IntentLaunchDispatcher {
                 packageName = Intent.parseUri(dataUrl, 1).getPackage();
             } catch (URISyntaxException e) {
                 String valueOf = String.valueOf(dataUrl);
-                Log.e(TAG, valueOf.length() != 0 ? "Bad URI syntax: ".concat(valueOf) : new String("Bad URI syntax: "));
+                Log.e(TAG, valueOf.length() != 0 ? "Bad URI syntax: ".concat(valueOf) : "Bad URI syntax: ");
                 return null;
             }
         }
@@ -170,8 +170,8 @@ public class IntentLaunchDispatcher {
             }
             return intent2;
         } catch (URISyntaxException e) {
-            String valueOf = String.valueOf(uri);
-            Log.e(TAG, valueOf.length() != 0 ? "Bad URI syntax: ".concat(valueOf) : new String("Bad URI syntax: "));
+            String valueOf = uri;
+            Log.e(TAG, valueOf.length() != 0 ? "Bad URI syntax: ".concat(valueOf) : "Bad URI syntax: ");
             return null;
         }
     }
@@ -194,7 +194,7 @@ public class IntentLaunchDispatcher {
             return true;
         } catch (ActivityNotFoundException | SecurityException e) {
             String valueOf = String.valueOf(this.intent);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 17);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 17);
             sb.append("Failed to launch ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString(), e);

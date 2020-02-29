@@ -2,11 +2,12 @@ package com.google.android.libraries.performance.primes;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public final class Hashing {
-    private static final Charset UTF_8 = Charset.forName("UTF-8");
+    private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     public static Long hash(String name) {
         if (name == null || name.trim().isEmpty()) {

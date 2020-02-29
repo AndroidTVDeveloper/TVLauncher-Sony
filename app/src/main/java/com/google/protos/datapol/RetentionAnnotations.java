@@ -137,7 +137,7 @@ public final class RetentionAnnotations {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private RetentionTag(int value2) {
+        RetentionTag(int value2) {
             this.value = value2;
         }
     }

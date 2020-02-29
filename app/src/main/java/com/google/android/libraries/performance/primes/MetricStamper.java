@@ -62,7 +62,7 @@ public final class MetricStamper {
 
     public SystemHealthProto.SystemHealthMetric stamp(SystemHealthProto.SystemHealthMetric metric) {
         if (metric == null) {
-            PrimesLog.m56w(TAG, "Unexpected null metric to stamp, Stamping has been skipped.", new Object[0]);
+            PrimesLog.m56w(TAG, "Unexpected null metric to stamp, Stamping has been skipped.");
             return null;
         }
         SystemHealthProto.SystemHealthMetric.Builder metricBuilder = (SystemHealthProto.SystemHealthMetric.Builder) metric.toBuilder();

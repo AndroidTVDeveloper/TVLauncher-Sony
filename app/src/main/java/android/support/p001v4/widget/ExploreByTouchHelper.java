@@ -100,10 +100,7 @@ public abstract class ExploreByTouchHelper extends AccessibilityDelegateCompat {
         if (action == 7 || action == 9) {
             int virtualViewId = getVirtualViewAt(event.getX(), event.getY());
             updateHoveredVirtualView(virtualViewId);
-            if (virtualViewId != Integer.MIN_VALUE) {
-                return true;
-            }
-            return false;
+            return virtualViewId != Integer.MIN_VALUE;
         } else if (action != 10 || this.mHoveredVirtualViewId == Integer.MIN_VALUE) {
             return false;
         } else {
@@ -475,10 +472,7 @@ public abstract class ExploreByTouchHelper extends AccessibilityDelegateCompat {
             }
             viewParent = view.getParent();
         }
-        if (viewParent != null) {
-            return true;
-        }
-        return false;
+        return viewParent != null;
     }
 
     private boolean requestAccessibilityFocus(int virtualViewId) {

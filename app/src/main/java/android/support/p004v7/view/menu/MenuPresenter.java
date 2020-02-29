@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 public interface MenuPresenter {
 
     /* renamed from: android.support.v7.view.menu.MenuPresenter$Callback */
-    public interface Callback {
+    interface Callback {
         void onCloseMenu(MenuBuilder menuBuilder, boolean z);
 
         boolean onOpenSubMenu(MenuBuilder menuBuilder);

@@ -178,7 +178,7 @@ public class Engine implements EngineJobListener, MemoryCache.ResourceRemovedLis
     private static void logWithTimeAndKey(String log, long startTime, Key key) {
         double elapsedMillis = LogTime.getElapsedMillis(startTime);
         String valueOf = String.valueOf(key);
-        StringBuilder sb = new StringBuilder(String.valueOf(log).length() + 37 + String.valueOf(valueOf).length());
+        StringBuilder sb = new StringBuilder(String.valueOf(log).length() + 37 + valueOf.length());
         sb.append(log);
         sb.append(" in ");
         sb.append(elapsedMillis);

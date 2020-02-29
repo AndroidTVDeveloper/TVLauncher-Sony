@@ -16,7 +16,7 @@ public final class ViewConfigurationCompat {
     static {
         if (Build.VERSION.SDK_INT == 25) {
             try {
-                sGetScaledScrollFactorMethod = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
+                sGetScaledScrollFactorMethod = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor");
             } catch (Exception e) {
                 Log.i(TAG, "Could not find method getScaledScrollFactor() on ViewConfiguration");
             }

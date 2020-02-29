@@ -156,9 +156,9 @@ public abstract class OemAppBase {
             if (this.isVirtualApp) {
                 this.f164id = String.valueOf(this.f164id).concat(":");
                 if (this.dataUri != null) {
-                    String valueOf = String.valueOf(this.f164id);
-                    String valueOf2 = String.valueOf(this.dataUri);
-                    this.f164id = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+                    String valueOf = this.f164id;
+                    String valueOf2 = this.dataUri;
+                    this.f164id = valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
                 }
             }
         }

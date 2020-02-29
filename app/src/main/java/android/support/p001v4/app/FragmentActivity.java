@@ -540,7 +540,7 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
 
         public boolean onHasView() {
             Window w = FragmentActivity.this.getWindow();
-            return (w == null || w.peekDecorView() == null) ? false : true;
+            return w != null && w.peekDecorView() != null;
         }
     }
 

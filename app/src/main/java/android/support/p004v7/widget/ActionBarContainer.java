@@ -270,7 +270,7 @@ public class ActionBarContainer extends FrameLayout {
         Drawable drawable;
         super.onLayout(changed, l, t, r, b);
         View tabContainer = this.mTabContainer;
-        boolean hasTabs = (tabContainer == null || tabContainer.getVisibility() == 8) ? false : true;
+        boolean hasTabs = tabContainer != null && tabContainer.getVisibility() != 8;
         if (!(tabContainer == null || tabContainer.getVisibility() == 8)) {
             int containerHeight = getMeasuredHeight();
             FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) tabContainer.getLayoutParams();

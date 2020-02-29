@@ -306,7 +306,7 @@ class OemConfigurationXmlParser {
                             return;
                         } catch (IllegalArgumentException e) {
                             String valueOf = String.valueOf(focusedColor);
-                            Log.e(TAG, valueOf.length() != 0 ? "Cannot decode search orb focused color ".concat(valueOf) : new String("Cannot decode search orb focused color "), e);
+                            Log.e(TAG, valueOf.length() != 0 ? "Cannot decode search orb focused color ".concat(valueOf) : "Cannot decode search orb focused color ", e);
                             return;
                         }
                     } else {
@@ -401,7 +401,7 @@ class OemConfigurationXmlParser {
                 this.dataContainer.setAppsViewLayoutOption(option);
                 return;
             }
-            StringBuilder sb = new StringBuilder(String.valueOf(optionKey).length() + 59);
+            StringBuilder sb = new StringBuilder(optionKey.length() + 59);
             sb.append("invalid value ");
             sb.append(optionKey);
             sb.append(" for attribute ");
@@ -463,7 +463,7 @@ class OemConfigurationXmlParser {
                 labelText = inputsPanelLabelOption;
             } else {
                 labelText = OemConfiguration.INPUTS_PANEL_LABEL_INPUTS;
-                StringBuilder sb = new StringBuilder(String.valueOf(inputsPanelLabelOption).length() + 46);
+                StringBuilder sb = new StringBuilder(inputsPanelLabelOption.length() + 46);
                 sb.append("Invalid value \"");
                 sb.append(inputsPanelLabelOption);
                 sb.append("\" for ");
@@ -500,8 +500,8 @@ class OemConfigurationXmlParser {
             try {
                 this.dataContainer.setHeadsupNotificationsTextColor(Color.parseColor(textColor));
             } catch (IllegalArgumentException e) {
-                String valueOf = String.valueOf(textColor);
-                Log.e(TAG, valueOf.length() != 0 ? "Cannot decode notification text color ".concat(valueOf) : new String("Cannot decode notification text color "), e);
+                String valueOf = textColor;
+                Log.e(TAG, valueOf.length() != 0 ? "Cannot decode notification text color ".concat(valueOf) : "Cannot decode notification text color ", e);
             }
         }
         String backgroundColor = parser.getAttributeValue(null, "background_color");
@@ -509,8 +509,8 @@ class OemConfigurationXmlParser {
             try {
                 this.dataContainer.setHeadsupNotificationsBackgroundColor(Color.parseColor(backgroundColor));
             } catch (IllegalArgumentException e2) {
-                String valueOf2 = String.valueOf(backgroundColor);
-                Log.e(TAG, valueOf2.length() != 0 ? "Cannot decode notification background color ".concat(valueOf2) : new String("Cannot decode notification background color "), e2);
+                String valueOf2 = backgroundColor;
+                Log.e(TAG, valueOf2.length() != 0 ? "Cannot decode notification background color ".concat(valueOf2) : "Cannot decode notification background color ", e2);
             }
         }
     }
@@ -763,7 +763,7 @@ class OemConfigurationXmlParser {
         if (val2.equalsIgnoreCase(FALSE_VALUE)) {
             return false;
         }
-        StringBuilder sb = new StringBuilder(String.valueOf(val2).length() + 47 + String.valueOf(attrName).length());
+        StringBuilder sb = new StringBuilder(val2.length() + 47 + String.valueOf(attrName).length());
         sb.append("Invalid boolean value ");
         sb.append(val2);
         sb.append(" specified for attribute ");
@@ -778,7 +778,7 @@ class OemConfigurationXmlParser {
                 return Integer.parseInt(val.trim());
             } catch (NumberFormatException e) {
                 String valueOf = String.valueOf(e);
-                StringBuilder sb = new StringBuilder(String.valueOf(val).length() + 38 + String.valueOf(attrName).length() + String.valueOf(valueOf).length());
+                StringBuilder sb = new StringBuilder(val.length() + 38 + String.valueOf(attrName).length() + valueOf.length());
                 sb.append("wrong attribute value ");
                 sb.append(val);
                 sb.append(" for attribute ");
@@ -789,7 +789,7 @@ class OemConfigurationXmlParser {
             }
         } else {
             String valueOf2 = String.valueOf(attrName);
-            throw new XmlPullParserException(valueOf2.length() != 0 ? "missing value for attribute ".concat(valueOf2) : new String("missing value for attribute "));
+            throw new XmlPullParserException(valueOf2.length() != 0 ? "missing value for attribute ".concat(valueOf2) : "missing value for attribute ");
         }
     }
 }

@@ -37,10 +37,7 @@ final class ResourceCacheKey implements Key {
             return false;
         }
         ResourceCacheKey other = (ResourceCacheKey) o;
-        if (this.height != other.height || this.width != other.width || !Util.bothNullOrEqual(this.transformation, other.transformation) || !this.decodedResourceClass.equals(other.decodedResourceClass) || !this.sourceKey.equals(other.sourceKey) || !this.signature.equals(other.signature) || !this.options.equals(other.options)) {
-            return false;
-        }
-        return true;
+        return this.height == other.height && this.width == other.width && Util.bothNullOrEqual(this.transformation, other.transformation) && this.decodedResourceClass.equals(other.decodedResourceClass) && this.sourceKey.equals(other.sourceKey) && this.signature.equals(other.signature) && this.options.equals(other.options);
     }
 
     public int hashCode() {
@@ -85,7 +82,7 @@ final class ResourceCacheKey implements Key {
         String valueOf3 = String.valueOf(this.decodedResourceClass);
         String valueOf4 = String.valueOf(this.transformation);
         String valueOf5 = String.valueOf(this.options);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + ClientAnalytics.LogRequest.LogSource.DROP_BOX_VALUE + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length() + String.valueOf(valueOf4).length() + String.valueOf(valueOf5).length());
+        StringBuilder sb = new StringBuilder(valueOf.length() + ClientAnalytics.LogRequest.LogSource.DROP_BOX_VALUE + valueOf2.length() + valueOf3.length() + valueOf4.length() + valueOf5.length());
         sb.append("ResourceCacheKey{sourceKey=");
         sb.append(valueOf);
         sb.append(", signature=");

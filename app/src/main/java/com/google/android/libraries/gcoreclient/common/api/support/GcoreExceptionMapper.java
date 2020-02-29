@@ -104,7 +104,7 @@ public final class GcoreExceptionMapper {
         if (newCause != wrapped.getCause()) {
             String valueOf = String.valueOf(newCause);
             String valueOf2 = String.valueOf(wrapped.getCause());
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 42 + String.valueOf(valueOf2).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 42 + valueOf2.length());
             sb.append("Wrapper didn't propagate cause: ");
             sb.append(valueOf);
             sb.append(" but got: ");
@@ -113,7 +113,7 @@ public final class GcoreExceptionMapper {
         } else if (newCause != wrapped.getCause()) {
             String valueOf3 = String.valueOf(newCause);
             String valueOf4 = String.valueOf(wrapped.getCause());
-            StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf3).length() + 42 + String.valueOf(valueOf4).length());
+            StringBuilder sb2 = new StringBuilder(valueOf3.length() + 42 + valueOf4.length());
             sb2.append("Wrapper didn't propagate cause: ");
             sb2.append(valueOf3);
             sb2.append(" but got: ");

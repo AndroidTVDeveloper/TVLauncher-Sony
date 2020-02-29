@@ -81,7 +81,7 @@ public final class FactoryPools {
                 result = this.factory.create();
                 if (Log.isLoggable(FactoryPools.TAG, 2)) {
                     String valueOf = String.valueOf(result.getClass());
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 12);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 12);
                     sb.append("Created new ");
                     sb.append(valueOf);
                     Log.v(FactoryPools.TAG, sb.toString());

@@ -22,10 +22,7 @@ public final class LaunchItemImageDataSource extends PackageImageDataSource {
             return false;
         }
         LaunchItemImageDataSource source = (LaunchItemImageDataSource) obj;
-        if (!this.launchItem.equals(source.getLaunchItem()) || !getImageType().equals(source.getImageType()) || this.launchItem.isInstalling() != source.getLaunchItem().isInstalling() || !getLocale().equals(source.getLocale()) || this.launchItem.getLastUpdateTime() != source.getLaunchItem().getLastUpdateTime()) {
-            return false;
-        }
-        return true;
+        return this.launchItem.equals(source.getLaunchItem()) && getImageType().equals(source.getImageType()) && this.launchItem.isInstalling() == source.getLaunchItem().isInstalling() && getLocale().equals(source.getLocale()) && this.launchItem.getLastUpdateTime() == source.getLaunchItem().getLastUpdateTime();
     }
 
     public int hashCode() {
@@ -37,7 +34,7 @@ public final class LaunchItemImageDataSource extends PackageImageDataSource {
         String valueOf = String.valueOf(getImageType());
         boolean isInstalling = this.launchItem.isInstalling();
         String valueOf2 = String.valueOf(getLocale());
-        StringBuilder sb = new StringBuilder(String.valueOf(launchItem2).length() + 48 + String.valueOf(valueOf).length() + String.valueOf(valueOf2).length());
+        StringBuilder sb = new StringBuilder(launchItem2.length() + 48 + valueOf.length() + valueOf2.length());
         sb.append(launchItem2);
         sb.append(", Image Type: ");
         sb.append(valueOf);

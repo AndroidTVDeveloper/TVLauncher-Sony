@@ -47,7 +47,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-class RowListAdapter extends RecyclerView.Adapter<BaseViewHolder> implements LaunchItemsManager.AppsViewChangeListener, OemAppPromotions.OnAppPromotionsLoadedListener {
+class RowListAdapter extends RecyclerView.Adapter<RowListAdapter.BaseViewHolder> implements LaunchItemsManager.AppsViewChangeListener, OemAppPromotions.OnAppPromotionsLoadedListener {
     private static final int ROW_TYPE_APPS = 1;
     private static final int ROW_TYPE_GAMES = 2;
     private static final int ROW_TYPE_PROMOTIONS = 4;
@@ -335,7 +335,7 @@ class RowListAdapter extends RecyclerView.Adapter<BaseViewHolder> implements Lau
         }
     }
 
-    private class AppViewHolder extends BaseViewHolder implements View.OnClickListener, View.OnLongClickListener, View.OnFocusChangeListener, BannerView.OnWindowVisibilityChangedListener, EventLogger {
+    class AppViewHolder extends BaseViewHolder implements View.OnClickListener, View.OnLongClickListener, View.OnFocusChangeListener, BannerView.OnWindowVisibilityChangedListener, EventLogger {
         private static final int MENU_FAVORITE = 2;
         private static final int MENU_INFO = 3;
         private static final int MENU_MOVE = 1;
@@ -566,13 +566,13 @@ class RowListAdapter extends RecyclerView.Adapter<BaseViewHolder> implements Lau
                     Log.e(RowListAdapter.TAG, "Cannot start activity: item was null");
                 } else if (item.getIntent() == null) {
                     String valueOf = String.valueOf(item);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 43);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 43);
                     sb.append("Cannot start activity: intent was null for ");
                     sb.append(valueOf);
                     Log.e(RowListAdapter.TAG, sb.toString());
                 } else if (RowListAdapter.this.onAppsViewActionListener == null) {
                     String valueOf2 = String.valueOf(item);
-                    StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 44);
+                    StringBuilder sb2 = new StringBuilder(valueOf2.length() + 44);
                     sb2.append("Cannot start activity: no listener for item ");
                     sb2.append(valueOf2);
                     Log.e(RowListAdapter.TAG, sb2.toString());
@@ -849,7 +849,7 @@ class RowListAdapter extends RecyclerView.Adapter<BaseViewHolder> implements Lau
     }
 
     public void onViewRecycled(BaseViewHolder holder) {
-        super.onViewRecycled((RecyclerView.ViewHolder) holder);
+        super.onViewRecycled((BaseViewHolder) holder);
         holder.recycle();
     }
 

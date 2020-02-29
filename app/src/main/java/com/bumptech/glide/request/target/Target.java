@@ -6,7 +6,7 @@ import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.transition.Transition;
 
 public interface Target<R> extends LifecycleListener {
-    public static final int SIZE_ORIGINAL = Integer.MIN_VALUE;
+    int SIZE_ORIGINAL = Integer.MIN_VALUE;
 
     Request getRequest();
 

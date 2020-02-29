@@ -3,6 +3,7 @@ package com.google.android.tvlauncher.util;
 import android.text.TextUtils;
 import android.util.Log;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class ChannelConfigurationInfo {
                 }
             } catch (JSONException e) {
                 String valueOf = String.valueOf(jsonArrayStr);
-                Log.e(TAG, valueOf.length() != 0 ? "JSONException in fromJson. Could not deserialize from jsonArrayStr: ".concat(valueOf) : new String("JSONException in fromJson. Could not deserialize from jsonArrayStr: "));
+                Log.e(TAG, valueOf.length() != 0 ? "JSONException in fromJson. Could not deserialize from jsonArrayStr: ".concat(valueOf) : "JSONException in fromJson. Could not deserialize from jsonArrayStr: ");
             }
         }
         return results;
@@ -103,7 +104,7 @@ public class ChannelConfigurationInfo {
             jsonObject.put(CAN_HIDE, channelConfigurationInfo.canHide());
         } catch (JSONException e) {
             String valueOf = String.valueOf(channelConfigurationInfo);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 33);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 33);
             sb.append("Could not serialize ChannelInfo: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -122,7 +123,7 @@ public class ChannelConfigurationInfo {
             return new Builder().setPackageName(packageName2).setSystemChannelKey(systemChannelKey2).setChannelPosition(channelPos).setSponsored(isSponsored2).setIsGoogleConfig(isGoogleConfig2).setCanMove(canMoveChannel).setCanHide(jsonObject.getBoolean(CAN_HIDE));
         } catch (JSONException e) {
             String valueOf = String.valueOf(jsonObject);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 49);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 49);
             sb.append("JSONException. Could not deserialize jsonObject: ");
             sb.append(valueOf);
             Log.e(TAG, sb.toString());
@@ -138,12 +139,12 @@ public class ChannelConfigurationInfo {
             MessageDigest sh1Digest = MessageDigest.getInstance("SHA-1");
             JSONArray jsonArray = toJsonArray(channelConfigurationList);
             if (jsonArray.length() != 0) {
-                return new String(sh1Digest.digest(jsonArray.toString().getBytes("UTF-8")));
+                return new String(sh1Digest.digest(jsonArray.toString().getBytes(StandardCharsets.UTF_8)));
             }
             throw new RuntimeException("Cannot compute checksum. JsonArray returned 0 values.");
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
+        } catch (NoSuchAlgorithmException ex) {
             String valueOf = String.valueOf(channelConfigurationList);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 79);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 79);
             sb.append("Exception while computing MessageDigest in computeHashCode for channelConfigs: ");
             sb.append(valueOf);
             throw new RuntimeException(sb.toString(), ex);
@@ -197,10 +198,7 @@ public class ChannelConfigurationInfo {
             return false;
         }
         ChannelConfigurationInfo channelConfigurationInfo = (ChannelConfigurationInfo) obj;
-        if (!TextUtils.equals(this.packageName, channelConfigurationInfo.getPackageName()) || !TextUtils.equals(this.systemChannelKey, channelConfigurationInfo.getSystemChannelKey())) {
-            return false;
-        }
-        return true;
+        return TextUtils.equals(this.packageName, channelConfigurationInfo.getPackageName()) && TextUtils.equals(this.systemChannelKey, channelConfigurationInfo.getSystemChannelKey());
     }
 
     public static class Builder {

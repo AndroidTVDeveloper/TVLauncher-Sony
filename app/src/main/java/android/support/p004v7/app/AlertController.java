@@ -124,10 +124,7 @@ class AlertController {
     private static boolean shouldCenterSingleButton(Context context) {
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(C0207R.attr.alertDialogCenterButtons, outValue, true);
-        if (outValue.data != 0) {
-            return true;
-        }
-        return false;
+        return outValue.data != 0;
     }
 
     public AlertController(Context context, AppCompatDialog di, Window window) {
@@ -348,9 +345,9 @@ class AlertController {
         setupContent(contentPanel);
         setupButtons(buttonPanel);
         setupTitle(topPanel);
-        boolean hasCustomPanel = (customPanel == null || customPanel.getVisibility() == 8) ? false : true;
-        boolean hasTopPanel = (topPanel == null || topPanel.getVisibility() == 8) ? false : true;
-        boolean hasButtonPanel = (buttonPanel == null || buttonPanel.getVisibility() == 8) ? false : true;
+        boolean hasCustomPanel = customPanel != null && customPanel.getVisibility() != 8;
+        boolean hasTopPanel = topPanel != null && topPanel.getVisibility() != 8;
+        boolean hasButtonPanel = buttonPanel != null && buttonPanel.getVisibility() != 8;
         if (!hasButtonPanel) {
             if (contentPanel != null) {
                 View spacer = contentPanel.findViewById(C0207R.C0209id.textSpacerNoButtons);

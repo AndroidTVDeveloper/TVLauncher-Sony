@@ -14,14 +14,11 @@ public final class SamplingUtil {
         long currentTimeMs = TimeCapture.getTime();
         if (currentTimeMs < lastTimeStampMs) {
             if (!sharedPrefs.edit().remove(key).commit()) {
-                PrimesLog.m48d(TAG, "Failure storing timestamp to SharedPreferences", new Object[0]);
+                PrimesLog.m48d(TAG, "Failure storing timestamp to SharedPreferences");
             }
             lastTimeStampMs = -1;
         }
-        if (lastTimeStampMs == -1 || currentTimeMs > lastTimeStampMs + maxAgeMs) {
-            return false;
-        }
-        return true;
+        return lastTimeStampMs != -1 && currentTimeMs <= lastTimeStampMs + maxAgeMs;
     }
 
     public static boolean writeTimeStamp(SharedPreferences sharedPrefs, String key) {

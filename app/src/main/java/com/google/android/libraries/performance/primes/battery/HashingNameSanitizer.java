@@ -92,9 +92,9 @@ final class HashingNameSanitizer {
             }
             return name;
         } else if (name.startsWith(SYNC_WAKELOCK_PREFIX)) {
-            String valueOf = String.valueOf(SYNC_WAKELOCK_PREFIX);
+            String valueOf = SYNC_WAKELOCK_PREFIX;
             String valueOf2 = String.valueOf(sanitizeSyncName(name.substring(SYNC_WAKELOCK_PREFIX.length())));
-            return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : new String(valueOf);
+            return valueOf2.length() != 0 ? valueOf.concat(valueOf2) : valueOf;
         } else {
             String task = matcher.group(1);
             if (!disabledForTestOnly) {

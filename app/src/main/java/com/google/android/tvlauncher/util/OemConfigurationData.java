@@ -139,7 +139,7 @@ class OemConfigurationData {
             this.prefs = context3.getSharedPreferences(OEM_CONFIG_SHARED_PREFS, 0);
             this.isDataCachedInPrefs = this.prefs.getLong(TIME_STAMP_PREFS_TAG, -1) != -1;
             this.hasSeenSponsoredChannelsSoFar = this.prefs.getBoolean(HAS_SEEN_SPONSORED_CHANNELS_TAG, false);
-            forceReadFromContentProvider = configurationPackageVersion2 <= this.prefs.getInt(OEM_CONFIGURATION_PACKAGE_VERSION_TAG, -1) ? false : forceReadFromContentProvider;
+            forceReadFromContentProvider = configurationPackageVersion2 > this.prefs.getInt(OEM_CONFIGURATION_PACKAGE_VERSION_TAG, -1) && forceReadFromContentProvider;
             if (this.prefs.getBoolean(NotifyRefreshOemConfigurationDataJobService.REFRESH_OEM_CONFIGURATION_DATA, false)) {
                 this.prefs.edit().putBoolean(NotifyRefreshOemConfigurationDataJobService.REFRESH_OEM_CONFIGURATION_DATA, false).apply();
                 forceReadFromContentProvider = true;
@@ -217,7 +217,7 @@ class OemConfigurationData {
                 readFromSharedPrefs(true);
             }
             OemConfigurationDataLoadingTask task = new OemConfigurationDataLoadingTask(this, this.context);
-            task.executeOnExecutor(Executors.getThreadPoolExecutor(), new Void[0]);
+            task.executeOnExecutor(Executors.getThreadPoolExecutor());
             this.isDataLoadingInProgress = true;
             new Handler().postDelayed(new OemConfigurationData$$Lambda$0(this, task), LOAD_TASK_TIMEOUT);
             return;
@@ -965,7 +965,7 @@ class OemConfigurationData {
                             e = e2;
                             quotas = quotas2;
                             String valueOf = String.valueOf(quotasArray[i4 + 1]);
-                            Log.e(TAG, valueOf.length() != 0 ? "Bad quota number: ".concat(valueOf) : new String("Bad quota number: "));
+                            Log.e(TAG, valueOf.length() != 0 ? "Bad quota number: ".concat(valueOf) : "Bad quota number: ");
                             i4 += 2;
                             quotas2 = quotas;
                         }
@@ -1173,7 +1173,7 @@ class OemConfigurationData {
                     return this.context.getContentResolver().openInputStream(PartnerCustomizationContract.OEM_CONFIGURATION_URI);
                 } catch (Exception e) {
                     String valueOf = String.valueOf(PartnerCustomizationContract.OEM_CONFIGURATION_URI);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 14);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 14);
                     sb.append("Error reading ");
                     sb.append(valueOf);
                     Log.e(OemConfigurationData.TAG, sb.toString(), e);
@@ -1181,7 +1181,7 @@ class OemConfigurationData {
                 }
             } else {
                 String valueOf2 = String.valueOf(PartnerCustomizationContract.OEM_CONFIGURATION_URI);
-                StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 68);
+                StringBuilder sb2 = new StringBuilder(valueOf2.length() + 68);
                 sb2.append("Error reading ");
                 sb2.append(valueOf2);
                 sb2.append(". Queried the content provider unsuccessfully ");
@@ -1203,14 +1203,14 @@ class OemConfigurationData {
                     configurationFile.close();
                 } catch (IOException e) {
                     String valueOf = String.valueOf(PartnerCustomizationContract.OEM_CONFIGURATION_URI);
-                    StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 14);
+                    StringBuilder sb = new StringBuilder(valueOf.length() + 14);
                     sb.append("Error closing ");
                     sb.append(valueOf);
                     Log.e(OemConfigurationData.TAG, sb.toString(), e);
                 }
             } else {
                 String valueOf2 = String.valueOf(PartnerCustomizationContract.OEM_CONFIGURATION_URI);
-                StringBuilder sb2 = new StringBuilder(String.valueOf(valueOf2).length() + 14);
+                StringBuilder sb2 = new StringBuilder(valueOf2.length() + 14);
                 sb2.append("Error reading ");
                 sb2.append(valueOf2);
                 Log.e(OemConfigurationData.TAG, sb2.toString());

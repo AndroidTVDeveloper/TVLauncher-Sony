@@ -29,10 +29,7 @@ public final class LeakInfo {
             return false;
         }
         LeakInfo that = (LeakInfo) object;
-        if (!this.path.equals(that.path) || this.retainedHeapSizeBytes != that.retainedHeapSizeBytes) {
-            return false;
-        }
-        return true;
+        return this.path.equals(that.path) && this.retainedHeapSizeBytes == that.retainedHeapSizeBytes;
     }
 
     public int hashCode() {

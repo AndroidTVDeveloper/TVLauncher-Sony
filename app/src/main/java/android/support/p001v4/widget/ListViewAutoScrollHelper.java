@@ -29,17 +29,11 @@ public class ListViewAutoScrollHelper extends AutoScrollHelper {
         int firstPosition = target.getFirstVisiblePosition();
         int lastPosition = firstPosition + childCount;
         if (direction > 0) {
-            if (lastPosition < itemCount || target.getChildAt(childCount - 1).getBottom() > target.getHeight()) {
-                return true;
-            }
-            return false;
+            return lastPosition < itemCount || target.getChildAt(childCount - 1).getBottom() > target.getHeight();
         } else if (direction >= 0) {
             return false;
         } else {
-            if (firstPosition > 0 || target.getChildAt(0).getTop() < 0) {
-                return true;
-            }
-            return false;
+            return firstPosition > 0 || target.getChildAt(0).getTop() < 0;
         }
     }
 }

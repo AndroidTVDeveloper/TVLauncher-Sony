@@ -144,10 +144,7 @@ abstract class MapCollections<K, V> {
                 return false;
             } else {
                 Map.Entry<?, ?> e = (Map.Entry) o;
-                if (!ContainerHelpers.equal(e.getKey(), MapCollections.this.colGetEntry(this.mIndex, 0)) || !ContainerHelpers.equal(e.getValue(), MapCollections.this.colGetEntry(this.mIndex, 1))) {
-                    return false;
-                }
-                return true;
+                return ContainerHelpers.equal(e.getKey(), MapCollections.this.colGetEntry(this.mIndex, 0)) && ContainerHelpers.equal(e.getValue(), MapCollections.this.colGetEntry(this.mIndex, 1));
             }
         }
 
@@ -496,10 +493,7 @@ abstract class MapCollections<K, V> {
         }
         Set<?> s = (Set) object;
         try {
-            if (set.size() != s.size() || !set.containsAll(s)) {
-                return false;
-            }
-            return true;
+            return set.size() == s.size() && set.containsAll(s);
         } catch (NullPointerException e) {
             return false;
         } catch (ClassCastException e2) {

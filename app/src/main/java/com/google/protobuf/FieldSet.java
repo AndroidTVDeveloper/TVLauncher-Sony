@@ -382,20 +382,11 @@ final class FieldSet<T extends FieldDescriptorLite<T>> {
             case STRING:
                 return value instanceof String;
             case BYTE_STRING:
-                if ((value instanceof ByteString) || (value instanceof byte[])) {
-                    return true;
-                }
-                return false;
+                return (value instanceof ByteString) || (value instanceof byte[]);
             case ENUM:
-                if ((value instanceof Integer) || (value instanceof Internal.EnumLite)) {
-                    return true;
-                }
-                return false;
+                return (value instanceof Integer) || (value instanceof Internal.EnumLite);
             case MESSAGE:
-                if ((value instanceof MessageLite) || (value instanceof LazyField)) {
-                    return true;
-                }
-                return false;
+                return (value instanceof MessageLite) || (value instanceof LazyField);
             default:
                 return false;
         }
@@ -428,9 +419,7 @@ final class FieldSet<T extends FieldDescriptorLite<T>> {
             } else {
                 Object value = entry.getValue();
                 if (value instanceof MessageLite) {
-                    if (!((MessageLite) value).isInitialized()) {
-                        return false;
-                    }
+                    return ((MessageLite) value).isInitialized();
                 } else if (value instanceof LazyField) {
                     return true;
                 } else {
@@ -914,7 +903,7 @@ final class FieldSet<T extends FieldDescriptorLite<T>> {
                 return list;
             }
             String valueOf = String.valueOf(value.getClass());
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 66);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 66);
             sb.append("Repeated field should contains a List but actually contains type: ");
             sb.append(valueOf);
             throw new IllegalStateException(sb.toString());

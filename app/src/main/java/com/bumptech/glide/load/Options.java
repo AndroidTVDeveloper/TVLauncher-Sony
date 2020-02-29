@@ -40,7 +40,7 @@ public final class Options implements Key {
 
     public String toString() {
         String valueOf = String.valueOf(this.values);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 16);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 16);
         sb.append("Options{values=");
         sb.append(valueOf);
         sb.append('}');

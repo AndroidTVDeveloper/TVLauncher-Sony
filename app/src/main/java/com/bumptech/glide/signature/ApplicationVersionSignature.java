@@ -47,7 +47,7 @@ public final class ApplicationVersionSignature {
             return context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             String valueOf = String.valueOf(context.getPackageName());
-            Log.e(TAG, valueOf.length() != 0 ? "Cannot resolve info for".concat(valueOf) : new String("Cannot resolve info for"), e);
+            Log.e(TAG, valueOf.length() != 0 ? "Cannot resolve info for".concat(valueOf) : "Cannot resolve info for", e);
             return null;
         }
     }

@@ -475,7 +475,7 @@ final class CodedOutputStreamWriter implements Writer {
                 return;
             default:
                 String valueOf = String.valueOf(metadata.keyType);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 27);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 27);
                 sb.append("does not support key type: ");
                 sb.append(valueOf);
                 throw new IllegalArgumentException(sb.toString());

@@ -11,9 +11,6 @@ public class MethodCallsLogger {
         int mask = nullableMask != null ? nullableMask.intValue() : 0;
         boolean wasCalled = (mask & type) != 0;
         this.mCalledMethods.put(name, Integer.valueOf(mask | type));
-        if (!wasCalled) {
-            return true;
-        }
-        return false;
+        return !wasCalled;
     }
 }

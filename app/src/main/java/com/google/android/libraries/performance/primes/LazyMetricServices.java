@@ -132,11 +132,7 @@ final class LazyMetricServices {
         if (Build.VERSION.SDK_INT < 21) {
             PrimesLog.m48d(TAG, "Service unsupported on SDK %d", Integer.valueOf(Build.VERSION.SDK_INT));
             return false;
-        } else if (!this.configs.experimentalConfigurations().isPresent() || !this.configs.experimentalConfigurations().get().profilingConfigurations.isPresent() || !this.configs.experimentalConfigurations().get().profilingConfigurations.get().isEnabled()) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return this.configs.experimentalConfigurations().isPresent() && this.configs.experimentalConfigurations().get().profilingConfigurations.isPresent() && this.configs.experimentalConfigurations().get().profilingConfigurations.get().isEnabled();
     }
 
     /* access modifiers changed from: package-private */
@@ -431,10 +427,7 @@ final class LazyMetricServices {
 
     /* access modifiers changed from: package-private */
     public boolean strictModeEnabled() {
-        if (Build.VERSION.SDK_INT >= 28 && StrictMode.ThreadPolicy.LAX.equals(StrictMode.getThreadPolicy()) && StrictMode.VmPolicy.LAX.equals(StrictMode.getVmPolicy()) && this.configs.experimentalConfigurations().isPresent() && this.configs.experimentalConfigurations().get().strictModeConfigurations.isPresent() && this.configs.experimentalConfigurations().get().strictModeConfigurations.get().isEnabled()) {
-            return true;
-        }
-        return false;
+        return Build.VERSION.SDK_INT >= 28 && StrictMode.ThreadPolicy.LAX.equals(StrictMode.getThreadPolicy()) && StrictMode.VmPolicy.LAX.equals(StrictMode.getVmPolicy()) && this.configs.experimentalConfigurations().isPresent() && this.configs.experimentalConfigurations().get().strictModeConfigurations.isPresent() && this.configs.experimentalConfigurations().get().strictModeConfigurations.get().isEnabled();
     }
 
     /* access modifiers changed from: package-private */

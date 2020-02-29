@@ -93,7 +93,7 @@ public final class CommonEnums {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private Result(int value2) {
+        Result(int value2) {
             this.value = value2;
         }
     }
@@ -168,7 +168,7 @@ public final class CommonEnums {
             return "<" + getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)) + " number=" + getNumber() + " name=" + name() + '>';
         }
 
-        private Source(int value2) {
+        Source(int value2) {
             this.value = value2;
         }
     }

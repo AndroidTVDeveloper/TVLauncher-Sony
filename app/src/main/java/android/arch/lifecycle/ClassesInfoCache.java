@@ -166,7 +166,7 @@ class ClassesInfoCache {
             try {
                 int i = this.mCallType;
                 if (i == 0) {
-                    this.mMethod.invoke(target, new Object[0]);
+                    this.mMethod.invoke(target);
                 } else if (i == 1) {
                     this.mMethod.invoke(target, source);
                 } else if (i == 2) {
@@ -187,10 +187,7 @@ class ClassesInfoCache {
                 return false;
             }
             MethodReference that = (MethodReference) o;
-            if (this.mCallType != that.mCallType || !this.mMethod.getName().equals(that.mMethod.getName())) {
-                return false;
-            }
-            return true;
+            return this.mCallType == that.mCallType && this.mMethod.getName().equals(that.mMethod.getName());
         }
 
         public int hashCode() {

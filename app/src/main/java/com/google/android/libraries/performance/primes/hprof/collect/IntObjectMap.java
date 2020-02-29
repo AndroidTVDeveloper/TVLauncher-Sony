@@ -128,7 +128,7 @@ public final class IntObjectMap<E> {
 
     public boolean containsKey(int key) {
         Object value = get(key);
-        return (value == null || value == DELETED) ? false : true;
+        return value != null && value != DELETED;
     }
 
     public Enumerator<E> enumerator() {
@@ -167,10 +167,7 @@ public final class IntObjectMap<E> {
                 this.key = this.keys[i2 - 1];
             }
             Object obj2 = this.value;
-            if (obj2 == null || obj2 == IntObjectMap.DELETED) {
-                return false;
-            }
-            return true;
+            return obj2 != null && obj2 != IntObjectMap.DELETED;
         }
 
         public int getKey() {

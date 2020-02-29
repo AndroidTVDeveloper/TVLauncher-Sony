@@ -409,10 +409,7 @@ class AdapterHelper implements OpReorderer.Callback {
         }
         this.mPendingUpdates.add(obtainUpdateOp(4, positionStart, itemCount, payload));
         this.mExistingUpdateTypes |= 4;
-        if (this.mPendingUpdates.size() == 1) {
-            return true;
-        }
-        return false;
+        return this.mPendingUpdates.size() == 1;
     }
 
     /* access modifiers changed from: package-private */
@@ -422,10 +419,7 @@ class AdapterHelper implements OpReorderer.Callback {
         }
         this.mPendingUpdates.add(obtainUpdateOp(1, positionStart, itemCount, null));
         this.mExistingUpdateTypes |= 1;
-        if (this.mPendingUpdates.size() == 1) {
-            return true;
-        }
-        return false;
+        return this.mPendingUpdates.size() == 1;
     }
 
     /* access modifiers changed from: package-private */
@@ -435,10 +429,7 @@ class AdapterHelper implements OpReorderer.Callback {
         }
         this.mPendingUpdates.add(obtainUpdateOp(2, positionStart, itemCount, null));
         this.mExistingUpdateTypes |= 2;
-        if (this.mPendingUpdates.size() == 1) {
-            return true;
-        }
-        return false;
+        return this.mPendingUpdates.size() == 1;
     }
 
     /* access modifiers changed from: package-private */
@@ -449,10 +440,7 @@ class AdapterHelper implements OpReorderer.Callback {
         if (itemCount == 1) {
             this.mPendingUpdates.add(obtainUpdateOp(8, from, to, null));
             this.mExistingUpdateTypes |= 8;
-            if (this.mPendingUpdates.size() == 1) {
-                return true;
-            }
-            return false;
+            return this.mPendingUpdates.size() == 1;
         }
         throw new IllegalArgumentException("Moving more than 1 item is not supported yet");
     }
@@ -585,13 +573,8 @@ class AdapterHelper implements OpReorderer.Callback {
             }
             Object obj = this.payload;
             if (obj != null) {
-                if (!obj.equals(op.payload)) {
-                    return false;
-                }
-            } else if (op.payload != null) {
-                return false;
-            }
-            return true;
+                return obj.equals(op.payload);
+            } else return op.payload == null;
         }
 
         public int hashCode() {

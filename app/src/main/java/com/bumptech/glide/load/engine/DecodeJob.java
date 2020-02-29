@@ -228,7 +228,7 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
             decodeFromRetrievedData();
         } else {
             String valueOf = String.valueOf(this.runReason);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 25);
+            StringBuilder sb = new StringBuilder(valueOf.length() + 25);
             sb.append("Unrecognized run reason: ");
             sb.append(valueOf);
             throw new IllegalStateException(sb.toString());
@@ -250,7 +250,7 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
             return null;
         }
         String valueOf = String.valueOf(this.stage);
-        StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20);
+        StringBuilder sb = new StringBuilder(valueOf.length() + 20);
         sb.append("Unrecognized stage: ");
         sb.append(valueOf);
         throw new IllegalStateException(sb.toString());
@@ -315,7 +315,7 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
             }
             if (i != 5) {
                 String valueOf = String.valueOf(current);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 20);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 20);
                 sb.append("Unrecognized stage: ");
                 sb.append(valueOf);
                 throw new IllegalArgumentException(sb.toString());
@@ -374,7 +374,7 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
             String valueOf = String.valueOf(this.currentData);
             String valueOf2 = String.valueOf(this.currentSourceKey);
             String valueOf3 = String.valueOf(this.currentFetcher);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 30 + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + 30 + valueOf2.length() + valueOf3.length());
             sb.append("data: ");
             sb.append(valueOf);
             sb.append(", cache key: ");
@@ -431,7 +431,7 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
             Resource<R> result = decodeFromFetcher(data, dataSource);
             if (Log.isLoggable(TAG, 2)) {
                 String valueOf = String.valueOf(result);
-                StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + 15);
+                StringBuilder sb = new StringBuilder(valueOf.length() + 15);
                 sb.append("Decoded result ");
                 sb.append(valueOf);
                 logWithTimeAndKey(sb.toString(), startTime);
@@ -481,13 +481,13 @@ class DecodeJob<R> implements DataFetcherGenerator.FetcherReadyCallback, Runnabl
         double elapsedMillis = LogTime.getElapsedMillis(startTime);
         String valueOf = String.valueOf(this.loadKey);
         if (extraArgs != null) {
-            String valueOf2 = String.valueOf(extraArgs);
-            str = valueOf2.length() != 0 ? ", ".concat(valueOf2) : new String(", ");
+            String valueOf2 = extraArgs;
+            str = valueOf2.length() != 0 ? ", ".concat(valueOf2) : ", ";
         } else {
             str = "";
         }
         String name = Thread.currentThread().getName();
-        StringBuilder sb = new StringBuilder(String.valueOf(message).length() + 50 + String.valueOf(valueOf).length() + String.valueOf(str).length() + String.valueOf(name).length());
+        StringBuilder sb = new StringBuilder(String.valueOf(message).length() + 50 + valueOf.length() + str.length() + name.length());
         sb.append(message);
         sb.append(" in ");
         sb.append(elapsedMillis);

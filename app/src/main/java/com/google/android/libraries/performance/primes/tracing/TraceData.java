@@ -27,8 +27,8 @@ public final class TraceData {
             if (Looper.myLooper() == Looper.getMainLooper()) {
                 str = TraceData.UI_THREAD;
             } else {
-                String valueOf = String.valueOf(Thread.currentThread().getName());
-                str = valueOf.length() != 0 ? TraceData.THREAD_PREFIX.concat(valueOf) : new String(TraceData.THREAD_PREFIX);
+                String valueOf = Thread.currentThread().getName();
+                str = valueOf.length() != 0 ? TraceData.THREAD_PREFIX.concat(valueOf) : TraceData.THREAD_PREFIX;
             }
             SpanEvent threadRootSpan = SpanEvent.newSpan(str, SpanEvent.EventNameType.CONSTANT, threadId, SpanEvent.SpanType.THREAD_ROOT_SPAN);
             ThreadData threadData = new ThreadData(threadId, threadRootSpan);

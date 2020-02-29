@@ -6,7 +6,7 @@ import java.io.OutputStream;
 
 public interface MessageLite extends MessageLiteOrBuilder {
 
-    public interface Builder extends MessageLiteOrBuilder, Cloneable {
+    interface Builder extends MessageLiteOrBuilder, Cloneable {
         MessageLite build();
 
         MessageLite buildPartial();

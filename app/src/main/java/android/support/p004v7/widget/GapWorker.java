@@ -24,10 +24,7 @@ final class GapWorker implements Runnable {
                     return deltaViewVelocity;
                 }
                 int deltaDistanceToItem = lhs.distanceToItem - rhs.distanceToItem;
-                if (deltaDistanceToItem != 0) {
-                    return deltaDistanceToItem;
-                }
-                return 0;
+                return deltaDistanceToItem;
             } else if (lhs.immediate) {
                 return -1;
             } else {

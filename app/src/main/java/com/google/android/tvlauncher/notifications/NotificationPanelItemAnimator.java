@@ -132,7 +132,7 @@ public class NotificationPanelItemAnimator extends BoundsItemAnimator {
             float f2 = this.itemContainerAlpha;
             String valueOf2 = String.valueOf(this.titleBounds);
             String valueOf3 = String.valueOf(this.textBounds);
-            StringBuilder sb = new StringBuilder(String.valueOf(valueOf).length() + ClientAnalytics.LogRequest.LogSource.SOCIETY_ANDROID_PRIMES_VALUE + String.valueOf(valueOf2).length() + String.valueOf(valueOf3).length());
+            StringBuilder sb = new StringBuilder(valueOf.length() + ClientAnalytics.LogRequest.LogSource.SOCIETY_ANDROID_PRIMES_VALUE + valueOf2.length() + valueOf3.length());
             sb.append("NotifItemHolderInfo left=");
             sb.append(i);
             sb.append(", top=");

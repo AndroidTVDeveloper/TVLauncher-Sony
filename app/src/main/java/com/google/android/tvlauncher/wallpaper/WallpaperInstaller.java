@@ -51,7 +51,7 @@ public class WallpaperInstaller {
                     super.onCancelled();
                     boolean unused = WallpaperInstaller.this.installingWallpaper = false;
                 }
-            }.execute(new Void[0]);
+            }.execute();
         }
     }
 
@@ -68,10 +68,7 @@ public class WallpaperInstaller {
         if (this.installingWallpaper) {
             return false;
         }
-        if (osUpgraded || installedWallpaperVersion < 2) {
-            return true;
-        }
-        return false;
+        return osUpgraded || installedWallpaperVersion < 2;
     }
 
     /* access modifiers changed from: private */
